@@ -1,0 +1,15 @@
+export const LEFT_MENU_ALL_STATE = 'all';
+export const LEFT_MENU_SEARCH_STATE = 'search';
+export const LEFT_MENU_PEOPLE_STATE = 'people';
+export const LEFT_MENU_CREATE_STATE = 'create';
+export const LEFT_MENU_TOGGLE_STATE = 'toggle';
+export const LEFT_MENU_ANNOUNCEMENTS_STATE = 'announcements';
+
+export const VALID_LEFT_MENU_STATES = [
+  LEFT_MENU_ALL_STATE,
+  LEFT_MENU_SEARCH_STATE,
+  LEFT_MENU_PEOPLE_STATE,
+  LEFT_MENU_CREATE_STATE,
+  LEFT_MENU_TOGGLE_STATE,
+  LEFT_MENU_ANNOUNCEMENTS_STATE
+];

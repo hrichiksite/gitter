@@ -1,0 +1,446 @@
+@import '../../../less/colors';
+@import '../widgets/avatar';
+@import '../popover';
+@import 'chatInputView';
+@import 'chatConnectivityIndicatorView';
+@import 'markdown.less';
+
+// Other items required by this library
+@import '../../../less/highlight.less';
+
+/* KaTeX for LaTeX */
+// KaTeX fonts are included with other application fonts in `server/web/fonts.js`
+@import '../repo/katex/katex';
+
+@import (reference) '../../../less/colors.less';
+
+@chat-spacing: 0.2em;
+@chat-item__action-item__color: rgba(170, 170, 170, 1);
+
+// Define our markdown styles
+.markdown-styles();
+
+.chat-container .chat-item:last-child {
+  padding-bottom: @chat-spacing*2;
+  clear: both;
+}
+
+.threaded-conversation-chat-item {
+  display: none;
+}
+
+// inline-threads-for-mobile-embedded
+.mobile-embedded .threaded-conversation-chat-item {
+  display: block;
+}
+
+.mobile-embedded .parent-message-indicator {
+  display: none;
+}
+
+.chat-item {
+  transition: background-color 0.2s linear;
+  background-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  body:not(.mobile) &:not(.syncerror):hover {
+    background-color: rgba(240, 240, 240, 0.3);
+  }
+
+  &.chat-item__highlighted {
+    background-color: @permalink-highlight-bg;
+  }
+
+  &.synced {
+    opacity: 1;
+  }
+
+  @keyframes sync-keyframes {
+    0% {
+      opacity: 0.8;
+    }
+    10% {
+      opacity: 0.4;
+    }
+    20% {
+      opacity: 0.8;
+    }
+    30% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 0.6;
+    }
+  }
+
+  &.fast {
+    transition: none;
+  }
+
+  &.syncing {
+    animation: sync-keyframes 6s ease-out;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+
+  &.syncerror {
+    background-color: #edb2bd;
+    background-image: repeating-linear-gradient(
+      90deg,
+      #edb2bd,
+      #edb2bd 10px,
+      #eeb5bf 10px,
+      #eeb5bf 20px
+    );
+  }
+
+  &.syncerror .chat-item__from {
+    color: #888;
+  }
+
+  &.syncerror .chat-item__time {
+    color: #888;
+  }
+
+  &.burstStart {
+    padding-bottom: @chat-spacing;
+
+    .chat-item__aside {
+      margin-top: 6px;
+    }
+
+    .chat-item__actions {
+      margin-top: 2px;
+    }
+  }
+
+  &.burstContinued {
+    padding-top: @chat-spacing;
+    padding-bottom: @chat-spacing;
+
+    .chat-item__container {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    .chat-item__time {
+      display: none;
+      &:before {
+        content: none;
+      }
+    }
+
+    .chat-item__details,
+    .chat-item__avatar {
+      display: none;
+    }
+  }
+
+  &.deleted {
+    .chat-item__container {
+      opacity: 0.5;
+    }
+    .chat-item__text {
+      opacity: 0.6;
+    }
+  }
+
+  &.unread .chat-item__container {
+    border-right: 2px solid @green;
+    background-color: rgba(46, 204, 113, 0.08);
+  }
+
+  &.unread.mentioned .chat-item__container {
+    border-right: 2px solid @orange;
+    background-color: rgba(230, 126, 34, 0.08);
+  }
+
+  &.mentioned .chat-item__text .mention,
+  &.mentioned .chat-item__text .groupmention {
+    color: @orange;
+    background-color: lighten(@orange, 40%);
+    border-radius: 2px;
+  }
+
+  & .commit {
+    .commit;
+  }
+
+  &:last-child {
+    &.burstStart {
+      padding-bottom: @chat-spacing*2;
+    }
+  }
+}
+
+.chat-item__aside {
+  float: left;
+  margin-top: 2px;
+}
+
+.chat-item__actions {
+  float: right;
+  text-align: right;
+  width: 40px;
+}
+
+body.mobile .chat-item__actions {
+  display: none;
+}
+
+&.fast .chat-item__container {
+  transition: none;
+}
+
+.chat-item__container {
+  box-sizing: border-box;
+  border-right: 2px solid transparent;
+  margin: 0.4em 12px 0px;
+  padding-left: 22px;
+  transition-delay: 1s;
+  transition: 1s border linear, 2s background-color linear;
+  clear: both;
+  &.syncerror {
+    background-color: #edb2bd;
+  }
+}
+
+body.embedded .chat-item__container {
+  padding-left: 16px;
+}
+
+body.mobile .chat-item__container {
+  padding-left: 0;
+}
+
+.chat-item__from {
+  vertical-align: middle;
+  display: inline;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 2px;
+  opacity: 0.7;
+}
+
+.chat-item__username {
+  vertical-align: middle;
+  display: inline;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 2px;
+  opacity: 0.5;
+}
+
+body.mobile .chat-item__username {
+  display: none;
+}
+
+.chat-item__time {
+  vertical-align: middle;
+  display: inline;
+  margin-left: 8px;
+  margin-top: 2px;
+
+  color: fade(@chat-item__action-item__color, 70%);
+
+  &,
+  &:hover {
+    text-decoration: none;
+  }
+
+  .chat-item:hover & {
+    color: @chat-item__action-item__color;
+  }
+}
+
+.chat-item__icon {
+  visibility: hidden;
+  color: transparent;
+
+  cursor: pointer;
+
+  transition: visibility 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    &,
+    .chat-item:hover & {
+      color: @blue;
+    }
+  }
+
+  .chat-item:hover & {
+    visibility: visible;
+    color: @chat-item__action-item__color;
+  }
+}
+
+.chat-item__icon--read {
+  float: left;
+  font-size: 0.7em;
+  margin-top: 3px;
+
+  &,
+  .chat-item:hover & {
+    visibility: hidden;
+    color: transparent;
+  }
+}
+
+.chat-item__icon--read-by-some {
+  .chat-item:hover & {
+    visibility: visible;
+    color: @chat-item__action-item__color;
+  }
+}
+
+body.mobile .chat-item__icon--read {
+  display: none;
+}
+
+.chat-item__text {
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  // https://github.com/html-next/ember-gestures/issues/104
+  touch-action: pan-y;
+  word-wrap: break-word;
+  user-select: text;
+  color: #000;
+
+  a {
+    color: @blue;
+  }
+
+  p {
+    padding: @chat-spacing 0;
+    margin: 0;
+  }
+
+  p:first-child {
+    padding-top: 0;
+  }
+
+  p:last-child {
+    padding-bottom: 0;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  td,
+  th {
+    border: 1px solid #ddd;
+    padding: 6px;
+  }
+
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-top: 2px;
+  }
+
+  table tr:nth-child(2n) {
+    background-color: #f8f8f8;
+  }
+
+  /*  p:last-child {
+    margin-bottom: 0;
+  }*/
+
+  .trpChatInput {
+    display: block;
+    width: 100%;
+    outline: none;
+    padding-left: 5px;
+    border: 0px;
+    resize: none;
+    margin: 1px;
+    box-shadow: none;
+    min-height: 44px;
+    outline: 1px solid @trpLightBlue;
+    line-height: 1.5;
+  }
+
+  .mention,
+  .groupmention {
+    border-bottom: 1px dotted;
+    cursor: pointer;
+    padding: 0 2px;
+  }
+
+  .embed {
+    position: relative;
+    transition: max-height 500ms;
+    overflow: hidden;
+
+    // If you adjust this value (below), you'll also need
+    // to adjust the MAX_HEIGHT value in chatItemView.js
+    max-height: 640px; // <-- NB: read the comment ABOVE!!
+    //max-width: 640px;
+
+    &.animateOut {
+      max-height: 0;
+    }
+  }
+}
+
+.chat-item__content {
+  @avatarWidth: 30px;
+  margin-left: @avatarWidth + 22px;
+  margin-right: 44px;
+  vertical-align: top;
+  min-height: 1.5em;
+
+  pre {
+    overflow: hidden;
+    margin: 4px 0 0 0;
+  }
+}
+
+.chat-item__thread-message-indicator {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  &:hover {
+    cursor:pointer;
+   }
+}
+
+body.mobile .chat-item__content {
+  margin-left: @avatarWidth + 12px;
+  margin-right: 12px;
+}
+
+.chat-item__status {
+  .chat-item__text {
+    color: @purple;
+  }
+}
+
+.trpDisplayPicture--left {
+  .trpDisplayPicture;
+  float: left;
+}
+
+.search-container {
+  .chat-item {
+    cursor: hand;
+  }
+}
+
+.lastMessageSeen {
+  border-top: 1px solid @homepage-green;
+}
+
+.lastMessageSeen::before {
+  content: 'New messages';
+  font-size: 10px;
+  background: white;
+  color: @homepage-green;
+  position: relative;
+  float: right;
+  top: -11px;
+  padding: 0 5px;
+  text-transform: uppercase;
+}

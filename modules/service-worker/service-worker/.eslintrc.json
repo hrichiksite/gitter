@@ -1,0 +1,8 @@
+{
+  "env": {
+    "serviceworker": true
+  },
+  "globals": {
+    "Promise": false
+  }
+}

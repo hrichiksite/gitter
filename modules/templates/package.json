@@ -1,0 +1,19 @@
+{
+  "name": "gitter-web-templates",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "dependencies": {
+    "gitter-client-env": "file:../client-env",
+    "gitter-web-avatars": "file:../avatars",
+    "gitter-web-cdn": "file:../cdn",
+    "gitter-web-i18n": "file:../i18n"
+  },
+  "private": true
+}

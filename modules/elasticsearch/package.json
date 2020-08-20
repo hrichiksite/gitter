@@ -1,0 +1,16 @@
+{
+  "name": "gitter-web-elasticsearch",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "dependencies": {
+    "gitter-web-env": "file:../env"
+  },
+  "private": true
+}

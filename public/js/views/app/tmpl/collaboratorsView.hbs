@@ -1,0 +1,27 @@
+<div class="welcome-modal__collaborators">
+  <div class="welcome-modal__close js-close"><i class="octicon octicon-x"></i></div>
+  <div class="welcome-modal__header">
+    {{#if isPublic}}
+      <h3>Get Started: Spread the word</h3>
+    {{else}}
+      <h3>Get Started: Add some teammates</h3>
+    {{/if}}
+  </div>
+  <div class="welcome-modal__container  js-container"></div>
+    <div class="welcome-modal__share">
+      <a class="link--positive" href="#add">Search other users</a>
+      {{#if isPublic}}
+      <div class="share-buttons">
+        <a class="share-button button-twitter--small" href="{{ twitterLink }}" target="_blank">
+          <i class="icon-twitter"></i>
+        </a>
+        <a class="share-button button-facebook--small" target="_blank" href="{{ facebookLink }}">
+          <i class="icon-facebook-official"></i>
+        </a>
+        <a class="share-button button-pampas--small" href="#share">
+          More…
+        </a>
+      </div>
+      {{/if}}
+    </div>
+</div>

@@ -1,0 +1,6 @@
+db.troupes.aggregate([
+  { $unwind: '$users' },
+  { $project: { uri: '$uri', userId: '$users.userId' } },
+  { $group: { _id: '$uri', s: { $sum: 1 }  } },
+  { $sort: { s: -1 } },
+  { $limit: 20 }])

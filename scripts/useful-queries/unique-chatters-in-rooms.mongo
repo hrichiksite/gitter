@@ -1,0 +1,24 @@
+rs.slaveOk()
+
+var month = new Date(Date.now() - 86400000 * 31)
+
+var roomId = db.troupes.findOne({ lcUri: 'openai/gym' })._id;
+
+var a = db.chatmessages.aggregate([
+  { $match: { sent: { $gt: month }, toTroupeId: roomId } },
+  { $project: { t: '$fromUserId' } },
+  { $group: { _id: '$t', s: { $sum: 1 }  } },
+  { $project: {
+      _id: 1,
+      s: 1,
+      bucket: { $cond: [{ $lte: ["$s", 5] }, "1-5",
+      { $cond: [{ $lte: ["$s", 10] }, "5-10",  "10+"]}
+      ]}
+    }
+  },
+  { $group: { _id: '$bucket', count: { $sum: 1 }  } },
+]);
+
+a.forEach(function(i) {
+  print(i._id + ',' + i.count)
+})

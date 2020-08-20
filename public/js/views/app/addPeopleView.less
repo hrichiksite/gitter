@@ -1,0 +1,86 @@
+@import "../../../less/base-avatar.less";
+@import "../../../less/pulse-animations.less";
+@import (reference) "../../../less/colors.less";
+
+@import "../controls/dropdown";
+@import "../controls/typeahead";
+
+.gtrPeopleAddRoster {
+  &__adding {
+    p { margin: 0; }
+    margin-left: 10px;
+    padding-bottom: 15px;
+  }
+
+  /*
+   * Keep the invitee list from growing indefinitely so the modal doesn't become
+   * too long and push the user/email input offscreen
+   */
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.gtrPeopleRosterItem__form {
+  padding: 0;
+  margin: 0;
+}
+
+.gtrPeopleRosterItem {
+  width: 100%;
+  cursor: default;
+  margin-bottom: 8px;
+  overflow: hidden;
+
+  &__avatar {
+    float: left;
+  }
+
+  &__content {
+    display: flex;
+
+    /* Give the avatar some space to the right */
+    .trpDisplayPicture {
+      margin-right: 8px;
+    }
+
+    > * {
+      align-self: center;
+    }
+  }
+
+  &__input {
+    flex-grow: 1;
+    margin-right: 8px;
+    margin-top: 8px;
+    padding: 9px;
+  }
+
+  &:last-child {
+    margin-bottom: 10px;
+  }
+
+  .username {
+    color: #999;
+  }
+
+  &:hover .remove {
+    opacity: 1;
+  }
+
+  .remove {
+    float: right;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 300ms;
+  }
+
+  .remove:before {
+    position: inherit;
+  }
+
+  .remove:hover {
+    color: @trpRed;
+  }
+
+
+}

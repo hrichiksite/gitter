@@ -1,0 +1,151 @@
+@import (reference) "./trp3Vars.less";
+
+// This stuff doesn't have a proper home yet
+
+.avatar-xs {
+  position: relative;
+  border-radius: 4px;
+  width: 20px;
+  height: 20px;
+  background-size: cover;
+}
+.dropdown .avatar-xs {
+  vertical-align: middle;
+}
+
+.trpTroupeAvatar {
+  background-color: rgba(255,255,255,0.1);
+}
+
+.trpDisplayPicture {
+  display: inline-block;
+  text-align: center;
+  user-select: none;
+  background-repeat: no-repeat;
+  border-bottom: 2px solid transparent;
+
+  &.unread {
+    animation: pulsate 3s ease-out;
+    animation-iteration-count: infinite;
+  }
+
+  @media @retina {
+    &.unread {
+      animation: pulsate-retina 3s ease-out;
+      animation-iteration-count: infinite;
+    }
+  }
+
+  @avatar-dims: 30px;
+  & .avatar__image {
+    width: @avatar-dims;
+    max-width: @avatar-dims;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: @avatar-dims;
+    border: none;
+    background-color: #eee;
+  }
+
+  &.admin:before,
+  &.contributor:before {
+    content: " ";
+    position: absolute;
+    bottom: 0px;
+    height: 4px;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+
+  &.admin:before {
+    background-color: #34495e;
+  }
+
+  &.contributor:before {
+    background-color: #3498db;
+  }
+
+  &.admin:after,
+  &.contributor:after {
+    content: " ";
+    position: absolute;
+    bottom: 3px;
+    height: 1px;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid white;
+  }
+
+  &.inactive {
+
+    @inactiveGray: 0;
+    @inactiveOpacity: 0.3;
+    @MSinactiveOpacity: @inactiveOpacity * 100; /* DO NOT CHANGE */ /* OH YEAH? WHY NOT? */
+
+    opacity: @inactiveOpacity;
+    filter: grayscale(@inactiveGray);
+
+    .trpStatus {
+      display: none;
+    }
+  }
+
+  &.online .trpStatus{
+    background-color: #06ff00;
+  }
+
+  &.offline .trpStatus {
+    background-color: #ffffff;
+    box-shadow: inset 0 0 0 2px #fcb316;
+  }
+
+}
+
+a .trpDisplayPicture {
+  color: white;
+}
+
+
+.avatar-xxs {
+  position: relative;
+  border-radius: 4px;
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+}
+
+.avatar-l {
+  width: 128px;
+  height: 128px;
+  border-radius: 8px;
+}
+
+.avatar-s {
+  position: relative;
+  height: 30px;
+  width: 30px;
+
+  border-radius: 4px;
+  background-size: cover;
+
+
+ .trpTroupeAvatarText {
+  color: white;
+  padding-top: 6px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+
+}
+
+.avatar-m {
+  position: relative;
+  height: 48px;
+  width: 48px;
+  background-size: cover;
+  border-radius: 6px;
+}

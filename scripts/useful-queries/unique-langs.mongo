@@ -1,0 +1,9 @@
+rs.slaveOk()
+
+var a = db.chatmessages.aggregate([
+  { $project: { t: '$lang' } },
+  { $group: { _id: '$t', s: { $sum: 1 }  } }
+]);
+
+
+

@@ -1,0 +1,15 @@
+
+db.tagsynonyms.find().forEach(function(t) {
+  db.troupes.update({
+    tags: { $in: [t.synonyms] }
+  }, {
+    $addToSet: {
+      tags: t.name
+    },
+    $pullAll: {
+      tags: [t.synonyms]
+    }
+  }, {
+    multi: true
+  });
+});

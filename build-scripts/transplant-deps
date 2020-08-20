@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+'use strict';
+
+var p = require(__dirname + '../../package.json');
+var dep = process.argv[2];
+var npm = require("/usr/local/lib/node_modules/npm");
+var path = require('path');
+var version = p.dependencies[dep];
+if (!version) throw new Error('Unknown dependency:' + dep);
+
+if (version.indexOf('file:') === 0) {
+  var location = version.substring(5);
+  var j = path.normalize(path.join(__dirname, '../', location));
+  var relLocation = path.relative(process.cwd(), j);
+  version = 'file:' + relLocation;
+}
+
+npm.load({
+    loaded: false,
+    save: true,
+}, function (err) {
+  if (err) throw err;
+
+  npm.commands.install([dep + "@" + version], function (err) {
+    if (err) throw err;
+  });
+
+  npm.on("log", function (message) {
+    // log the progress of the installation
+    console.log(message);
+  });
+});

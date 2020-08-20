@@ -1,0 +1,79 @@
+@import (reference) "../../../less/colors.less";
+
+.gtrActivityContainer {
+  transition: opacity 0.3s linear;
+
+  &.loading {
+    opacity: 0;
+    transition: none;
+  }
+}
+
+.activity-item,
+.activity-tip {
+  position: relative;
+  padding: 7px 7px 7px 15px;
+  line-height: 24px;
+  cursor: default;
+  user-select: text;
+
+  &:hover {
+    background-color: fade(@light,40%);
+    color: black;
+
+    .gtrActivityItemText .mention {
+      border: 1px solid fade(@trpGrey,50%);
+      background-color: fade(@trpGrey,30%);
+    }
+  }
+
+  & i {
+    position: absolute;
+    top: 10px;
+  }
+
+}
+
+.activity-item-inner {
+  display: flex;
+  align-items: flex-start;
+
+  .commits {
+    display: none;
+  }
+
+  .activity-commit {
+    margin: 0;
+  }
+
+  & > .activity-time {
+    order: 3;
+
+    color: rgba(100,100,100,.4);
+    white-space: nowrap;
+  }
+
+  & > .activity-item__icon {
+    float: left;
+  }
+}
+
+
+.gtrActivityItemText {
+  flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  vertical-align: middle;
+  opacity: 0.8;
+  margin-left: 23px;
+
+  .mention {
+    border: 1px solid fade(@trpGrey,40%);
+    background-color: fade(@trpGrey,20%);
+    border-radius: 2px;
+    padding: 0 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+}

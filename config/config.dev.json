@@ -1,0 +1,156 @@
+{
+  "web": {
+    "homeurl": "/",
+    "domain": "localhost",
+    "baseserver": "localhost",
+    "baseport": "5000",
+    "basepath": "http://localhost:5000",
+    "apiBasePath": "http://localhost:5000/api",
+    "minified": false,
+    "staticContentExpiryDays": 0,
+    "cacheTemplates": false,
+    "useFirebugInIE": false,
+    "consoleLogging": true,
+    "badgeBaseUrl": "http://localhost:4000",
+    "liveReload": true,
+    "startApiInPrimaryApp": true
+  },
+  "cdn": {
+    "use": true,
+    "hosts": ["localhost:5001"]
+  },
+  "http": {
+    "responseTimeout": 20000
+  },
+  "webhooks": {
+    "basepath": "http://localhost:3001",
+    "secret": "HeKhSvi6Jz8MNx0wU3XKbIeE"
+  },
+  "ws": {
+    "fayeUrl": "http://localhost:5000/bayeux",
+    "startFayeInPrimaryApp": true,
+    "fayePerMessageDeflate": true,
+    "disableLegacyEndpoint": true
+  },
+  "logging": {
+    "logToFile": false,
+    "level": "verbose",
+    "colorize": true,
+    "prettyPrint": true,
+    "minimalAccess": true,
+
+    "access": true,
+    "loggingFormat": "dev",
+    "logStaticAccess": false,
+    "logEmailContents": true,
+    "longStackSupport": true,
+    "logToUDP": true
+  },
+  "notifications": {
+    "minimumUserAlertInterval": 600,
+    "notificationDelay": 1,
+    "notificationDelay2": 30,
+    "emailNotificationsAfterMins": 1,
+    "timeBeforeNextEmailNotificationMins": 1
+  },
+  "express": {
+    "viewCache": false,
+    "showStack": true
+  },
+  "stats": {
+    "envName": "dev",
+    "console": {
+      "enabled": false
+    },
+    "cube": {
+      "enabled": false
+    },
+    "intercom": {
+      "enabled": false
+    },
+    "customerio": {
+      "enabled": false
+    },
+    "ga": {
+      "enabled": true,
+      "key": "UA-45918290-3",
+      "domain": "localhost"
+    }
+  },
+  "mongo": {
+    "connection": {
+      "hosts": ["localhost:27017"],
+      "database": "gitter",
+      "options": {}
+    },
+    "profileSlowQueries": true,
+    "logQueries": false,
+    "noAutoIndex": true
+  },
+  "test": {
+    "exposeInBrowserTests": true,
+    "exposeDataForTestingPurposes": true,
+    "wsPort": 5006
+  },
+  "gitlaboauth": {
+    "consumer_key": "",
+    "consumer_secret": ""
+  },
+  "twitteroauth": {
+    "consumer_key": "",
+    "consumer_secret": ""
+  },
+  "googleoauth2": {
+    "client_id": "",
+    "client_secret": ""
+  },
+  "linkedinoauth2": {
+    "client_id": "",
+    "client_secret": ""
+  },
+  "github": {
+    "caching": true,
+    "fast-repo-description-cache-timeout": 60,
+    "foreverAgent": true,
+    "client_id": "",
+    "client_secret": "",
+    "user_client_id": "",
+    "user_client_secret": "",
+    "anonymous_app": {
+      "client_id": "",
+      "client_secret": ""
+    }
+  },
+  "chat-service": {
+    "get-rough-message-count-cache-timeout": 60
+  },
+  "irc": {
+    "clientKey": "irc-dev"
+  },
+  "redis": "redis://localhost",
+  "redis_faye": "redis://localhost?db=3",
+  "redis_nopersist": "redis://localhost?db=1",
+  "redis_caching": "redis://localhost?db=2",
+  "elasticsearch": {
+    "hosts": ["http://localhost:9200"],
+    "sniffOnStart": false
+  },
+  "transloadit": {},
+  "serializer": {
+    "warning-period": 300
+  },
+  "neo4j": {
+    "endpoint": "http://localhost:7474"
+  },
+  "resque": {
+    "queuePrefix": ""
+  },
+  "sitemap": {
+    "allowCrawling": true,
+    "location": "https://s3.amazonaws.com/gitter-sitemap/dev/sitemap.xml"
+  },
+  "mandrill": {},
+  "tokens": {
+    "anonymousPassword": ""
+  }
+}

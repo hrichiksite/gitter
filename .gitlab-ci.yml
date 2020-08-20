@@ -1,0 +1,526 @@
+stages:
+  - docker_images
+  - build_unit_test
+  - pre_deploy
+  - deploy
+  - security
+
+variables:
+  DOCKER_VERSION: '19.03.0'
+  # We don't use the default CI_REGISTRY_IMAGE variable because the security release process on dev.gitlab.org needs to target the gitlab.com registry.
+  # https://gitlab.com/gitlab-org/gitter/webapp/-/merge_requests/1952#note_386372016
+  GITTER_CI_REGISTRY_IMAGE: registry.gitlab.com/gitlab-org/gitter/webapp
+
+##############
+# Conditions #
+##############
+.if-merge-request: &if-merge-request
+  if: '$CI_MERGE_REQUEST_IID'
+
+.if-develop-branch: &if-develop-branch
+  if: '$CI_COMMIT_BRANCH == "develop"'
+
+.if-master-branch: &if-master-branch
+  if: '$CI_COMMIT_BRANCH == "master"'
+
+.if-release-branch: &if-release-branch
+  if: '$CI_COMMIT_BRANCH =~ /^release\/.*$/'
+
+.if-hotfix-branch: &if-hotfix-branch
+  if: '$CI_COMMIT_BRANCH =~ /^hotfix\/.*$/'
+
+.if-mr-source-renovate-branch: &if-mr-source-renovate-branch
+  if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^renovate\/.*$/'
+
+.if-tag: &if-tag
+  if: '$CI_COMMIT_TAG'
+
+.if-not-canonical-project: &if-not-canonical-project
+  if: '$CI_PROJECT_PATH != "gitlab-org/gitter/webapp"'
+
+.if-schedule: &if-schedule
+  if: '$CI_PIPELINE_SOURCE == "schedule"'
+
+workflow:
+  rules:
+    # For merge requests, create a pipeline.
+    - <<: *if-merge-request
+    # For `develop` branch, create a pipeline (this includes on schedules, pushes, merges, etc.).
+    - <<: *if-develop-branch
+    # For `master` branch, create a pipeline (this includes on schedules, pushes, merges, etc.).
+    - <<: *if-master-branch
+    # For `release/*` branch, create a pipeline.
+    - <<: *if-release-branch
+    # For tags, create a pipeline.
+    - <<: *if-tag
+
+default:
+  tags:
+    - gitlab-org
+
+.use-docker-in-docker:
+  image: docker:${DOCKER_VERSION}
+  services:
+    - docker:${DOCKER_VERSION}-dind
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ''
+  tags:
+    # See https://gitlab.com/gitlab-com/www-gitlab-com/-/issues/7019 for tag descriptions
+    - gitlab-org-docker
+
+#########
+# Rules #
+#########
+.rules:staging:
+  rules:
+    # Don't run this job for forks since it should only be run from the canonical project.
+    - <<: *if-not-canonical-project
+      when: never
+    - <<: *if-release-branch
+    - <<: *if-hotfix-branch
+
+.webapp_variables: &webapp_variables
+  BLUEBIRD_DEBUG: 1
+  NEO4J_AUTH: none
+
+.webapp_services:
+  - &webapp_service_mongo
+    name: $GITTER_CI_REGISTRY_IMAGE/mongo:latest
+    alias: mongo
+  - &webapp_service_redis
+    name: redis:3.0.3
+    alias: redis
+  - &webapp_service_elasticsearch
+    name: $GITTER_CI_REGISTRY_IMAGE/elasticsearch:latest
+    alias: elasticsearch
+  - &webapp_service_neo4j
+    name: neo4j:2.3
+    alias: neo4j
+
+.node_job:
+  image: $GITTER_CI_REGISTRY_IMAGE
+  before_script:
+    - node --version
+    - npm --version
+    - npm config set prefer-offline true
+    - npm config set cache /npm_cache
+    - mv /app/node_modules ./node_modules
+    - npm install
+  artifacts:
+    expire_in: 31d
+    when: always
+    paths:
+      - /npm_cache/
+      - npm_cache/
+
+validate:
+  extends: .node_job
+  stage: build_unit_test
+  script:
+    - "echo 'TODO: Skip validation for now because we have new eslint failures'"
+    - make validate
+    # TODO: This should be part of `make validate` -> `gulpfile-linter`
+    # but the prettier API doesn't easily allow glob checking and I want
+    # to re-use the scripts that GitLab has, https://gitlab.com/gitlab-org/gitlab-ce/issues/57010
+    - npm run prettier -- --check "**/*.{js,vue}"
+
+.test_job:
+  extends: .node_job
+  variables:
+    <<: *webapp_variables
+  stage: build_unit_test
+  services:
+    - *webapp_service_mongo
+    - *webapp_service_redis
+    - *webapp_service_elasticsearch
+    - *webapp_service_neo4j
+  script:
+    - make ci-test
+
+test:
+  extends:
+    - .test_job
+  rules:
+    - when: always
+  retry: 1
+
+test_e2e:
+  extends: .test_job
+  variables:
+    <<: *webapp_variables
+    ENABLE_FIXTURE_ENDPOINTS: 1
+    DISABLE_GITHUB_API: 1
+    NODE_ENV: test-docker
+    # "fake" dbus address to prevent errors
+    # https://github.com/SeleniumHQ/docker-selenium/issues/87
+    # via https://hub.docker.com/r/cypress/browsers/dockerfile
+    # #oom-chrome-cypress
+    DBUS_SESSION_BUS_ADDRESS: /dev/null
+  tags:
+    # Run the on Gitter internal runner so our Cypress video doesn't have gaps/freezing,
+    # see https://github.com/cypress-io/cypress/issues/4722#issuecomment-526313109
+    # Maybe in the future, Cypress will detect and give a warning when this happens,
+    # see https://github.com/cypress-io/cypress/issues/5061
+    - internal
+  rules:
+    # Don't run this job for forks since it uses the 'internal' runner.
+    - <<: *if-not-canonical-project
+      when: never
+    - <<: *if-mr-source-renovate-branch
+    - when: manual
+      allow_failure: true
+  script:
+    # install Chromebrowser
+    # via https://hub.docker.com/r/cypress/browsers/dockerfile
+    # We are using Chrome because of OOM issues #oom-chrome-cypress, see https://github.com/cypress-io/cypress/issues/350#issuecomment-633700002
+    - apt-get install -y wget gnupg
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+    - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+    - apt-get update -q -y
+    - apt-get install -y dbus-x11 google-chrome-stable
+    - rm -rf /var/lib/apt/lists/*
+    # Cypress dependencies https://docs.cypress.io/guides/guides/continuous-integration.html#Dependencies
+    - apt-get update -q -y
+    - apt-get --yes install libgtk2.0-0 libgtk-3-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+    # Create `output/assets/js/vue-ssr-server-bundle.json`
+    - npm run task-js
+    # Start the server and wait for it to come up
+    - mkdir -p logs
+    - npm start > logs/server-output.txt 2>&1 & node test/e2e/support/wait-for-server.js http://localhost:5000
+    # Run the tests
+    # We are using Chrome because of OOM issues #oom-chrome-cypress, see https://github.com/cypress-io/cypress/issues/350#issuecomment-633700002
+    - npm run test-e2e-run -- --browser chrome --headless
+  artifacts:
+    when: always
+    paths:
+      - logs
+      - test/e2e/videos
+      - test/e2e/screenshots
+      - cypress/logs
+    expire_in: 1 day
+  retry: 2
+
+package:
+  extends: .node_job
+  stage: build_unit_test
+  script:
+    # While testing the deploment, you can use cached artifacts instead of packaging every time which is slow
+    #- (apt-get update && apt-get install unzip && curl -Ls https://gitlab.com/gitlab-org/gitter/webapp/-/jobs/60049410/artifacts/download -o previous-artifacts.zip && unzip previous-artifacts.zip) || (make package)
+    - make package
+  artifacts:
+    paths:
+      - output/app.tar.gz
+      - output/assets.tar.gz
+      - output/app/ASSET_TAG
+      - output/app/GIT_COMMIT
+      - output/app/VERSION
+    expire_in: 1 week
+
+mobile-asset-build:
+  extends: .node_job
+  stage: build_unit_test
+  rules:
+    - <<: *if-master-branch
+  variables:
+    NODE_ENV: prod
+    stats__cube__enabled: 'false'
+    stats__statsd__enabled: 'false'
+  script:
+    - npm run task-js
+    - npm run build-android-assets
+    - npm run build-ios-assets
+  artifacts:
+    paths:
+      - output/android/www
+      - output/ios/www
+
+.distribute_job:
+  image: $GITTER_CI_REGISTRY_IMAGE/deploy-build-image:latest
+  stage: pre_deploy
+  dependencies:
+    - package
+  script:
+    - make upload-to-s3
+
+distribute_beta:
+  extends: .distribute_job
+  rules:
+    # Don't run this job for forks since it should only be run from the canonical project.
+    - <<: *if-not-canonical-project
+      when: never
+    - <<: *if-develop-branch
+  variables:
+    DIST_S3_URL: s3://gitter-deployments/gitter-webapp/beta
+
+distribute_beta_staging:
+  extends: .distribute_job
+  rules:
+    # Don't run this job for forks since it should only be run from the canonical project.
+    - <<: *if-not-canonical-project
+      when: never
+    - when: always
+  variables:
+    DIST_S3_URL: s3://gitter-deployments/gitter-webapp/beta-staging
+
+distribute_staging:
+  extends:
+    - .distribute_job
+    - .rules:staging
+  variables:
+    DIST_S3_URL: s3://gitter-deployments/gitter-webapp/staging
+
+distribute_prod:
+  extends: .distribute_job
+  rules:
+    # Don't run this job for forks since it should only be run from the canonical project.
+    - <<: *if-not-canonical-project
+      when: never
+    - <<: *if-tag
+  variables:
+    DIST_S3_URL: s3://gitter-deployments/gitter-webapp/prod
+
+containerize:
+  extends: .use-docker-in-docker
+  stage: deploy
+  dependencies:
+    - package
+  allow_failure: true
+  script:
+    - ls -la output
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
+    - docker build -t $GITTER_CI_REGISTRY_IMAGE/app:$CI_COMMIT_REF_SLUG -f Dockerfile-app-base .
+    - docker push $GITTER_CI_REGISTRY_IMAGE/app:$CI_COMMIT_REF_SLUG
+
+deploy-build-image:
+  extends: .use-docker-in-docker
+  stage: docker_images
+  rules:
+    - <<: *if-schedule
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
+    - docker build -t $GITTER_CI_REGISTRY_IMAGE/deploy-build-image:latest scripts/docker/deploy-build-image/
+    - docker push $GITTER_CI_REGISTRY_IMAGE/deploy-build-image:latest
+
+.deploy_job:
+  stage: deploy
+  image: $GITTER_CI_REGISTRY_IMAGE/deploy-build-image:latest
+  variables:
+    GIT_STRATEGY: none
+  before_script:
+    # run ssh-agent
+    - eval $(ssh-agent -s)
+    # add ssh key stored in SSH_PRIVATE_KEY variable to the agent store
+    - ssh-add <(echo "$DEPLOY_KEY_ANSIBLE_REPO")
+    - ssh-add <(echo "$INTERNAL_GITTER_NETWORK_SSH_KEY")
+    - mkdir -p ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    # Make the infra tools available (like Ansible)
+    - git clone git@gitlab.com:gitlab-com/gl-infra/gitter-infrastructure.git
+    - ANSIBLE_DIR=$(cd gitter-infrastructure/ansible && pwd) && echo $ANSIBLE_DIR
+    - mkdir -p /root && echo "$ANSIBLE_VAULT_PASS" > /root/.vault_pass
+  tags:
+    - internal # This has to be within the Gitter network
+
+deploy_beta:
+  extends: .deploy_job
+  dependencies:
+    - distribute_beta
+  rules:
+    # Don't run this job for forks since it uses the 'internal' runner.
+    - <<: *if-not-canonical-project
+      when: never
+    - <<: *if-develop-branch
+  script:
+    - cd $ANSIBLE_DIR
+    - git checkout xenial && git pull origin xenial
+    - ansible-playbook -i beta --vault-password-file "/root/.vault_pass" playbooks/gitter/webapp-deploy.yml
+  environment:
+    name: beta
+    url: https://beta.gitter.im
+
+deploy_beta_staging:
+  extends: .deploy_job
+  dependencies:
+    - distribute_beta_staging
+  rules:
+    # Don't run this job for forks since it uses the 'internal' runner.
+    - <<: *if-not-canonical-project
+      when: never
+    - when: manual
+      allow_failure: true
+  script:
+    - cd $ANSIBLE_DIR
+    - git checkout xenial && git pull origin xenial
+    - ansible-playbook -i beta --vault-password-file "/root/.vault_pass" playbooks/gitter/webapp-staging-deploy.yml
+  environment:
+    name: beta_staging
+    url: https://beta.gitter.im?gitter_next=true
+
+deploy_staging:
+  extends:
+    - .deploy_job
+    - .rules:staging
+  dependencies:
+    - distribute_staging
+  script:
+    - cd $ANSIBLE_DIR && ansible-playbook -i prod --vault-password-file "/root/.vault_pass" playbooks/gitter/webapp-staging-deploy.yml
+  environment:
+    name: staging
+    url: https://gitter.im?gitter_next=true
+
+deploy_prod:
+  extends: .deploy_job
+  dependencies:
+    - distribute_prod
+  rules:
+    # Don't run this job for forks since it uses the 'internal' runner.
+    - <<: *if-not-canonical-project
+      when: never
+    - <<: *if-tag
+      when: manual
+  script:
+    - cd $ANSIBLE_DIR && ansible-playbook -i prod --vault-password-file "/root/.vault_pass" playbooks/gitter/webapp-deploy.yml
+  environment:
+    name: prod
+    url: https://gitter.im
+
+docker-base:
+  extends: .use-docker-in-docker
+  stage: docker_images
+  rules:
+    - <<: *if-schedule
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
+    - docker build -t $GITTER_CI_REGISTRY_IMAGE:latest .
+    - docker push $GITTER_CI_REGISTRY_IMAGE:latest
+
+mongo-base:
+  extends: .use-docker-in-docker
+  stage: docker_images
+  rules:
+    - <<: *if-schedule
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
+    - docker build -t $GITTER_CI_REGISTRY_IMAGE/mongo:latest scripts/docker/mongo-image/
+    - docker push $GITTER_CI_REGISTRY_IMAGE/mongo:latest
+
+elasticsearch-base:
+  extends: .use-docker-in-docker
+  stage: docker_images
+  rules:
+    - <<: *if-schedule
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
+    - docker build -t $GITTER_CI_REGISTRY_IMAGE/elasticsearch:latest scripts/docker/elasticsearch-image/
+    - docker push $GITTER_CI_REGISTRY_IMAGE/elasticsearch:latest
+
+renovate:
+  extends: .use-docker-in-docker
+  stage: docker_images
+  rules:
+    - <<: *if-schedule
+      allow_failure: true
+  variables:
+    # GitLab access token with api access
+    #RENOVATE_GITLAB_TOKEN: xxx
+    # GitHub access token for getting release notes of package updates,
+    # https://github.com/renovatebot/renovate/blob/master/docs/self-hosting.md#githubcom-token-for-release-notes
+    #RENOVATE_GITHUB_TOKEN: xxx
+    RENOVATE_CONFIG_FILE: renovate-config.js
+  script:
+    - docker run -e GITLAB_TOKEN="$RENOVATE_GITLAB_TOKEN" -e GITHUB_COM_TOKEN="$RENOVATE_GITHUB_TOKEN" -v $PWD/renovate.json:/usr/src/app/renovate.json -v $PWD/renovate-config.js:/usr/src/app/config.js renovate/renovate:13 gitlab-org/gitter/webapp
+#
+# Security reports
+# =========================================================
+include:
+  - template: Security/SAST.gitlab-ci.yml
+  - template: Security/DAST.gitlab-ci.yml
+  - template: Security/Dependency-Scanning.gitlab-ci.yml
+  - template: Security/Container-Scanning.gitlab-ci.yml
+  - template: Security/Secret-Detection.gitlab-ci.yml
+
+dependency_scanning:
+  extends: .use-docker-in-docker
+  stage: security
+  rules:
+    - when: always
+  variables:
+    DS_PYTHON_VERSION: 2
+
+container_scanning:
+  stage: security
+  rules:
+    - when: always
+  variables:
+    DOCKERFILE_PATH: Dockerfile-app-base
+    GIT_STRATEGY: fetch
+    CI_APPLICATION_REPOSITORY: $GITTER_CI_REGISTRY_IMAGE/app
+    CI_APPLICATION_TAG: $CI_COMMIT_REF_SLUG
+
+sast:
+  extends: .use-docker-in-docker
+  stage: security
+  rules:
+    - when: always
+  variables:
+    SAST_EXCLUDED_PATHS: '/test/**,**/*-test.js,/scripts,/build-scripts'
+
+dast:
+  stage: security
+  rules:
+    - when: always
+  dependencies:
+    - containerize
+  variables:
+    <<: *webapp_variables
+    NODE_ENV: test-docker
+    DAST_WEBSITE: http://webapp-server:5000/
+    # Pass-through webapp secrets from our project-level secret variables
+    web__sessionSecret: '${web__sessionSecret}'
+    web__statePassphrase: '${web__statePassphrase}'
+    ws__superClientPassword: '${ws__superClientPassword}'
+    web__messageSecret: '${web__messageSecret}'
+    email__unsubscribeNotificationsSecret: '${email__unsubscribeNotificationsSecret}'
+    integrations__secret: '${integrations__secret}'
+    github__statePassphrase: '${github__statePassphrase}'
+    twitteroauth__consumer_key: '${twitteroauth__consumer_key}'
+    twitteroauth__consumer_secret: '${twitteroauth__consumer_secret}'
+    gitlaboauth__client_id: '${gitlaboauth__client_id}'
+    gitlaboauth__client_secret: '${gitlaboauth__client_secret}'
+    gitlab__public_token_pool: '${gitlab__public_token_pool}'
+    github__client_id: '${github__client_id}'
+    github__client_secret: '${github__client_secret}'
+    github__user_client_id: '${github__user_client_id}'
+    github__user_client_secret: '${github__user_client_secret}'
+    github__anonymous_app__client_id: '${github__anonymous_app__client_id}'
+    github__anonymous_app__client_secret: '${github__anonymous_app__client_secret}'
+    tokens__anonymousPassword: '${tokens__anonymousPassword}'
+  before_script:
+    # Used to communicate with the other services and share the other hostnames we can connect to
+    # See https://gitlab.com/gitlab-org/gitlab-runner/issues/1042#note_144420147
+    - cp /etc/hosts "${CI_PROJECT_DIR}/"
+  services:
+    - name: $GITTER_CI_REGISTRY_IMAGE/app:$CI_COMMIT_REF_SLUG
+      alias: webapp-server
+      # Used to communicate with the other services and share the other hostnames we can connect to
+      # See https://gitlab.com/gitlab-org/gitlab-runner/issues/1042#note_144420147
+      entrypoint:
+        [
+          '/bin/sh',
+          '-c',
+          'while [ ! -f /$CI_PROJECT_DIR/hosts ]; do sleep 1; done && cat /$CI_PROJECT_DIR/hosts > /etc/hosts && node web.js',
+        ]
+    - *webapp_service_mongo
+    - *webapp_service_redis
+    - *webapp_service_elasticsearch
+    - *webapp_service_neo4j
+
+.secret-analyzer:
+  extends: .use-docker-in-docker
+  stage: security
+
+secret_detection:
+  rules:
+    - when: always

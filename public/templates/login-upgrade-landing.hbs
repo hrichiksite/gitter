@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="{{#if hasCachedFonts}}fonts-loaded{{/if}}" lang="en">
+  <head>
+	  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gitter &mdash; Upgrade OAuth scope</title>
+    <link id="favicon" rel="shortcut icon" href="{{ cdn 'images/favicon-normal.ico' }}">
+    {{> fonts}}
+    {{!-- <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,100"> --}}
+    <link rel="stylesheet" type="text/css" href="{{ cdn 'styles/login-upgrade-landing.css' }}">
+
+    {{#if hasDarkTheme}}
+    <link rel="stylesheet" href='{{cdn "styles/dark-theme.css" }}' id="gitter-dark" media="all" type="text/css">
+    {{/if}}
+
+  </head>
+  <body {{#if isMobile}}class="mobile"{{/if}}>
+		<header class="primary-branded-header">
+			<div class="primary-branded-header-inner generic-page-section">
+				<div class="primary-branded-header-branded-group">
+					<a href="/" class="logo">
+						{{> logo_man}}
+						<img src="{{ cdn 'images/home/logo_nomargin@2x.png' }}" alt="Gitter" class="logo-image menu-animation">
+					</a>
+
+					<h3 class="primary-branded-header__sub-heading explore-primary-header__sub-header">
+						The Home of Community
+					</h3>
+				</div>
+
+				<div class="explore-primary-header__action-area">
+
+				</div>
+			</div>
+		</header>
+
+    <main class="generic-page-section">
+      <h2 class="h1">
+        Upgrade GitHub OAuth scope
+      </h2>
+
+      <section>
+        <p>
+          You are currently signed in as <strong>{{user.username}}</strong>
+        </p>
+
+        <p>
+          Read more about how we use different
+          <a href="https://gitlab.com/gitlab-org/gitter/webapp/blob/develop/docs/oauth-scopes.md" target="_blank">
+            OAuth scopes in the docs
+          </a>
+        </p>
+
+        <ul>
+          {{#each newScopes}}
+            <li>{{this}}</li>
+          {{/each}}
+        </ul>
+
+        <form method="post">
+          <input type="hidden" name="accessToken" value="{{accessToken}}">
+          <button class="button-caribbean">
+            Upgrade
+          </button>
+        </form>
+      </section>
+    </main>
+
+
+    <script type="text/javascript" src="//use.typekit.net/ohh4mcl.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    {{{ generateTroupeContext troupeContext }}}
+    {{{ generateEnv }}}
+    {{{ bootScript 'login-upgrade-landing' }}}
+    {{> live_reload}}
+  </body>
+</html>

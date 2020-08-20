@@ -1,0 +1,78 @@
+{
+  "room": {
+    "_parent": {
+      "type": "group"
+    },
+    "dynamic" : "strict",
+    "properties": {
+      "uri": {
+        "type": "string",
+        "index": "analyzed",
+        "term_vector": "with_positions_offsets",
+        "norms": {
+          "enabled": false
+        }
+      },
+      "topic": {
+        "type": "string",
+        "index": "analyzed",
+        "term_vector": "with_positions_offsets",
+        "norms": {
+          "enabled": false
+        }
+      },
+      "tags": {
+        "type": "string",
+        "index": "analyzed",
+        "index_name" : "tag",
+        "norms": {
+          "enabled": false
+        }
+      },
+      "userCount": {
+        "type" : "integer",
+        "null_value" : 0
+      },
+      "sd": {
+        "type": "nested",
+        "properties": {
+          "type": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "members": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "admins": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "public": {
+            "type": "boolean"
+          },
+          "linkPath": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "externalId": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "internalId": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "extraMembers": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "extraAdmins": {
+            "type": "string",
+            "index": "not_analyzed"
+          }
+        }
+      }
+    }
+  }
+}

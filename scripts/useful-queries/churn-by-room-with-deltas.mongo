@@ -1,0 +1,128 @@
+rs.slaveOk()
+load('./csv.js');
+
+function createIdForTimestampString(timestamp) {
+  var hexSeconds = Math.floor(timestamp/1000).toString(16);
+
+  while(hexSeconds.length < 8) {
+    hexSeconds = "0" + hexSeconds;
+  }
+  return ObjectId(hexSeconds + "0000000000000000");
+}
+
+function aggregate(start, mid, end) {
+  return db.chatmessages.aggregate([{
+    $match: {
+      _id: {
+        $lt: createIdForTimestampString(end),
+        $gt: createIdForTimestampString(start)
+      },
+      sent: { $type: 'date' }
+    }
+  }, {
+    $group: {
+      _id: {
+        userId: '$fromUserId',
+        troupeId: '$toTroupeId',
+      },
+      firstSent: { $min: '$sent'},
+      lastSent: { $max: '$sent'},
+    },
+  }, {
+    $project: {
+      initial: { $cond: [{ $lt: ['$firstSent', mid ] }, true, false ] },
+      current: { $cond: [{ $gte: ['$lastSent', mid ] }, true, false ] },
+    },
+  }, {
+    $project: {
+      type: { $cond: [{ $eq: ['$initial', true ] },
+                { $cond: [{ $eq: ['$current', true ] }, 'retained', 'lost' ]},
+                { $cond: [{ $eq: ['$current', true ] }, 'new', 'impossible' ]},
+              ]
+            }
+    },
+  }, {
+    $group: {
+      _id: {
+        troupeId: '$_id.troupeId',
+        type: '$type',
+      },
+      count: {
+        $sum: 1
+      }
+    },
+  }, {
+    $group: {
+      _id: '$_id.troupeId',
+      v: {
+        $addToSet: {
+          type: '$_id.type',
+          count: '$count'
+        }
+      },
+    },
+  }, {
+    $project: {
+      retained: { $arrayElemAt: [{ $filter: { input: '$v', as: 't', cond: { $eq: ['$$t.type', 'retained'] } } }, 0] },
+      lost: { $arrayElemAt: [{ $filter: { input: '$v', as: 't', cond: { $eq: ['$$t.type', 'lost'] } } }, 0] },
+      new: { $arrayElemAt: [{ $filter: { input: '$v', as: 't', cond: { $eq: ['$$t.type', 'new'] } } }, 0] },
+    },
+  }, {
+    $project: {
+      retained: { $ifNull: ['$retained.count', 0] },
+      lost: { $ifNull: ['$lost.count', 0] },
+      new: { $ifNull: ['$new.count', 0] },
+    },
+  }, {
+    $lookup: {
+      from: "troupes",
+      localField: "_id",
+      foreignField: "_id",
+      as: "troupe"
+    },
+  }, {
+    $unwind: "$troupe"
+  }, {
+    $match: {
+      'troupe.oneToOne': { $ne: true }
+    }
+  }, {
+    $project: {
+      _id: 1,
+      uri: '$troupe.uri',
+      retained: 1,
+      lost: 1,
+      new: 1,
+    }
+  }]);
+
+}
+
+var period = 86400000 * 30;
+var startP1,midP1,endP1;
+var startP0,midP0,endP0;
+endP1 = new Date('2016-10-01T00:00:00Z');
+midP1 = endP0 = new Date(endP1.valueOf() - period);
+startP1 = midP0 = new Date(midP1.valueOf() - period);
+startP0 = new Date(midP0.valueOf() - period);
+
+var p1 = aggregate(startP1, midP1, endP1);
+var p0 = aggregate(startP0, midP0, endP0);
+
+var lookup = {};
+p0.forEach(function(p) {
+  lookup[p.uri] = p;
+});
+
+p1 = p1.toArray();
+p1.forEach(function(p) {
+  var uri = p.uri;
+  var pPrev = lookup[uri];
+  if (pPrev) {
+    p.prevRetained = pPrev.retained;
+    p.prevLost = pPrev.lost;
+    p.prevNew = pPrev.new;
+  }
+})
+
+printCSV(p1, ['uri', 'retained', 'lost', 'new', 'prevRetained', 'prevLost', 'prevNew']);

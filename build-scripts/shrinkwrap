@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+set -x
+set -euo pipefail
+IFS=$'\n\t'
+
+ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+pushd .
+
+cd "${ROOT_DIR}"
+
+rm -rf shared/node_modules modules/*/node_modules
+mv node_modules/ node_modules_temp || true
+
+function move_temp_modules_back {
+  # Move original node_modules back
+  if [[ -d node_modules_temp ]]; then
+    rm -rf node_modules/
+    mv node_modules_temp/ node_modules/ || true
+  fi
+}
+trap move_temp_modules_back EXIT
+
+# Remove the old shrinkwrap file
+rm -f npm-shrinkwrap.json
+
+npm cache clear
+
+# Install production dependencies
+npm i --production
+
+# Perform shrinkwrap on production dependencies
+npm shrinkwrap "$@"
+
+# Now, override production node_modules
+move_temp_modules_back
+
+# Full install
+npm prune
+npm install
+
+# Link Depenencies
+linklocal link -r

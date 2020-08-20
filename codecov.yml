@@ -1,0 +1,13 @@
+codecov:
+  branch: develop
+  bot: 'gitter-reviewer'
+
+coverage:
+  precision: 1
+  round: down
+  range: "70...100"
+
+  ignore:
+  - .*/tests/.*
+  - .*/node_modules/.*
+  - public/repo/.*

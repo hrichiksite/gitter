@@ -1,0 +1,124 @@
+.issue,
+.pr,
+.mr {
+  &.is-existent {
+    border-bottom: 1px dotted;
+    cursor: pointer;
+    padding: 0 2px;
+    border-radius: 2px;
+    text-decoration: none;
+
+    &.open {
+      color: @trpGreen;
+      background-color: lighten(@trpGreen, 45%);
+    }
+    &.closed {
+      color: @trpRed;
+      background-color: lighten(@trpRed, 35%);
+    }
+  }
+}
+
+.commit {
+  border-bottom: 1px dotted;
+  cursor: pointer;
+  padding: 0 2px;
+  background-color: lighten(@purple, 50%);
+  border-radius: 2px;
+  color: @purple;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.popover-footer a.open-in-github,
+.popover-footer a.open-profile {
+  line-height: 20px;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.trpChatContainer {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  // https://github.com/html-next/ember-gestures/issues/104
+  touch-action: pan-y;
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+}
+
+// TODO: Remove because duplicate of `markdown.less`
+code {
+  border: 1px solid fade(@trpGrey, 40%);
+  background-color: fade(@trpGrey, 20%);
+  border-radius: 2px;
+  padding: 0 4px;
+  overflow-x: auto;
+  word-wrap: break-word;
+  font-size: 1.4rem;
+}
+
+// TODO: Remove because duplicate of `markdown.less`
+// font-size: 1.4rem; has made the code blocks on mobile become massive
+// this is a quick and dirty fix. See https://github.com/gitterHQ/gitter/issues/957
+body.mobile code {
+  font-size: inherit;
+}
+
+// TODO: Remove because duplicate of `markdown.less`
+pre code {
+  border-radius: 6px;
+  border: none;
+}
+
+// TODO: Remove because duplicate of `markdown.less`
+blockquote {
+  margin-bottom: 0;
+  font-weight: 300;
+  line-height: 27.5px;
+}
+
+.popoverReadBy span {
+  margin-right: 5px;
+}
+
+.popoverReadBy .avatar {
+  display: inline-block;
+  margin-right: 0.25em;
+}
+
+.missing {
+  font-size: smaller;
+  opacity: 0.5;
+  font-style: italic;
+}
+
+.issue-popover-title {
+  height: 20px;
+  position: relative;
+  a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 50px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  span {
+    position: absolute;
+    right: 0;
+  }
+}
+
+.frame-chat {
+  position: relative; // required for scroll calculations
+}

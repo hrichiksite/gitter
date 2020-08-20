@@ -1,0 +1,246 @@
+@import 'typography.less';
+@import 'colors.less';
+@import 'logo.less';
+@import 'base-web';
+@import 'base-left-menu';
+
+@small-breakpoint: 670px;
+
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.userhome-page-wrapper {
+  overflow: auto;
+  // https://github.com/html-next/ember-gestures/issues/104
+  touch-action: pan-y;
+  height: 100%;
+}
+
+.userhome-header {
+  background-image: url(../images/home/banner.jpg);
+  background-size: cover;
+  // Give a dark colour for the background to fade into
+  background-color: #512e92;
+  height: 16em;
+  position: relative;
+  color: white;
+}
+
+.userhome-header__logo {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: absolute;
+  top: 20px;
+  left: 6em;
+}
+
+.userhome-header__logo-text {
+  position: relative;
+  width: 76px;
+  top: 7px;
+  left: 12px;
+}
+
+.userhome-header__nav {
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 100%;
+  height: 2em;
+  margin-top: 4em;
+  display: inline-block;
+  line-height: 2em;
+  padding-left: 6rem;
+  font-weight: 200;
+}
+
+.userhome-header__nav a {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.6;
+
+  &:hover {
+    opacity: inherit;
+  }
+}
+
+.userhome-header__nav-arrow {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+  border-right: 1px solid;
+  border-top: 1px solid;
+  margin-bottom: 2px;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  opacity: 0.6;
+}
+
+.userhome-header__title {
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+
+  max-height: 2.5em;
+  margin: 3rem 0 3rem 6rem;
+  font-size: 3em;
+  font-weight: 200;
+}
+
+.userhome-main {
+  margin: 4rem 0 1rem 6rem;
+
+  @media (max-width: @small-breakpoint) {
+    margin-left: 2rem;
+  }
+}
+
+.userhome-apps {
+  margin-bottom: 4rem;
+}
+
+.userhome-learn {
+  display: flex;
+  flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+
+.userhome-pages {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+
+.userhome-page {
+  margin-right: 4em;
+}
+
+.userhome-page i {
+  font-size: 1.6em;
+  vertical-align: middle;
+  margin-right: 0.25em;
+  color: lightgrey;
+}
+
+.userhome-page p {
+  color: lightgrey;
+  font-size: 0.8em;
+  margin-left: 3rem;
+}
+
+.userhome-page__button {
+  color: white;
+  text-decoration: none;
+
+  background-color: #ea9448;
+
+  padding: 0.8em;
+  border-radius: 0.5em;
+  width: 14em;
+  display: inline-block;
+  text-align: center;
+
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8em;
+
+  &:hover {
+    background-color: darken(#ea9448, 5%);
+  }
+}
+
+.userhome-heading {
+  font-weight: 200;
+}
+
+.userhome-apps h3 {
+  margin-bottom: 2rem;
+}
+
+.userhome-apps-icon {
+  font-size: 1.6em;
+  vertical-align: middle;
+  margin-right: 0.25em;
+  color: lightgrey;
+}
+
+.userhome-apps__button {
+  color: rgb(132, 129, 123);
+  text-decoration: none;
+
+  padding: 0.5rem 1.8rem;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 0.5em;
+  display: inline-block;
+  text-align: center;
+
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.7em;
+  border: rgb(226, 224, 223) 2px solid;
+
+  &:hover {
+    background-color: darken(white, 5%);
+  }
+}
+
+.userhome-apps__button i:before {
+  margin-right: 0.6rem;
+  display: inline;
+}
+
+.userhome-apps__link {
+  text-transform: uppercase;
+  color: @homepage-green;
+  font-size: 0.75em;
+}
+
+.learn-section {
+  flex-shrink: 0;
+  flex-basis: 14em;
+  margin-right: 3em;
+  margin-bottom: 3em;
+  width: 258px;
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+
+  h5 {
+    color: grey;
+    font-size: small;
+    margin-bottom: 1em;
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 0.5rem;
+    color: grey;
+    font-weight: 200;
+  }
+}
+
+.learn-section__link {
+  color: @homepage-green;
+  font-weight: 200;
+  text-decoration: none;
+}
+
+.learn-section__link--main {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.learn-section__link--inline {
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  margin-right: 1em;
+}

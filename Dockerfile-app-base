@@ -1,0 +1,26 @@
+FROM registry.gitlab.com/gitlab-org/gitter/webapp:latest
+
+WORKDIR /app
+
+COPY output/app.tar.gz /tmp/app.tar.gz
+
+RUN tar -xvzf /tmp/app.tar.gz -C /app && \
+    rm -rf node_modules npm-shrinkwrap.json package-lock.json && \
+    # node-gyp dependencies
+    apt-get update && \
+    apt-get install -y --no-install-recommends python g++ && \
+    # Normally we use `npm install --production` but we need the
+    # devDependencies(like webpack) installed so we can run in NODE_ENV=test-docker
+    npm install && \
+    # via https://github.com/nodejs/docker-node/blob/1d6a051d71e817f3947612a260ddcb02e48c2f74/10/buster-slim/Dockerfile#L53
+    apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false python g++
+
+
+RUN rm -rf /tmp/* /npm_cache /var/cache/apk/* /root/.npm /root/.node-gyp /root/.gnupg /root/.ssh 2>/dev/null
+
+EXPOSE 5000
+
+HEALTHCHECK --interval=2s --timeout=5s --retries=3 --start-period=20s \
+  CMD npm run health-check
+
+CMD ["/bin/bash", "-c", "node web.js"]

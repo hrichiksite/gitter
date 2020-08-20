@@ -1,0 +1,182 @@
+@collaborator-padding: 0.625em;
+@collaborator-img-width: 30px;
+
+.collaborators-container {
+  flex-shrink: 0;
+}
+
+.welcome-modal__close {
+  cursor: pointer;
+  transition: opacity 300ms ease-in-out;
+  float: right;
+  opacity: 0.2;
+  margin: 10px 18px;
+  &:hover {
+    opacity: 0.4;
+  }
+}
+
+.welcome-modal__header {
+  padding: 10px;
+  border-bottom: 1px solid rgba(200,200,200,0.3);
+  text-align: left;
+  img {
+    vertical-align: middle;
+    height: 48px;
+    width: 48px;
+  }
+}
+
+.welcome-modal__explain {
+  padding: 20px 0 0 20px;
+  p {
+    display: none;
+  }
+}
+
+.welcome-modal__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-height: 400px;
+  max-height: 40vh;
+  overflow-y: scroll;
+}
+
+.welcome-modal__collaborators {
+  text-align: left;
+  background: #f4f5f6;
+  border-radius: 5px;
+  margin: 20px 25px;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: rgba(255,255,255,0.6);
+    padding: 10px 0px 10px 20px;
+  }
+}
+
+.welcome-modal__collaborator {
+
+  * {
+    box-sizing: border-box;
+  }
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  width: 21rem;
+  max-width: 350px;
+  max-height: 40px;
+  margin: @collaborator-padding;
+  padding: 0.825em;
+
+  background-color: #eee;
+  border-radius: 4px;
+
+  cursor: default;
+
+  &:hover {
+    background-color: #ccc;
+  }
+
+  img {
+    border-radius: 4px;
+    width: @collaborator-img-width;
+    height: @collaborator-img-width;
+    flex-shrink: 0;
+  }
+
+  .content {
+    margin: 0 0.625em;
+    overflow: hidden;
+    flex-grow: 1;
+
+    form {
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    span {
+      white-space: nowrap;
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      &.limit {
+        max-width: 100px;
+        &:hover {
+          max-width: 100%;
+          transition: all 0.25s ease;
+        }
+      }
+    }
+
+    input[type='email'] {
+      margin-bottom: 4px;
+      padding: 0px 4px;
+      width: 70%;
+    }
+
+    input[type='submit'] {
+      margin-top: 5px;
+      float: right;
+    }
+  }
+
+  .action {
+    flex-shrink: 0;
+    a {
+      float: right;
+    }
+  }
+}
+
+.welcome-modal__no-suggestions {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.welcome-modal__footer {
+  padding: 20px 0 20px 20px;
+}
+
+.welcome-modal__footer-button {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#activity-tip {
+  color: #666;
+  margin: 14px;
+  a {
+    color: #333;
+  }
+ }
+
+.welcome-modal__share {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px 10px 20px;
+}
+
+a.share-button {
+  margin-right: 5px;
+}

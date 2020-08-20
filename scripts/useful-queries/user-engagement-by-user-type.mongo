@@ -1,0 +1,95 @@
+rs.slaveOk()
+load('./csv.js');
+
+function createIdForTimestampString(timestamp) {
+  var hexSeconds = Math.floor(timestamp/1000).toString(16);
+
+  while(hexSeconds.length < 8) {
+    hexSeconds = "0" + hexSeconds;
+  }
+  return ObjectId(hexSeconds + "0000000000000000");
+}
+
+function aggregate(start, end) {
+  return db.chatmessages.aggregate([{
+    $match: {
+      _id: {
+        $lt: createIdForTimestampString(end),
+        $gt: createIdForTimestampString(start)
+      },
+      sent: { $type: 'date' }
+    }
+  }, {
+    $group: {
+      _id: '$fromUserId',
+      days: {
+        $addToSet: { $dayOfYear: '$sent' }
+      },
+      rooms: {
+        $addToSet: '$toTroupeId'
+      },
+      count: { $sum: 1 }
+    },
+  }, {
+    $project: {
+      _id: 1,
+      days: { $size: '$days' },
+      rooms: { $size: '$rooms' },
+      count: 1,
+    },
+  }]);
+
+}
+
+function findSignups(start,end) {
+  return db.users.find({
+    _id: {
+      $lt: createIdForTimestampString(end),
+      $gt: createIdForTimestampString(start)
+    },
+  })
+  .toArray();
+}
+
+var endP1 = new Date('2016-10-01T00:00:00Z');
+var startP1 = new Date('2016-09-01T00:00:00Z');
+var startP0 = new Date('2016-08-01T00:00:00Z');
+
+var gh = [];
+var tw = [];
+var engageHash = {};
+aggregate(startP1, endP1).forEach(function(d) {
+  engageHash[d._id] = d;
+});
+
+findSignups(startP0, startP1).forEach(function(d) {
+  var engagement = engageHash[d._id];
+  // if (!engagement) return;
+
+  if (d.username.indexOf('_twitter') >= 0) {
+    tw.push(engagement || {})
+  } else {
+    gh.push(engagement || {});
+  }
+})
+
+function sum(c) {
+  return function(memo, v) {
+    return memo + (v && v[c] || 0);
+  };
+}
+
+var twTotalDays = tw.reduce(sum('days'), 0);
+var ghTotalDays = gh.reduce(sum('days'),0);
+
+printjson({
+  twitter: {
+    count: tw.length,
+    avgEngagedDays: twTotalDays/tw.length,
+  },
+  github: {
+    count: gh.length,
+    avgEngagedDays: ghTotalDays/gh.length,
+
+  }
+})

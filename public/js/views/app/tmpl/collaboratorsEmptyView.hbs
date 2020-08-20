@@ -1,0 +1,12 @@
+<!-- <h1>YO I AM EMPTY</h1> -->
+<!-- Type: {{githubType}}<br>
+Security {{security}} -->
+<!-- <p class="trpBodyMedium">Couldn't find anyone to add to your room</p>
+
+ -->
+
+<img src="{{ cdn 'images/emoji/disappointed.png'}}">
+<br>
+<br>
+{{#showOrgMessage}} This room will only allow members from your GitHub organisation to join. <br>It looks like there's nobody in your organisation.  Why not <a href="https://github.com/orgs{{stub}}/people" target="_blank">add some on GitHub</a> or <a href="/home">create another room</a>?{{/showOrgMessage}}
+{{#unless showOrgMessage}}We couldn't suggest anyone to add to this room.{{/unless}} {{#isPublic}}Why not <a href="#share">share the link</a> for others to join?{{/isPublic}}

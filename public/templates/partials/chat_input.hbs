@@ -1,0 +1,30 @@
+<footer class="chat-input" id="chat-input-wrapper">
+  <div class="progress">
+    <div class="progress__bar" id="file-progress-bar"></div>
+  </div>
+  <div class="chat-input__container js-chat-input-container" id="chat-input">
+    {{#if user}}
+    {{#if roomMember}}
+      <div class="chat-input__area">
+        <div class="chat-input__avatar">
+          {{ widget "avatar" model=user size='s' showTooltip=false }}
+        </div>
+        <div id="chat-input-box-region" class="chat-input-box__region">
+          <form class="chat-input__box" name="chat">
+            {{{ prerenderView "js/views/chat/tmpl/chat-input-box" }}}
+          </form>
+        </div>
+        <div id="chat-input-buttons-region" class="chat-input__buttons">
+          <div>
+            {{{ prerenderView "js/views/chat/tmpl/chat-input-buttons" }}}
+          </div>
+        </div>
+      </div>
+    {{else}}
+      <div class="chat-input__box">
+        {{{ prerenderView "js/views/chat/tmpl/join-room-view" }}}
+      </div>
+    {{/if}}
+    {{/if}}
+  </div>
+</footer>

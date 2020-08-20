@@ -1,0 +1,19 @@
+{
+  "name": "gitter-web-oauth",
+  "version": "1.0.0",
+  "main": "lib/oauth-service.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "dependencies": {
+    "gitter-web-appevents": "file:../appevents",
+    "gitter-web-env": "file:../env",
+    "gitter-web-persistence": "file:../persistence",
+    "gitter-web-users": "file:../users"
+  },
+  "private": true
+}

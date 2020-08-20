@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -euo pipefail
+
+LOG_ARG=$1
+
+git fetch origin refs/notes/*:refs/notes/*
+
+NOTE_PRS=$(git log ${LOG_ARG} --show-notes=pull_request_number |
+  grep -A1 pull_request_number |
+  grep -vE '(pull_request_number|--)'|
+  awk '{ print $1 }')
+
+MERGED_PRS=$(git log ${LOG_ARG} |grep 'Merge pull request'|cut -d'#' -f2|cut -d\  -f1)
+
+(for word in ${NOTE_PRS} ${MERGED_PRS}; do
+  echo "$word"
+done) | sort -u

@@ -1,0 +1,43 @@
+<div class="modal-content">
+  <div id="error-message"  class="modal--default__content__error hidden">
+    <p>Oops, something went wrong. Try refreshing the page and re-opening the room settings</p>
+  </div>
+  <form class="room-settings">
+
+    <label class="welcome-message-label"
+           for="room-welcome-message">
+      Welcome message
+    </label>
+
+    <div id="welcome-message-container"  class="welcome-message-container">
+      <textarea class="welcome-message"
+                placeholder="Checking for an existing welcome message ..."
+                id="room-welcome-message"
+                maxlength="4096"></textarea>
+      <div class="preview-container loading" id="welcome-message-preview-container">
+        Loading ...
+      </div>
+    </div>
+
+    <div class="welcome-message-controls">
+      <button id="preview-welcome-message"
+              class="secondary-button-caribbean preview-welcome-message">
+        Preview
+      </button>
+      <button id="close-welcome-message-preview"
+              class="secondary-button-caribbean close-welcome-message-preview">
+        Close
+      </button>
+
+    </div>
+
+    <p class="settings-checkbox-container">
+      <input type="checkbox"
+             class="settings-checkbox"
+             name="github-only"
+             id="github-only"
+             value="checked">
+      <label for="github-only">Only GitHub users are allowed to join this room.</label>
+    </p>
+  </form>
+</div>

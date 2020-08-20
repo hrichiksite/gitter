@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+<style>
+/* Good email resets from https://get.foundation/ */
+#outlook a {
+  padding: 0;
+}
+body {
+  width: 100% !important;
+  min-width: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  margin: 0;
+  Margin: 0;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.ExternalClass {
+  width: 100%;
+}
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div {
+  line-height: 100%;
+}
+#backgroundTable {
+  margin: 0;
+  Margin: 0;
+  padding: 0;
+  line-height: 100% !important;
+}
+img {
+  outline: none;
+  text-decoration: none;
+  -ms-interpolation-mode: bicubic;
+  width: auto;
+  max-width: 100%;
+  clear: both;
+  display: block;
+}
+center {
+  width: 100%;
+}
+a img {
+  border: none;
+}
+p {
+  margin: 0 0 10px 0;
+  Margin: 0 0 10px 0;
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+td {
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  border-collapse: collapse !important;
+}
+table,
+tr,
+td {
+  padding: 0;
+  vertical-align: top;
+  text-align: left;
+}
+html {
+  min-height: 100%;
+  background: #FFF;
+}
+
+/* Gitter Notification Email Styles */
+body,
+.body {
+  background: #f1f0ed;
+  font-family: SourceSansLocal,source-sans-pro,"Source Sans Pro",-apple-system,Roboto,pt sans,calibri,sans-serif;
+  font-weight: 400;
+  color: #000;
+}
+#backgroundTable {
+  max-width: 750px;
+  margin: 0 auto 0 auto;
+  background: #ffffff;
+}
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+a {
+  text-decoration: none;
+  color: #3498db;
+}
+#body a:hover {
+  text-decoration: underline;
+}
+
+h2,
+h3,
+h4 {
+  color: #FFF !important;
+  font-weight: 300;
+}
+h1 {
+  display: none;
+}
+h2 {
+  margin: 0;
+  padding: 1em 15px .25em 35px;
+}
+h3 {
+  margin: 0;
+  padding: .25em 15px 1em 35px;
+}
+h3 a {
+  color: #FFF;
+}
+
+.logo {
+  padding: 20px;
+}
+img {
+  margin: 0;
+}
+
+.header td {
+  margin: 0;
+  background: #753a88;
+  background-image: -webkit-gradient(linear,right top,left top,from(#cc2b5e),to(#753a88));
+  background-image: -webkit-linear-gradient(right,#cc2b5e,#753a88);
+  background-image: linear-gradient(to left,#cc2b5e,#753a88);
+  color: #FFF;
+  text-align: left;
+}
+#footer {
+  margin: 1em 0 1em 0;
+  text-align: center;
+  font-size: .9em;
+}
+
+.recent {
+  margin-top: 1em;
+  border-collapse: separate;
+  border-spacing: 20px 0;
+}
+.chatmanage {
+  border-collapse: separate;
+  border-spacing: 20px;
+}
+.avatar {
+  text-align: right;
+  vertical-align: top;
+}
+.avatar img {
+  border-radius: 4px;
+}
+.username {
+  color: #6e6e6e;
+}
+.chat {
+  color: #000;
+  line-height: 1.4;
+}
+.chatmanage {
+  margin-bottom: 2em;
+}
+.chatmanage td {
+  vertical-align: middle;
+}
+.chatsettings {
+  text-align: right;
+}
+
+#manage td {
+  padding: .5em 1em .5em 1em;
+  background: #e7e5e0;
+}
+#manage p {
+  margin: 1em 0 1em 0;
+  font-size: 90%;
+}
+.cta {
+  display: inline-block;
+  max-width: 80%;
+  padding: 1em 3em 1em 3em;
+  background: #ea9448;
+  border-radius: 6px;
+  text-align: center;
+  color: #FFF;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.cta:hover {
+  text-decoration: none;
+  background: #dd8b45;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 750px) {
+  body {
+    font-size: 120%;
+  }
+  h3 {
+    font-size: 100%;
+  }
+  .truncatedcount {
+    display: block;
+    font-size: 75%;
+  }
+  .chatsettings {
+    font-size: 80%;
+  }
+  #manage p {
+    text-align: left;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  html,
+  body,
+  .body,
+  #manage td {
+    background: #434141 !important;
+  }
+  body,
+  .body,
+  .chat {
+    color: #cccccc !important;
+  }
+  a {
+    color: #217dbb !important;
+  }
+  .username {
+    color: #bbb7b7 !important;
+  }
+  .logo {
+    filter: invert(1) !important;
+  }
+  #manage td {
+    border-top: 1px solid #2d2c2c;
+  }
+}
+</style>
+</head>
+<body>
+
+  <table id="backgroundTable" class="body" align="center">
+    <tr>
+      <td>
+        <center>
+          <a href="https://gitter.im/?utm_source=notification&amp;utm_medium=email&amp;utm_campaign=unread-notifications"><img src="https://gitter.im/_s/l/images/logo/logo-64.png" class="logo" alt="Gitter" width="138" height="32" vspace="20" /></a>
+
+          <h1>Unread Messages</h1>
+        </center>
+      </td>
+    </tr>
+    <tr>
+      <td id="content">
+        <center>
+
+*|HTML|*
+
+        </center>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <center>
+
+          <table id="manage">
+            <tr>
+              <td>
+                <center>
+                  <p>Customise notification rules per room by clicking on <em>"Notification settings"</em> (just above).</p>
+                  <p><a href="*|UNSUB|*">Unsubscribe</a> to stop receiving <em>all</em> unread message notifications from all conversations.</p>
+                </center>
+              </td>
+            </tr>
+          </table>
+
+          <table id="footer">
+            <tr>
+              <td>
+                <center>
+                  <p><a href="https://gitter.im/?utm_source=notification&amp;utm_medium=email&amp;utm_campaign=unread-notifications">Gitter</a> from <a href="https://gitlab.com/?utm_source=notification&amp;utm_medium=email&amp;utm_campaign=unread-notifications">GitLab</a></p>
+
+                  <div class="microdata">*|MICRODATA|*</div>
+                </center>
+              </td>
+            </tr>
+          </table>
+
+        </center>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

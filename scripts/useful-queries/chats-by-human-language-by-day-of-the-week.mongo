@@ -1,0 +1,70 @@
+rs.slaveOk()
+
+var horizonTimestamp = Date.now() - 86400000 * 7 * 8;
+
+function createIdForTimestampString(timestamp) {
+  var hexSeconds = Math.floor(timestamp/1000).toString(16);
+
+  while(hexSeconds.length < 8) {
+    hexSeconds = "0" + hexSeconds;
+  }
+  return ObjectId(hexSeconds + "0000000000000000");
+}
+
+var a = db.chatmessages.aggregate([{
+  $match: {
+    _id: { $gt: createIdForTimestampString(horizonTimestamp) },
+    sent: { $type: 'date' },
+    lang: { $ne: null }
+  }
+}, {
+  $group: {
+    _id: {
+      lang: '$lang',
+      dayOfWeek: { $dayOfWeek: "$sent" }
+    },
+    count: { $sum: 1 }
+  },
+}, {
+  $project: {
+    '_id': 0,
+    'lang': '$_id.lang',
+    'dayOfWeek': '$_id.dayOfWeek',
+    'count': '$count'
+  }
+}, {
+  $sort: {
+    lang: 1,
+    dayOfWeek: 1,
+  }
+}]);
+
+var LISTED_LANGUAGES = ["en", "ru", "zh", "fr", "de", "zh-Hant", "es",
+"ja", "da", "nl", "pl", "el", "cs", "no", "vi",
+"sr", "ko", "id", "sv", "it", "sk", "uk", "hr",
+"ro", "lv"];
+
+var results = {};
+LISTED_LANGUAGES.forEach(function(lang) {
+  var a = [];
+  for (var i = 1; i <= 7; i++) {
+    a[i] = 0;
+  }
+  results[lang] = a;
+});
+
+a.forEach(function(i) {
+  if(!results[i.lang]) return;
+  results[i.lang][i.dayOfWeek] = i.count;
+});
+
+print(['day'].concat(LISTED_LANGUAGES).join(','));
+for (var day = 1; day <=7; day++) {
+  var x = [day];
+
+  LISTED_LANGUAGES.forEach(function(lang) {
+    x.push(results[lang][day]);
+  });
+
+  print(x.join(','));
+}

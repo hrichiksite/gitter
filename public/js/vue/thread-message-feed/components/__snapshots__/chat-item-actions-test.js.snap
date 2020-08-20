@@ -1,0 +1,203 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`thread-message-feed chat-item-actions user can delete the message matches snapshot 1`] = `
+<div
+  class="chat-item__actions"
+>
+  <b-popover-stub
+    boundary="scrollParent"
+    boundarypadding="5"
+    customclass="chat-item-actions-popover"
+    delay="0"
+    fallbackplacement="flip"
+    offset="0"
+    placement="left"
+    target="chat-actions-5d147ea84dad9dfbc522317a"
+    title=""
+    triggers="click blur"
+  >
+    <div>
+      <button
+        class="popover-item__action js-chat-item-quote-action"
+        title="Quote this message"
+      >
+        
+        Quote
+      
+      </button>
+    </div>
+    <div>
+      <div
+        class="popover-item__action-disabled"
+      >
+        
+        Edit
+      
+      </div>
+    </div>
+    <div>
+      <button
+        class="popover-item__action js-chat-item-delete-action"
+        title="Delete this message"
+      >
+        
+        Delete
+      
+      </button>
+    </div>
+    <div>
+      <div
+        class="popover-item__action-disabled"
+      >
+        
+        Report
+      
+      </div>
+    </div>
+  </b-popover-stub>
+   
+  <button
+    class="chat-item-actions-button"
+    id="chat-actions-5d147ea84dad9dfbc522317a"
+  >
+    <i
+      class="chat-item__icon icon-ellipsis"
+    />
+  </button>
+</div>
+`;
+
+exports[`thread-message-feed chat-item-actions user can edit the message matches snapshot 1`] = `
+<div
+  class="chat-item__actions"
+>
+  <b-popover-stub
+    boundary="scrollParent"
+    boundarypadding="5"
+    customclass="chat-item-actions-popover"
+    delay="0"
+    fallbackplacement="flip"
+    offset="0"
+    placement="left"
+    target="chat-actions-5d147ea84dad9dfbc522317a"
+    title=""
+    triggers="click blur"
+  >
+    <div>
+      <button
+        class="popover-item__action js-chat-item-quote-action"
+        title="Quote this message"
+      >
+        
+        Quote
+      
+      </button>
+    </div>
+    <div>
+      <button
+        class="popover-item__action js-chat-item-edit-action"
+        title="Edit this message"
+      >
+        
+        Edit
+      
+      </button>
+    </div>
+    <div>
+      <button
+        class="popover-item__action js-chat-item-delete-action"
+        title="Delete this message"
+      >
+        
+        Delete
+      
+      </button>
+    </div>
+    <div>
+      <div
+        class="popover-item__action-disabled"
+      >
+        
+        Report
+      
+      </div>
+    </div>
+  </b-popover-stub>
+   
+  <button
+    class="chat-item-actions-button"
+    id="chat-actions-5d147ea84dad9dfbc522317a"
+  >
+    <i
+      class="chat-item__icon icon-ellipsis"
+    />
+  </button>
+</div>
+`;
+
+exports[`thread-message-feed chat-item-actions user is not the author of the message matches snapshot 1`] = `
+<div
+  class="chat-item__actions"
+>
+  <b-popover-stub
+    boundary="scrollParent"
+    boundarypadding="5"
+    customclass="chat-item-actions-popover"
+    delay="0"
+    fallbackplacement="flip"
+    offset="0"
+    placement="left"
+    target="chat-actions-5d147ea84dad9dfbc522317a"
+    title=""
+    triggers="click blur"
+  >
+    <div>
+      <button
+        class="popover-item__action js-chat-item-quote-action"
+        title="Quote this message"
+      >
+        
+        Quote
+      
+      </button>
+    </div>
+    <div>
+      <div
+        class="popover-item__action-disabled"
+      >
+        
+        Edit
+      
+      </div>
+    </div>
+    <div>
+      <div
+        class="popover-item__action-disabled"
+      >
+        
+        Delete
+      
+      </div>
+    </div>
+    <div>
+      <button
+        class="popover-item__action js-chat-item-report-action"
+        title="Report this message"
+      >
+        
+        Report
+      
+      </button>
+    </div>
+  </b-popover-stub>
+   
+  <button
+    class="chat-item-actions-button"
+    id="chat-actions-5d147ea84dad9dfbc522317a"
+  >
+    <i
+      class="chat-item__icon icon-ellipsis"
+    />
+  </button>
+</div>
+`;

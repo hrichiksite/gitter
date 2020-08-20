@@ -1,0 +1,46 @@
+<!doctype html>
+<html class="{{#if hasCachedFonts}}fonts-loaded{{/if}}" lang="en">
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+  <link id="favicon" rel="shortcut icon" href="{{cdn 'images/favicon-normal.ico' }}">
+
+	<title>Signup for the GitLab Mailing List</title>
+
+  {{> fonts}}
+  <link rel="stylesheet" href="{{cdn 'styles/userhome.css' }}">
+  <base target="_blank">
+</head>
+<body>
+  <header class="userhome-header">
+    <div class="userhome-header__logo">
+      {{> logo_man}}
+      <img class="userhome-header__logo-text" src='{{cdn "images/gitter-vector-logo.svg"}}'>
+    </div>
+    <nav class="userhome-header__nav"><a href="/home" target="_parent">Home</a><span class="userhome-header__nav-arrow"></span>GitLab Mailing List</nav>
+    <h3 class="userhome-header__title">Thank You</h3>
+	</header>
+	<div class="userhome-main userhome-main--learn">
+		<section class="learn-section">
+			<h3>Your confirmation email is being hand-crafted by our artisans…</h3>
+			<p>We'll send if your way as soon as it's ready</p>
+			<p><strong>Here are some resources you may find useful while you wait:</strong></p>
+
+			<p>
+				<a href="/explore">Explore Gitter</a>
+				to find an interesting communities on the Gitter network.
+			</p>
+
+			<p>
+				<a href="https://about.gitlab.com/blog/">Read the GitLab Blog</a>
+				to find out more about GitLab.
+			</p>
+
+			<p>
+				<a href="http://blog.gitter.im/2017/03/15/gitter-gitlab-acquisition/">Read the blog post</a>
+				about GitLab's acquisition of Gitter.
+			</p>
+		</section>
+	</div>
+</body>
+</html>

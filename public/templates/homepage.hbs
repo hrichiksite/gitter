@@ -1,0 +1,366 @@
+<!doctype html>
+<html class="no-js {{#if hasCachedFonts}}fonts-loaded{{/if}}" lang="{{ lang }}">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>{{{ __ "Gitter &mdash; Where developers come to talk." }}}</title>
+
+  <meta name="description" content="Where developers come to talk.">
+
+  {{#each socialMetadata}}
+  <meta property="{{@key}}" content="{{this}}" />
+  {{/each}}
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+
+  <link rel="stylesheet" href='{{cdn cssFileName }}'>
+
+  <link id="favicon" rel="shortcut icon" href="{{ cdn 'images/favicon-normal.ico' }}">
+  {{> fonts}}
+</head>
+
+<body {{#if wordy}}class="wordy" {{/if}}>
+  <div class="homepage">
+
+    <header id="intro-panel">
+      <nav class="site-nav">
+        <div class="wrap">
+
+          <a href="/" class="logo">
+            {{> logo_man}}
+            <img src="{{ cdn 'images/home/logo_nomargin@2x.png' }}" alt="Gitter" class="logo-image menu-animation">
+          </a>
+
+          <div class="top-navigation menu-animation">
+            <a href="#integrations-panel">{{ __ "Integrations" }}</a>
+            <a href="#apps-panel">{{ __ "Apps" }}</a>
+            <a href="https://gitlab.com/gitlab-org/gitter/webapp" target="_blank">{{ __ "Open Source" }}</a>
+          </div>
+
+          <a class="btn login" href="/login?action=login&source=intro-login">
+            <b><span class='desktopOnly'>{{ __ "Sign In to Start Talking"}}</span><span
+                class='exceptDesktop'>{{ __ "login"}}</span></b>
+          </a>
+        </div>
+      </nav>
+      <div class="wrap">
+        <div class="map">
+          <img class="bg" src="{{cdn 'images/home/map.png'}}" alt="There should be a map here">
+        </div>
+
+        <h1>{{ __ "Where communities thrive"}}</h1>
+        <p>
+          {{ __ "Gitter is a chat and networking platform that helps to manage, grow and connect communities through messaging, content and discovery." }}
+        </p>
+
+        <div class="intro-panel-cta-button-block">
+          <a class="button-caribbean signup intro-panel-button"
+            href="/login?action=signup&source=intro-createcommunity&returnTo=%23createcommunity">
+            {{  __ "Create your own community" }}
+          </a>
+
+          <a class="subdued-button-clouds intro-panel-button" href="/explore/tags/?action=explore&source=homepage">
+            {{ __ "Explore other communities"}}
+          </a>
+        </div>
+
+        <div class="community-creation-note">
+          <span>
+            {{{ __ "Learn more about <a %s>creating communities</a> and <a %s>creating rooms</a>." "href='https://gitlab.com/gitlab-org/gitter/webapp/blob/develop/docs/communities.md#community-creation'" "href='https://gitlab.com/gitlab-org/gitter/webapp/blob/develop/docs/rooms.md#room-creation'" }}}
+          </span>
+        </div>
+
+        <div class="legal">
+          <span>
+            {{{ __ "By signing up you agree to our <a %s>Terms and Conditions</a>" "href='https://about.gitlab.com/terms/' target='_blank'" }}}.
+          </span>
+        </div>
+
+        <ul class="mini-features-list">
+          <li>
+            <h2>{{ __ "Free without limits" }}</h2>
+            <span>{{ __ "Enjoy free public and private communities with unlimited people, message history and integrations."}}</span>
+          </li>
+
+          <li>
+            <h2>{{ __ "Simple to create"}}</h2>
+            <span>{{{ __ "Simply create your community and start talking - no need to set up any invitation services."}}}</span>
+          </li>
+
+          <li>
+            <h2>{{ __ "Markdown and KaTeX" }}</h2>
+            <span>{{{ __ "Format your messages just like with your other favorite developer tools." }}}</span>
+          </li>
+
+          <li>
+            <h2>{{ __ "Out in the open" }}</h2>
+            <span>{{{ __ "Complete history archives(indexed by search engines) and sharable permalinks or use <a %s>Sidecar</a> to embed Gitter directly in your own site." "href='https://sidecar.gitter.im/' target='_blank'" }}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class='bg-animation'>{{!-- the div below is responsible for the fadein of the background --}}</div>
+    </header>
+
+
+    <section id="trusted-by-panel">
+      <div class="wrap">
+        <h1 class="trusted-by-heading">{{ __ "Trusted by"}}</h1>
+
+        <ul class="trusted-by-list">
+          <li class="trusted-by-list-item">
+            <a href="https://gitter.im/airbnb">
+              <img class="trusted-by-list-item-logo" src="{{cdn 'images/home/logos/trusted-by-airbnb.png'}}"
+                alt="AirBnB">
+            </a>
+          </li>
+          <li class="trusted-by-list-item--smaller">
+            <a href="https://gitter.im/aws">
+              <img class="trusted-by-list-item-logo" src="{{cdn 'images/home/logos/trusted-by-aws.png'}}"
+                alt="Amazon Web Services">
+            </a>
+          </li>
+          <li class="trusted-by-list-item">
+            <a href="https://gitter.im/google">
+              <img class="trusted-by-list-item-logo" src="{{cdn 'images/home/logos/trusted-by-google.png'}}"
+                alt="Google">
+            </a>
+          </li>
+          <li class="trusted-by-list-item">
+            <a href="https://gitter.im/microsoft">
+              <img class="trusted-by-list-item-logo" src="{{cdn 'images/home/logos/trusted-by-microsoft.png'}}"
+                alt="Microsoft">
+            </a>
+          </li>
+          <li class="trusted-by-list-item">
+            <a href="https://gitter.im/mozillascience">
+              <img class="trusted-by-list-item-logo"
+                src="{{cdn 'images/home/logos/trusted-by-mozilla-science-lab.png'}}" alt="Mozilla Science Lab">
+            </a>
+          </li>
+          <li class="trusted-by-list-item--smaller">
+            <a href="https://gitter.im/rails">
+              <img class="trusted-by-list-item-logo" src="{{cdn 'images/home/logos/trusted-by-rails.png'}}" alt="Rails">
+            </a>
+          </li>
+          <li class="trusted-by-list-item--smaller">
+            <a href="https://gitter.im/scala">
+              <img class="trusted-by-list-item-logo" src="{{cdn 'images/home/logos/trusted-by-scala.png'}}" alt="Scala">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="communities-panel">
+      <div class="wrap">
+        <h1>
+          {{ __ "Some of our communities"}}
+
+          <a class="button-caribbean--small communities-panel-heading-button"
+            href="/login?action=signup&source=communities&returnTo=%23createcommunity">
+            {{ __ "Create your own"}}
+          </a>
+          <a class="button-jaffa--small communities-panel-heading-button"
+            href="/explore/tags/?action=explore&source=homepage">
+            <span class='desktopOnly'>{{ __ "Explore rooms"}}</span>
+            <span class='exceptDesktop'>{{ __ "Explore"}}</span>
+          </a>
+        </h1>
+
+        {{#unless slashdotEffectSurvivalMode}}
+        <div class="communities">
+          <nav class="communities-tabs">
+            <a class="active" data-tab-index="0">
+              <img src="https://avatars1.githubusercontent.com/u/5990364?s=200" width="48" height="48">
+
+              <h3>{{ __ "GitterHQ" }}</h3>
+              <em>{{ __ "Let’s talk about Gitter!" }}</em>
+            </a>
+
+            <a data-tab-index="1">
+              <img src="https://avatars1.githubusercontent.com/u/5990364?s=200" width="48" height="48">
+
+              <h3>{{ __ "GitterHQ" }}</h3>
+              <em>{{ __ "Let’s talk about Gitter!" }}</em>
+            </a>
+
+            <a data-tab-index="2">
+              <img src="https://avatars1.githubusercontent.com/u/5990364?s=200" width="48" height="48">
+
+              <h3>{{ __ "GitterHQ" }}</h3>
+              <em>{{ __ "Let’s talk about Gitter!" }}</em>
+            </a>
+
+            <a data-tab-index="3">
+              <img src="https://avatars1.githubusercontent.com/u/5990364?s=200" width="48" height="48">
+
+              <h3>{{ __ "GitterHQ" }}</h3>
+              <em>{{ __ "Let’s talk about Gitter!" }}</em>
+            </a>
+          </nav>
+
+          <div class="chat-frame">
+            <iframe id="embedded-chat" src="/gitter/gitter/~embed"></iframe>
+          </div>
+        </div>
+        {{/unless}}
+
+      </div>
+    </section>
+
+    <section id="integrations-panel">
+      <div class="wrap">
+        <h1>{{ __ "Designed for community collaboration"}}</h1>
+        <p>
+          {{ __ "Gitter is designed to make community messaging, collaboration and discovery as smooth and simple as possible. You can easily create, organise and grow your communities, inviting others to join just in one click." }}
+        </p>
+        <p>
+          {{{ __ "We also provide integrations with GitHub, Trello, Jenkins, Travis CI, Heroku, Sentry, BitBucket, HuBoard, Logentries, Pagerduty & Sprintly. We accept custom webhooks, have an <a %s>open source repository</a> for integrations as well as a <a %s>flexible API</a>." "href='https://gitlab.com/gitlab-org/gitter/services' target='_blank'" " href='https://developer.gitter.im' target='_blank'" }}}
+        </p>
+
+        <div class="loves">
+          <img src="{{cdn 'images/home/gitter-loves.png'}}" alt="Gitter loves">
+          <ul>
+            <li><img src="{{cdn 'images/home/github-logo.jpg'}}" title="Github"></li>
+            <li><img src="{{cdn 'images/home/gitlab-logo.jpg'}}" title="Gitlab"></li>
+            <li><img src="{{cdn 'images/home/bitbucket-logo.jpg'}}" title="Bitbucket"></li>
+            <li><img src="{{cdn 'images/home/heroku-logo.jpg'}}" title="Heroku"></li>
+            <li><img src="{{cdn 'images/home/huboard-logo.jpg'}}" title="Huboard"></li>
+            <li><img src="{{cdn 'images/home/jenkins-logo.jpg'}}" title="Jenkins"></li>
+            <li><img src="{{cdn 'images/home/pagerduty-logo.jpg'}}" title="Pagerduty"></li>
+            <li><img src="{{cdn 'images/home/logentries-logo.jpg'}}" title="Logentries"></li>
+            <li><img src="{{cdn 'images/home/sprintly-logo.jpg'}}" title="Sprintly"></li>
+            <li><img src="{{cdn 'images/home/travis-logo.jpg'}}" title="Travis"></li>
+            <li><img src="{{cdn 'images/home/trello-logo.jpg'}}" title="Trello"></li>
+            <li><img src="{{cdn 'images/home/sentry-logo.jpg'}}" title="Trello"></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials-panel">
+      <div class="wrap">
+        <div class="quotes">
+          <blockquote>
+            <div class="testimonial-image-wrapper">
+              <img src="{{cdn 'images/home/testimonial-chrisvnicholson.jpg' }}">
+            </div>
+
+            <cite><b>Chris Nicholson</b><span class="no-small">, Deeplearning4j</span>:</cite>
+            <p>We have an engineering team and open source community distributed over several continents, but the
+              conversation lives in one place - and that's Gitter.</p>
+          </blockquote>
+
+          <blockquote>
+            <div class="testimonial-image-wrapper">
+              <img src="{{cdn 'images/home/testimonial-dreadknight.jpg' }}">
+            </div>
+
+            <cite><b>Valentin Anastase</b><span class="no-small">, Freezing Moon</span>:</cite>
+            <p>Other communication solutions for the projects I’ve been involved in were far from ideal. Switching to
+              Gitter was one of the best decisions I've made and there's no going back now.</p>
+          </blockquote>
+
+          <blockquote>
+            <div class="testimonial-image-wrapper">
+              <img src="{{cdn 'images/home/testimonial-ttmc.jpg' }}">
+            </div>
+
+            <cite><b>Troy McConaghy</b><span class="no-small">, BigchainDB developer</span>:</cite>
+            <p>Gitter is the main way people contact us to ask questions about BigchainDB. I guess it just feels more
+              open, immediate and personal.</p>
+          </blockquote>
+
+          <blockquote>
+            <div class="testimonial-image-wrapper">
+              <img src="{{cdn 'images/home/testimonial-krishnasrinivas.jpg' }}">
+            </div>
+
+            <cite><b>Krishna Srinivas</b><span class="no-small">, Minio</span>:</cite>
+            <p>Gitter is the IRC of the post-IRC era. It has helped us at Minio build and connect with our community
+              really well.</p>
+          </blockquote>
+
+          <blockquote>
+            <div class="testimonial-image-wrapper">
+              <img src="{{cdn 'images/home/samccone.jpeg'}}">
+            </div>
+
+            <cite><b>Sam Saccone</b><span class="no-small">, Marionette.js Lead</span>:</cite>
+            <p>Gitter has helped to bring the Marionette community together, turning it into a thriving collaborative
+              environment that has been exceedingly beneficial to both our endusers and maintainers.</p>
+          </blockquote>
+
+          <blockquote>
+            <div class="testimonial-image-wrapper">
+              <img src="{{cdn 'images/home/diasdavid.jpeg'}}">
+            </div>
+
+            <cite><b>David Dias</b><span class="no-small">, LXJS Conference Organiser</span>:</cite>
+            <p>Gitter was an essential tool, not only for organising LXJS but to create a thriving community amongst our
+              attendees before, during and even after the conference.</p>
+          </blockquote>
+
+          <blockquote>
+            <div class="testimonial-image-wrapper">
+              <img src="{{cdn 'images/home/doge.jpeg'}}">
+            </div>
+
+            <cite><b>Doge</b><span class="no-small">, Chief Woofing Officer</span>:</cite>
+            <p>Wow chat. Much awesome.</p>
+          </blockquote>
+
+        </div>
+
+        <h1>{{ __ "Loved by our users" }}</h1>
+        <p>{{ __ "Gitter is nothing without the people using it day in and day out." }}</p>
+        <p>
+          {{{ __ "We asked a few people what Gitter means to them, this is what they had to say. If you love Gitter, Tweet us <a %s>%s</a> and we'll update these quotes every month." "href='https://twitter.com/gitchat' target='_blank'" "@gitchat" }}}<br><br>
+        </p>
+      </div>
+    </section>
+
+    <section id="apps-panel">
+      <div class="wrap">
+        <div class="devices">
+          {{! find the raw source file at https://gitlab.com/gitlab-org/gitter/design/-/blob/master/design-assets/deliverables/frontpage/gitter-apps.xcf}}
+          <img srcset="{{cdn 'images/home/gitter-apps.png'}}, {{cdn 'images/home/gitter-apps@2x.png'}} 2x"
+            src="{{cdn 'images/home/gitter-apps.png'}}">
+        </div>
+
+        <h1>{{ __ "Get Gitter now!"}}</h1>
+        {{> apps_content }}
+    </section>
+
+  </div>
+
+  <footer id="bottom-panel">
+    <div class="wrap">
+      {{> footer_content }}
+      {{#if translationRequired}}
+      <p class="translation">
+        <a href="https://gitlab.com/gitlab-org/gitter/gitter-translations">Want this in {{ requestLangLocalName}}?</a>
+      </p>
+      {{else}}
+      {{#if translated}}
+      <p class="translation">
+        <a href="https://gitlab.com/gitlab-org/gitter/gitter-translations">Translation</a> kindly done by
+        {{{ translated }}}.
+      </p>
+      {{/if}}
+      {{/if}}
+
+    </div>
+  </footer>
+
+  {{{ generateEnv anonymous=true }}}
+  {{{ bootScript bootScriptName jsRoot=jsRoot }}}
+
+  <script type="text/javascript" src="//use.typekit.net/ohh4mcl.js"></script>
+  <script type="text/javascript">try { Typekit.load(); } catch (e) { }</script>
+
+</body>
+
+</html>

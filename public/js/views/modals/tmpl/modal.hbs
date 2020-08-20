@@ -1,0 +1,14 @@
+<div class="modal--default{{#if modalClassVariation}} {{modalClassVariation}}{{/if}}">
+
+  <header class="modal--default__header{{#unless title}} modal--default__empty-header{{/unless}}">
+    {{#if title}}
+    <h1 class="modal--default__header__title js-modal-title-text">{{title}}</h1>
+    {{/if}}
+    <span class="modal--default__header__icon icon-cancel-circle" data-action="close"></span>
+  </header>
+
+  <section class="modal--default__content" id="modal-body-region"></section>
+
+  <footer class="modal--default__footer-wrapper" id="modal-footer-region"></footer>
+
+</div>

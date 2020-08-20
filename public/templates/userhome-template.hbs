@@ -1,0 +1,98 @@
+<!doctype html>
+<html class="{{#if hasCachedFonts}}fonts-loaded{{/if}}" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+  <link id="favicon" rel="shortcut icon" href="{{cdn 'images/favicon-normal.ico' }}">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>Home</title>
+
+  {{> fonts}}
+  <base target="_parent">
+</head>
+<body>
+  <div class="userhome-page-wrapper">
+    <header class="userhome-header">
+      <div class="userhome-header__logo">
+        {{> logo_man}}
+        <img class="userhome-header__logo-text" src='{{cdn "images/gitter-vector-logo.svg"}}'>
+      </div>
+      <nav class="userhome-header__nav">Home</nav>
+      <h1 class="userhome-header__title">{{ welcomeMessage }}</h1>
+    </header>
+    <div class="userhome-main">
+      <section class="userhome-pages">
+        <article class="userhome-page">
+          <i class="icon-globe"></i>
+          <a class="userhome-page__button" href="/home/explore" target="_parent">Explore</a>
+          <p>Explore rooms, talk and ship.</p>
+        </article>
+        <article class="userhome-page">
+          <i class="icon-paper-plane"></i>
+          <a class="userhome-page__button" href="/home#createroom" target="_parent">Create</a>
+          <p>Create and start something.</p>
+        </article>
+      </section>
+
+      <section class="userhome-apps">
+        <h3 class="userhome-heading">Download Apps</h3>
+
+        {{#unless isNativeDesktopApp }}
+          <div>
+            <i class="userhome-apps-icon icon-laptop"></i>
+            {{#if showOsxApp }}
+            <a class="userhome-apps__button" href="https://update.gitter.im/osx/latest" target="_blank"><i class="icon-apple"></i>OSX</a>
+            {{/if}}
+            {{#if showWindowsApp }}
+            <a class="userhome-apps__button" href="https://update.gitter.im/win/latest" target="_blank"><i class="icon-windows"></i>Windows</a>
+            {{/if}}
+            {{#if showLinuxApp}}
+            <a class="userhome-apps__button" href="https://update.gitter.im/linux32/latest" target="_blank"><i class="icon-linux"></i>Linux 32</a>
+            <a class="userhome-apps__button" href="https://update.gitter.im/linux64/latest" target="_blank"><i class="icon-linux"></i>Linux 64</a>
+            {{/if}}
+          </div>
+        {{/unless}}
+        <div>
+          <i class="userhome-apps-icon icon-mobile"></i>
+          <a class="userhome-apps__button" href="http://appstore.com/gitter" target="_blank"><i class="icon-apple"></i>iPhone</a>
+          <a class="userhome-apps__button" href="https://play.google.com/store/apps/details?id=im.gitter.gitter" target="_blank"><i class="icon-android"></i>Android</a>
+          <br>
+        </div>
+        <a class="userhome-apps__link" href="/apps" target="_blank">See all apps</a>
+
+      </section>
+
+      <section class="userhome-learn">
+        <section class="learn-section">
+          <h3>Documentation</h3>
+          <a class="learn-section__link learn-section__link--main" href="https://gitlab.com/gitlab-org/gitter/webapp/tree/develop/docs">Documentation and FAQs</a>
+
+          <h3>Support</h3>
+          <a class="learn-section__link learn-section__link--main" href="/gitter/gitter" target="_parent">gitter/gitter</a>
+          <a class="learn-section__link learn-section__link--main" target="_parent" href="mailto:support@gitter.im">support@gitter.im</a>
+          <p>
+            Twitter: <a class="learn-section__link learn-section__link--inline" href="https://twitter.com/gitchat">@gitchat</a>
+          </p>
+
+          <h3>Raise an Issue</h3>
+          <a class="learn-section__link learn-section__link--main" href="https://gitlab.com/gitlab-org/gitter/webapp/issues">gitlab.com/gitlab-org/gitter/webapp/issues</a>
+        </section>
+        <section class="learn-section">
+          <h3>Gitter API</h3>
+          <p>
+            <a class="learn-section__link learn-section__link--inline" href="https://developer.gitter.im">developer.gitter.im</a><br>
+            <a class="learn-section__link learn-section__link--inline" href="https://gitter.im/gitter/api">gitterHQ/api</a>
+          </p>
+          <a class="learn-section__link learn-section__link--inline" href="https://developer.gitter.im/docs/rest-api">Rest API</a><br>
+          <a class="learn-section__link learn-section__link--inline" href="https://developer.gitter.im/docs/streaming-api">Streaming API</a><br>
+          <a class="learn-section__link learn-section__link--inline" href="https://developer.gitter.im/docs/faye-endpoint">Faye</a><br>
+          <a class="learn-section__link learn-section__link--inline" href="https://gitlab.com/gitlab-org/gitter/services#gitterim-services">Integrations/Services</a>
+        </section>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

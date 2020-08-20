@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateCommunity backing entity GitHub matches snapshot 1`] = `
+<div
+  class="root js-create-community-view-root"
+>
+  <div
+    class="container"
+  >
+    <button
+      class="close-button"
+    >
+      <span
+        class="close-icon"
+      />
+    </button>
+     
+    <!---->
+     
+    <!---->
+     
+    <step-backing-entity-stub
+      orglist=""
+      orgname="orgs"
+      repolist=""
+      reponame="repos"
+    />
+  </div>
+</div>
+`;
+
+exports[`CreateCommunity backing entity GitLab matches snapshot 1`] = `
+<div
+  class="root js-create-community-view-root"
+>
+  <div
+    class="container"
+  >
+    <button
+      class="close-button"
+    >
+      <span
+        class="close-icon"
+      />
+    </button>
+     
+    <!---->
+     
+    <step-backing-entity-stub
+      orglist=""
+      orgname="groups"
+      repolist=""
+      reponame="projects"
+    />
+     
+    <!---->
+  </div>
+</div>
+`;
+
+exports[`CreateCommunity main step matches snapshot 1`] = `
+<div
+  class="root js-create-community-view-root"
+>
+  <div
+    class="container"
+  >
+    <button
+      class="close-button"
+    >
+      <span
+        class="close-icon"
+      />
+    </button>
+     
+    <step-main-stub />
+     
+    <!---->
+     
+    <!---->
+  </div>
+</div>
+`;

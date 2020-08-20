@@ -1,0 +1,17 @@
+{
+  "name": "gitter-web-avatars",
+  "version": "1.0.0",
+  "main": "server/index.js",
+  "browser": "browser/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true,
+  "dependencies": {
+    "gitter-client-env": "file:../client-env"
+  }
+}

@@ -1,0 +1,98 @@
+#!/bin/bash
+
+set -euo pipefail
+set -x
+
+function inline {
+  cat $1| perl -p -e 's/\n/\\n/g;s/"/\\"/g;'
+}
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source $SCRIPT_DIR/vars
+
+curl -q --fail -vi -XPUT "$ES_URL/_river/$USER_RIVER/_meta?pretty=true" -d @- << EOD
+{
+  "type": "mongodb",
+  "mongodb": {
+    "servers": [
+      { "host": "mongo1", "port": 27017 }
+    ],
+    "db": "gitter",
+    "collection": "users",
+    "scriptType": "groovy",
+    "script": "$(inline $SCRIPT_DIR/scripts/river/user.groovy)",
+    "options": { }
+  },
+  "index": {
+    "name": "$INDEX_NAME",
+    "type": "user"
+  }
+}
+EOD
+
+sleep 0.5
+
+curl -q --fail -vi -XPUT "$ES_URL/_river/$CHAT_RIVER/_meta?pretty=true" -d @- << EOD
+{
+  "type": "mongodb",
+  "mongodb": {
+    "servers": [
+      { "host": "mongo1", "port": 27017 }
+    ],
+    "db": "gitter",
+    "collection": "chatmessages",
+    "scriptType": "groovy",
+    "script": "$(inline $SCRIPT_DIR/scripts/river/chat.groovy)",
+    "options": { }
+  },
+  "index": {
+    "name": "$INDEX_NAME",
+    "type": "chat"
+  }
+}
+EOD
+
+sleep 0.5
+
+curl -q --fail -vi -XPUT "$ES_URL/_river/$GROUP_RIVER/_meta?pretty=true" -d @- << EOD
+{
+  "type": "mongodb",
+  "mongodb": {
+    "servers": [
+      { "host": "mongo1", "port": 27017 }
+    ],
+    "db": "gitter",
+    "collection": "groups",
+    "scriptType": "groovy",
+    "script": "$(inline $SCRIPT_DIR/scripts/river/group.groovy)",
+    "options": { }
+  },
+  "index": {
+    "name": "$INDEX_NAME",
+    "type": "group"
+  }
+}
+EOD
+
+sleep 0.5
+
+curl -q --fail -vi -XPUT "$ES_URL/_river/$ROOM_RIVER/_meta?pretty=true" -d @- << EOD
+{
+  "type": "mongodb",
+  "mongodb": {
+    "servers": [
+      { "host": "mongo1", "port": 27017 }
+    ],
+    "db": "gitter",
+    "collection": "troupes",
+    "scriptType": "groovy",
+    "script": "$(inline $SCRIPT_DIR/scripts/river/room.groovy)",
+    "options": { }
+  },
+  "index": {
+    "name": "$INDEX_NAME",
+    "type": "room"
+  }
+}
+EOD

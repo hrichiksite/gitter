@@ -1,0 +1,16 @@
+{
+  "name": "gitter-web-slugify",
+  "version": "1.0.0",
+  "main": "lib/slugify.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true,
+  "dependencies": {
+
+  }
+}

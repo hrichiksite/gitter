@@ -1,0 +1,18 @@
+<html>
+<head>
+<link id="favicon" rel="shortcut icon" href='{{cdn "images/favicon-normal.ico" }}'>
+<title>Gitter - Chat, for GitHub</title>
+<script type="text/javascript">
+window.onload = function() {
+  if (window.opener) {
+    window.opener.postMessage({{{ oAuthCompletePostMessage }}}, "*");
+    window.close();
+  } else {
+    location.href = '/';
+  }
+}
+</script>
+</head>
+<body>
+</body>
+</html>

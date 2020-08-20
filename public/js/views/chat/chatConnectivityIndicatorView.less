@@ -1,0 +1,49 @@
+.chat-connectivity-indicator-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  pointer-events: none;
+
+  & > * {
+    pointer-events: auto;
+  }
+}
+
+.chat-connectivity-indicator {
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  display: block;
+
+  transform: translateX(-50%);
+
+  padding: 1rem 2rem;
+
+  background-color: #ffffff;
+  border-left: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  border-right: 1px solid #f2f2f2;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+
+  color: #aaa;
+
+  transition: opacity 0.75s ease;
+
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.chat-connectivity-indicator-icon {
+  will-change: opacity;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}

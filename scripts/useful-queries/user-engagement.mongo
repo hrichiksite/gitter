@@ -1,0 +1,92 @@
+rs.slaveOk()
+load('./csv.js');
+
+function createIdForTimestampString(timestamp) {
+  var hexSeconds = Math.floor(timestamp/1000).toString(16);
+
+  while(hexSeconds.length < 8) {
+    hexSeconds = "0" + hexSeconds;
+  }
+  return ObjectId(hexSeconds + "0000000000000000");
+}
+
+function aggregate(start, end) {
+  return db.chatmessages.aggregate([{
+    $match: {
+      _id: {
+        $lt: createIdForTimestampString(end),
+        $gt: createIdForTimestampString(start)
+      },
+      sent: { $type: 'date' }
+    }
+  }, {
+    $group: {
+      _id: '$fromUserId',
+      days: {
+        $addToSet: { $dayOfYear: '$sent' }
+      },
+      rooms: {
+        $addToSet: '$toTroupeId'
+      },
+      count: { $sum: 1 }
+    },
+  }, {
+    $project: {
+      days: { $size: '$days' },
+      rooms: { $size: '$rooms' },
+      count: 1,
+    },
+  }, {
+    $lookup: {
+      from: "users",
+      localField: "_id",
+      foreignField: "_id",
+      as: "user"
+    },
+  }, {
+    $unwind: "$user"
+  }, {
+    $project: {
+      _id: 1,
+      username: '$user.username',
+      days: 1,
+      rooms: 1,
+      count: 1,
+    }
+  }]);
+
+}
+
+function oneToOneRooms() {
+  return db.troupes.aggregate([{
+    $match: {
+      oneToOne: true
+    }
+  }, {
+    $unwind: '$oneToOneUsers'
+  }, {
+    $group: {
+      _id: '$oneToOneUsers.userId',
+      count: { $sum: 1 }
+    },
+  }]);
+}
+
+var period = 86400000 * 30;
+var startP1,endP1;
+endP1 = new Date('2016-10-01T00:00:00Z');
+startP1 = new Date(endP1.valueOf() - period);
+
+var p1 = aggregate(startP1, endP1).toArray();
+
+var oneToOneCount = {};
+oneToOneRooms().forEach(function(d) {
+  oneToOneCount[d._id] = d.count;
+});
+
+p1.forEach(function(d) {
+  var o = oneToOneCount[d._id];
+  d.oneToOneRoomCount = o;
+});
+
+printCSV(p1, ['username', 'days', 'rooms', 'count', 'oneToOneRoomCount']);

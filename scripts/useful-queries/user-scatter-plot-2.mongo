@@ -1,0 +1,52 @@
+rs.slaveOk()
+
+var month = new Date(Date.now() - 86400000 * 30)
+
+var roomId = db.troupes.findOne({ lcUri: 'openai/gym' })._id;
+
+var a = db.chatmessages.aggregate([{
+  $match: {
+    sent: { $gt: month },
+    toTroupeId: roomId }
+  }, {
+    $project: {
+      userId: '$fromUserId',
+      sent: '$sent'
+    }
+  }, {
+    $group: {
+      _id: '$userId',
+      messageCount: { $sum: 1 },
+      days: { $addToSet: { $dayOfYear: "$sent" } }
+    },
+  }, {
+    $project: {
+      userId: '$userId',
+      messageCount: '$messageCount',
+      activeDays: { $size: '$days' }
+    }
+  }, {
+    $group: {
+      _id: {
+        messageCount: '$messageCount',
+        activeDays: '$activeDays'
+      },
+      count: { $sum: 1 },
+    },
+  }, {
+    $project: {
+      messageCount: '$_id.messageCount',
+      activeDays: '$_id.activeDays',
+      count: '$count',
+    }
+  }, {
+    $sort: {
+      messageCount: -1,
+      activeDays: -1,
+    }
+  }
+]);
+
+a.forEach(function(i) {
+  print(i.messageCount + ',' + i.activeDays + ',' + i.count)
+})

@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RepoSelectSection GitHub user no private repo scope 1`] = `
+<section>
+  <div
+    class="repo-select-section"
+  >
+    <h3
+      class="section-heading"
+    >
+      <label>
+        Repo association (optional)
+      </label>
+    </h3>
+     
+    <select-dropdown-stub
+      filterplaceholder="Filter repos"
+      filtertext=""
+      items=""
+    />
+     
+    <p
+      class="repo-select-information"
+    >
+      
+        If you don't see your repo listed, try
+        
+      <a
+        href="/login/upgrade?scopes=repo"
+      >
+        allowing private repo access
+      </a>
+      . Also see our
+        documentation section on
+        
+      <a
+        href="https://gitlab.com/gitlab-org/gitter/webapp/-/blob/develop/docs/faq.md#why-isnt-my-github-organisation-or-repos-appearing"
+        target="_blank"
+      >
+        "Why isn't my GitHub organisation or repos appearing?"
+      </a>
+      .
+      
+    </p>
+  </div>
+</section>
+`;
+
+exports[`RepoSelectSection GitHub user with private repo scope granted 1`] = `
+<section>
+  <div
+    class="repo-select-section"
+  >
+    <h3
+      class="section-heading"
+    >
+      <label>
+        Repo association (optional)
+      </label>
+    </h3>
+     
+    <select-dropdown-stub
+      filterplaceholder="Filter repos"
+      filtertext=""
+      items=""
+    />
+     
+    <p
+      class="repo-select-information"
+    >
+      
+        Private repo access is granted. If you don't see your repo listed, see our documentation
+        section on
+        
+      <a
+        href="https://gitlab.com/gitlab-org/gitter/webapp/-/blob/develop/docs/faq.md#why-isnt-my-github-organisation-or-repos-appearing"
+        target="_blank"
+      >
+        "Why isn't my GitHub organisation or repos appearing?"
+      </a>
+      .
+      
+    </p>
+  </div>
+</section>
+`;
+
+exports[`RepoSelectSection matches snapshot 1`] = `
+<section>
+  <div
+    class="repo-select-section"
+  >
+    <h3
+      class="section-heading"
+    >
+      <label>
+        Repo association (optional)
+      </label>
+    </h3>
+     
+    <select-dropdown-stub
+      filterplaceholder="Filter repos"
+      filtertext=""
+      items=""
+    />
+     
+    <!---->
+  </div>
+</section>
+`;

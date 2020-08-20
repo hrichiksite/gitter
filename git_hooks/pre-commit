@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+set -x
+
+repo_dir="$(git rev-parse --show-toplevel 2>/dev/null)"
+
+branch=`git symbolic-ref HEAD`
+if [ "$branch" = "refs/heads/master" ]; then
+    echo "Direct commits to the branch master are not allowed" >&2
+    exit 1
+fi
+
+gulp="$repo_dir/node_modules/.bin/gulp"
+(cd $repo_dir && npm run precommit-checks)

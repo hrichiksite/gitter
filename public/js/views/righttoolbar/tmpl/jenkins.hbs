@@ -1,0 +1,7 @@
+<div class="activity-item-inner build-{{build_status}}">
+  <div class="activity-time" id="time">{{ sentFormatted }}</div>
+
+  <div class="gtrActivityItemText">Jenkins <a href="{{sanitizeHref payload.build.full_url}}" target="_blank">{{payload.name}}</a> {{build_status}}</div>
+
+  <div style="clear: both;"></div>
+</div>

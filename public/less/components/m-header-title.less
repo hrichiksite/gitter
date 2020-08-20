@@ -1,0 +1,23 @@
+@import '../mixins/optimise-text';
+@import '../colors';
+
+.m-header-title {
+  .optimised-text();
+  box-sizing: border-box;
+  max-width: 90%;
+  margin: 0;
+  overflow: hidden;
+  font-weight: 400;
+  font-size: 1.5rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  padding: 0 0 0 @desktop-menu-left-padding;
+  line-height: @desktop-header-height;
+  color: @menu-header-item-color;
+
+  .mobile & {
+    padding: 0 0 0 @mobile-menu-left-padding;
+    line-height: @mobile-header-height;
+  }
+}

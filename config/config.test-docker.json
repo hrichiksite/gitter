@@ -1,0 +1,104 @@
+{
+  "web": {
+    "homeurl": "/",
+    "domain": "localhost",
+    "baseserver": "localhost",
+    "baseport": "5000",
+    "basepath": "http://localhost:5000",
+    "apiBasePath": "http://localhost:5000/api"
+  },
+  "ws": {
+    "fayeUrl": "http://localhost:5000/bayeux",
+    "startFayeInPrimaryApp": true,
+    "fayePerMessageDeflate": true,
+    "disableLegacyEndpoint": true
+  },
+  "express": {
+    "viewCache": false,
+    "showStack": true
+  },
+  "cdn": {
+    "use": false,
+    "hosts": ["localhost:5001"]
+  },
+  "mongo": {
+    "onlyUsePrimary": true,
+    "connection": {
+      "hosts": ["mongo:27017"],
+      "database": "gitter",
+      "options": {}
+    },
+    "profileSlowQueries": true,
+    "logQueries": false,
+    "noAutoIndex": true
+  },
+  "logging": {
+    "logToFile": false,
+    "level": "info",
+    "colorize": false,
+    "prettyPrint": true,
+    "access": false,
+    "loggingFormat": "dev",
+    "logStaticAccess": false,
+    "logEmailContents": false
+  },
+  "presence": {
+    "prefix": "tpr"
+  },
+  "irc": {
+    "clientKey": "irc-dev"
+  },
+  "redis": "redis://redis?db=1",
+  "redis_nopersist": "redis://redis?db=1",
+  "redis_caching": "redis://redis",
+  "redis_faye": "redis://redis?db=2",
+  "elasticsearch": {
+    "comment": "Override with GITTER_ES_ENDPOINT (comma separated)",
+    "hosts": ["http://elasticsearch:9200"]
+  },
+  "test": {
+    "exposeInBrowserTests": true,
+    "exposeDataForTestingPurposes": true,
+    "wsPort": 5006
+  },
+  "gitlaboauth": {
+    "consumer_key": "",
+    "consumer_secret": ""
+  },
+  "twitteroauth": {
+    "consumer_key": "",
+    "consumer_secret": ""
+  },
+  "linkedinoauth2": {
+    "client_id": "",
+    "client_secret": ""
+  },
+  "googleoauth2": {
+    "client_id": "",
+    "client_secret": ""
+  },
+  "github": {
+    "client_id": "",
+    "client_secret": "",
+    "user_client_id": "",
+    "user_client_secret": "",
+    "caching": true,
+    "fast-repo-description-cache-timeout": 60,
+    "anonymous_app": {
+      "client_id": "",
+      "client_secret": ""
+    },
+    "foreverAgent": true
+  },
+  "neo4j": {
+    "comment": "Override with GITTER_NEO4J_ENDPOINT",
+    "endpoint": "http://neo4j:7474"
+  },
+  "resque": {
+    "namespace": "resque-test",
+    "queuePrefix": "test"
+  },
+  "tokens": {
+    "anonymousPassword": "abc123"
+  }
+}

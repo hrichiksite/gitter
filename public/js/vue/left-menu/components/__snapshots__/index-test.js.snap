@@ -1,0 +1,811 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`left-menu all state matches snapshot 1`] = `
+<div
+  class="root js-left-menu-root logged-in pinned"
+>
+  <header
+    class="header"
+  >
+    <section
+      class="header-minibar layout-minibar"
+    >
+      <a
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-svg-stub
+          class="logo-gitter-sign"
+        />
+      </a>
+    </section>
+     
+    <section
+      class="header-main-menu layout-main-menu"
+    >
+      <a
+        class="logo-text"
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-text-svg-stub />
+      </a>
+       
+      <span
+        class="provided-by-text"
+      >
+        
+        by
+      
+      </span>
+       
+      <a
+        class="gitlab-logo"
+        href="https://about.gitlab.com?utm_source=gitter-left-menu-logo"
+        target="_blank"
+      >
+        <gitlab-logo-svg-stub />
+      </a>
+    </section>
+  </header>
+   
+  <section
+    class="body"
+  >
+    <section
+      class="layout-minibar"
+    >
+      <menu-bar-body-stub />
+    </section>
+     
+    <section
+      class="body-main-menu layout-main-menu scroller"
+    >
+      <h2
+        class="room-list-title"
+      >
+        All conversations
+      </h2>
+       
+      <!---->
+       
+      <room-list-stub
+        rooms=""
+      />
+    </section>
+  </section>
+</div>
+`;
+
+exports[`left-menu announcements state matches snapshot 1`] = `
+<div
+  class="root js-left-menu-root logged-in pinned"
+>
+  <header
+    class="header"
+  >
+    <section
+      class="header-minibar layout-minibar"
+    >
+      <a
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-svg-stub
+          class="logo-gitter-sign"
+        />
+      </a>
+    </section>
+     
+    <section
+      class="header-main-menu layout-main-menu"
+    >
+      <a
+        class="logo-text"
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-text-svg-stub />
+      </a>
+       
+      <span
+        class="provided-by-text"
+      >
+        
+        by
+      
+      </span>
+       
+      <a
+        class="gitlab-logo"
+        href="https://about.gitlab.com?utm_source=gitter-left-menu-logo"
+        target="_blank"
+      >
+        <gitlab-logo-svg-stub />
+      </a>
+    </section>
+  </header>
+   
+  <section
+    class="body"
+  >
+    <section
+      class="layout-minibar"
+    >
+      <menu-bar-body-stub />
+    </section>
+     
+    <section
+      class="body-main-menu layout-main-menu scroller"
+    >
+      <announcements-stub />
+    </section>
+  </section>
+</div>
+`;
+
+exports[`left-menu dark-theme matches snapshot 1`] = `
+<div
+  class="root js-left-menu-root logged-in dark-theme pinned"
+>
+  <header
+    class="header"
+  >
+    <section
+      class="header-minibar layout-minibar"
+    >
+      <a
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-svg-stub
+          class="logo-gitter-sign"
+        />
+      </a>
+    </section>
+     
+    <section
+      class="header-main-menu layout-main-menu"
+    >
+      <a
+        class="logo-text"
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-text-svg-stub />
+      </a>
+       
+      <span
+        class="provided-by-text"
+      >
+        
+        by
+      
+      </span>
+       
+      <a
+        class="gitlab-logo"
+        href="https://about.gitlab.com?utm_source=gitter-left-menu-logo"
+        target="_blank"
+      >
+        <gitlab-logo-svg-stub />
+      </a>
+    </section>
+  </header>
+   
+  <section
+    class="body"
+  >
+    <section
+      class="layout-minibar"
+    >
+      <menu-bar-body-stub />
+    </section>
+     
+    <section
+      class="body-main-menu layout-main-menu scroller"
+    >
+      <h2
+        class="room-list-title"
+      >
+        All conversations
+      </h2>
+       
+      <!---->
+       
+      <room-list-stub
+        rooms=""
+      />
+    </section>
+  </section>
+</div>
+`;
+
+exports[`left-menu mobile mobile matches snapshot 1`] = `
+<div
+  class="root js-left-menu-root logged-in pinned"
+>
+  <header
+    class="header"
+  >
+    <section
+      class="header-minibar layout-minibar"
+    >
+      <a
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-svg-stub
+          class="logo-gitter-sign"
+        />
+      </a>
+    </section>
+     
+    <section
+      class="header-main-menu layout-main-menu"
+    >
+      <a
+        class="logo-text"
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-text-svg-stub />
+      </a>
+       
+      <span
+        class="provided-by-text"
+      >
+        
+        by
+      
+      </span>
+       
+      <a
+        class="gitlab-logo"
+        href="https://about.gitlab.com?utm_source=gitter-left-menu-logo"
+        target="_blank"
+      >
+        <gitlab-logo-svg-stub />
+      </a>
+    </section>
+  </header>
+   
+  <section
+    class="body"
+  >
+    <section
+      class="layout-minibar"
+    >
+      <menu-bar-body-stub />
+    </section>
+     
+    <section
+      class="body-main-menu layout-main-menu scroller"
+    >
+      <h2
+        class="room-list-title"
+      >
+        All conversations
+      </h2>
+       
+      <!---->
+       
+      <room-list-stub
+        rooms=""
+      />
+    </section>
+  </section>
+</div>
+`;
+
+exports[`left-menu nli (not logged in) matches snapshot 1`] = `
+<div
+  class="root js-left-menu-root pinned"
+>
+  <header
+    class="header"
+  >
+    <section
+      class="header-minibar layout-minibar"
+    >
+      <a
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-svg-stub
+          class="logo-gitter-sign"
+        />
+      </a>
+    </section>
+     
+    <section
+      class="header-main-menu layout-main-menu"
+    >
+      <a
+        class="logo-text"
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-text-svg-stub />
+      </a>
+       
+      <span
+        class="provided-by-text"
+      >
+        
+        by
+      
+      </span>
+       
+      <a
+        class="gitlab-logo"
+        href="https://about.gitlab.com?utm_source=gitter-left-menu-logo"
+        target="_blank"
+      >
+        <gitlab-logo-svg-stub />
+      </a>
+    </section>
+  </header>
+   
+  <section
+    class="body nli-body"
+  >
+    <h2
+      class="nli-primary-heading"
+    >
+      Where communities thrive
+    </h2>
+     
+    <br />
+     
+    <ul
+      class="nli-info-block"
+    >
+      <li
+        class="nli-info-block-item"
+      >
+        Join over 
+        <strong>
+          1.5M+ people
+        </strong>
+      </li>
+       
+      <li
+        class="nli-info-block-item"
+      >
+        Join over 
+        <strong>
+          100K+ communities
+        </strong>
+      </li>
+       
+      <li
+        class="nli-info-block-item"
+      >
+        Free 
+        <strong>
+          without limits
+        </strong>
+      </li>
+       
+      <li
+        class="nli-info-block-item"
+      >
+        Create 
+        <strong>
+          your own community
+        </strong>
+      </li>
+    </ul>
+     
+    <ul
+      class="nli-info-block"
+    >
+      <li
+        class="nli-info-block-item"
+      >
+        <a
+          href="/explore"
+        >
+          Explore more communities
+        </a>
+      </li>
+    </ul>
+  </section>
+</div>
+`;
+
+exports[`left-menu nli (not logged in) mobile matches snapshot 1`] = `
+<div
+  class="root js-left-menu-root pinned"
+>
+  <header
+    class="header"
+  >
+    <section
+      class="header-minibar layout-minibar"
+    >
+      <a
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-svg-stub
+          class="logo-gitter-sign"
+        />
+      </a>
+    </section>
+     
+    <section
+      class="header-main-menu layout-main-menu"
+    >
+      <a
+        class="logo-text"
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-text-svg-stub />
+      </a>
+       
+      <span
+        class="provided-by-text"
+      >
+        
+        by
+      
+      </span>
+       
+      <a
+        class="gitlab-logo"
+        href="https://about.gitlab.com?utm_source=gitter-left-menu-logo"
+        target="_blank"
+      >
+        <gitlab-logo-svg-stub />
+      </a>
+    </section>
+  </header>
+   
+  <section
+    class="body nli-body"
+  >
+    <h2
+      class="nli-primary-heading"
+    >
+      Where communities thrive
+    </h2>
+     
+    <br />
+     
+    <ul
+      class="nli-info-block"
+    >
+      <li
+        class="nli-info-block-item"
+      >
+        Join over 
+        <strong>
+          1.5M+ people
+        </strong>
+      </li>
+       
+      <li
+        class="nli-info-block-item"
+      >
+        Join over 
+        <strong>
+          100K+ communities
+        </strong>
+      </li>
+       
+      <li
+        class="nli-info-block-item"
+      >
+        Free 
+        <strong>
+          without limits
+        </strong>
+      </li>
+       
+      <li
+        class="nli-info-block-item"
+      >
+        Create 
+        <strong>
+          your own community
+        </strong>
+      </li>
+    </ul>
+     
+    <ul
+      class="nli-info-block"
+    >
+      <li
+        class="nli-info-block-item"
+      >
+        <a
+          href="/explore"
+        >
+          Explore more communities
+        </a>
+      </li>
+    </ul>
+  </section>
+</div>
+`;
+
+exports[`left-menu people state matches snapshot 1`] = `
+<div
+  class="root js-left-menu-root logged-in pinned"
+>
+  <header
+    class="header"
+  >
+    <section
+      class="header-minibar layout-minibar"
+    >
+      <a
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-svg-stub
+          class="logo-gitter-sign"
+        />
+      </a>
+    </section>
+     
+    <section
+      class="header-main-menu layout-main-menu"
+    >
+      <a
+        class="logo-text"
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-text-svg-stub />
+      </a>
+       
+      <span
+        class="provided-by-text"
+      >
+        
+        by
+      
+      </span>
+       
+      <a
+        class="gitlab-logo"
+        href="https://about.gitlab.com?utm_source=gitter-left-menu-logo"
+        target="_blank"
+      >
+        <gitlab-logo-svg-stub />
+      </a>
+    </section>
+  </header>
+   
+  <section
+    class="body"
+  >
+    <section
+      class="layout-minibar"
+    >
+      <menu-bar-body-stub />
+    </section>
+     
+    <section
+      class="body-main-menu layout-main-menu scroller"
+    >
+      <!---->
+       
+      <h2
+        class="room-list-title"
+      >
+        People
+      </h2>
+       
+      <room-list-stub
+        rooms=""
+      />
+    </section>
+  </section>
+</div>
+`;
+
+exports[`left-menu pinning and expanding not pinned and collapse 1`] = `
+<div
+  class="root js-left-menu-root logged-in"
+>
+  <header
+    class="header"
+  >
+    <section
+      class="header-minibar layout-minibar"
+    >
+      <a
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-svg-stub
+          class="logo-gitter-sign"
+        />
+      </a>
+    </section>
+     
+    <section
+      class="header-main-menu layout-main-menu"
+    >
+      <a
+        class="logo-text"
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-text-svg-stub />
+      </a>
+       
+      <span
+        class="provided-by-text"
+      >
+        
+        by
+      
+      </span>
+       
+      <a
+        class="gitlab-logo"
+        href="https://about.gitlab.com?utm_source=gitter-left-menu-logo"
+        target="_blank"
+      >
+        <gitlab-logo-svg-stub />
+      </a>
+    </section>
+  </header>
+   
+  <section
+    class="body"
+  >
+    <section
+      class="layout-minibar"
+    >
+      <menu-bar-body-stub />
+    </section>
+     
+    <section
+      class="body-main-menu layout-main-menu scroller"
+    >
+      <h2
+        class="room-list-title"
+      >
+        All conversations
+      </h2>
+       
+      <!---->
+       
+      <room-list-stub
+        rooms=""
+      />
+    </section>
+  </section>
+</div>
+`;
+
+exports[`left-menu pinning and expanding not pinned and expanded 1`] = `
+<div
+  class="root js-left-menu-root logged-in expanded"
+>
+  <header
+    class="header"
+  >
+    <section
+      class="header-minibar layout-minibar"
+    >
+      <a
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-svg-stub
+          class="logo-gitter-sign"
+        />
+      </a>
+    </section>
+     
+    <section
+      class="header-main-menu layout-main-menu"
+    >
+      <a
+        class="logo-text"
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-text-svg-stub />
+      </a>
+       
+      <span
+        class="provided-by-text"
+      >
+        
+        by
+      
+      </span>
+       
+      <a
+        class="gitlab-logo"
+        href="https://about.gitlab.com?utm_source=gitter-left-menu-logo"
+        target="_blank"
+      >
+        <gitlab-logo-svg-stub />
+      </a>
+    </section>
+  </header>
+   
+  <section
+    class="body"
+  >
+    <section
+      class="layout-minibar"
+    >
+      <menu-bar-body-stub />
+    </section>
+     
+    <section
+      class="body-main-menu layout-main-menu scroller"
+    >
+      <h2
+        class="room-list-title"
+      >
+        All conversations
+      </h2>
+       
+      <!---->
+       
+      <room-list-stub
+        rooms=""
+      />
+    </section>
+  </section>
+</div>
+`;
+
+exports[`left-menu search state matches snapshot 1`] = `
+<div
+  class="root js-left-menu-root logged-in pinned"
+>
+  <header
+    class="header"
+  >
+    <section
+      class="header-minibar layout-minibar"
+    >
+      <a
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-svg-stub
+          class="logo-gitter-sign"
+        />
+      </a>
+    </section>
+     
+    <section
+      class="header-main-menu layout-main-menu"
+    >
+      <a
+        class="logo-text"
+        href="undefined/?utm_source=left-menu-logo"
+      >
+        <gitter-logo-text-svg-stub />
+      </a>
+       
+      <span
+        class="provided-by-text"
+      >
+        
+        by
+      
+      </span>
+       
+      <a
+        class="gitlab-logo"
+        href="https://about.gitlab.com?utm_source=gitter-left-menu-logo"
+        target="_blank"
+      >
+        <gitlab-logo-svg-stub />
+      </a>
+    </section>
+  </header>
+   
+  <section
+    class="body"
+  >
+    <section
+      class="layout-minibar"
+    >
+      <menu-bar-body-stub />
+    </section>
+     
+    <section
+      class="body-main-menu layout-main-menu scroller"
+    >
+      <search-body-stub />
+    </section>
+  </section>
+</div>
+`;

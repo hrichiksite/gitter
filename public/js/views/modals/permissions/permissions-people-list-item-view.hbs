@@ -1,0 +1,16 @@
+<img class="permissions-people-list-item-avatar" {{{ avatarSrcSet avatarUrl 22 }}}>
+
+<div class="permissions-people-list-item-name">
+  {{#if displayName}}
+    <span class="permissions-people-list-item-display-name">
+      {{ displayName }}
+    </span>
+  {{/if}}
+  <span class="permissions-people-list-item-username">
+    @{{ username }}
+  </span>
+</div>
+
+<button class="permissions-people-list-item-remove-button">
+  <i class="icon-g-cancel"></i>
+</button>

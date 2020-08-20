@@ -1,0 +1,32 @@
+<!doctype html>
+<html class="no-js {{#if hasCachedFonts}}fonts-loaded{{/if}}" lang="{{ lang }}">
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+      <title>{{{ __ "Gitter &mdash; Where developers come to talk." }}}</title>
+
+      <meta name="description" content="Where developers come to talk.">
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <link rel="stylesheet" href='{{cdn cssFileName }}'>
+
+      <link id="favicon" rel="shortcut icon" href="{{ cdn 'images/favicon-normal.ico' }}">
+      {{> fonts}}
+  </head>
+  <body>
+    <h1>Admin dashboard: Chat message reports</h1>
+
+    <div class="js-chat-message-report-dashboard-root"></div>
+
+
+    {{{ generateTroupeContext troupeContext }}}
+    {{{ generateEnv }}}
+    {{{ bootScript bootScriptName jsRoot=jsRoot }}}
+
+    <script type="text/javascript" src="//use.typekit.net/ohh4mcl.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </body>
+</html>

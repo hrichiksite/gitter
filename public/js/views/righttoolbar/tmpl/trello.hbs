@@ -1,0 +1,16 @@
+<div class="activity-item-inner trello-card-{{trello_action}}">
+  <div class="activity-item__icon"><img src="/_s/l/images/icon-trello@2x.png" width="16" height="16"></div>
+  <div class="activity-time" id="time">{{ sentFormatted }}</div>
+
+  <div class="gtrActivityItemText">{{payload.action.memberCreator.fullName}} {{trello_action}}<br>
+    <div class="activity-detail">
+    <a href="https://trello.com/c/{{payload.action.data.card.shortLink}}" target="_blank">{{payload.action.data.card.name}}</a>
+    {{#if payload.action.data.listBefore}}
+      <br>
+      <span>({{payload.action.data.listBefore.name}} &rarr; {{payload.action.data.listAfter.name}})</span>
+    {{/if}}
+  </div>
+  </div>
+
+  <div style="clear: both;"></div>
+</div>

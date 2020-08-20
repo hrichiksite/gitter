@@ -1,0 +1,97 @@
+<div class="chat-header__main-grouping chat-header__left-menu-toggle-grouping">
+  {{> headerViewLeftMenuToggle}}
+</div>
+
+<div class="chat-header__main-grouping chat-header__avatar-grouping">
+  <form
+    class="chat-header__avatar {{#if headerView.premium }}chat-header__avatar--pro{{/if}} js-chat-header-group-avatar-upload-form"
+    action=""
+    enctype="multipart/form-data"
+    method="POST">
+    <input type="hidden" class="js-chat-header-group-avatar-upload-signature" name="signature" value="">
+    <input type="hidden" class="js-chat-header-group-avatar-upload-params" name="params" value="">
+    <input
+      id="chat-header-group-avatar-upload-input"
+      class="chat-header__group-avatar-upload-input js-chat-header-group-avatar-upload-input"
+      name="file"
+      type="file"
+      accept="image/*"
+      {{#unless canChangeGroupAvatar}}disabled{{/unless}} />
+    <label
+      class="chat-header__group-avatar-upload-label js-chat-header-group-avatar-upload-label"
+      for="chat-header-group-avatar-upload-input"
+      {{#if canChangeGroupAvatar}}title="Upload new avatar"{{/if}}>
+      <img class="js-chat-header-avatar-image" {{{ avatarSrcSet headerView.avatarUrl 48 }}}>
+      <div class="chat-header__group-avatar-upload-progress hidden js-chat-header-group-avatar-upload-progress"></div>
+    </label>
+  </form>
+</div>
+
+<div class="chat-header__main-grouping chat-header__info-grouping">
+  <div class="chat-header__heading-sub-group">
+    <h1 class="js-chat-name chat-header__heading">
+      {{#if archives}}
+      <a href="{{ headerView.url }}" class="chat-header__title">{{ headerView.troupeName }}</a>
+      {{else}}
+      <a {{#if headerView.headerLink}}href="{{ headerView.headerLink }}"{{/if}} class="chat-header__title" target="_blank">{{ headerView.troupeName }}</a>
+      {{/if}}
+      {{#if headerView.isPrivate}}
+        <i class='octicon octicon-lock chat-header__permission-icon'></i>
+      {{/if}}
+    </h1>
+  </div>
+  <div class="chat-header__topic-sub-group js-room-topic-edit-activator" tabindex="0">
+    <div class="chat-header__topic-wrapper js-room-topic-wrapper {{when headerView.isAdmin 'is-admin' : ''}} {{when shouldShowPlaceholderRoomTopic 'is-new-room' : ''}}">
+      {{~#unless headerView.oneToOne~}}
+      <p class="js-room-topic chat-header__topic {{when headerView.isAdmin 'is-admin' : ''}} {{when shouldShowPlaceholderRoomTopic 'is-new-room' : ''}}">{{ headerView.troupeTopic }}</p>
+      {{~/unless~}}
+    </div>
+  </div>
+</div>
+
+
+<div class="chat-header__main-grouping chat-header__action-grouping">
+  {{#if headerView.groupPageUrl }}
+    <a href="{{ headerView.groupPageUrl }}" class="chat-header__org-page org-page-link js-chat-header-org-page-action" title="More {{ headerView.group.uri }} rooms">
+      <i class="chat-header__action-icon icon-globe"></i>
+    </a>
+  {{/if}}
+
+  {{#unless archives}}
+    {{#if user}}
+    <button class="chat-header__favourite js-favourite-button {{#if headerView.favourite }}favourite{{/if}}" title="Favourite {{ headerView.troupeName }}">
+      <i
+        class="chat-header__action-icon {{#if headerView.favourite }}icon-star-1{{^}}icon-star-empty{{/if}}"
+        aria-hidden="true">
+      </i>
+    </button>
+    <button class="chat-header__settings js-chat-settings" title="Room settings" data-toggle="dropdown">
+      <i class="chat-header__action-icon" aria-hidden="true">
+        <svg
+          class="chat-header__action-icon-svg--settings"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xml:space="preserve"
+          viewBox="0 0 27 26"
+          stroke="currentColor"
+          stroke-width="1.75"
+          fill="transparent">
+          <line vector-effect="non-scaling-stroke" class="st0" x1="4.5" y1="24" x2="4.5" y2="15"/>
+          <line vector-effect="non-scaling-stroke" class="st0" x1="4.5" y1="3" x2="4.5" y2="9"/>
+          <circle vector-effect="non-scaling-stroke" class="st0" cx="4.5" cy="12" r="3"/>
+
+          <line vector-effect="non-scaling-stroke" class="st0" x1="13.5" y1="24" x2="13.5" y2="20"/>
+          <line vector-effect="non-scaling-stroke" class="st0" x1="13.5" y1="3" x2="13.5" y2="14"/>
+          <circle vector-effect="non-scaling-stroke" class="st0" cx="13.5" cy="17" r="3"/>
+
+          <line vector-effect="non-scaling-stroke" class="st0" x1="22.5" y1="24" x2="22.5" y2="12"/>
+          <line vector-effect="non-scaling-stroke" class="st0" x1="22.5" y1="3" x2="22.5" y2="6"/>
+          <circle vector-effect="non-scaling-stroke" class="st0" cx="22.5" cy="9" r="3"/>
+        </svg>
+      </i>
+    </button>
+    <div id="profile-menu" class="profile-menu"></div>
+    {{/if}}
+  {{/unless}}
+</div>

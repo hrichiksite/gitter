@@ -1,0 +1,19 @@
+{
+  "user": {
+    "dynamic" : "strict",
+    "properties": {
+      "displayName": {
+        "type": "string",
+        "norms": {
+          "enabled": false
+        }
+      },
+      "username": {
+        "type": "string",
+        "norms": {
+          "enabled": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+rs.slaveOk()
+load('./csv.js');
+
+var period = 86400000 * 30;
+var now = Date.now();
+var p1 = new Date(now - period);
+
+var a = db.chatmessages.aggregate([{
+  $match: {
+    _id: { $gt: createIdForTimestampString(p1) },
+    sent: { $type: 'date' }
+  }
+}, {
+  $group: {
+    _id: '$toTroupeId',
+    chats: { $sum: 1 },
+    activeUsers: { $addToSet: '$fromUserId' }
+  },
+}, {
+  $lookup: {
+    from: "troupes",
+    localField: "_id",
+    foreignField: "_id",
+    as: "troupe"
+  },
+}, {
+  $unwind: "$troupe"
+}, {
+  $match: {
+    'troupe.oneToOne': { $ne: true }
+  }
+}, {
+  $project: {
+    chats: 1,
+    activeUsers: { $size: '$activeUsers' }
+  },
+}, {
+  $group: {
+    _id: '$activeUsers',
+    totalChats: { $sum: '$chats' },
+  },
+}, {
+  $sort: {
+    _id: 1
+  }
+}, {
+  $project: {
+    _id: 0,
+    numActivUsers: '$_id',
+    totalChats: 1
+  }
+}]);
+
+printCSV(a, ['numActivUsers', 'totalChats']);

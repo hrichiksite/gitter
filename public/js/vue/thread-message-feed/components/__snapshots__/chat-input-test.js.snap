@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`thread-message-feed chat-input matches snapshot for thread 1`] = `
+<footer
+  class="chat-input thread"
+  id="chat-input-wrapper"
+>
+  <div
+    class="chat-input__container"
+  >
+    <div
+      class="chat-input__area"
+    >
+      <div
+        class="chat-input__avatar"
+      >
+        <avatar-stub
+          size="s"
+          user="[object Object]"
+        />
+      </div>
+       
+      <div
+        class="chat-input-box__region"
+        id="chat-input-box-region"
+      >
+        <form
+          class="chat-input__box"
+          name="chat"
+        >
+          <textarea
+            autocomplete="off"
+            autocorrect="off"
+            autofocus="autofocus"
+            class="chat-input__text-area"
+            maxlength="4096"
+            name="chat"
+            placeholder="Click here to type a chat message."
+            style="height: 0px;"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+`;

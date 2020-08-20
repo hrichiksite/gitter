@@ -1,0 +1,84 @@
+rs.slaveOk()
+load('./csv.js');
+
+function createIdForTimestampString(timestamp) {
+  var hexSeconds = Math.floor(timestamp/1000).toString(16);
+
+  while(hexSeconds.length < 8) {
+    hexSeconds = "0" + hexSeconds;
+  }
+  return ObjectId(hexSeconds + "0000000000000000");
+}
+
+function aggregate(start, end) {
+  return db.users.aggregate([{
+    $match: {
+      _id: {
+        $lt: createIdForTimestampString(end),
+        $gt: createIdForTimestampString(start)
+      },
+    }
+  }, {
+    $lookup: {
+      from: "troupeusers",
+      localField: "_id",
+      foreignField: "userId",
+      as: "troupeuser"
+    },
+  }, {
+    $unwind: "$troupeuser"
+  }, {
+    $group: {
+      _id: '$_id',
+      username: { $first: '$username' },
+      firstTroupeUser: { $min: '$troupeuser._id' }
+    }
+  }, {
+    $lookup: {
+      from: "troupeusers",
+      localField: "firstTroupeUser",
+      foreignField: "_id",
+      as: "troupeuser"
+    },
+  }, {
+    $unwind: "$troupeuser"
+  }, {
+    $lookup: {
+      from: "troupes",
+      localField: "troupeuser.troupeId",
+      foreignField: "_id",
+      as: "troupe"
+    },
+  }, {
+    $unwind: "$troupe"
+  }, {
+    $project: {
+      _id: 1,
+      firstRoomUserCount: '$troupe.userCount',
+    }
+  }]);
+}
+
+var endP1 = new Date('2016-10-01T00:00:00Z');
+var startP1 = new Date('2015-10-01T00:00:00Z');
+
+var buckets = {};
+aggregate(startP1, endP1).forEach(function(d) {
+  var day = d._id.getTimestamp().toISOString().split('T')[0];
+  if (!buckets[day]) {
+    buckets[day] = [d.firstRoomUserCount];
+  } else {
+    buckets[day].push(d.firstRoomUserCount)
+  }
+});
+
+print('day,avgRoomSize');
+var dates = Object.keys(buckets);
+dates.sort();
+dates.forEach(function(date) {
+  var f = buckets[date];
+  var total = f.reduce(function(memo, v) {
+    return memo + v;
+  },0);
+  print(date + ',' + (total/f.length));
+});

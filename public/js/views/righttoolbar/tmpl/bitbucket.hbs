@@ -1,0 +1,13 @@
+<div class="activity-item-inner bitbucket">
+  <div class="activity-item__icon"><img src="/_s/l/images/icon-bitbucket@2x.png" width="16" height="16"></div>
+  <div class="activity-time" id="time">{{ sentFormatted }}</div>
+  <div class="gtrActivityItemText"><a href="https://bitbucket.com/{{meta.user}}" target="_blank">{{meta.user}}</a> pushed to <a href="https://bitbucket.org/{{meta.repo}}" target="_blank">{{meta.repo}}</a><br>
+    <span class="activity-commit">
+    {{#if is_single_commit}}
+      {{first_commit.message}} <a href="{{sanitizeHref first_commit.url}}" target="_blank" style="opacity: 0.6">(compare)</a>
+    {{else}}
+      {{commits_count}} commits
+    {{/if}}
+    </span>
+  </div>
+</div>

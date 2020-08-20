@@ -1,0 +1,71 @@
+@import (reference) "../../../less/colors.less";
+@import (reference) "../../../less/trpButtons.less";
+
+.share-view {
+  font-family: 'Open Sans','HelveticaNeue',sans-serif;
+  color: #333;
+}
+
+.share-view__heading {
+  font-size: 16px;
+  line-height: 1em;
+  font-weight: normal;
+  margin-bottom: 12px;
+}
+
+.share-view__section {
+  display: flex;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.share-view__section > *:not(:last-child) {
+  margin-right: 8px;
+}
+
+.share-view__copy-field {
+  width: 100%;
+  padding: 9px;
+  margin: 0 0 1rem 0;
+
+  background-color: fade(@trpGrey, 50%);
+  border: 1px solid @trpGrey;
+  border-radius: 4px;
+  box-shadow: none;
+
+  font-family: 'Open Sans','HelveticaNeue',sans-serif;
+  font-size: 14px;
+  color: black;
+
+  outline: 0;
+
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+}
+
+.share-view__button {
+  .trpButtonMedium;
+  flex-shrink: 0;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.share-view__button--copy {
+  .trpBtnGreen;
+}
+
+.share-view__button--pull-request {
+  .trpBtnBlue;
+}
+
+.share-view__badge {
+  vertical-align: middle;
+}
+
+.share-view__social {
+  flex-wrap: nowrap;
+}

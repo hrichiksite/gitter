@@ -1,0 +1,60 @@
+/**
+ * This script will get a count of all active users and aggregates it by month.
+ * Users we consider active:
+ *  - sent a message during the time period
+ * By default it gets last 6 months (ignoring current month because it's not finished yet) but this 6 month window
+ * can be shifted by any amount of months. This mechanism is mainly here to prevent from running hour long queries on the DB.
+ *
+ * Usage:
+ * `mongo gitter --eval "var skipMonth=6" active-users-by-month.mongo`
+ *
+ * e.g. running this on 25th of November 2019 will result in getting user count for 2018-11 - 2019-04
+ */
+'use strict';
+
+load('./fail-on-master.js');
+
+load('./date-time-utils.js');
+
+// this is how we pass arguments to this script https://stackoverflow.com/a/10114802/606571
+// eslint-disable-next-line no-use-before-define
+var skipMonth = skipMonth || 0;
+
+for (var i = 0; i < 6; i++) {
+  var startXMonthsAgo = skipMonth + i;
+  var start = startOfUtcMonth(-1 - startXMonthsAgo);
+  var end = startOfUtcMonth(-startXMonthsAgo);
+
+  var x = db.chatmessages.aggregate([
+    {
+      $match: {
+        _id: {
+          $lt: createIdForTimestamp(end),
+          $gt: createIdForTimestamp(start)
+        }
+      }
+    },
+    {
+      $group: {
+        _id: '$fromUserId'
+      }
+    },
+    // only users who didn't sign up given month
+    {
+      $match: {
+        _id: {
+          $lt: createIdForTimestamp(start)
+        }
+      }
+    },
+    {
+      $group: {
+        _id: null,
+        count: { $sum: 1 }
+      }
+    }
+  ]);
+
+  const count = (x.toArray() && x.toArray()[0] && x.toArray()[0].count) || 0;
+  print(tojson({ date: start.toISOString(), count: count }));
+}

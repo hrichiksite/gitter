@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Gitter &mdash; Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link id="favicon" rel="shortcut icon" href="{{ cdn 'images/favicon-normal.ico' }}">
+
+    <link rel="stylesheet" href='{{cdn cssFileName }}'>
+  </head>
+
+  <body>
+    <div class='background'>
+      <div class='login'>
+        <header>
+          <a href="/" class="logo">
+            {{> logo_man}}
+            <img src="{{ cdn 'images/home/logo_nomargin@2x.png' }}" alt="Gitter" class="logo-image menu-animation">
+          </a>
+        </header>
+        <section>
+          <h1>Where developers come to talk.</h1>
+          {{#if showNewLogin}}
+            <p>
+              <a class="btn" href="/login?action=login&source={{source}}{{#if returnTo}}&returnTo={{returnTo}}{{/if}}">
+                Sign in to start talking
+              </a>
+            </p>
+          {{else}}
+            <p>
+              <a class='btn transparent' href="/login/github?action=login&source={{source}}{{#if returnTo}}&returnTo={{returnTo}}{{/if}}">
+                Existing user login
+              </a>
+            </p>
+            <p class='or'>Or</p>
+            <p>
+              <a class='btn signup' href="/login/github?action=signup&source={{source}}{{#if returnTo}}&returnTo={{returnTo}}{{/if}}">
+                Sign up to start talking
+              </a>
+            </p>
+          {{/if}}
+        </section>
+      </div>
+    </div>
+    {{{ generateEnv }}}
+    {{{ bootScript bootScriptName jsRoot=jsRoot }}}
+    <script type="text/javascript" src="//use.typekit.net/ohh4mcl.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    {{> live_reload }}
+  </body>
+</html>

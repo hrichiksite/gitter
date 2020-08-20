@@ -1,0 +1,14 @@
+{
+  "analysis": {
+    "analyzer": {
+      "default": {
+        "type": "custom",
+        "tokenizer": "uax_url_email",
+        "filter": [
+          "lowercase",
+          "asciifolding"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+'use strict';
+
+rs.slaveOk();
+
+var x = db.groups.aggregate({
+  $project: {
+    _id: 0,
+    type: {
+      $cond: {
+        if: { $eq: ['$sd.type', null] },
+        then: 'non-github',
+        else: 'github'
+      }
+    }
+  }
+}, {
+  $group: {
+    _id: '$type',
+    count: { $sum: 1 }
+  }
+});
+
+
+printjson(x.toArray());
+
+
+
+
+var twoMonths = Date.now() - 86400000 * 30;
+
+function createIdForTimestampString(timestamp) {
+  var hexSeconds = Math.floor(timestamp/1000).toString(16);
+
+  while(hexSeconds.length < 8) {
+    hexSeconds = "0" + hexSeconds;
+  }
+  return ObjectId(hexSeconds + "0000000000000000");
+}
+
+
+var y = db.groups.aggregate({
+  $match: {
+    _id: { $gt: createIdForTimestampString(twoMonths) }
+  }
+}, {
+  $project: {
+    _id: 0,
+    type: {
+      $cond: {
+        if: { $eq: ['$sd.type', null] },
+        then: 'non-github',
+        else: 'github'
+      }
+    }
+  }
+}, {
+  $group: {
+    _id: '$type',
+    count: { $sum: 1 }
+  }
+});
+
+printjson(y.toArray());

@@ -1,0 +1,10 @@
+
+for(;;) {
+  var accessTokenIds = db.oauthaccesstokens.find({ userId: null, expires: { $lt: new Date() }}, { _id: 1 }).limit(1000).map(function(f) { return f._id; });
+
+  if (!accessTokenIds.length) break;
+  var removedCount = db.oauthaccesstokens.remove({ _id: { $in: accessTokenIds } });
+  if (!removedCount.nRemoved) break;
+  print('Removed 1000 access tokens');
+  sleep(1000);
+}

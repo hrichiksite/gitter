@@ -1,0 +1,24 @@
+<div id="remaining-view" class="remaining-view">
+
+  {{#if showAddButton}}
+  <a href="#add" class="remaining-view-button button-caribbean--xsmall">
+    Add
+  </a>
+  {{/if}}
+
+  {{#if showPeopleButton}}
+  {{#if hasHiddenMembers}}
+  <a href="#people" class="remaining-view-secondary-button secondary-button-caribbean--xsmall">
+    See All
+    <span class="remaining-view-button-secondary-text">
+      ({{userCount}} people)
+    </span>
+  </a>
+  {{else}}
+  <a href="#people" class="remaining-view-button secondary-button-caribbean--xsmall">
+    Details
+  </a>
+  {{/if}}
+  {{/if}}
+
+</div>

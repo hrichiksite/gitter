@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`thread-message-feed avatar default size matches snapshot 1`] = `
+<div
+  class="trpDisplayPicture avatar-s"
+>
+  <img
+    alt="Test User"
+    class="avatar__image"
+    src="https://secure.gravatar.com/avatar/6042a9152ada74d9fb6a0cdce895337e?s=30&d=identicon"
+    srcset="https://secure.gravatar.com/avatar/6042a9152ada74d9fb6a0cdce895337e?s=60&d=identicon 2x"
+  />
+</div>
+`;
+
+exports[`thread-message-feed avatar m size matches snapshot 1`] = `
+<div
+  class="trpDisplayPicture avatar-m"
+>
+  <img
+    alt="Test User"
+    class="avatar__image"
+    src="https://secure.gravatar.com/avatar/6042a9152ada74d9fb6a0cdce895337e?s=48&d=identicon"
+    srcset="https://secure.gravatar.com/avatar/6042a9152ada74d9fb6a0cdce895337e?s=96&d=identicon 2x"
+  />
+</div>
+`;
+
+exports[`thread-message-feed avatar should use fallback image if there is a loading error 1`] = `
+<div
+  class="trpDisplayPicture avatar-s"
+>
+  <img
+    alt="Test User"
+    class="avatar__image"
+    src="https://default.png"
+  />
+</div>
+`;

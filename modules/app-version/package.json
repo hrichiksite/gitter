@@ -1,0 +1,16 @@
+{
+  "name": "gitter-app-version",
+  "version": "0.1.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "gitter-web-env": "file:../env"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "gitter-web-env": "file:../env"
+  }
+}

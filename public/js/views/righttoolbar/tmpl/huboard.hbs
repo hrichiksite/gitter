@@ -1,0 +1,7 @@
+<div class="activity-item-inner huboard">
+  <div class="service-sprite huboard-logo activity-item__icon"></div>
+  <div class="activity-time" id="time">{{ sentFormatted }}</div>
+
+  <div class="gtrActivityItemText"><span class='mention' data-link-type="mention" data-screen-name="{{meta.user}}">{{meta.user}}</span> {{meta.action}} <span class="issue" data-link-type="issue" data-issue="{{meta.number}}" data-issue-repo="{{meta.repo}}">#{{meta.number}}</span> {{#if meta.assignee}}to <span class='mention' data-link-type="mention" data-screen-name="{{meta.assignee}}">{{meta.assignee}}</span>{{else}}{{context}}{{/if}}</div>
+
+</div>

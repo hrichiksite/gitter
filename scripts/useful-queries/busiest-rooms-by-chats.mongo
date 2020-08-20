@@ -1,0 +1,67 @@
+rs.slaveOk()
+
+var horizonTimestamp = Date.now() - 86400000 * 30;
+
+function createIdForTimestampString(timestamp) {
+  var hexSeconds = Math.floor(timestamp/1000).toString(16);
+
+  while(hexSeconds.length < 8) {
+    hexSeconds = "0" + hexSeconds;
+  }
+  return ObjectId(hexSeconds + "0000000000000000");
+}
+
+var a = db.chatmessages.aggregate([{
+  $match: {
+    _id: { $gt: createIdForTimestampString(horizonTimestamp) },
+    sent: { $type: 'date' }
+  }
+}, {
+  $group: {
+    _id: '$toTroupeId',
+    days: { $addToSet: { $dayOfYear: "$sent" } },
+    users: { $addToSet: "$fromUserId" },
+    count: { $sum: 1 }
+  },
+}, {
+  $project: {
+    roomId: '$_id',
+    days: { $size: '$days' },
+    uniqueUserCount: { $size: '$users' },
+    count: '$count'
+  }
+}, {
+  $sort: {
+    count: -1
+  }
+}, {
+  $limit: 1000
+}, {
+  $match: {
+    uniqueUserCount: { $gt: 3 }
+  }
+}, {
+  $lookup: {
+    from: "troupes",
+    localField: "roomId",
+    foreignField: "_id",
+    as: "troupe"
+  }
+}, {
+  $unwind: "$troupe"
+}, {
+  $project: {
+    roomId: '$_id',
+    uri: '$troupe.uri',
+    public: '$troupe.sd.public',
+    totalUsers: '$troupe.userCount',
+    activeUsers: '$uniqueUserCount',
+    activeDays: '$days',
+    totalMessages: '$count'
+  }
+}]);
+
+print('uri,public,activeDays,totalMessages,activeUsers,totalUsers')
+a.forEach(function(i) {
+  print(i.uri + ',' + i.public + ',' + i.activeDays + ',' + i.totalMessages + ',' + i.activeUsers + ',' + i.totalUsers)
+})

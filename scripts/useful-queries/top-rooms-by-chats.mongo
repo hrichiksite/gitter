@@ -1,0 +1,9 @@
+db.chatmessages.aggregate([
+  { $project: { t: '$toTroupeId' } },
+  { $group: { _id: '$t', s: { $sum: 1 }  } },
+  { $sort: { s: -1 } },
+  { $limit: 40 }
+]).result.forEach(function(f) {
+  var t = db.troupes.findOne({ _id: f._id });
+  print(t.uri, f.s, t.security)
+})

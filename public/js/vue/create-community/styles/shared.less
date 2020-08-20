@@ -1,0 +1,87 @@
+@import (reference) 'colors';
+
+@base-text-color: rgba(255, 255, 255, 0.75);
+@subdued-text-color: rgba(255, 255, 255, 0.5);
+@list-area-background-color: rgba(0, 0, 0, 0.2);
+
+@primary-input-font-size: 3.789rem;
+
+.primary-bare-input(@explicit-height: 6rem; @font-size: @primary-input-font-size; @border-width: 3px) {
+  display: block;
+  width: 100%;
+  height: @explicit-height;
+
+  padding: 0.3em 0;
+
+  background-color: transparent;
+  border: 0;
+  border-bottom: @border-width solid @jaffa;
+  box-shadow: none;
+  border-radius: 0;
+
+  color: @base-text-color;
+  font-size: @font-size;
+  line-height: 1;
+  font-weight: 300;
+
+  transition: border-color 0.2s ease;
+
+  &:hover,
+  &:focus {
+    border-color: @jaffa;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  // Reset forms.less :(
+  &:focus:required:invalid {
+    color: @base-text-color;
+    border-bottom-color: @ruby;
+    box-shadow: none;
+  }
+
+  &:required {
+    border-bottom-color: @jaffa;
+  }
+  &:valid {
+    border-bottom-color: @caribbean;
+  }
+  &:invalid {
+    border-bottom-color: @ruby;
+  }
+  &:not(:required) {
+    border-bottom-color: @jaffa;
+  }
+
+  &:placeholder {
+    color: @subdued-text-color;
+  }
+}
+
+.secondary-bare-input() {
+  .primary-bare-input(3rem, 1.6rem, 1px);
+}
+
+.primary-community-heading {
+  max-width: 600px;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  color: #ffffff;
+  font-size: @primary-input-font-size + 0.45em;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.secondary-community-heading {
+  max-width: 600px;
+  margin-top: 1em;
+
+  color: #ffffff;
+  font-size: @primary-input-font-size;
+  font-weight: 300;
+  line-height: 1.2;
+}

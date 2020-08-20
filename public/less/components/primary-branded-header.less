@@ -1,0 +1,77 @@
+@cloud-mocks-base-color: #783abd;
+@clouds-mock-gradient-base: linear-gradient(to right, #302877 0%, #4f329c 25%, #7f40cb 61%, #9c55d7 80%, #9e55da 100%);
+@clouds-mock-subtle-vertical-gradient: linear-gradient(to bottom, rgba(118, 56, 183, 0.1) 0%, rgba(107, 55, 182, 0.1) 100%);
+
+.primary-branded-header {
+  display: flex;
+  align-items: stretch;
+
+  min-height: 8.5rem;
+
+  background-color: @cloud-mocks-base-color;
+  background-image: @clouds-mock-gradient-base;
+  background:
+    @clouds-mock-subtle-vertical-gradient,
+    linear-gradient(
+      -40deg,
+      rgba(114,55,161,0) 82%,
+      rgba(114,55,161,1) 88%,
+      rgba(114,55,161,1) 94%,
+      rgba(114,55,161,0) 110%
+    ),
+    linear-gradient(
+      -60deg,
+      rgba(153,77,207,0) 36%,
+      rgba(153,77,207,0.5) 38%,
+      rgba(153,77,207,0.5) 40%,
+      rgba(153,77,207,0) 42%
+    ),
+    linear-gradient(
+      -60deg,
+      rgba(153,77,207,0) 0%,
+      rgba(153,77,207,0) 48%,
+      rgba(153,77,207,0.8) 56%,
+      rgba(153,77,207,0) 62%
+    ),
+    linear-gradient(
+      34deg,
+      rgba(232,134,232,0) 0%,
+      rgba(232,134,232,0) 75%,
+      rgba(232,134,232,0.6) 81%,
+      rgba(232,134,232,0.6) 83%,
+      rgba(232,134,232,0) 89%
+    ),
+    @clouds-mock-gradient-base;
+
+  @media (max-width: 700px) {
+    background:
+      @clouds-mock-subtle-vertical-gradient,
+      @clouds-mock-gradient-base;
+  }
+  @media (max-width: 440px) {
+    min-height: 6.5rem;
+  }
+}
+
+.primary-branded-header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+}
+
+.primary-branded-header-branded-group {
+  display: flex;
+  align-items: center;
+}
+
+.primary-branded-header__sub-heading {
+  margin-left: 4rem;
+
+  color: rgba(255, 255, 255, .4);
+  font-size: 2.132rem;
+  font-weight: 400;
+  line-height: 3.4rem;
+}

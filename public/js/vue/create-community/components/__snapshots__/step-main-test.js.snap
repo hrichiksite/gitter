@@ -1,0 +1,646 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StepMain GitHub user matches snapshot 1`] = `
+<div>
+  <h1
+    class="primary-community-heading"
+  >
+    
+    Create community
+  
+  </h1>
+   
+  <h2
+    class="secondary-community-heading"
+  >
+    
+    Think big,
+    <br />
+    
+    start small, grow fast
+  
+  </h2>
+   
+  <input
+    class="primary-community-name-input"
+    maxlength="80"
+    pattern=".+"
+    placeholder="your community name"
+    required="required"
+  />
+   
+  <!---->
+   
+  <div
+    class="slug-input-wrapper"
+  >
+    <span
+      class="slug-input-prefix"
+    >
+      gitter.im/
+    </span>
+     
+    <input
+      class="slug-input"
+      maxlength="80"
+      pattern="[a-zA-Z0-9\\\\-_]+"
+      placeholder="your-community-uri"
+      required="required"
+    />
+  </div>
+   
+  <!---->
+   
+  <!---->
+   
+  <p
+    class="backing-entity-prompt-copy"
+  >
+    
+    do you want to start a community for one of your
+    
+    <a
+      data-disable-routing="1"
+      href="#0"
+    >
+      
+      GitHub orgs/repos?
+    
+    </a>
+  </p>
+   
+  <p>
+    
+    do you want to start a communtiy for your
+    
+    <a
+      data-disable-routing="1"
+      href="#0"
+    >
+      GitHub
+      @some-username user
+    
+    </a>
+  </p>
+   
+  <!---->
+   
+  <div
+    class="submit-button-container"
+  >
+    <!---->
+     
+    <button
+      class="submit-button button-caribbean"
+      type="submit"
+    >
+      
+      Submit
+    
+    </button>
+  </div>
+</div>
+`;
+
+exports[`StepMain GitLab user matches snapshot 1`] = `
+<div>
+  <h1
+    class="primary-community-heading"
+  >
+    
+    Create community
+  
+  </h1>
+   
+  <h2
+    class="secondary-community-heading"
+  >
+    
+    Think big,
+    <br />
+    
+    start small, grow fast
+  
+  </h2>
+   
+  <input
+    class="primary-community-name-input"
+    maxlength="80"
+    pattern=".+"
+    placeholder="your community name"
+    required="required"
+  />
+   
+  <!---->
+   
+  <div
+    class="slug-input-wrapper"
+  >
+    <span
+      class="slug-input-prefix"
+    >
+      gitter.im/
+    </span>
+     
+    <input
+      class="slug-input"
+      maxlength="80"
+      pattern="[a-zA-Z0-9\\\\-_]+"
+      placeholder="your-community-uri"
+      required="required"
+    />
+  </div>
+   
+  <!---->
+   
+  <p
+    class="backing-entity-prompt-copy"
+  >
+    
+    do you want to start a community for one of your
+    
+    <a
+      data-disable-routing="1"
+      href="#0"
+    >
+      
+      GitLab groups/projects?
+    
+    </a>
+  </p>
+   
+  <!---->
+   
+  <p>
+    
+    do you want to start a communtiy for your
+    
+    <a
+      data-disable-routing="1"
+      href="#0"
+    >
+      GitLab
+      @some-username user
+    
+    </a>
+  </p>
+   
+  <!---->
+   
+  <div
+    class="submit-button-container"
+  >
+    <!---->
+     
+    <button
+      class="submit-button button-caribbean"
+      type="submit"
+    >
+      
+      Submit
+    
+    </button>
+  </div>
+</div>
+`;
+
+exports[`StepMain entity selected matches snapshot 1`] = `
+<div>
+  <h1
+    class="primary-community-heading"
+  >
+    
+    Create community
+  
+  </h1>
+   
+  <h2
+    class="secondary-community-heading"
+  >
+    
+    Think big,
+    <br />
+    
+    start small, grow fast
+  
+  </h2>
+   
+  <input
+    class="primary-community-name-input"
+    maxlength="80"
+    pattern=".+"
+    placeholder="your community name"
+    required="required"
+  />
+   
+  <!---->
+   
+  <div
+    class="slug-input-wrapper"
+  >
+    <span
+      class="slug-input-prefix"
+    >
+      gitter.im/
+    </span>
+     
+    <input
+      class="slug-input"
+      maxlength="80"
+      pattern="[a-zA-Z0-9\\\\-_]+"
+      placeholder="your-community-uri"
+      required="required"
+    />
+  </div>
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <div
+    class="backing-entity-copy"
+  >
+    
+    Associated with
+    
+    <div
+      class="backing-entity-copy-main"
+    >
+      <a
+        data-disable-routing="1"
+        href="https://gitlab.com/groups/gitlab-org/gitter"
+        target="_blank"
+      >
+        <!---->
+         
+        <i
+          class="icon-gitlab"
+        />
+         
+        <span>
+          gitlab-org/gitter
+        </span>
+      </a>
+       
+      <button
+        class="clear-association-button"
+      >
+        <span
+          class="clear-association-icon"
+        />
+      </button>
+       
+      <!---->
+    </div>
+     
+    <button
+      class="secondary-button-caribbean"
+    >
+      
+      change
+    
+    </button>
+  </div>
+   
+  <div
+    class="submit-button-container"
+  >
+    <!---->
+     
+    <button
+      class="submit-button button-caribbean"
+      type="submit"
+    >
+      
+      Submit
+    
+    </button>
+  </div>
+</div>
+`;
+
+exports[`StepMain errors community name error 1`] = `
+<div>
+  <h1
+    class="primary-community-heading"
+  >
+    
+    Create community
+  
+  </h1>
+   
+  <h2
+    class="secondary-community-heading"
+  >
+    
+    Think big,
+    <br />
+    
+    start small, grow fast
+  
+  </h2>
+   
+  <input
+    class="primary-community-name-input"
+    maxlength="80"
+    pattern=".+"
+    placeholder="your community name"
+    required="required"
+  />
+   
+  <div
+    class="error-text error-box"
+  >
+    
+    SOME BAD ERROR!
+  
+  </div>
+   
+  <div
+    class="slug-input-wrapper"
+  >
+    <span
+      class="slug-input-prefix"
+    >
+      gitter.im/
+    </span>
+     
+    <input
+      class="slug-input"
+      maxlength="80"
+      pattern="[a-zA-Z0-9\\\\-_]+"
+      placeholder="your-community-uri"
+      required="required"
+    />
+  </div>
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <div
+    class="submit-button-container"
+  >
+    <!---->
+     
+    <button
+      class="submit-button button-caribbean"
+      type="submit"
+    >
+      
+      Submit
+    
+    </button>
+  </div>
+</div>
+`;
+
+exports[`StepMain errors community slug error 1`] = `
+<div>
+  <h1
+    class="primary-community-heading"
+  >
+    
+    Create community
+  
+  </h1>
+   
+  <h2
+    class="secondary-community-heading"
+  >
+    
+    Think big,
+    <br />
+    
+    start small, grow fast
+  
+  </h2>
+   
+  <input
+    class="primary-community-name-input"
+    maxlength="80"
+    pattern=".+"
+    placeholder="your community name"
+    required="required"
+  />
+   
+  <!---->
+   
+  <div
+    class="slug-input-wrapper"
+  >
+    <span
+      class="slug-input-prefix"
+    >
+      gitter.im/
+    </span>
+     
+    <input
+      class="slug-input"
+      maxlength="80"
+      pattern="[a-zA-Z0-9\\\\-_]+"
+      placeholder="your-community-uri"
+      required="required"
+    />
+  </div>
+   
+  <div
+    class="error-text error-box"
+  >
+    
+    SOME BAD ERROR!
+  
+  </div>
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <div
+    class="submit-button-container"
+  >
+    <!---->
+     
+    <button
+      class="submit-button button-caribbean"
+      type="submit"
+    >
+      
+      Submit
+    
+    </button>
+  </div>
+</div>
+`;
+
+exports[`StepMain submit button submit error user matches snapshot 1`] = `
+<div>
+  <h1
+    class="primary-community-heading"
+  >
+    
+    Create community
+  
+  </h1>
+   
+  <h2
+    class="secondary-community-heading"
+  >
+    
+    Think big,
+    <br />
+    
+    start small, grow fast
+  
+  </h2>
+   
+  <input
+    class="primary-community-name-input"
+    maxlength="80"
+    pattern=".+"
+    placeholder="your community name"
+    required="required"
+  />
+   
+  <!---->
+   
+  <div
+    class="slug-input-wrapper"
+  >
+    <span
+      class="slug-input-prefix"
+    >
+      gitter.im/
+    </span>
+     
+    <input
+      class="slug-input"
+      maxlength="80"
+      pattern="[a-zA-Z0-9\\\\-_]+"
+      placeholder="your-community-uri"
+      required="required"
+    />
+  </div>
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <div
+    class="submit-button-container"
+  >
+    <div
+      class="error-text error-box"
+    >
+      
+      Error submitting community: Error: My fake request failed.
+    
+    </div>
+     
+    <button
+      class="submit-button button-caribbean"
+      type="submit"
+    >
+      
+      Submit
+    
+    </button>
+  </div>
+</div>
+`;
+
+exports[`StepMain submit button submit loading user matches snapshot 1`] = `
+<div>
+  <h1
+    class="primary-community-heading"
+  >
+    
+    Create community
+  
+  </h1>
+   
+  <h2
+    class="secondary-community-heading"
+  >
+    
+    Think big,
+    <br />
+    
+    start small, grow fast
+  
+  </h2>
+   
+  <input
+    class="primary-community-name-input"
+    maxlength="80"
+    pattern=".+"
+    placeholder="your community name"
+    required="required"
+  />
+   
+  <!---->
+   
+  <div
+    class="slug-input-wrapper"
+  >
+    <span
+      class="slug-input-prefix"
+    >
+      gitter.im/
+    </span>
+     
+    <input
+      class="slug-input"
+      maxlength="80"
+      pattern="[a-zA-Z0-9\\\\-_]+"
+      placeholder="your-community-uri"
+      required="required"
+    />
+  </div>
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <div
+    class="submit-button-container"
+  >
+    <loading-spinner-stub />
+     
+    <button
+      class="submit-button button-caribbean"
+      type="submit"
+    >
+      
+      Submit
+    
+    </button>
+  </div>
+</div>
+`;

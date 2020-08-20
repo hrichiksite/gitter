@@ -1,0 +1,198 @@
+{
+  "web": {
+    "homeurl": "/",
+    "baseserver": "gitter.im",
+    "baseport": "80",
+    "basepath": "https://gitter.im",
+    "apiBasePath": "https://gitter.im/api",
+    "apiRateLimit": 100,
+    "oauthBasePath": "https://login.gitter.im",
+    "cookieDomain": ".gitter.im",
+    "cookiePrefix": "g_",
+    "secureCookies": true,
+    "exposeInBrowserTests": false,
+    "cacheTemplates": true,
+    "badgeBaseUrl": "https://badges.gitter.im",
+    "backlog": 16384,
+    "startApiInPrimaryApp": true
+  },
+  "ws": {
+    "hostname": "ws.gitter.im",
+    "externalPort": 443,
+    "bindIp": "0.0.0.0",
+    "port": 5443,
+    "fayeUrl": "https://ws.gitter.im/bayeux",
+    "fayePerMessageDeflate": false,
+    "backlog": 16384,
+    "useDeprecatedChannels": true
+  },
+  "express": {
+    "showStack": false,
+    "viewCache": true
+  },
+  "email": {
+    "emailBasePath": "https://gitter.im"
+  },
+  "runtime": {
+    "gid": "troupe",
+    "uid": "troupe"
+  },
+  "cdn": {
+    "use": true,
+    "prefixFile": "/var/log/gitter/cdn-version",
+    "hosts": ["cdn01.gitter.im", "cdn02.gitter.im", "cdn03.gitter.im"]
+  },
+  "camo": {
+    "camoUrl": "https://user-content.gitter-static.net",
+    "camoSecret": "<see Gitter secrets repo>"
+  },
+  "notifications": {
+    "notificationsSender": "support@gitter.im",
+    "replyToAddress":  "no-reply@gitter.im",
+    "filterTestValues": false,
+    "emailNotificationsAfterMins": 60,
+    "timeBeforeNextEmailNotificationMins": 1440
+  },
+  "logging": {
+    "logToUDP": true,
+    "logToFile": true,
+    "level": "info",
+    "colorize": false,
+    "timestamp": true,
+
+    "access": true,
+    "logStaticAccess": true,
+    "accessLogFile": "/var/log/gitter/access.log",
+
+    "logstash": {
+      "enabled": false,
+      "host": "10.0.0.140",
+      "port": 6150
+    }
+  },
+  "stats": {
+    "envName": "prod",
+    "logger": {
+      "enabled": true
+    },
+    "statsd": {
+      "enabled": true
+    },
+    "cube": {
+      "enabled": true,
+      "cubeUrl": "ws://cube.prod.gitter:1080"
+    },
+    "intercom": {
+      "enabled": false
+    },
+    "ga": {
+      "enabled": true
+    }
+  },
+  "redis": {
+    "sentinel": {
+      "master-name": "gitter-master",
+      "hosts": ["sentinel-alias-01.prod.gitter:26379", "sentinel-alias-02.prod.gitter:26379"],
+      "validateHost": "10.*.*.*"
+    },
+    "redisDb": 1
+  },
+  "redis_nopersist": {
+    "sentinel": {
+      "master-name": "gitter-nopersist-prod",
+      "hosts": ["sentinel-alias-01.prod.gitter:26379", "sentinel-alias-02.prod.gitter:26379"],
+      "validateHost": "10.*.*.*"
+    }
+  },
+  "redis_faye": {
+    "sentinel": {
+      "master-name": "gitter-faye-prod",
+      "hosts": ["sentinel-alias-01.prod.gitter:26379", "sentinel-alias-02.prod.gitter:26379"],
+      "validateHost": "10.*.*.*"
+    }
+  },
+  "redis_caching": {
+    "sentinel": {
+      "master-name": "gitter-caching-prod",
+      "hosts": ["sentinel-alias-01.prod.gitter:26379", "sentinel-alias-02.prod.gitter:26379"],
+      "validateHost": "10.*.*.*"
+    }
+  },
+  "mongo": {
+    "connection": {
+      "hosts": [
+        "mongo-alias-001.prod.gitter:27017",
+        "mongo-alias-002.prod.gitter:27017",
+        "mongo-alias-003.prod.gitter:27017"
+      ],
+      "database": "gitter",
+      "options": {
+        "replicaSet": "TroupeReplicaSet",
+        "w": 1
+      }
+    },
+    "autoDiscovery": {
+      "host": "mongo-arbiter.prod.gitter",
+      "port": 27017
+    },
+    "profileSlowQueries": false,
+    "logQueries": false,
+    "noAutoIndex": true
+  },
+  "apn": {
+    "feedbackInterval": 60
+  },
+  "errorReporting": {
+    "enabled": true
+  },
+  "sitemap": {
+    "allowCrawling": true,
+    "location": "https://s3.amazonaws.com/gitter-sitemap/prod/sitemap.xml"
+  },
+  "autoPullRequest": {
+    "enabled": true
+  },
+  "elasticsearch_comment": "Remove the non-host-names after es-001 and es-002 have been decommissioned",
+  "elasticsearch": {
+    "hosts": ["http://es-alias-001.prod.gitter:9200", "http://es-alias-001.prod.gitter:9200"]
+  },
+  "elasticsearchTypeahead": {
+    "hosts": ["http://typeahead-01.prod.gitter:9200"]
+  },
+  "neo4j": {
+    "endpoint": "http://neo4j-001.prod.gitter:7474"
+  },
+  "resque": {
+    "queuePrefix": ""
+  },
+  "avatar": {
+    "officialHost": "https://avatars.gitter.im",
+    "dnsPreloadHosts": [
+      "avatars-01.gitter.im",
+      "avatars-02.gitter.im",
+      "avatars-03.gitter.im",
+      "avatars-04.gitter.im",
+      "avatars-05.gitter.im"
+    ],
+    "hosts": [
+      "https://avatars-01.gitter.im",
+      "https://avatars-02.gitter.im",
+      "https://avatars-03.gitter.im",
+      "https://avatars-04.gitter.im",
+      "https://avatars-05.gitter.im"
+    ]
+  },
+  "revokedUserAgents": [
+    "Gitter/3.1.0",
+    "Gitter/3.0.3",
+    "Gitter/3.0.2",
+    "Gitter/3.0.1",
+    "Gitter/3.0.0",
+    "Gitter/2.4.0",
+    "Gitter/2.4.0",
+    "Gitter/2.3.3",
+    "Gitter/2.3.2",
+    "Gitter/2.3.1",
+    "Gitter/2.3.0"
+  ]
+}

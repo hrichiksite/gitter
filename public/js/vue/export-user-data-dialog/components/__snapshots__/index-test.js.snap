@@ -1,0 +1,240 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Export user data dialog matches snapshot 1`] = `
+<div
+  class="root modal-backdrop js-export-user-data-view-root"
+>
+  <div
+    class="modal--default"
+  >
+    <header
+      class="modal--default__header"
+    >
+      <h1
+        class="modal--default__header__title js-modal-title-text"
+      >
+        Export user data
+      </h1>
+       
+      <span
+        class="modal--default__header__icon icon-cancel-circle"
+        data-action="close"
+      />
+    </header>
+     
+    <section
+      class="modal--default__content"
+    >
+      <p
+        class="export-rate-limit-note"
+      >
+        
+        Each export link is rate-limited to once every 3 hours. You will see a "429 - Too many
+        requests" error once you reach the limit.
+      
+      </p>
+       
+      <h3
+        class="heading"
+      >
+        Most relevant data
+      </h3>
+       
+      <ul
+        class="export-link-list"
+      >
+        <li>
+          <a
+            href="/api_web/export/user/123/me.ndjson"
+            target="_blank"
+          >
+            My user data
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/admin-groups.ndjson"
+            target="_blank"
+          >
+            Communities I admin
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/rooms.ndjson"
+            target="_blank"
+          >
+            My rooms
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/messages.ndjson"
+            target="_blank"
+          >
+            My messages
+          </a>
+        </li>
+      </ul>
+       
+      <hr />
+       
+      <h3
+        class="heading"
+      >
+        Other data
+      </h3>
+       
+      <ul
+        class="export-link-list"
+      >
+        <li>
+          <a
+            href="/api_web/export/user/123/user-settings.ndjson"
+            target="_blank"
+          >
+            User settings
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/identities.ndjson"
+            target="_blank"
+          >
+            Identities
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/group-favourites.ndjson"
+            target="_blank"
+          >
+            Community favourites
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/room-favourites.ndjson"
+            target="_blank"
+          >
+            Room favourites
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/room-last-access-times.ndjson"
+            target="_blank"
+          >
+            Room last access times
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/room-invites.ndjson"
+            target="_blank"
+          >
+            Room invites from others
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/room-sent-invites.ndjson"
+            target="_blank"
+          >
+            Room invites I sent to others
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/room-removed-users.ndjson"
+            target="_blank"
+          >
+            When I was removed or left a room
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/push-notification-devices.ndjson"
+            target="_blank"
+          >
+            Push notification devices
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/uri-lookups.ndjson"
+            target="_blank"
+          >
+            URI lookups for your userId
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/subscriptions.ndjson"
+            target="_blank"
+          >
+            Subscriptions (legacy billing)
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/known-external-access.ndjson"
+            target="_blank"
+          >
+            Cached known external access
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/fingerprints.ndjson"
+            target="_blank"
+          >
+            Fingerprints
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/oauth-clients.ndjson"
+            target="_blank"
+          >
+            OAuth clients
+          </a>
+        </li>
+         
+        <li>
+          <a
+            href="/api_web/export/user/123/oauth-access-tokens.ndjson"
+            target="_blank"
+          >
+            OAuth access tokens
+          </a>
+        </li>
+      </ul>
+    </section>
+     
+    <footer
+      class="modal--default__footer-wrapper"
+    >
+      <div
+        class="modal--default__footer"
+      />
+    </footer>
+  </div>
+</div>
+`;

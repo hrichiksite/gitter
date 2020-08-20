@@ -1,0 +1,16 @@
+{
+  "name": "gitter-web-persistence-utils",
+  "version": "1.0.0",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true,
+  "dependencies": {
+    "gitter-web-env": "file:../env",
+    "gitter-web-mongoose-bluebird": "file:../mongoose-bluebird"
+  }
+}

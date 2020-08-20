@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -x
+set -e
+
+git clone git@github.com:transloadit/jquery-sdk.git
+cd jquery-sdk
+git checkout v2.7.1
+grep -v 'call compile_js' Makefile > Makefile.tmp
+mv Makefile.tmp Makefile
+rm js/dep/json2.js
+make
+(echo "
+var jQuery = require('jquery');
+"; cat build/jquery.transloadit2-latest.js) | sed -e 's/window\.jQuery/jQuery/' > build/jquery.transloadit2-latest.js.tmp
+cd ..
+cp jquery-sdk/build/jquery.transloadit2-latest.js.tmp ../public/repo/transloadit/jquery.transloadit2-v2-latest.js
+rm -rf jquery-sdk

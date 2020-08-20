@@ -1,0 +1,155 @@
+rs.slaveOk()
+
+function createIdForTimestampString(timestamp) {
+  var hexSeconds = Math.floor(timestamp/1000).toString(16);
+
+  while(hexSeconds.length < 8) {
+    hexSeconds = "0" + hexSeconds;
+  }
+  return hexSeconds + "0000000000000000";
+}
+
+function createIdForTimestamp(timestamp) {
+  return ObjectId(createIdForTimestampString(timestamp));
+}
+
+function findSignups(start,end) {
+  return db.users.find({
+    _id: {
+      $lt: createIdForTimestamp(end),
+      $gt: createIdForTimestamp(start)
+    },
+  });
+}
+
+var endP1 = new Date('2016-10-01T00:00:00Z');
+var startP1 = new Date('2016-08-01T00:00:00Z');
+var startP0 = new Date('2016-07-01T00:00:00Z');
+
+var fcc = [];
+var nonFcc = [];
+
+var h = findClientAccessInPeriod(startP1, endP1)
+var fccHash = buildFCCUserHash(startP0, endP1);
+
+findSignups(startP0, startP1)
+  .forEach(function(d) {
+    var id = d._id.valueOf()
+    var engagement = h[id] || 0;
+    if (!engagement) return;
+
+    var firstRoom = fccHash[id];
+    if (!firstRoom) return;
+    var isFcc = firstRoom.toLowerCase().indexOf('freecodecamp') >= 0;
+
+    if (isFcc) {
+      fcc.push(engagement)
+    } else {
+      nonFcc.push(engagement);
+    }
+  })
+
+
+function rootSum(memo, v) {
+  return memo + v;
+};
+
+function sum(c) {
+  return function(memo, v) {
+    return memo + (v && v[c] || 0);
+  };
+}
+
+function findClientAccessInPeriod(start,end) {
+  var m = Mongo('cube-01');
+  m.setSlaveOk(true);
+  var cubeDb = m.getDB('cube');
+
+  var h = {};
+  cubeDb.gitter_client_access_events.aggregate([{
+    $match: {
+      _id: {
+        $gt: createIdForTimestamp(start),
+        $lt: createIdForTimestamp(end),
+      },
+    }
+  }, {
+    $group: {
+      _id: {
+        userId: '$d.userId',
+        clientId: '$d.clientId'
+      },
+      count: { $sum: 1 }
+    }
+  }, {
+    $group: {
+      _id: '$_id.userId',
+      accesses: { $max: '$count' }
+    }
+  }]).forEach(function(f) {
+    h[f._id.valueOf()] = f.accesses;
+  });
+
+  return h;
+}
+
+function buildFCCUserHash(start, end) {
+  var m = Mongo('cube-01');
+  m.setSlaveOk(true);
+  var cubeDb = m.getDB('cube');
+
+  var hash = {};
+  cubeDb.gitter_join_room_events.aggregate([{
+    $match: {
+      _id: {
+        $gt: createIdForTimestamp(start),
+        $lt: createIdForTimestamp(end),
+      },
+      'd.userId': {
+        $gt: createIdForTimestampString(start),
+        $lt: createIdForTimestampString(end),
+      }
+    }
+  }, {
+    $group: {
+      _id: '$d.userId',
+      first: { $min: '$_id' }
+    }
+  }, {
+    $lookup: {
+      from: "gitter_join_room_events",
+      localField: "first",
+      foreignField: "_id",
+      as: "firstEvent"
+    },
+  }, {
+    $unwind: '$firstEvent'
+  }, {
+    $project: {
+      _id: 0,
+      userId: '$_id',
+      roomUri: '$firstEvent.d.room_uri',
+    }
+  }]).forEach(function(x) {
+    // var uri = x.roomUri;
+    // var isFcc = uri.toLowerCase().indexOf('freecodecamp') >= 0;
+    hash[String(x.userId)] = x.roomUri;
+  });
+
+  return hash;
+}
+
+var fccTotalDays = fcc.reduce(rootSum, 0);
+var nonFccTotalDays = nonFcc.reduce(rootSum,0);
+
+printjson({
+  fcc: {
+    count: fcc.length,
+    avgEngagedDays: fccTotalDays/fcc.length,
+  },
+  nonFcc: {
+    count: nonFcc.length,
+    avgEngagedDays: nonFccTotalDays/nonFcc.length,
+
+  }
+})

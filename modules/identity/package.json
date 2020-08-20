@@ -1,0 +1,19 @@
+{
+  "name": "gitter-web-identity",
+  "version": "1.0.0",
+  "main": "lib/identity-service.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "dependencies": {
+    "gitter-web-persistence": "file:../persistence"
+  },
+  "devDependencies": {
+    "gitter-web-test-utils": "file:../test-utils"
+  },
+  "private": true
+}

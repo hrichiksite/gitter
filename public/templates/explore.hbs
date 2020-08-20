@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html class="{{#if hasCachedFonts}}fonts-loaded{{/if}}" lang="en">
+  <head>
+	  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gitter &mdash; Explore</title>
+    <link id="favicon" rel="shortcut icon" href="{{ cdn 'images/favicon-normal.ico' }}">
+    {{> fonts}}
+    {{!-- <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,100"> --}}
+
+    {{#if hasDarkTheme}}
+    <link rel="stylesheet" href='{{cdn "styles/dark-theme.css" }}' id="gitter-dark" media="all" type="text/css">
+    {{/if}}
+
+  </head>
+  <body {{#if isMobile}}class="mobile"{{/if}}>
+    <div class="explore-page-wrap">
+      {{{ prerenderView "js/views/explore/tmpl/explore-view" }}}
+    </div>
+
+
+    <script type="text/javascript" src="//use.typekit.net/ohh4mcl.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    {{> live_reload}}
+  </body>
+</html>

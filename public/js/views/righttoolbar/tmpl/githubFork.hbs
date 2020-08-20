@@ -1,0 +1,8 @@
+<div class="activity-item-inner github-fork">
+  <i class='octicon octicon-repo-forked activity-item__icon'></i>
+  <div class="activity-time" id="time">{{ sentFormatted }}</div>
+  <div class="gtrActivityItemText">
+    <a href="https://github.com/{{payload.sender.login}}" target="_blank"><span class='mention' data-link-type="mention" data-screen-name="{{payload.sender.login}}">{{payload.sender.login}}</span></a> forked<br>
+    <span class="activity-detail"> <a href="{{sanitizeHref payload.forkee.html_url}}" target="_blank">{{payload.forkee.full_name}}</a></span>
+  </div>
+</div>

@@ -1,0 +1,805 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`thread-message-feed chat-item editing matches snapshot 1`] = `
+<intersect-stub>
+  <div
+    class="chat-item burstStart deleted"
+    role="listitem"
+  >
+    <div
+      class="chat-item__container"
+    >
+      <div
+        class="chat-item__aside"
+      >
+        <div
+          class="chat-item__avatar"
+        >
+          <avatar-stub
+            size="s"
+            user="[object Object]"
+          />
+        </div>
+      </div>
+       
+      <chat-item-actions-stub
+        message="[object Object]"
+      />
+       
+      <div
+        class="chat-item__content"
+      >
+        <div
+          class="chat-item__details"
+        >
+          <div
+            class="chat-item__from"
+          >
+            Tomas Vik
+          </div>
+           
+          <div
+            class="chat-item__username"
+          >
+            @viktomas_gitlab
+          </div>
+           
+          <a
+            class="chat-item__time"
+            href="/abc/def?at=5d147ea84dad9dfbc522317a"
+            title="May 18, 2016 3:48 AM"
+          >
+            May 18 2016 03:48
+          </a>
+           
+          <!---->
+        </div>
+         
+        <textarea
+          class="trpChatInput"
+        />
+      </div>
+    </div>
+  </div>
+</intersect-stub>
+`;
+
+exports[`thread-message-feed chat-item snapshot component flags showItemActions 1`] = `
+<intersect-stub
+  showitemactions="true"
+>
+  <div
+    class="chat-item burstStart"
+    role="listitem"
+  >
+    <div
+      class="chat-item__container"
+    >
+      <div
+        class="chat-item__aside"
+      >
+        <div
+          class="chat-item__avatar"
+        >
+          <avatar-stub
+            size="s"
+            user="[object Object]"
+          />
+        </div>
+      </div>
+       
+      <chat-item-actions-stub
+        message="[object Object]"
+      />
+       
+      <div
+        class="chat-item__content"
+      >
+        <div
+          class="chat-item__details"
+        >
+          <div
+            class="chat-item__from"
+          >
+            Tomas Vik
+          </div>
+           
+          <div
+            class="chat-item__username"
+          >
+            @viktomas_gitlab
+          </div>
+           
+          <a
+            class="chat-item__time"
+            href="/abc/def?at=5d147ea84dad9dfbc522317a"
+            title="May 18, 2016 3:48 AM"
+          >
+            May 18 2016 03:48
+          </a>
+           
+          <!---->
+        </div>
+         
+        <div
+          class="chat-item__text"
+        >
+          <span
+            class="mention"
+            data-link-type="mention"
+            data-screen-name="MadLittleMods"
+          >
+            @MadLittleMods
+          </span>
+            Example message using a bit of  
+          <code>
+            code
+          </code>
+           and 
+          <strong>
+            bold
+          </strong>
+           to show how 
+          <em>
+            markdown
+          </em>
+           is stored.
+        </div>
+      </div>
+    </div>
+  </div>
+</intersect-stub>
+`;
+
+exports[`thread-message-feed chat-item snapshot component flags useCompactStyles 1`] = `
+<intersect-stub>
+  <div
+    class="chat-item burstStart compact"
+    role="listitem"
+  >
+    <div
+      class="chat-item__container"
+    >
+      <div
+        class="chat-item__aside"
+      >
+        <div
+          class="chat-item__avatar"
+        >
+          <avatar-stub
+            size="s"
+            user="[object Object]"
+          />
+        </div>
+      </div>
+       
+      <chat-item-actions-stub
+        message="[object Object]"
+        usecompactstyles="true"
+      />
+       
+      <div
+        class="chat-item__content"
+      >
+        <div
+          class="chat-item__details"
+        >
+          <div
+            class="chat-item__from"
+          >
+            Tomas Vik
+          </div>
+           
+          <div
+            class="chat-item__username"
+          >
+            @viktomas_gitlab
+          </div>
+           
+          <a
+            class="chat-item__time"
+            href="/abc/def?at=5d147ea84dad9dfbc522317a"
+            title="May 18, 2016 3:48 AM"
+          >
+            May 18 2016 03:48
+          </a>
+           
+          <!---->
+        </div>
+         
+        <div
+          class="chat-item__text"
+        >
+          <span
+            class="mention"
+            data-link-type="mention"
+            data-screen-name="MadLittleMods"
+          >
+            @MadLittleMods
+          </span>
+            Example message using a bit of  
+          <code>
+            code
+          </code>
+           and 
+          <strong>
+            bold
+          </strong>
+           to show how 
+          <em>
+            markdown
+          </em>
+           is stored.
+        </div>
+      </div>
+    </div>
+  </div>
+</intersect-stub>
+`;
+
+exports[`thread-message-feed chat-item snapshot deleted (empty) message 1`] = `
+<intersect-stub>
+  <div
+    class="chat-item burstStart deleted"
+    role="listitem"
+  >
+    <div
+      class="chat-item__container"
+    >
+      <div
+        class="chat-item__aside"
+      >
+        <div
+          class="chat-item__avatar"
+        >
+          <avatar-stub
+            size="s"
+            user="[object Object]"
+          />
+        </div>
+      </div>
+       
+      <chat-item-actions-stub
+        message="[object Object]"
+      />
+       
+      <div
+        class="chat-item__content"
+      >
+        <div
+          class="chat-item__details"
+        >
+          <div
+            class="chat-item__from"
+          >
+            Tomas Vik
+          </div>
+           
+          <div
+            class="chat-item__username"
+          >
+            @viktomas_gitlab
+          </div>
+           
+          <a
+            class="chat-item__time"
+            href="/abc/def?at=5d147ea84dad9dfbc522317a"
+            title="May 18, 2016 3:48 AM"
+          >
+            May 18 2016 03:48
+          </a>
+           
+          <!---->
+        </div>
+         
+        <div
+          class="chat-item__text"
+        >
+          
+          
+          
+          <i>
+            This message was deleted
+          </i>
+        </div>
+      </div>
+    </div>
+  </div>
+</intersect-stub>
+`;
+
+exports[`thread-message-feed chat-item snapshot highlighted - scrolls into view 1`] = `
+<intersect-stub>
+  <div
+    class="chat-item burstStart chat-item__highlighted"
+    role="listitem"
+  >
+    <div
+      class="chat-item__container"
+    >
+      <div
+        class="chat-item__aside"
+      >
+        <div
+          class="chat-item__avatar"
+        >
+          <avatar-stub
+            size="s"
+            user="[object Object]"
+          />
+        </div>
+      </div>
+       
+      <chat-item-actions-stub
+        message="[object Object]"
+      />
+       
+      <div
+        class="chat-item__content"
+      >
+        <div
+          class="chat-item__details"
+        >
+          <div
+            class="chat-item__from"
+          >
+            Tomas Vik
+          </div>
+           
+          <div
+            class="chat-item__username"
+          >
+            @viktomas_gitlab
+          </div>
+           
+          <a
+            class="chat-item__time"
+            href="/abc/def?at=5d147ea84dad9dfbc522317a"
+            title="May 18, 2016 3:48 AM"
+          >
+            May 18 2016 03:48
+          </a>
+           
+          <!---->
+        </div>
+         
+        <div
+          class="chat-item__text"
+        >
+          <span
+            class="mention"
+            data-link-type="mention"
+            data-screen-name="MadLittleMods"
+          >
+            @MadLittleMods
+          </span>
+            Example message using a bit of  
+          <code>
+            code
+          </code>
+           and 
+          <strong>
+            bold
+          </strong>
+           to show how 
+          <em>
+            markdown
+          </em>
+           is stored.
+        </div>
+      </div>
+    </div>
+  </div>
+</intersect-stub>
+`;
+
+exports[`thread-message-feed chat-item snapshot message flags error 1`] = `
+<intersect-stub>
+  <div
+    class="chat-item burstStart syncerror"
+    role="listitem"
+  >
+    <div
+      class="chat-item__container"
+    >
+      <div
+        class="chat-item__aside"
+      >
+        <div
+          class="chat-item__avatar"
+        >
+          <avatar-stub
+            size="s"
+            user="[object Object]"
+          />
+        </div>
+      </div>
+       
+      <chat-item-actions-stub
+        message="[object Object]"
+      />
+       
+      <div
+        class="chat-item__content"
+      >
+        <div
+          class="chat-item__details"
+        >
+          <div
+            class="chat-item__from"
+          >
+            Tomas Vik
+          </div>
+           
+          <div
+            class="chat-item__username"
+          >
+            @viktomas_gitlab
+          </div>
+           
+          <a
+            class="chat-item__time"
+            href="/abc/def?at=5d147ea84dad9dfbc522317a"
+            title="May 18, 2016 3:48 AM"
+          >
+            May 18 2016 03:48
+          </a>
+           
+          <!---->
+        </div>
+         
+        <div
+          class="chat-item__text"
+        >
+          <span
+            class="mention"
+            data-link-type="mention"
+            data-screen-name="MadLittleMods"
+          >
+            @MadLittleMods
+          </span>
+            Example message using a bit of  
+          <code>
+            code
+          </code>
+           and 
+          <strong>
+            bold
+          </strong>
+           to show how 
+          <em>
+            markdown
+          </em>
+           is stored.
+        </div>
+      </div>
+    </div>
+  </div>
+</intersect-stub>
+`;
+
+exports[`thread-message-feed chat-item snapshot message flags loading 1`] = `
+<intersect-stub>
+  <div
+    class="chat-item burstStart"
+    role="listitem"
+  >
+    <div
+      class="chat-item__container"
+    >
+      <div
+        class="chat-item__aside"
+      >
+        <div
+          class="chat-item__avatar"
+        >
+          <avatar-stub
+            size="s"
+            user="[object Object]"
+          />
+        </div>
+      </div>
+       
+      <chat-item-actions-stub
+        message="[object Object]"
+      />
+       
+      <div
+        class="chat-item__content"
+      >
+        <div
+          class="chat-item__details"
+        >
+          <div
+            class="chat-item__from"
+          >
+            Tomas Vik
+          </div>
+           
+          <div
+            class="chat-item__username"
+          >
+            @viktomas_gitlab
+          </div>
+           
+          <a
+            class="chat-item__time"
+            href="/abc/def?at=5d147ea84dad9dfbc522317a"
+            title="May 18, 2016 3:48 AM"
+          >
+            May 18 2016 03:48
+          </a>
+           
+          <loading-spinner-stub
+            class="message-loading-icon"
+          />
+        </div>
+         
+        <div
+          class="chat-item__text"
+        >
+          <span
+            class="mention"
+            data-link-type="mention"
+            data-screen-name="MadLittleMods"
+          >
+            @MadLittleMods
+          </span>
+            Example message using a bit of  
+          <code>
+            code
+          </code>
+           and 
+          <strong>
+            bold
+          </strong>
+           to show how 
+          <em>
+            markdown
+          </em>
+           is stored.
+        </div>
+      </div>
+    </div>
+  </div>
+</intersect-stub>
+`;
+
+exports[`thread-message-feed chat-item snapshot message flags unread 1`] = `
+<intersect-stub>
+  <div
+    class="chat-item burstStart unread"
+    role="listitem"
+  >
+    <div
+      class="chat-item__container"
+    >
+      <div
+        class="chat-item__aside"
+      >
+        <div
+          class="chat-item__avatar"
+        >
+          <avatar-stub
+            size="s"
+            user="[object Object]"
+          />
+        </div>
+      </div>
+       
+      <chat-item-actions-stub
+        message="[object Object]"
+      />
+       
+      <div
+        class="chat-item__content"
+      >
+        <div
+          class="chat-item__details"
+        >
+          <div
+            class="chat-item__from"
+          >
+            Tomas Vik
+          </div>
+           
+          <div
+            class="chat-item__username"
+          >
+            @viktomas_gitlab
+          </div>
+           
+          <a
+            class="chat-item__time"
+            href="/abc/def?at=5d147ea84dad9dfbc522317a"
+            title="May 18, 2016 3:48 AM"
+          >
+            May 18 2016 03:48
+          </a>
+           
+          <!---->
+        </div>
+         
+        <div
+          class="chat-item__text"
+        >
+          <span
+            class="mention"
+            data-link-type="mention"
+            data-screen-name="MadLittleMods"
+          >
+            @MadLittleMods
+          </span>
+            Example message using a bit of  
+          <code>
+            code
+          </code>
+           and 
+          <strong>
+            bold
+          </strong>
+           to show how 
+          <em>
+            markdown
+          </em>
+           is stored.
+        </div>
+      </div>
+    </div>
+  </div>
+</intersect-stub>
+`;
+
+exports[`thread-message-feed chat-item snapshot not logged in user (no message actions) 1`] = `
+<intersect-stub>
+  <div
+    class="chat-item burstStart deleted"
+    role="listitem"
+  >
+    <div
+      class="chat-item__container"
+    >
+      <div
+        class="chat-item__aside"
+      >
+        <div
+          class="chat-item__avatar"
+        >
+          <avatar-stub
+            size="s"
+            user="[object Object]"
+          />
+        </div>
+      </div>
+       
+      <!---->
+       
+      <div
+        class="chat-item__content"
+      >
+        <div
+          class="chat-item__details"
+        >
+          <div
+            class="chat-item__from"
+          >
+            Tomas Vik
+          </div>
+           
+          <div
+            class="chat-item__username"
+          >
+            @viktomas_gitlab
+          </div>
+           
+          <a
+            class="chat-item__time"
+            href="/abc/def?at=5d147ea84dad9dfbc522317a"
+            title="May 18, 2016 3:48 AM"
+          >
+            May 18 2016 03:48
+          </a>
+           
+          <!---->
+        </div>
+         
+        <div
+          class="chat-item__text"
+        >
+          
+          
+          
+          <i>
+            This message was deleted
+          </i>
+        </div>
+      </div>
+    </div>
+  </div>
+</intersect-stub>
+`;
+
+exports[`thread-message-feed chat-item snapshot with default props 1`] = `
+<intersect-stub>
+  <div
+    class="chat-item burstStart"
+    role="listitem"
+  >
+    <div
+      class="chat-item__container"
+    >
+      <div
+        class="chat-item__aside"
+      >
+        <div
+          class="chat-item__avatar"
+        >
+          <avatar-stub
+            size="s"
+            user="[object Object]"
+          />
+        </div>
+      </div>
+       
+      <chat-item-actions-stub
+        message="[object Object]"
+      />
+       
+      <div
+        class="chat-item__content"
+      >
+        <div
+          class="chat-item__details"
+        >
+          <div
+            class="chat-item__from"
+          >
+            Tomas Vik
+          </div>
+           
+          <div
+            class="chat-item__username"
+          >
+            @viktomas_gitlab
+          </div>
+           
+          <a
+            class="chat-item__time"
+            href="/abc/def?at=5d147ea84dad9dfbc522317a"
+            title="May 18, 2016 3:48 AM"
+          >
+            May 18 2016 03:48
+          </a>
+           
+          <!---->
+        </div>
+         
+        <div
+          class="chat-item__text"
+        >
+          <span
+            class="mention"
+            data-link-type="mention"
+            data-screen-name="MadLittleMods"
+          >
+            @MadLittleMods
+          </span>
+            Example message using a bit of  
+          <code>
+            code
+          </code>
+           and 
+          <strong>
+            bold
+          </strong>
+           to show how 
+          <em>
+            markdown
+          </em>
+           is stored.
+        </div>
+      </div>
+    </div>
+  </div>
+</intersect-stub>
+`;

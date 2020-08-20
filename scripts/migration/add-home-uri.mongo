@@ -1,0 +1,90 @@
+db.groups.aggregate([{
+  $match: {
+    homeUri: null
+  }
+}, {
+  $lookup: {
+    from: "troupes",
+    localField: "uri",
+    foreignField: "uri",
+    as: "room"
+  }
+}, {
+  $lookup: {
+    from: "users",
+    localField: "uri",
+    foreignField: "username",
+    as: "user"
+  }
+}, {
+  $project: {
+    uri: 1,
+    sd: 1,
+    org_room: { $size: '$room' },
+    users: { $size: '$user' }
+  }
+}, {
+  $project: {
+    uri: 1,
+    sd: 1,
+    org_room: 1,
+    users: 1,
+    proposedHomeUri: {
+      $cond: {
+        if: { $or: [{ $gt: ['$org_room', 0] }, { $gt: ['$users', 0] }] },
+        then: { $concat: ['$uri','/home'] },
+        else: '$uri'
+      }
+    },
+    altPoposedHomeUri: { $concat: ['$uri','/community'] },
+  }
+}, {
+  $lookup: {
+    from: "troupes",
+    localField: "proposedHomeUri",
+    foreignField: "uri",
+    as: "room"
+  }
+}, {
+  $lookup: {
+    from: "troupes",
+    localField: "altPoposedHomeUri",
+    foreignField: "uri",
+    as: "altRoom"
+  }
+}, {
+  $project: {
+    uri: 1,
+    sd: 1,
+    org_room: 1,
+    users: 1,
+    proposedHomeUri: 1,
+    altPoposedHomeUri: 1,
+    clash: { $size: '$room' },
+    altClash: { $size: '$altRoom' },
+  }
+}]).forEach(function(doc) {
+  var homeUri = doc.proposedHomeUri;
+
+  if (doc.clash) {
+    if (doc.altClash) {
+      printjson(doc);
+      throw new Error('Unable to process');
+    }
+
+    homeUri = doc.altPoposedHomeUri;
+  }
+  var lcHomeUri = homeUri.toLowerCase();
+
+  db.groups.update({
+    _id: doc._id,
+    homeUri: null,
+  }, {
+    $set: {
+      homeUri: homeUri,
+      lcHomeUri: lcHomeUri
+    }
+  })
+
+  print(doc.uri + '\t' + homeUri);
+})

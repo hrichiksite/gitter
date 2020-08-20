@@ -1,0 +1,61 @@
+body.embedded .popover-footer-content,
+body.logged-out .popover-footer-content {
+  display: none;
+}
+
+.popover-item__action,
+.popover-item__action-disabled {
+  border-radius: 4px;
+  padding: 0px 5px;
+}
+
+.popover-item__action:hover {
+  cursor: pointer;
+  background: #08c;
+  color: white;
+}
+
+.popover-item__action-disabled {
+  color: #ccc;
+}
+
+.popover-item__action-disabled:hover {
+  background: #08c;
+  cursor: default;
+}
+
+.b-popover {
+    display: block; // bootstrap-vue doesn't use `.show`. If the DOM element exists we should show it.
+    transition: none; // we want the popover to hide instantly.
+}
+
+.popover-body {
+  &:extend(.popover-content);
+}
+
+
+// Hacking only the left placement of the popover, if you need top, bottom or right,
+// copy the styles in similar manner from `public/less/bootstrap/popovers.less`
+
+.bs-popover-left {
+  /**
+  I'm so sorry for this hack 😿. Unfortunately the <b-popover> offset property
+  can shift the popover only on y-axis (up and down) whilst thanks to reusing bootstrap 3
+  styles, the arrow is hanging out 10px to the right and is covering the `...` ellipsis icon.
+
+  Since <b-popover> computes all the styles and adds them to the element, we need to use !important
+
+  The offset property still worked (`offset=0,10`) in bootstrap-vue@2.0.0-rc.27
+
+  This can be removed once we stop using the bootstrap 3 popover in our backbone code.
+  */
+  left: -10px !important;
+}
+.bs-popover-left .arrow {
+  &:extend(.popover.left .arrow);
+  top: 50% !important; // not proud of this but the vue-bootstrap adds the top attribute directly on the element so we need to use !important to override it
+}
+
+.bs-popover-left .arrow:after {
+  &:extend(.popover.left .arrow:after);
+}

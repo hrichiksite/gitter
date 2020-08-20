@@ -1,0 +1,10 @@
+{{!-- this content should only be loaded if we're in an 1:1 with an invited user --}}
+<div class='chat-container-invited'>
+  <div class='chat-container-invited__icon'>
+    <img src="{{invitedUser.gravatarImageUrl}}">
+  </div>
+  <h1>{{invitedUser.username}} isn't here...</h1>
+  <p>Sorry, it looks like <b>{{invitedUser.displayName}}</b> hasn't joined Gitter yet.
+    <a href='mailto:{{invitedUser.emails}}?subject=Gitter Invite&body=Hi {{invitedUser.username}}, I have messaged you on Gitter. Join me! {{shareURL}}'>Invite {{invitedUser.username}}?</a>
+  </p>
+</div>

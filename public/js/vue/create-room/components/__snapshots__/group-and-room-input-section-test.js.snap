@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GroupAndRoomInputSection errors matches snapshot 1`] = `
+<section>
+  <div
+    class="name-input-section"
+  >
+    <div
+      class="group-select-section"
+    >
+      <h3
+        class="section-heading"
+      >
+        <label>
+          Community
+        </label>
+      </h3>
+       
+      <select-dropdown-stub
+        error="Error: groupsRequest error"
+        filterplaceholder="Filter communities"
+        filtertext=""
+        items=""
+      />
+    </div>
+     
+    <div
+      class="room-name-section"
+    >
+      <h3
+        class="section-heading"
+      >
+        <label
+          for="create-room-name-input"
+        >
+          Room name
+        </label>
+      </h3>
+       
+      <input
+        class="create-room-name-input"
+        id="create-room-name-input"
+        pattern="[a-zA-Z0-9\\\\-_\\\\.]+"
+        placeholder="my-awesome-room"
+        required="required"
+      />
+    </div>
+  </div>
+   
+  <div
+    class="name-input-error-area"
+  >
+    
+    group error
+    room name error
+    
+    <span>
+      
+      Error occured while fetching your communities: Error: groupsRequest error
+    
+    </span>
+     
+    <span>
+      
+      Error occured while fetching your repos: Error: reposRequest error
+    
+    </span>
+  </div>
+</section>
+`;
+
+exports[`GroupAndRoomInputSection matches snapshot 1`] = `
+<section>
+  <div
+    class="name-input-section"
+  >
+    <div
+      class="group-select-section"
+    >
+      <h3
+        class="section-heading"
+      >
+        <label>
+          Community
+        </label>
+      </h3>
+       
+      <select-dropdown-stub
+        filterplaceholder="Filter communities"
+        filtertext=""
+        items=""
+      />
+    </div>
+     
+    <div
+      class="room-name-section"
+    >
+      <h3
+        class="section-heading"
+      >
+        <label
+          for="create-room-name-input"
+        >
+          Room name
+        </label>
+      </h3>
+       
+      <input
+        class="create-room-name-input"
+        id="create-room-name-input"
+        pattern="[a-zA-Z0-9\\\\-_\\\\.]+"
+        placeholder="my-awesome-room"
+        required="required"
+      />
+    </div>
+  </div>
+   
+  <div
+    class="name-input-error-area"
+  >
+    
+    
+    
+    
+    <!---->
+     
+    <!---->
+  </div>
+</section>
+`;

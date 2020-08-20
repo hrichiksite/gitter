@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`menu-bar-item matches snapshot with all properties 1`] = `
+<button
+  aria-label="all"
+  class="item-all"
+  type="button"
+>
+  <div
+    class="unread-indicator has-unreads has-mentions"
+  />
+   
+  <span
+    aria-hidden="true"
+    class="icon-wrapper"
+  />
+</button>
+`;
+
+exports[`menu-bar-item matches snapshot with required properties 1`] = `
+<button
+  aria-label=""
+  class="item"
+  type="button"
+>
+  <div
+    class="unread-indicator"
+  />
+   
+  <span
+    aria-hidden="true"
+    class="icon-wrapper"
+  />
+</button>
+`;

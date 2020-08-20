@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Gitter &mdash; Chat for GitHub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link id="favicon" rel="shortcut icon" href="{{ cdn 'images/favicon-normal.ico' }}">
+
+    <link rel="stylesheet" href='{{cdn cssFileName }}'>
+  </head>
+
+  <body>
+    <div class='background'>
+      <div class='login'>
+        <header>
+          <div class='logo'>
+            {{> logo_man}}
+            <img src="{{ cdn 'images/home/logo_nomargin@2x.png' }}" alt="Gitter" class="logo-image menu-animation">
+          </div>
+        </header>
+        <section>
+          <h1>Welcome, {{username}}.</h1>
+          <p>To join <strong>{{uri}}</strong>, we need to authenticate you.</p>
+          <p><small>By continuing you agree to our <a href="https://about.gitlab.com/terms/" target="_blank">Terms and Conditions</a>.</b></p>
+
+          {{#if showNewLogin}}
+            <p><a class='btn' href="/login?action=login&source=login_page-login">Continue &rarr;</a></p>
+          {{else}}
+            <p><a class='btn signup' href="/login?action=signup&source=invited_page-signup"><img src="{{cdn 'images/home/github.png'}}"> Continue &rarr;</a></p>
+          {{/if}}
+        </section>
+      </div>
+    </div>
+    {{{ generateEnv }}}
+    {{{ bootScript bootScriptName jsRoot=jsRoot }}}
+    <script type="text/javascript" src="//use.typekit.net/ohh4mcl.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    {{> live_reload }}
+  </body>
+</html>

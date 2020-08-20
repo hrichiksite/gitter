@@ -1,0 +1,49 @@
+rs.slaveOk()
+
+var month = new Date(Date.now() - 86400000 * 31)
+
+var roomId = db.troupes.findOne({ lcUri: 'freecodecamp/freecodecamp' })._id;
+
+var a = db.chatmessages.aggregate([{
+  $match: {
+    sent: { $gt: month },
+    toTroupeId: roomId }
+  }, {
+    $project: {
+      userId: '$fromUserId',
+      sent: '$sent'
+    }
+  }, {
+    $group: {
+      _id: '$userId',
+      messageCount: { $sum: 1 },
+      days: { $addToSet: { $dayOfYear: "$sent" } }
+    },
+  }, {
+    $lookup: {
+        from: 'users',
+        localField: '_id',
+        foreignField: '_id',
+        as: 'user'
+      }
+  }, {
+    $unwind: '$user'
+  }, {
+    $project: {
+      userId: '$userId',
+      username: '$user.username',
+      messageCount: '$messageCount',
+      activeDays: { $size: '$days' }
+    }
+  }, {
+    $sort: {
+      messageCount: -1,
+      activeDays: -1,
+      username: 1
+    }
+  }
+]);
+
+a.forEach(function(i) {
+  print(i.username + ',' + i.messageCount + ',' + i.activeDays)
+})

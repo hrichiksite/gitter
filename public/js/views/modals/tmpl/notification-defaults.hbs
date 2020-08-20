@@ -1,0 +1,33 @@
+<div class="modal-content">
+  <form id="troupeSettings">
+    <select class="trpInput" style="width: 100%; height: 36px" id="notification-options">
+      <option value="all">All: Notify me for all messages</option>
+      <option value="announcement">Announcements: Notify me for all messages, but more quickly if there are mentions or announcements</option>
+      <option value="mute">Mute: Notify me only when I'm directly mentioned</option>
+    </select>
+
+    <p class="u-font-smaller" style="color: #999" id="notice-no-override">
+      This change will apply to any existing conversations currently set to use your
+      default notification setting, as well as any new room you join in future.
+    </p>
+
+    <p>
+      <input id="override-all" type='checkbox' class="u-font-smaller"/>
+      <label for="override-all">Apply this setting to <strong>all</strong> existing conversations</label>
+    </p>
+
+    <div class="u-font-smaller">
+      <p>Your settings:</p>
+      <div id="notify-features">
+      </div>
+    </div>
+
+    <p>
+      <input id="send-emails-checkbox" type='checkbox'/>
+      <label for="send-emails-checkbox">Send me email notifications.</label>
+    </p>
+
+  </div>
+
+  </form>
+</div>

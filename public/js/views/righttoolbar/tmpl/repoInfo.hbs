@@ -1,0 +1,19 @@
+<div class="trpRepoInfoContainer">
+  <h2>{{name}}</h2>
+  <p>{{description}} <small>{{language}}</small></p>
+  <p>by <a href="http://github.com/{{owner.login}}">{{owner.login}}</a></p>
+  <div class="vcard-stats">
+    {{#if has_issues}}
+      <a href="{{html_url}}/issues" target="_blank"><strong class="vcard-stat-count">{{open_issues}}</strong>
+      issues</a>&nbsp;
+    {{/if}}
+      <a href="{{html_url}}/watchers" target="_blank"><strong class="vcard-stat-count">{{subscribers_count}}</strong>
+      watchers</a>&nbsp;
+      <strong class="vcard-stat-count">{{stargazers_count}}</strong>
+      stars &nbsp;
+  </div>
+        {{#if has_wiki}}
+        <li class="github-wiki"><a href="{{html_url}}/wiki" target="_blank">View the wiki</a></li>
+      {{/if}}
+
+</div>

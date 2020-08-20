@@ -1,0 +1,11 @@
+{
+  "testFiles": "**/*-test.js",
+  "integrationFolder": "test/e2e",
+  "fixturesFolder": "test/e2e/fixtures",
+  "pluginsFile": "test/e2e/plugins",
+  "screenshotsFolder": "test/e2e/screenshots",
+  "supportFile": "test/e2e/support",
+  "videosFolder": "test/e2e/videos",
+
+  "env": { "baseUrl": "http://localhost:5000", "apiBaseUrl": "http://localhost:5000/api" }
+}

@@ -1,0 +1,185 @@
+@charset "UTF-8";
+@import (reference) "trp3Vars.less";
+@import "base-web";
+
+@import "../../js/views/righttoolbar/rightToolbarView";
+@import (less) "../../../node_modules/@gitterhq/cal-heatmap/cal-heatmap.css";
+
+.chat-and-toolbar-wrapper.archive {
+  @media @archive-mid {
+    flex-direction: column;
+  }
+  padding-top: 0;
+}
+
+.trpContentPanel.archive {
+  margin-top: @chat-frame-desktop-header-height;
+}
+
+.right-toolbar-region {
+  max-height: 100%;
+  @media @archive-mid {
+    order: 0;
+    height: auto;
+  }
+
+  & > .right-toolbar {
+    @media @archive-mid {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.gtrArchiveToolbarWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.gtrArchiveInfoContainer {
+  overflow: hidden;
+  flex-shrink: 0;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.gtrArchiveInfo {
+  clear: both;
+  margin-top: 20px;
+
+  & > p {
+    @media @archive-mid {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.gtrArchiveLogo {
+  padding-top: 20px;
+  margin-bottom: 20px;
+
+  .logo-container {
+    background-image: url('../images/logo-text-blue-pink.png');
+    width: 160px;
+    height: 32px;
+
+    @media @retina {
+      background-image: url('../images/logo-text-blue-pink@2x.png');
+      background-size: contain;
+    }
+  }
+}
+
+.archive-right-toolbar-option-container {
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  width: 100%;
+  padding-top: 4px;
+  padding-bottom: 12px;
+}
+
+.archive-right-toolbar-button-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.archive-right-toolbar-button {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.gtrArchiveDate {
+  margin: 16px 0;
+}
+
+.gtrArchiveHomeWrapper {
+  box-sizing: border-box;
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-bottom: 40px;
+  padding-right: 50px;
+}
+
+
+.gtrArchiveDay {
+  font-size: 60px;
+  line-height: 100%;
+}
+
+.gtrArchiveMonth {
+
+}
+
+
+.gtrArchiveCreateRoomButton {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.gtrArchiveDateNav {
+  opacity: 0.6;
+  transition: opacity 300ms ease-in-out;
+}
+
+.gtrArchivePrev {
+  color: #333;
+  float: left;
+  padding-top: 20px;
+}
+
+.gtrArchiveNext {
+  color: #333;
+  float: right;
+  padding-top: 20px;
+  text-align: right;
+}
+
+.gtrArchiveNext:before {
+  width: 20px;
+}
+
+.gtrArchiveToday {
+  text-align: center;
+}
+
+.gtrArchiveDateNav a {
+  text-decoration: none;
+}
+
+.gtrArchiveDateNav:hover {
+  opacity: 1;
+  }
+
+.gtrArchiveNavigationWrapper {
+  margin-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  &:empty {
+    display: none;
+  }
+}
+
+
+.archive-toggle-navigation-action-holder {
+  display: none;
+  @media @archive-mid {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.gtrArchiveCalendar {
+  padding-top: 20px;
+  text-align: center;
+}

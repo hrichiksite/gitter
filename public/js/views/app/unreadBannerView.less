@@ -1,0 +1,100 @@
+@import (reference) "../../../less/colors.less";
+@import (reference) "../../../less/trp3Vars.less";
+@import (reference) "../../../less/trpButtons.less";
+@import "../controls/dropdown";
+
+@banner-height: 30px;
+
+body.banner-top {
+  .chat-container > div:first-child {
+    padding-top: 100px;
+  }
+}
+
+.banner-wrapper {
+  text-align: left;
+  position: absolute;
+  top: 16px;
+  right: 15px;
+  overflow: hidden;
+  height: @banner-height;
+  z-index: 1;
+  width: 140px;
+
+  .banner {
+    transition: top .2s ease-in-out;
+
+    &.slide-away {
+      top: -100%;
+    }
+
+    .mention {
+      color: @orange;
+      background-color: rgba(250,229,210,0.8);
+      border: 1px solid @orange;
+    }
+
+    .unread {
+      color: @green;
+      background-color: rgba(213,245,226,0.8);
+      border: 1px solid @green;
+    }
+
+    button {
+      .trpButton;
+      cursor: pointer;
+      font-size: 12px;
+
+      color: #666;
+      background-color: rgba(241,240,237,0.8);
+      border: 1px solid rgba(191,190,187,1);
+
+      padding: 4px 6px;
+      border-radius: 2px;
+
+      &:hover {
+        outline: none;
+      }
+
+      &.main {
+        width: 100%;
+        text-align: left;
+      }
+
+      &.side {
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+      }
+
+      #banner-message {
+        margin-left: 4px;
+      }
+    }
+  }
+}
+
+.banner-wrapper.bottom {
+  top: auto;
+  bottom: 10px;
+  left: auto;
+  right: 15px;
+
+  .banner {
+    top: auto;
+    bottom: 0;
+
+    transition: bottom .2s ease-in-out;
+
+    &.slide-away {
+      top: auto;
+      bottom: -100%;
+    }
+    button.side {
+      display: none;
+    }
+  }
+}

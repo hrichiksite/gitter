@@ -1,0 +1,19 @@
+{
+  "name": "gitter-web-email-addresses",
+  "version": "1.0.0",
+  "main": "lib/email-address-service.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true,
+  "dependencies": {
+    "gitter-web-backend-muxer": "file:../backend-muxer"
+  },
+  "devDependencies": {
+    "gitter-web-test-utils": "file:../test-utils"
+  }
+}

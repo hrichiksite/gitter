@@ -1,0 +1,5 @@
+<div
+  class="trpDisplayPicture avatar-{{id}} avatar-{{avatarSize}} {{presenceClass}} {{#if role}}{{role}}{{/if}} {{#if inactive}}inactive{{/if}}">
+  <img src="{{avatarSrcSet.src}}" srcset="{{avatarSrcSet.srcset}}" height="{{imgSize}}" width="{{imgSize}}" class="avatar__image" alt="{{alt}}">
+  {{#showStatus}}<div class="trpStatus" id="status"> </div>{{/showStatus}}
+</div>

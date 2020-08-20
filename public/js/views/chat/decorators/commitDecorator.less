@@ -1,0 +1,48 @@
+.commit-popover-title {
+  height: 20px;
+  position: relative;
+  a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.commit-popover-body {
+  float: left;
+  width: 100%;
+
+  ul.file-list {
+    list-style: none;
+    margin-left: 0;
+  }
+  .modified {
+    font-size: small;
+    &:before {
+      color: @trpYellow;
+    }
+  }
+  .added {
+    font-size: small;
+    &:before {
+      color: @trpGreen;
+    }
+  }
+  .removed {
+    font-size: small;
+    &:before {
+      color: @trpRed;
+    }
+  }
+
+  .trpDisplayPicture--left {
+    .trpDisplayPicture;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+  }
+}

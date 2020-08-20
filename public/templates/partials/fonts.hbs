@@ -1,0 +1,25 @@
+{{#if fonts}}
+  {{! define all font face rules in the head}}
+  <style>
+  {{! Rule for local fonts as we bundle copies with the OSX Desktop app}}
+  {{#each fonts.local as |font|}}
+    @font-face {
+      font-family: 'SourceSansLocal';
+      font-style: {{font.style}};
+      font-weight: {{font.weight}};
+      src: local("{{font.name}}");
+    }
+  {{/each}}
+  {{! Webfonts loaded at runtime}}
+  {{#each fonts.cdnFonts as |font|}}
+    @font-face {
+      font-family: "{{font.family}}";
+      {{#each font.formats as |format|}}
+        src: url("{{font.fontPath}}.{{format}}") format('{{format}}');
+      {{/each}}
+      font-weight: {{font.weight}};
+      font-style: {{font.style}}
+    }
+  {{/each}}
+  </style>
+{{/if}}

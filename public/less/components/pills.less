@@ -1,0 +1,154 @@
+@import 'colors';
+
+
+@tag-pill-more-button-bg-color: #ffffff;
+
+
+.tag-pill-list(@num-rows: 2, @num-per-row: 5) {
+  @tag-pill-text-color: #808080;
+
+  @tag-vertical-padding: 0.75em;
+  @tag-margin: 1rem;
+
+  @tag-width: calc((100% / @num-per-row) ~"-" ((@tag-margin * (@num-per-row - 1)) / @num-per-row));
+  @tag-height: (1em + (2 * @tag-vertical-padding));
+  @tag-margin-box: ~"(" @tag-height ~"+" @tag-margin ~")";
+
+  .tag-pill-list {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+
+    // 2 rows + margin - the margin we don't have on the first row
+    max-height: calc(@num-rows ~"*" @tag-margin-box ~"-" @tag-margin);
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+
+    list-style: none;
+
+    transition: max-height 0.4s ease;
+
+    &.is-expanded {
+      max-height: 1000px;
+    }
+  }
+
+
+  .tag-pill-list-item {
+    display: inline-block;
+    width: @tag-width;
+
+    // Only put top margin on the second row onward
+    @num-per-row-plus: @num-per-row + 1;
+    &:nth-child(n + @{num-per-row-plus}) {
+      margin-top: @tag-margin;
+    }
+
+    /* * /
+    // Hide the extra tags
+    @extra-tag-start-index: @num-rows * @num-per-row;
+    &:nth-child(n + @{extra-tag-start-index}) {
+      visibility: hidden;
+    }
+    /* */
+  }
+
+
+  .tag-pill {
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    padding: @tag-vertical-padding 2em;
+
+    background-color: @pampas;
+    border: 0;
+    border-radius: 4px;
+
+    color: @tag-pill-text-color;
+    font-size: inherit;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    cursor: pointer;
+
+    transition:
+      background-color .2s ease,
+      color 0.2s ease;
+
+    &:hover,
+    &:focus {
+      background-color: darken(@pampas, 5%);
+      outline: none;
+      text-decoration: none;
+    }
+
+    &.is-active {
+      background-color: @jaffa;
+      color: #ffffff;
+
+      &:hover,
+      &:focus {
+        background-color: darken(@jaffa, 5%);
+      }
+    }
+  }
+
+  .tag-pill-checkbox-toggle {
+    display: none;
+  }
+
+
+
+  .tag-pill-list-pagination-item {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    width: @tag-width;
+    height: @tag-height;
+  }
+
+  .tag-pill-list-pagination-more-button {
+    width: 100%;
+    height: 100%;
+
+    background-color: @tag-pill-more-button-bg-color;
+    border: 1px solid @pampas;
+    border-radius: 4px;
+
+    color: @tag-pill-text-color;
+    font-size: inherit;
+    text-align: center;
+    cursor: pointer;
+
+    transition:
+      background-color .2s ease,
+      border-color .2s ease;
+
+    &:hover,
+    &:focus {
+      background-color: darken(@tag-pill-more-button-bg-color, 2%);
+      border-color: darken(@pampas, 2%);
+      outline: none;
+    }
+
+    & > .tag-pill-list-pagination-more-button__expanded-text {
+      display: none;
+    }
+    &.is-expanded {
+      & > .tag-pill-list-pagination-more-button__collapsed-text {
+        display: none;
+      }
+      & > .tag-pill-list-pagination-more-button__expanded-text {
+        display: block;
+      }
+    }
+  }
+
+}

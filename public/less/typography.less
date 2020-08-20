@@ -1,0 +1,121 @@
+@import (less) '../fonts/fontello/css/fontello.css';
+@import (less) '../fonts/fontello/css/animation.css';
+@import (less) '../fonts/octicons/octicons.css';
+@import './mixins/text/default-fonts';
+
+/* THIS HAS INTENTIONALLY BEEN COMMENTED OUT AND WILL BE USED FOR WHEN THE HOME PAGE USES THIS LESS FILE*/
+/*@font-face {
+  font-family: 'DP';
+
+  src: url('../fonts/sourcesans/fonts/dp.eot');
+
+  src: url('../fonts/sourcesans/fonts/dp.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/sourcesans/fonts/dp.woff') format('woff'),
+       url('../fonts/sourcesans/fonts/dp.ttf') format('truetype'),
+       url('../fonts/sourcesans/fonts/dp.svg#dp') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+*/
+
+body {
+  .m-default-fonts();
+  background-color: white;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #333;
+}
+
+p {
+  margin-bottom: 1.3em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+// TODO: Remove because duplicate of `markdown.less`
+h1 {
+  font-size: 1.802em;
+  margin: 0.901em 0;
+}
+
+// TODO: Remove because duplicate of `markdown.less`
+h2 {
+  font-size: 1.424em;
+}
+
+// TODO: Remove because duplicate of `markdown.less`
+h2 + p {
+  margin-top: 0;
+}
+
+// TODO: Remove because duplicate of `markdown.less`
+h3 {
+  font-size: 1.266em;
+}
+
+// TODO: Remove because duplicate of `markdown.less`
+h4 {
+  font-size: 1.125em;
+}
+
+// TODO: Remove because duplicate of `markdown.less`
+h5 {
+  font-size: 1em;
+  text-transform: uppercase;
+  margin-bottom: 0.2em;
+  font-weight: 400;
+}
+
+small,
+.u-font-smaller {
+  font-size: 0.889em;
+}
+// TODO: Remove because duplicate of `markdown.less`
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 0.6;
+  ul,
+  ol {
+    margin-bottom: 0;
+  }
+}
+
+.u-font-larger {
+  font-size: 1.125em;
+}
+
+input {
+  font-family: inherit;
+}
+
+.error-text {
+  color: @error-red;
+}
+
+body {
+  // This hack appears in an old Chrome issue to fix font rendering similar to what we're experiencing
+  // https://bugs.chromium.org/p/chromium/issues/detail?id=336476#c40
+  -webkit-animation-delay: 0.1s;
+  -webkit-animation-name: fontfix;
+  -webkit-animation-duration: 0.1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes fontfix {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "gitter-web-client-error-reporting",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "dependencies": {
+    "gitter-client-env": "file:../client-env"
+  },
+  "private": true
+}

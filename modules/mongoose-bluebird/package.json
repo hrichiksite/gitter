@@ -1,0 +1,13 @@
+{
+  "name": "gitter-web-mongoose-bluebird",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "private": true,
+  "dependencies": {
+
+  }
+}

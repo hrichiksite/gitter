@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`search-body-message-result-item matches snapshot 1`] = `
+<li
+  class="message-search-item"
+>
+  <span
+    class="message-search-item-detail"
+  >
+    <a
+      class="message-search-item-detail-author-link"
+      href="/viktomas_gitlab"
+    >
+      Tomas Vik
+      
+      <span>
+        @viktomas_gitlab
+      </span>
+    </a>
+     
+    <span>
+      ●
+    </span>
+     
+    <a
+      class="message-search-item-detail-permalink"
+      href="/community/room1?at=573bd813e2996a5a42c95899-1"
+    >
+      May 17th 7:48 PM
+    </a>
+  </span>
+   
+  <span
+    class="message-search-item-text"
+  >
+    
+    @MadLittleMods For some groups it might not matter much, but for others a lot.  Kinda like stack overflows 'take this offline' thing when you start doing a conversation in the comments.  Im' sure it's not simple to design
+  
+  </span>
+</li>
+`;

@@ -1,0 +1,20 @@
+verbose: false
+instrumentation:
+    root: .
+    excludes:
+        - node_modules/
+        - public/js/
+    save-baseline: true
+    # Won't get deleted when we recreate the coverage
+    baseline-file: ./output/coverage-baseline.json
+reporting:
+    print: summary
+    reports:
+        - lcov
+        - cobertura
+    dir: ./output/coverage
+    watermarks:
+        statements: [50, 80]
+        lines: [50, 80]
+        functions: [50, 80]
+        branches: [50, 80]

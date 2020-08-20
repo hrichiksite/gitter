@@ -1,0 +1,41 @@
+#!/bin/bash
+
+set -euo pipefail
+set -x
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source $SCRIPT_DIR/vars
+
+if ! curl -q --fail -vi -XGET "$ES_URL/$INDEX_NAME/_settings"; then
+  curl -q --fail -vi -XPUT "$ES_URL/$INDEX_NAME?pretty=true" -d @- << EOD
+  {
+    "settings": {
+      "number_of_shards": 4,
+      "number_of_replicas": $ES_NUMBER_OF_REPLICAS,
+      "mapper": {
+        "dynamic": false
+      }
+    }
+  }
+EOD
+fi
+
+sleep 0.5
+
+## Update the language analyzers
+curl -q --fail -XPOST "$ES_URL/$INDEX_NAME/_close"
+
+for l in languages/*.json; do
+  curl -q --fail -vi -XPUT "$ES_URL/$INDEX_NAME/_settings?pretty=true" -d @$l
+done
+
+curl -q --fail -XPOST "$ES_URL/$INDEX_NAME/_open"
+
+curl -q --fail -vi -XPUT "$ES_URL/$INDEX_NAME/_mapping/user?pretty=true" -d @"${SCRIPT_DIR}/mappings/user-mapping.json"
+
+curl -q --fail -vi -XPUT "$ES_URL/$INDEX_NAME/_mapping/chat?pretty=true" -d @"${SCRIPT_DIR}/mappings/chat-mapping.json"
+
+curl -q --fail -vi -XPUT "$ES_URL/$INDEX_NAME/_mapping/group?pretty=true" -d @"${SCRIPT_DIR}/mappings/group-mapping.json"
+
+curl -q --fail -vi -XPUT "$ES_URL/$INDEX_NAME/_mapping/room?pretty=true" -d @"${SCRIPT_DIR}/mappings/room-mapping.json"

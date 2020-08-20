@@ -1,0 +1,23 @@
+{{!< error-layout}}
+<a href="{{homeUrl}}"><img class="image" src="{{cdn 'images/icon-logo-red-64@2x.png'}}" width="64" title="The sad face"></a>
+<div class="error">
+  Gitter<br>
+  <input id="error-text" class="error-input" size="55" readonly="readonly"><br><br>
+
+  {{#unless user}}
+    <p>
+      There may be a private chat room here but you are not signed in, <a href="/login?returnTo={{currentPath}}">sign in</a>
+    </p>
+  {{/unless}}
+
+  {{#if userMissingPrivateRepoScope}}
+    <p>If you're looking to access a private repository, you will need to upgrade your GitHub authentication to
+      allow us to access the list of your private repositories.</p>
+    <p><a id="upgrade" href="/login/upgrade?scopes=repo" target="_blank">Click here to do this now.</a></p>
+  {{/if}}
+
+  {{#if stack}}
+    <pre style="font-size:small">{{{stack}}}</pre>
+  {{/if}}
+</div>
+{{{ typewriter "#error-text" "404. This is not the chat you\'re looking for.---------------- Sorry.-------- :(" }}}

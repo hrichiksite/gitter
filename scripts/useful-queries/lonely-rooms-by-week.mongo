@@ -1,0 +1,39 @@
+var results = db.troupes.mapReduce(function map() {
+  var date = this._id.getTimestamp();
+  date.setHours(0);
+  date.setMinutes(0);
+  date.setSeconds(0);
+  date.setMilliseconds(0);
+  // date.setDate(1);
+
+  //date = new Date(date.valueOf() - date.getDay() * 86400000);
+
+  var lonely = this.users && this.users.length == 1;
+  emit(date, { count: 1, lonely: lonely ? 1: 0 });
+}, function reduce(key, values) {
+  var reducedVal = { count: 0, lonely: 0 };
+  values.forEach(function(item) {
+    reducedVal.count += item.count;
+    reducedVal.lonely += item.lonely;
+  });
+
+  return reducedVal;
+}, {
+  out: { inline: 1 }
+}).results;
+
+results.sort(function(a, b) {
+  return a._id.valueOf() - b._id.valueOf();
+});
+
+results.forEach(function(f) {
+  var date = f._id;
+  var y = date.getFullYear();
+  var m = date.getMonth() + 1;
+  var d = date.getDate();
+
+  var ds = "" +  y + "/" + (m < 10 ? '0' + m : m) + '/' + (d < 10 ? '0' + d : d);
+  // print(ds + ',' + f.value/* (f.value * 100).toFixed(2)*/);
+  // printjson(f.value/* (f.value * 100).toFixed(2)*/);
+  print(ds + ',' + (f.value.lonely / f.value.count * 100).toFixed(2));
+});

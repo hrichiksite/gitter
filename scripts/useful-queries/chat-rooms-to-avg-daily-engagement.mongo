@@ -1,0 +1,50 @@
+rs.slaveOk()
+
+var horizonTimestamp = Date.now() - 86400000 * 30;
+
+function createIdForTimestampString(timestamp) {
+  var hexSeconds = Math.floor(timestamp/1000).toString(16);
+
+  while(hexSeconds.length < 8) {
+    hexSeconds = "0" + hexSeconds;
+  }
+  return ObjectId(hexSeconds + "0000000000000000");
+}
+
+var a = db.chatmessages.aggregate([{
+  $match: {
+    _id: { $gt: createIdForTimestampString(horizonTimestamp) },
+    sent: { $type: 'date' }
+  }
+}, {
+  $group: {
+    _id: '$fromUserId',
+    rooms: { $addToSet: "$toTroupeId" },
+    days: { $addToSet: { $dayOfYear: "$sent" } }
+  },
+}, {
+  $project: {
+    userId: '$_id',
+    activeRooms: { $size: '$rooms' },
+    activeDays: { $size: '$days' },
+  }
+}, {
+  $group: {
+    _id: '$activeRooms',
+    avgActiveDays: { $avg: '$activeDays' }
+  },
+}, {
+  $project: {
+    activeRooms: '$_id',
+    avgActiveDays: '$avgActiveDays',
+  }
+}, {
+  $sort: {
+    activeRooms: 1,
+  }
+}]);
+
+print('activeRooms,avgActiveDays')
+a.forEach(function(i) {
+  print(i.activeRooms + ',' + i.avgActiveDays)
+})

@@ -1,0 +1,190 @@
+{
+  "web": {
+    "homeurl": "/",
+    "domain": "gitter.im",
+    "secureCookies": false,
+    "staticContent": "public",
+    "staticContentExpiryDays": 365,
+    "minified": true,
+    "cacheTemplates": false,
+    "cookiePrefix": "d_",
+    "sessionSecret": "",
+    "sessionTTL": 21600,
+    "useFirebugInIE": false,
+    "consoleLogging": false,
+    "rememberMeTTLDays": 30,
+    "backlog": 128,
+    "liveReload": false,
+    "startApiInPrimaryApp": true,
+    "apiRateLimit": 100
+  },
+  "webhooks": {
+    "secret": "sEjtXk0HW5lWXVgApuAJdk8sejME"
+  },
+  "express": {
+    "showStack": false,
+    "fileCleanupExpiration": 60,
+    "fileCleanupInterval": 60,
+    "viewCache": false
+  },
+  "presence": {
+    "prefix": "pr",
+    "gcInterval": 60000
+  },
+  "apn": {
+    "feedbackInterval": 30
+  },
+  "gcm": {
+    "apiKey": ""
+  },
+  "vapid": {
+    "contact": "",
+    "publicKey": "",
+    "privateKey": ""
+  },
+  "notifications": {
+    "notificationsSender": "support@gitter.im",
+    "replyToAddress": "no-reply@gitter.im",
+    "minimumUserAlertInterval": 57600,
+    "notificationDelay": 20,
+    "notificationDelay2": 180,
+    "emailNotificationsAfterMins": 60,
+    "timeBeforeNextEmailNotificationMins": 3600,
+    "filterTestValues": true
+  },
+  "ws": {
+    "hostname": "localhost",
+    "externalPort": 5000,
+    "bindIp": "127.0.0.1",
+    "port": 5000,
+    "nowjsUrl": "",
+    "startFayeInPrimaryApp": false,
+    "superClientPassword": "",
+    "fayePerMessageDeflate": true,
+    "fayeTimeoutOLD": 300,
+    "fayeTimeout": 120,
+    "fayeRetry": 2,
+    "fayePing": 40,
+    "backlog": 128,
+    "subscribeTimeoutThreshold": 5000,
+    "useDeprecatedChannels": false
+  },
+  "PORT": 5000,
+  "runtime": {
+    "gid": "",
+    "uid": ""
+  },
+  "email": {
+    "emailBasePath": "http://localhost:5000",
+    "unsubscribeNotificationsSecret": "",
+    "limitInviteEmails": true,
+    "inviteEmailAbuseThresholdPerDay": 10
+  },
+  "amazon": {
+    "accessKey": "",
+    "secretKey": ""
+  },
+  "export": {
+    "enabled": true
+  },
+  "logging": {
+    "logToFile": false,
+    "level": "verbose",
+    "colorize": false,
+    "timestamp": true,
+    "prettyPrint": false,
+
+    "access": true,
+    "loggingFormat": "default",
+    "logStaticAccess": false,
+    "logEmailContents": false,
+    "longStackSupport": false,
+
+    "logstash": {
+      "enabled": false,
+      "host": "127.0.0.1",
+      "port": 6140
+    }
+  },
+  "cdn": {
+    "use": false
+  },
+  "stats": {
+    "logger": {
+      "enabled": false
+    },
+    "statsd": {
+      "prefix": "gitter.web."
+    },
+    "ga": {
+      "domain": "gitter.im"
+    }
+  },
+  "integrations": {
+    "secret": ""
+  },
+  "github": {
+    "caching": true,
+    "cache-timeout": 120,
+    "fast-repo-description-cache-timeout": 86400,
+    "statePassphrase": ""
+  },
+  "chat-service": {
+    "get-rough-message-count-cache-timeout": 86400
+  },
+  "revokedUserAgents": [],
+  "irc": {},
+  "errorReporting": {
+    "enabled": false
+  },
+  "zendesk": {
+    "subdomain": "",
+    "sharedKey": ""
+  },
+  "facebook": {
+    "appId": ""
+  },
+  "twitterbadger": {
+    "consumer_key": "",
+    "consumer_secret": "",
+    "access_token": "",
+    "access_token_secret": ""
+  },
+  "serializer": {
+    "warning-period": 100
+  },
+  "STAGING": false,
+  "premiumRelease": "9/3/2014",
+  "autoPullRequest": {
+    "enabled": false
+  },
+  "elasticsearch": {
+    "defaultQueryTimeout": 1000,
+    "sniffOnStart": true
+  },
+  "transloadit": {
+    "avatars": {
+      "bucket": "gitter-avatars-dev"
+    }
+  },
+  "project-splitsville": {
+    "enabled": false
+  },
+  "avatar": {
+    "officialHost": "http://localhost:5000/api/private/avatars",
+    "dnsPreloadHosts": ["localhost"],
+    "hosts": [
+      "http://localhost:5000/api/private/avatars",
+      "http://localhost:5000/api/private/avatars"
+    ]
+  },
+  "suggestions": {
+    "cache-timeout": 86400
+  },
+  "headlineNumbers": {
+    "gitterUsers": "800K+",
+    "gitterRooms": "300K+",
+    "gitterGroups": "90K+",
+    "gitterCountries": "100+"
+  }
+}

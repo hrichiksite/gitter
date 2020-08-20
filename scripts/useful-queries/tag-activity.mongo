@@ -1,0 +1,71 @@
+'use strict';
+load('./csv.js');
+rs.slaveOk();
+
+var horizonTimestamp = Date.now() - 86400000 * 30;
+
+var x = db.chatmessages.aggregate({
+  $match: {
+    _id: { $gt: createIdForTimestampString(horizonTimestamp) },
+    sent: { $type: 'date' }
+  }
+}, {
+  $limit: 100
+}, {
+  $group: {
+    _id: '$toTroupeId',
+    users: { $addToSet: '$fromUserId' },
+    chats: { $addToSet: '$_id' }
+  }
+}, {
+  $lookup: {
+    from: "troupes",
+    localField: "_id",
+    foreignField: "_id",
+    as: "troupe"
+  }
+}, {
+  $unwind: '$troupe'
+}, {
+  $project: {
+    _id: 1,
+    chats: 1,
+    users: 1,
+    tags: '$troupe.tags'
+  }
+}, {
+  $unwind: '$tags'
+}, {
+  $unwind: '$users'
+}, {
+  $unwind: '$chats'
+}, {
+  $group: {
+    _id: '$tags',
+    users: { $addToSet: '$users' },
+    rooms: { $addToSet: '$_id' },
+    chats: { $addToSet: '$chats' }
+  }
+// }, {
+//   $lookup: {
+//     from: "tagsynonyms",
+//     localField: "_id",
+//     foreignField: "synonyms",
+//     as: "tagsynonyms"
+//   }
+// }, {
+//   $unwind: '$tagsynonyms',
+// }, {
+//   $project: {
+//     _id: '$tagsynonyms.name',
+//     users: { $size: '$users' },
+//     rooms: { $size: '$rooms' },
+//     chats: { $size: '$chats' }
+//   }
+// }, {
+//   $sort: {
+//     chats: -1
+//   }
+});
+printjson(x.toArray());
+printCSV(x, ['_id', 'chats', 'rooms', 'users']);

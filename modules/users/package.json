@@ -1,0 +1,22 @@
+{
+  "name": "gitter-web-users",
+  "version": "1.0.0",
+  "main": "lib/user-service.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true,
+  "dependencies": {
+    "gitter-web-env": "file:../env",
+    "gitter-web-persistence": "file:../persistence",
+    "gitter-web-persistence-utils": "file:../persistence-utils",
+    "gitter-web-uri-resolver": "file:../uri-resolver"
+  },
+  "devDependencies": {
+    "gitter-web-test-utils": "file:../test-utils"
+  }
+}

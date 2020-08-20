@@ -1,0 +1,28 @@
+<div class="org-page__header-inner">
+  <img class="org-page__header-logo" {{{ avatarSrcSet group.avatarUrl 72 }}}>
+
+  <div class="org-page__header-body">
+    <h1 class="org-page__header-heading h1">
+      <a href="{{orgDirectoryUrl}}" target="_top">
+        {{ group.name }}
+      </a>
+    </h1>
+
+    <div class="org-page__header-body-actions">
+      {{#if isLoggedIn}}
+        <button class="org-page__header-favourite-button js-group-favourite-button" title="Favourite {{ group.name }}">
+          <i class="org-page__header-favourite-button-icon {{#if group.favourite }}icon-star-1 favourite{{^}}icon-star-empty{{/if}} js-group-favourite-button-icon" aria-hidden="true"></i>
+        </button>
+      {{/if}}
+      <a
+        class="org-page__header-share-link subdued-button-clouds--small"
+        href="{{socialUrl}}"
+        target="_blank">
+        Share
+      </a>
+      {{#if isLoggedIn}}
+        <div id="profile-menu" class="profile-menu"></div>
+      {{/if}}
+    </div>
+  </div>
+</div>

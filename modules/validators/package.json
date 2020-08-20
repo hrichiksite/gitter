@@ -1,0 +1,16 @@
+{
+  "name": "gitter-web-validators",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true,
+  "dependencies": {
+    "gitter-web-slugify": "file:../slugify"
+  }
+}

@@ -1,0 +1,21 @@
+'use strict';
+load('./csv.js');
+rs.slaveOk();
+
+var x = db.troupes.aggregate({
+  $unwind: '$tags'
+}, {
+  $group: {
+    _id: '$tags',
+    count: { $sum: 1 }
+  }
+}, {
+  $sort: {
+    count: -1
+  }
+}, {
+  $limit: 100
+});
+
+
+printCSV(x, ['_id', 'count']);

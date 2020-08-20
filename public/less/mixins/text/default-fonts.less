@@ -1,0 +1,21 @@
+//Bundled Fonts -> Web Fonts -> System Font (Look terrible on windows)  -> System Default Fonts -> Standard Web Fallbacks
+@font-base: "SourceSansLocal", "source-sans-pro", "Source Sans Pro",
+            /*
+             * native ios and android cant read from "/_s/l", but they look better with
+             * the same system fonts as the native elements anyway
+             */
+            -apple-system, "Roboto",
+            /*
+             * fonts for when our cdn explodes
+             */
+            "pt sans", "calibri", sans-serif;
+
+
+.m-default-fonts() {
+  //Bundled Fonts -> System Fonts (look bad but here in case of load failure) -> System Default Fonts (mobile) -> Websafe Fonts
+  font-family: "SourceSansLocal", "Source Sans Pro", -apple-system, "Roboto",  Helvetica, Arial, sans-serif;
+
+  .fonts-loaded & {
+    font-family: @font-base;
+  }
+}

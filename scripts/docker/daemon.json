@@ -1,0 +1,11 @@
+{
+  "live-restore": true,
+	"insecure-registries": [
+		"docker-registry.prod.gitter",
+		"docker-registry.beta.gitter",
+		"docker-registry.jenkins.gitter",
+		"docker-registry.service.prod.gitter",
+		"docker-registry.service.beta.gitter",
+		"docker-registry.service.jenkins.gitter"
+	]
+}

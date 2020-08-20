@@ -1,0 +1,74 @@
+rs.slaveOk()
+
+var roomIds = db.troupes.find({ lcUri: { $in: [
+    'marionettejs/backbone.marionette',
+    'freecodecamp/freecodecamp',
+    'angular/angular.js',
+    'webpack/webpack',
+    'gulpjs/gulp',
+    'minio/minio',
+    'JuliaLang/julia',
+    'home-assistant/home-assistant'
+  ] }
+ }).map(function(f) { return f._id });
+
+var a = db.chatmessages.aggregate([{
+  $match: {
+    toTroupeId: { $in: roomIds },
+    sent: { $type: 'date' }
+  }
+}, {
+  $group: {
+    _id: {
+      userId: '$fromUserId',
+      troupeId: '$toTroupeId',
+    },
+    firstSent: { $min: '$sent'},
+    lastSent: { $max: '$sent'},
+  },
+}, {
+  $project: {
+    firstSent: 1,
+    lastSent: 1,
+    duration: { $divide: [{ $subtract: ['$lastSent', '$firstSent']}, 86400000] }
+  },
+}, {
+  $group: {
+    _id: '$_id.troupeId',
+    totalActiveUserCount: { $sum: 1 },
+    firstSent: { $min: '$firstSent'},
+    lastSent: { $max: '$lastSent'},
+    avgDuration: { $avg: '$duration' }
+  }
+}, {
+  $project: {
+    firstSent: 1,
+    lastSent: 1,
+    totalActiveUserCount: 1,
+    totalDuration: { $divide: [{ $subtract: ['$lastSent', '$firstSent']}, 86400000] },
+    avgDuration: 1,
+    avgOverLifetime: { $divide: ['$avgDuration', { $divide: [{ $subtract: ['$lastSent', '$firstSent']}, 86400000] }] }
+  },
+}, {
+  $lookup: {
+    from: "troupes",
+    localField: "_id",
+    foreignField: "_id",
+    as: "troupe"
+  },
+}, {
+  $unwind: "$troupe"
+}, {
+  $project: {
+    _id: 1,
+    uri: '$troupe.uri',
+    firstSent: 1,
+    lastSent: 1,
+    totalActiveUserCount: 1,
+    totalDuration: 1,
+    avgDuration: 1,
+    avgOverLifetime: 1
+  },
+}]);
+
+printjson(a.toArray());

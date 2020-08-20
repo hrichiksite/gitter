@@ -1,0 +1,62 @@
+rs.slaveOk();
+
+function getUsers(uri) {
+  var troupe = db.troupes.findOne({
+    "uri": uri
+  });
+  return troupe.users;
+}
+
+function weeksBetween(date1, date2) {
+  // The number of milliseconds in one week
+  var ONE_WEEK = 1000 * 60 * 60 * 24 * 7;
+  // Convert both dates to milliseconds
+  var date1_ms = date1.getTime();
+  var date2_ms = date2.getTime();
+  // Calculate the difference in milliseconds
+  var difference_ms = Math.abs(date1_ms - date2_ms);
+  // Convert back to weeks and return hole weeks
+  return Math.floor(difference_ms / ONE_WEEK);
+}
+
+function dateCheck(from,to,check) {
+    var fDate,lDate,cDate;
+    fDate = Date.parse(from);
+    lDate = Date.parse(to);
+    cDate = Date.parse(check);
+    if((cDate <= lDate && cDate >= fDate)) {
+        return true;
+    }
+    return false;
+}
+
+
+function chunkUsersIntoWeeks(users) {
+  var startDate = users[0]._id.getTimestamp();
+  var weeks = weeksBetween(startDate, users[users.length-1]._id.getTimestamp());
+
+  var thisDate;
+  var counter = 0;
+  var day;
+  var month;
+  var year;
+  for (var i = 0; i < weeks+1; i++) {
+    thisDate = new Date(startDate.valueOf() + 86400000*7*i);
+    nextDate = new Date(startDate.valueOf() + 86400000*7*(i+1));
+    for (var u = 0; u < users.length; u++) {
+      if (dateCheck(thisDate, nextDate, users[u]._id.getTimestamp())) counter++;
+    }
+    day = thisDate.getDate();
+    month = thisDate.getMonth()+1;
+    year = thisDate.getFullYear();
+    print(day + "/" + month + "/" + year + "," + counter);
+  }
+  // printjson(chunks);
+}
+
+var users = getUsers('marionettejs/backbone.marionette');
+
+chunkUsersIntoWeeks(users);
+
+
+

@@ -1,0 +1,4 @@
+db.oauthaccesstokens.aggregate([
+  { $group: { _id: '$clientId', s: { $sum: 1 }  } },
+  { $sort: { s: -1 } },
+  { $limit: 20 }])

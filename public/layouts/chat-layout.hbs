@@ -1,0 +1,66 @@
+<!doctype html>
+<html class="no-js {{#if hasCachedFonts}}fonts-loaded{{/if}}" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=IE9" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+    <meta charset="utf-8">
+    <title>{{troupeName}} - Gitter</title>
+    <style>
+
+      @-webkit-keyframes pulsey {
+        0% { opacity: 0.6; }
+        50% { opacity: 1; }
+        100% { opacity: 0.6; }
+      }
+
+      html.loading .trpContentPanel { background: url("{{ cdn 'images/logo-mark-grey-64.png' }}") center no-repeat; height: 90%; -webkit-animation: pulsey 2s ease-out; -webkit-animation-iteration-count: infinite;  }
+      html.loading .trpContentPanel > * { visibility: hidden; }
+    </style>
+    <base target="_parent">
+
+
+    {{#each subresources}}
+    <link rel="subresource" href="{{ this }}">
+    {{/each}}
+
+    {{> fonts}}
+
+    <link rel="stylesheet" href='{{cdn "sprites/services.css" }}'>
+    {{#if cssFileName}}
+      <link rel="stylesheet" href='{{cdn cssFileName }}'>
+    {{/if}}
+
+    {{#if hasDarkTheme}}
+    <link rel="stylesheet" href='{{cdn "styles/dark-theme.css" }}' id="gitter-dark" media="all" type="text/css">
+    {{/if}}
+
+    <link id="favicon" rel="shortcut icon" href='{{cdn "images/favicon-normal.ico" }}'><!-- Le fav and touch icons -->
+
+    <link rel="manifest" href="/manifest.webmanifest">
+
+    {{#each socialMetadata}}
+    <meta property="{{@key}}" content="{{this}}"/>
+    {{/each}}
+  </head>
+  <body class="{{#if isMobile}}mobile{{/if}} iframe {{classNames}}">
+    <div class="layout-app">
+      {{#unless embedded}}
+        {{{leftMenuHtml}}}
+      {{/unless}}
+
+      <div class="layout-app-body">
+        {{{body}}}
+      </div>
+    </div>
+
+    {{> staging_marker}}
+
+    <div class="js-drag-overlay drag-frame hide">
+      <span class="octicon octicon-arrow-down"></span>
+    </div>
+
+
+    {{{ generateTroupeContext troupeContext }}}
+    {{{ bootScript bootScriptName "router-app" jsRoot=jsRoot }}}
+  </body>
+</html>

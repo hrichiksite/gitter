@@ -1,0 +1,80 @@
+.people-modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.people-modal__search {
+  flex-shrink: 0;
+  margin-bottom: 1em;
+
+  width: 100%;
+  box-sizing: border-box;
+  height: 2em;
+  border-radius: 6px;
+  padding: 0 26px;
+}
+
+.people-modal__search-icon {
+  position: absolute;
+  top: 23px;
+  left: 23px;
+  opacity: .6;
+}
+
+.people-modal__search-clear {
+  display: none;
+  position: absolute;
+  top: 19px;
+  right: 18px;
+  opacity: .6;
+  cursor: pointer;
+  transition: opacity .2s ease-in-out;
+}
+
+.people-modal__results {
+  margin: 0 0 0 -1em;
+  overflow: auto;
+  height: 390px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.people-modal-result {
+  display: inline-block;
+  list-style: none;
+  margin: 0 0 1em 1em;
+  height: 48px;
+  width: 200px;
+  flex-grow: 1;
+}
+
+.people-modal-result h4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.people-modal-result__username {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0.6;
+}
+
+.people-modal-result__avatar {
+  display: inline;
+  float: left;
+  margin-right: 0.5em;
+}
+
+.people-modal-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 4em;
+  padding-left: 1em;
+}

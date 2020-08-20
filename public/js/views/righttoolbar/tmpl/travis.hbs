@@ -1,0 +1,8 @@
+<div class="activity-item-inner build-{{build_status}}">
+  <div class="service-sprite travis-logo activity-item__icon"></div>
+  <div class="activity-time" id="time">{{ sentFormatted }}</div>
+
+  <div class="gtrActivityItemText">Travis <a href="{{sanitizeHref payload.compare_url}}" target="_blank">{{payload.repository.owner_name}}/{{payload.repository.name}}</a> <small>({{payload.branch}})</small> <a href="{{sanitizeHref payload.build_url}}" target="_blank">{{build_status}}</a></div>
+
+  <div style="clear: both;"></div>
+</div>

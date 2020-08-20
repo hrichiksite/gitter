@@ -1,0 +1,11 @@
+{{#each actions}}
+  {{#if disabled}}
+    <div class="popover-item__action-disabled">
+      {{description}}
+    </div>
+  {{else}}
+    <div class="popover-item__action js-chat-action-{{name}}">
+      {{description}}
+    </div>
+  {{/if}}
+{{/each}}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Gitter Apps</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{cdn 'styles/homepage.css' }}">
+        <link id="favicon" rel="shortcut icon" href="{{ cdn 'images/favicon-normal.ico' }}">
+    </head>
+    <body>
+      <header id="intro-panel" class="apps-page-header">
+        <nav class="site-nav">
+          <div class="wrap">
+            <a href="/" class="logo">
+              {{> logo_man}}
+              <img src="{{ cdn 'images/home/logo_nomargin@2x.png' }}" alt="Gitter" class="logo-image menu-animation">
+            </a>
+            <span class="desktopOnly"><a class="btn login desktopOnly" href="/login?action=login&source=apps-login">
+              <b><span>Open Gitter</b>
+            </a>
+            </span>
+          </div>
+        </nav>
+        <div class='bg-animation'>{{!-- the div below is responsible for the fadein of the background --}}</div>
+      </header>
+      <section id="apps-panel">
+        <div class="wrap">
+          <div class="devices">
+              {{! find the raw source file at https://gitlab.com/gitlab-org/gitter/design/-/blob/master/design-assets/deliverables/frontpage/gitter-apps.xcf}}
+              <img srcset="{{cdn 'images/home/gitter-apps.png'}}, {{cdn 'images/home/gitter-apps@2x.png'}} 2x" src="{{cdn 'images/home/gitter-apps.png'}}">
+          </div>
+          <h1>Official apps</h1>
+          {{> apps_content }}
+        </div>
+      </section>
+      <footer id="bottom-panel">
+        <div class="wrap">
+          <h1>3rd Party Apps</h1>
+          <p>These apps have kindly been built by developers using our API</a>. </p>
+          <p>
+            <a class="btn outline" href="https://www.microsoft.com/store/apps/modern-gitter/9wzdncrd2tzj" target="blank">Modern Gitter for Windows (Phone) 8</a>
+            <a class="btn outline" href="https://github.com/huafu/hubot-gitter2" target="_blank">Hubot Adapter</a>
+            <a class="btn outline" href="https://github.com/finnp/gitter-irc-bot" target="_blank">IRC Mirroring Bot</a>
+            <a class="btn outline" href="https://github.com/RodrigoEspinosa/gitter-cli" target="_blank">Gitter CLI</a>
+            <a class="btn outline" href="https://uappexplorer.com/app/gitter.peter-bittner" target="_blank">Ubuntu Touch</a>
+            <a class="btn outline" href="https://github.com/errbotio/err-backend-gitter" target="_blank">Errbot Adapter</a>
+            <a class="btn outline" href="https://github.com/eklavya/Gitteraqt" target="_blank">Native QML/Qt app</a>
+            <a class="btn outline" href="https://github.com/uuttff8/Niceter" target="_blank">Niceter (native iOS client)</a>
+          </p>
+          {{> footer_content }}
+        </div>
+      </footer>
+      {{{ generateEnv }}}
+      {{{ bootScript "apps" }}}
+      <script type="text/javascript" src="//use.typekit.net/ohh4mcl.js"></script>
+      <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    </body>
+</html>

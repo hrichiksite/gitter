@@ -1,0 +1,31 @@
+var results = db.troupes.mapReduce(function map() {
+  var date = this._id.getTimestamp();
+  date.setHours(0);
+  date.setMinutes(0);
+  date.setSeconds(0);
+  date.setMilliseconds(0);
+
+  var lonely = this.users && this.users.length == 1;
+  emit(date, lonely ? 1 : 0);
+}, function reduce(key, values) {
+  if(values.length === 0) return -1;
+
+  var lonelyCount = Array.sum(values);
+  return lonelyCount / values.length;
+}, {
+  out: { inline: 1 }
+}).results;
+
+results.sort(function(a, b) {
+  return a._id.valueOf() - b._id.valueOf();
+});
+
+results.forEach(function(f) {
+  var date = f._id;
+  var y = date.getFullYear();
+  var m = date.getMonth() + 1;
+  var d = date.getDate();
+
+  var ds = "" +  y + "/" + (m < 10 ? '0' + m : m) + '/' + (d < 10 ? '0' + d : d);
+  print(ds + ',' + (f.value * 100).toFixed(2));
+});

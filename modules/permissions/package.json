@@ -1,0 +1,24 @@
+{
+  "name": "gitter-web-permissions",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --recursive test/"
+  },
+  "private": true,
+  "dependencies": {
+    "gitter-web-appevents": "file:../appevents",
+    "gitter-web-env": "file:../env",
+    "gitter-web-github": "file:../github",
+    "gitter-web-identity": "file:../identity",
+    "gitter-web-persistence": "file:../persistence",
+    "gitter-web-persistence-utils": "file:../persistence-utils"
+  },
+  "devDependencies": {
+    "gitter-web-test-utils": "file:../test-utils"
+  }
+}

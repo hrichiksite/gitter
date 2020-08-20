@@ -1,0 +1,13 @@
+{
+  "env": {
+    "commonjs": true,
+    "node": true,
+    "cypress/globals": true
+  },
+  "plugins": ["cypress"],
+  "rules": {
+    "no-console": "warn",
+    "strict": ["warn", "safe"],
+    "max-nested-callbacks": ["error", 10]
+  }
+}

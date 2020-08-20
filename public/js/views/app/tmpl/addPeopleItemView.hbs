@@ -1,0 +1,20 @@
+{{!-- This is actually wrapped by div.gtrPeopleAddRoster --}}
+{{#if unreachable}}
+<form class="gtrPeopleRosterItem__form">
+{{/if}}
+<div class='gtrPeopleRosterItem__content'>
+  {{ widget "avatar" user=user size='s' showTooltip=false }}
+  {{#if unreachable}}
+  <input type='email' placeholder="Enter {{ username }}'s email" required class="gtrPeopleRosterItem__input" autofocus>
+  <input type='submit' value='Invite' href='#' class='button-caribbean--small' />
+  {{/if}}
+  {{#if added}}
+  <p><strong>{{username}}</strong> was added.</p>
+  {{/if}}
+  {{#if invited}}
+  <p><strong>{{username}}</strong> was invited to join Gitter.</p>
+  {{/if}}
+</div>
+{{#if unreachable}}
+</form>
+{{/if}}

@@ -1,0 +1,28 @@
+{
+  "name": "gitter-web-unread-items",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true,
+  "dependencies": {
+    "gitter-web-env": "file:../env",
+    "gitter-web-appevents": "file:../appevents",
+    "gitter-web-persistence-utils": "file:../persistence-utils",
+    "gitter-web-push-notifications": "file:../push-notifications",
+    "gitter-web-utils": "file:../utils",
+    "gitter-web-rooms": "file:../rooms",
+    "gitter-web-push-notification-filter": "file:../push-notification-filter",
+    "gitter-web-presence": "file:../presence",
+    "gitter-web-permissions": "file:../permissions",
+    "gitter-web-live-collection-events": "file:../live-collection-events"
+  },
+  "devDependencies": {
+    "gitter-web-test-utils": "file:../test-utils"
+  }
+}

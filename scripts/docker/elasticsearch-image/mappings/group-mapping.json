@@ -1,0 +1,59 @@
+{
+  "group": {
+    "dynamic" : "strict",
+    "properties": {
+      "uri": {
+        "type": "string",
+        "norms": {
+          "enabled": false
+        }
+      },
+      "name": {
+        "type": "string",
+        "norms": {
+          "enabled": false
+        }
+      },
+      "sd": {
+        "type": "nested",
+        "properties": {
+          "type": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "members": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "admins": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "public": {
+            "type": "boolean"
+          },
+          "linkPath": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "externalId": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "internalId": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "extraMembers": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "extraAdmins": {
+            "type": "string",
+            "index": "not_analyzed"
+          }
+        }
+      }
+    }
+  }
+}

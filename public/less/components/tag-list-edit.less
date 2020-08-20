@@ -1,0 +1,56 @@
+@import "bootstrap/mixins";
+@import "colors.less";
+
+
+
+.tag-list-edit__input {
+
+  min-height: 2em;
+  width: 100%;
+  margin-top: 9px;
+
+  box-shadow: none;
+  border: none;
+  background: none;
+  outline: none;
+
+  &:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  &.invalid {
+    color: red;
+  }
+}
+
+
+.tags-modal__tag-list {
+  .clearfix;
+}
+
+//TODO --> restyle this (have stolen from room-car__tag styles)
+.tags-modal__tag-list__tag {
+  float: left;
+  padding: 6px 5px 6px 16px;
+  margin-right: 5px;
+  margin-top: 9px;
+  border-radius: 4px;
+
+  color: white;
+  background: #B3B3B3;
+
+  & button {
+    border: none;
+    background: none;
+  }
+
+  & i {
+    font-size: 14px;
+    &:before {
+      margin-top: -1px;
+      color: white;
+    }
+  }
+}

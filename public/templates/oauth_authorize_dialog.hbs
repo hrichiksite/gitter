@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Gitter Apps</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="{{ cdn 'styles/trpAppsPage.css' }}" rel="stylesheet">
+    <link id="favicon" rel="shortcut icon" href='{{cdn "images/favicon-normal.ico" }}'>
+  </head>
+
+  <body>
+    <div class="trpHomeHeroStripContainer trpHomeiOSAppHeroStripContainer">
+
+      <div class="trpHomeTopStrip">
+        <div class="trpHomeLogo"><img src="{{ cdn 'images/logo-text-white-48.png' }}" height="64"></div>
+      </div>
+
+      <div class="trpHomeHero">
+        <div class="trpHeroText">
+          Hello!
+          <br><br>
+          <b>{{client.name}}</b> is requesting access to your account.
+          <br><br>
+          Do you approve?
+          <br><br>
+          <form action="/login/oauth/authorize/decision" method="post">
+            <input name="transaction_id" type="hidden" value="{{transactionId}}">
+            <div>
+            <input class="trpHomeMenuItem trpButtonMedium trpBtnWhite" type="submit" value="Allow" id="allow">
+            <input class="trpHomeMenuItem trpButtonMedium trpBtnWhite" type="submit" value="Deny" name="cancel" id="deny">
+            </div>
+          </form>
+
+
+        </div>
+      </div>
+
+    </div>
+
+    {{{ generateEnv }}}
+    {{{ bootScript "just-tracking" }}}
+
+  </body>
+</html>

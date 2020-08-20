@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`thread-message-feed join-or-sign-in-button shows sign in button for nli users 1`] = `
+<footer
+  class="chat-input chat-input-nli"
+>
+  <a
+    class="chat-input__btn"
+    href="/login?action=login"
+    target="_top"
+  >
+    
+    Sign in to start talking
+  
+  </a>
+</footer>
+`;
+
+exports[`thread-message-feed join-or-sign-in-button user allowed to join room matches snapshot 1`] = `
+<footer
+  class="chat-input chat-input-nli"
+>
+  <div
+    class="join-button-container"
+  >
+    <button
+      class="chat-input__btn"
+    >
+      
+      Join room
+    
+    </button>
+     
+    <!---->
+     
+    <!---->
+  </div>
+</footer>
+`;
+
+exports[`thread-message-feed join-or-sign-in-button user allowed to join room matches snapshot when loading 1`] = `
+<footer
+  class="chat-input chat-input-nli"
+>
+  <div
+    class="join-button-container"
+  >
+    <button
+      class="chat-input__btn"
+    >
+      
+      Join room
+    
+    </button>
+     
+    <!---->
+     
+    <loading-spinner-stub
+      class="join-room-loading-icon"
+    />
+  </div>
+</footer>
+`;
+
+exports[`thread-message-feed join-or-sign-in-button user allowed to join room matches snapshot when request failed 1`] = `
+<footer
+  class="chat-input chat-input-nli"
+>
+  <div
+    class="join-button-container"
+  >
+    <button
+      class="chat-input__btn"
+    >
+      
+      Join room
+    
+    </button>
+     
+    <span
+      class="error-text error-box"
+    >
+      
+      Joining room failed: Internal Server Error
+    
+    </span>
+     
+    <!---->
+  </div>
+</footer>
+`;
+
+exports[`thread-message-feed join-or-sign-in-button user not allowed to join - matches snapshot 1`] = `
+<footer
+  class="chat-input chat-input-nli"
+>
+  <div
+    class="not-allowed-to-join"
+  >
+    
+    Only GitHub users can join this room.
+  
+  </div>
+</footer>
+`;

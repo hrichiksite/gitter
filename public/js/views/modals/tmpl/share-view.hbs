@@ -1,0 +1,50 @@
+<h3 class="share-view__heading">
+  Classic
+</h3>
+
+<section class="share-view__section">
+  <input class="share-view__copy-field" value="{{stub}}" onclick="this.select();">
+
+  {{#if hasFlash}}
+  <button class="button-jaffa--small js-copy" data-clipboard-text="{{stub}}">Copy</button>
+  {{/if}}
+</section>
+
+<h3 class="share-view__heading">
+  README badge ( <img class="share-view__badge" src="{{badgeUrl}}"> )
+</h3>
+
+<section class="share-view__section">
+  <input class="share-view__copy-field share-view__copy-field--readme" value="{{badgeMD}}" onclick="this.select();">
+
+  {{#if hasFlash}}
+  <button class="button-jaffa--small js-copy" data-clipboard-text="{{badgeMD}}">Copy</button>
+  {{/if}}
+
+  {{#if isRepo}}
+    {{#if allowBadgePR}}
+      <button class='button-jaffa--small js-badge'>Send Pull Request</button>
+    {{/if}}
+  {{/if}}
+</section>
+
+{{#if isPublic}}
+<h3 class="share-view__heading">
+  Social
+</h3>
+
+<section class="share-view__section share-view__social">
+  <a href="{{twitterUrl}}" target="_blank" class="button-twitter">
+    <i class="icon-twitter"></i>
+  </a>
+  <a href="{{facebookUrl}}" target="_blank" class="button-facebook">
+    <i class="icon-facebook-official"></i>
+  </a>
+  <a class="button-linkedin" target="_blank" href="{{ linkedinLink }}">
+    <i class="icon-linkedin"></i>
+  </a>
+  <a class="button-google-plus" target="_blank" href="{{ googlePlusLink }}">
+    <i class="icon-gplus"></i>
+  </a>
+</section>
+{{/if}}

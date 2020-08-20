@@ -1,0 +1,20 @@
+{
+  "name": "gitter-web-invites",
+  "version": "1.0.0",
+  "main": "lib/invites-service.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true,
+  "dependencies": {
+    "gitter-web-avatars": "file:../avatars",
+    "gitter-web-github": "file:../github",
+    "gitter-web-identity": "file:../identity",
+    "gitter-web-persistence": "file:../persistence",
+    "gitter-web-persistence-utils": "file:../persistence-utils"
+  }
+}

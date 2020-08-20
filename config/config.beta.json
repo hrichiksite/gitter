@@ -1,0 +1,190 @@
+{
+  "web": {
+    "homeurl": "/",
+    "baseserver": "beta.gitter.im",
+    "baseport": "80",
+    "basepath": "https://beta.gitter.im",
+    "apiBasePath": "https://beta.gitter.im/api",
+    "oauthBasePath": "https://login-beta.gitter.im",
+    "cookieDomain": ".gitter.im",
+    "cookiePrefix": "b_",
+    "secureCookies": true,
+    "consoleLogging": true,
+    "cacheTemplates": true,
+    "badgeBaseUrl": "https://badges-beta.gitter.im",
+    "backlog": 1024,
+    "startApiInPrimaryApp": true
+  },
+  "webhooks": {
+    "basepath": "http://gitter-beta-01:5014"
+  },
+  "ws": {
+    "hostname": "ws-beta.gitter.im",
+    "externalPort": 443,
+    "bindIp": "0.0.0.0",
+    "port": 5443,
+    "fayeUrl": "https://ws-beta.gitter.im/faye",
+    "amazonProxyProtocol": false,
+    "backlog": 1024,
+    "fayePerMessageDeflate": true
+  },
+  "express": {
+    "viewCache": true
+  },
+  "email": {
+    "emailBasePath": "https://beta.gitter.im"
+  },
+  "notifications": {
+    "notificationsSender": "support@beta.gitter.im",
+    "replyToAddress": "no-reply@beta.gitter.im",
+    "emailNotificationsAfterMins": 1,
+    "timeBeforeNextEmailNotificationMins": 5
+  },
+  "cdn": {
+    "use": true,
+    "prefixFile": "/var/log/gitter/cdn-version",
+    "hosts": ["cdn01-beta.gitter.im", "cdn02-beta.gitter.im", "cdn03-beta.gitter.im"]
+  },
+  "camo": {
+    "camoUrl": "https://user-content.gitter-static.net",
+    "camoSecret": "<see Gitter secrets repo>"
+  },
+  "logging": {
+    "logToFile": true,
+    "level": "verbose",
+    "colorize": false,
+    "timestamp": true,
+
+    "access": true,
+    "logStaticAccess": true,
+    "accessLogFile": "/var/log/gitter/access.log",
+    "logToUDP": true
+  },
+  "stats": {
+    "envName": "beta",
+    "logger": {
+      "enabled": true
+    },
+    "statsd": {
+      "enabled": true
+    },
+    "console": {
+      "enabled": false
+    },
+    "cube": {
+      "enabled": false,
+      "cubeUrl": "ws://beta-internal.beta.gitter:1080"
+    },
+    "intercom": {
+      "enabled": false
+    },
+    "customerio": {
+      "enabled": false
+    },
+    "ga": {
+      "enabled": true,
+      "key": "UA-45918290-3"
+    }
+  },
+  "apn": {
+    "feedbackInterval": 60
+  },
+  "gitlaboauth": {},
+  "twitteroauth": {},
+  "linkedinoauth2": {},
+  "googleoauth2": {},
+  "redis": {
+    "sentinel": {
+      "master-name": "gitter-master",
+      "hosts": ["sentinel-alias-01.beta.gitter:26379", "sentinel-alias-02.beta.gitter:26379"],
+      "validateHost": "10.*.*.*"
+    },
+    "redisDb": 1
+  },
+  "redis_nopersist": {
+    "sentinel": {
+      "master-name": "gitter-nopersist-beta",
+      "hosts": ["sentinel-alias-01.beta.gitter:26379", "sentinel-alias-02.beta.gitter:26379"],
+      "validateHost": "10.*.*.*"
+    }
+  },
+  "redis_faye": {
+    "sentinel": {
+      "master-name": "gitter-nopersist-beta",
+      "hosts": ["sentinel-alias-01.beta.gitter:26379", "sentinel-alias-02.beta.gitter:26379"],
+      "validateHost": "10.*.*.*"
+    }
+  },
+  "redis_caching": {
+    "sentinel": {
+      "master-name": "gitter-caching-beta",
+      "hosts": ["sentinel-alias-01.beta.gitter:26379", "sentinel-alias-02.beta.gitter:26379"],
+      "validateHost": "10.*.*.*"
+    }
+  },
+  "mongo": {
+    "comment": "TEST AGAINST PRODUCTION DATA",
+    "connection": {
+      "hosts": ["mongo-beta-01.beta.gitter:27017"],
+      "database": "gitter",
+      "options": {
+        "replicaSet": "TroupeBetaProdData",
+        "w": 1
+      }
+    },
+    "profileSlowQueries": false,
+    "logQueries": false,
+    "noAutoIndex": true
+  },
+  "github": {},
+  "irc": {},
+  "transloadit": {},
+  "errorReporting": {
+    "enabled": true
+  },
+  "autoPullRequest": {
+    "enabled": true
+  },
+  "elasticsearch": {
+    "hosts": ["http://es-alias-001.beta.gitter:9200"]
+  },
+  "elasticsearchTypeahead": {
+    "hosts": ["http://typeahead-beta-01.beta.gitter:9200"]
+  },
+  "neo4j": {
+    "endpoint": "http://beta-internal.beta.gitter:7474"
+  },
+  "resque": {
+    "queuePrefix": ""
+  },
+  "avatar": {
+    "officialHost": "https://avatars-beta.gitter.im",
+    "dnsPreloadHosts": [
+      "avatars-beta-01.gitter.im",
+      "avatars-beta-02.gitter.im",
+      "avatars-beta-03.gitter.im",
+      "avatars-beta-04.gitter.im",
+      "avatars-beta-05.gitter.im"
+    ],
+    "hosts": [
+      "https://avatars-beta-01.gitter.im",
+      "https://avatars-beta-02.gitter.im",
+      "https://avatars-beta-03.gitter.im",
+      "https://avatars-beta-04.gitter.im",
+      "https://avatars-beta-05.gitter.im"
+    ]
+  },
+  "revokedUserAgents": [
+    "Gitter/3.1.0",
+    "Gitter/3.0.3",
+    "Gitter/3.0.2",
+    "Gitter/3.0.1",
+    "Gitter/3.0.0",
+    "Gitter/2.4.0",
+    "Gitter/2.4.0",
+    "Gitter/2.3.3",
+    "Gitter/2.3.2",
+    "Gitter/2.3.1",
+    "Gitter/2.3.0"
+  ]
+}

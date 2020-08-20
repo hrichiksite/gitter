@@ -1,0 +1,13 @@
+<div class="activity-item-inner github-push">
+  <i class='octicon octicon-repo-push activity-item__icon'></i>
+  <div class="activity-time" id="time">{{ sentFormatted }}</div>
+
+  <div class="gtrActivityItemText">
+    <p class="activity-commit">
+      <span class='mention' data-link-type="mention" data-screen-name="{{payload.pusher.name}}">{{payload.pusher.name}}</span> on {{branch_name}}
+    </p>
+    <p class="activity-commit">
+      {{#each commits}}<span data-link-type="commit" data-commit-sha="{{id}}" data-commit-repo="{{../repo}}" class="commit">{{short_message}}</span> {{/each}}{{#if hidden_commit_count}}and {{hidden_commit_count}} more {{/if}}<a href="{{sanitizeHref payload.compare}}" target="_blank" style="opacity: 0.6">(compare)</a>
+    </p>
+  </div>
+</div>

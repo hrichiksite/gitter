@@ -1,0 +1,50 @@
+<input type="checkbox" class="js-delete-account-ghost-user-checkbox" id="form-delete-account-ghost-user-checkbox" {{#if ghost }}checked{{/if}}>
+<label for="form-delete-account-ghost-user-checkbox">
+  Remove personal information and turn my account into a "ghost"
+</label>
+
+<hr>
+
+Doing this will:
+<ul>
+  <li>Clear your GitHub tokens</li>
+  <li>Clear your email</li>
+  <li>Mark your account as removed</li>
+  <li>Remove you from all rooms</li>
+  <li>This could leave some communities/rooms orphaned without an admin (make sure to set another admin before deletion)</li>
+  {{#if ghost }}
+    <li>Change your username to "{{ghostUsername}}" and display name to "Ghost"</li>
+    <li>Remove your avatar</li>
+    <li>Clear any backing OAuth identities (GitLab/Twitter)</li>
+  {{/if}}
+</ul>
+
+This will <strong>NOT</strong>:
+<ul>
+  <li>Delete your messages</li>
+  <li>Delete your communities/rooms</li>
+  <li>Change mentions of your username</li>
+</ul>
+
+You can sign back in at any time to re-create your account.
+<br>
+<br>
+Are you sure you want to do this?{{#if locked }} <em>(unlocking in {{secondsLeft }})</em>{{/if}}
+
+{{#if deletionRequestLoading }}
+  <br>
+  <br>
+  <i class="icon-spin animate-spin"></i>
+{{/if}}
+
+{{#if deletionRequestSucceeded }}
+  <br>
+  <br>
+  Successfully deleted your account, signing you out
+{{/if}}
+
+{{#if deletionRequestError }}
+  <br>
+  <br>
+  <span class="error-text">{{deletionRequestError}}</span>
+{{/if}}

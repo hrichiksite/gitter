@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Sign in failed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link id="favicon" rel="shortcut icon" href="{{ cdn 'images/favicon-normal.ico' }}">
+
+    <link href='{{cdn "styles/login.css" }}' rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="background">
+      <div class="login">
+        <header>
+          <h1>Token was revoked</h1>
+        </header>
+        <section>
+          <p>
+            We're very sorry, but the token you were using was revoked. You may need to update your client or sign in again
+          </p>
+        </section>
+      </div>
+    </div>
+    {{{ generateEnv }}}
+    {{{ bootScript "just-tracking" }}}
+    {{> live_reload }}
+  </body>
+</html>

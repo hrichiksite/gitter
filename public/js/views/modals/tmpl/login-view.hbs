@@ -1,0 +1,32 @@
+<section class="login-view__section">
+  <p class="login-view__oauth-scope-notes">
+    You can read our
+    <a href="https://gitlab.com/gitlab-org/gitter/webapp/-/blob/develop/docs/oauth-scopes.md" target="_blank">documentation on OAuth scopes</a>
+    to see why we request certain OAuth scopes.
+  </p>
+
+  <div class="login-view__buttons">
+    <a href="/login/gitlab?action={{action}}&source={{source}}{{#if returnTo}}&returnTo={{returnTo}}{{/if}}" class="login-view__button button-gitlab--small">
+      <i class="icon-gitlab"></i> Sign in with GitLab
+    </a>
+    <a href="/login/github?action={{action}}&source={{source}}{{#if returnTo}}&returnTo={{returnTo}}{{/if}}" class="login-view__button button-github--small">
+      <i class="icon-github-circled"></i> Sign in with GitHub
+    </a>
+    <a href="/login/twitter?action={{action}}&source={{source}}{{#if returnTo}}&returnTo={{returnTo}}{{/if}}" class="login-view__button button-twitter--small">
+      <i class="icon-twitter"></i> Sign in with Twitter
+    </a>
+  </div>
+
+  <div class="modal--default__content__fineprint login-view__agree">
+    <p>By logging in you agree to our <a href="https://about.gitlab.com/terms/" class="login-view__agree-link" target="_blank">Terms and Conditions</a>.</p>
+  </div>
+</div>
+
+{{!--
+<a href="/login/linkedin?action={{action}}&source={{source}}{{#if returnTo}}&returnTo={{returnTo}}{{/if}}" class="login-view__button button-linkedin--small">
+  <i class="icon-linkedin"></i> Sign in with LinkedIn
+</a>
+<a href="/login/google?action={{action}}&source={{source}}{{#if returnTo}}&returnTo={{returnTo}}{{/if}}" class="login-view__button button-google--small">
+  <i class="icon-google"></i> Sign in with Google
+</a>
+--}}

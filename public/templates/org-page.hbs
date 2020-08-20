@@ -1,0 +1,105 @@
+<html class="{{#if hasCachedFonts}}fonts-loaded{{/if}}">
+  <head>
+	  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{> fonts}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
+
+    {{#if hasDarkTheme}}
+    <link rel="stylesheet" href='{{cdn "styles/dark-theme.css" }}' id="gitter-dark"  media="all" type="text/css">
+    {{/if}}
+  </head>
+
+  <body>
+
+    <header class="org-page__header">
+      {{{ prerenderView "js/views/org-directory/org-directory-header-view" }}}
+    </header>
+
+
+    <main class="org-page-main">
+      <div class="org-page__room-list-header">
+        <h2 class="org-page__room-list-heading h3">
+          All Rooms
+        </h2>
+        <div class="h3">
+          <span class="org-page__room-list-heading-info-item">
+            {{roomCount}} {{pluralize roomCount 'Room' 'Rooms'}}
+          </span>
+          <span class="org-page__room-list-heading-info-item">
+            {{orgUserCount}} {{pluralize orgUserCount 'Person' 'People' }}
+          </span>
+        </div>
+      </div>
+
+      <ul class="org-page__room-list">
+        {{#each rooms}}
+          <li class="org-page__room-item">
+            <a href="/{{ uri }}?source=orgpage" target="_parent" tabindex="-1" class="org-page__room-item-heading-link" data-disable-routing="true">
+              <h3 class="org-page__room-item-heading">
+                {{#each roomNameParts}}
+                  {{#unless @first}}
+                  <span lass="org-page__room-item-heading-name-piece-separator">/</span>
+                  {{/unless}}
+                  <span class="org-page__room-item-heading-name-piece">{{ this }}</span>
+                {{/each}}
+                {{#if isPrivate}}
+                  <i class="org-page__room-item-heading-private-icon octicon octicon-lock"></i>
+                {{/if}}
+              </h3>
+            </a>
+            <div class="org-page__room-item-description">
+              {{ topic }}
+            </div>
+            <ul class="org-page__room-item__tag-list">
+              {{#each displayTags}}
+                <li>
+                  <a
+                    href="{{../../exploreBaseUrl}}/tags/{{this}}"
+                    class="org-page__room-item__tag-item">
+                    {{this}}
+                  </a>
+                </li>
+              {{/each}}
+            </ul>
+
+            <ul class="org-page__room-item-people-list">
+              {{#each users}}
+                <li class="org-page__room-item-people-list-item">
+                  <img {{{ avatarSrcSet avatarUrl 22 }}}>
+                </li>
+              {{/each}}
+            </ul>
+            <div class="org-page__room-item-details">
+              {{ userCount }} People
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+
+      {{#paginate pagination type="required"}}
+      <div class='org-page__pagination'>
+        <div class="pagination">
+          <ul>
+            {{#paginate pagination type="first"}}
+              <!-- <li {{#if disabled}}class="disabled"{{/if}}><a href="?page={{n}}">First</a></li> -->
+            {{/paginate}}
+            {{#paginate pagination type="previous"}}
+              <li {{#if disabled}}class="disabled"{{/if}}><a href="?page={{n}}">&laquo;</a></li>
+            {{/paginate}}
+            {{#paginate pagination type="middle" limit="7"}}
+              <li {{#if active}}class="active"{{/if}}><a href="?page={{n}}" target="_self">{{n}}</a></li>
+            {{/paginate}}
+            {{#paginate pagination type="next"}}
+              <li {{#if disabled}}class="disabled"{{/if}}><a href="?page={{n}}">&raquo;</a></li>
+            {{/paginate}}
+            {{#paginate pagination type="last"}}
+              <!-- <li {{#if disabled}}class="disabled"{{/if}}><a href="?page={{n}}">Last</a></li> -->
+            {{/paginate}}
+          </ul>
+        </div>
+      </div>
+      {{/paginate}}
+    </main>
+  </body>
+</html>

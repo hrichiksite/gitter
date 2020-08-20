@@ -1,0 +1,19 @@
+<img {{{ avatarSrcSet avatarUrl 30 }}}>
+<div class="content">
+  {{#if showEmailForm }}
+  <form>
+    <p>
+      <input class="js-invite-email" type="email" placeholder="{{ text }}" required />
+      <input type="submit" value="Invite" class="link--positive" />
+    </p>
+  </form>
+  {{else}}
+  <p>{{ text }}</p>
+  {{/if}}
+</div>
+
+{{#if showAddButton}}
+<div class="action">
+  <a class="link--positive js-add">Add</a>
+</div>
+{{/if}}

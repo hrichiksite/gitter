@@ -1,0 +1,159 @@
+// Typography.less
+// Headings, body text, lists, code, and more for a versatile and durable typography system
+// ----------------------------------------------------------------------------------------
+
+// Page header
+.page-header {
+  padding-bottom: @baseLineHeight - 1;
+  margin: @baseLineHeight 0;
+  border-bottom: 1px solid @grayLighter;
+}
+.page-header h1 {
+  line-height: 1;
+}
+
+// LISTS
+// -----
+
+// TODO: Remove because duplicate of `markdown.less`
+// Unordered and Ordered lists
+ul, ol {
+  padding: 0;
+  margin: 0 0 @baseLineHeight / 2 25px;
+}
+// TODO: Remove because duplicate of `markdown.less`
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0;
+}
+// TODO: Remove because duplicate of `markdown.less`
+ul {
+  list-style: disc;
+}
+// TODO: Remove because duplicate of `markdown.less`
+ol {
+  list-style: decimal;
+}
+// li {
+//   line-height: @baseLineHeight;
+// }
+// TODO: Remove because duplicate of `markdown.less`
+ul.unstyled,
+ol.unstyled {
+  margin-left: 0;
+  list-style: none;
+}
+
+// Description Lists
+// TODO: Remove because duplicate of `markdown.less`
+dl {
+  margin-bottom: @baseLineHeight;
+}
+// TODO: Remove because duplicate of `markdown.less`
+dt,
+dd {
+  line-height: @baseLineHeight;
+}
+// TODO: Remove because duplicate of `markdown.less`
+dt {
+  font-weight: bold;
+}
+// TODO: Remove because duplicate of `markdown.less`
+dd {
+  margin-left: @baseLineHeight / 2;
+}
+
+// MISC
+// ----
+
+// Horizontal rules
+// TODO: Remove because duplicate of `markdown.less`
+hr {
+  margin: @baseLineHeight 0;
+  border: 0;
+  border-top: 1px solid @hrBorder;
+  border-bottom: 1px solid @white;
+}
+
+// Emphasis
+// TODO: Remove because duplicate of `markdown.less`
+strong {
+  font-weight: bold;
+}
+// TODO: Remove because duplicate of `markdown.less`
+em {
+  font-style: italic;
+}
+// TODO: Remove because not used
+.muted {
+  color: @grayLight;
+}
+
+// Abbreviations and acronyms
+// TODO: Remove because not used
+abbr {
+  font-size: 90%;
+  text-transform: uppercase;
+  border-bottom: 1px dotted #ddd;
+  cursor: help;
+}
+
+// Blockquotes
+// TODO: Remove because duplicate of `markdown.less`
+blockquote {
+  padding: 0 0 0 15px;
+  margin: 0 0 @baseLineHeight;
+  border-left: 5px solid @grayLighter;
+  p {
+    margin-bottom: 0;
+    #font > .shorthand(16px,300,@baseLineHeight * 1.25);
+  }
+  small {
+    display: block;
+    line-height: @baseLineHeight;
+    color: @grayLight;
+    &:before {
+      content: '\2014 \00A0';
+    }
+  }
+
+  // Float right with text-align: right
+  &.pull-right {
+    float: right;
+    padding-left: 0;
+    padding-right: 15px;
+    border-left: 0;
+    border-right: 5px solid @grayLighter;
+    p,
+    small {
+      text-align: right;
+    }
+  }
+}
+
+// Quotes
+// TODO: Remove because duplicate of `markdown.less`
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: "";
+}
+
+// Addresses
+address {
+  display: block;
+  margin-bottom: @baseLineHeight;
+  line-height: @baseLineHeight;
+  font-style: normal;
+}
+
+// Misc
+small {
+  font-size: 100%;
+}
+cite {
+  font-style: normal;
+}

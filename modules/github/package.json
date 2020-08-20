@@ -1,0 +1,18 @@
+{
+  "name": "gitter-web-github",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true,
+  "dependencies": {
+    "gitter-web-appevents": "file:../appevents",
+    "gitter-web-cache-wrapper": "file:../cache-wrapper",
+    "gitter-web-env": "file:../env"
+  }
+}

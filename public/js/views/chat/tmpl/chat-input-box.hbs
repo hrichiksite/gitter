@@ -1,0 +1,12 @@
+<textarea class="chat-input__text-area"
+  name="chat"
+  id="chat-input-textarea"
+  {{#if isTouch}}
+  placeholder="Touch here to type a chat message."
+  {{else}}
+  placeholder="Click here to type a chat message. Supports GitHub flavoured markdown."
+  autofocus
+  autocomplete="off"
+  autocorrect="off"
+  {{/if}}
+  maxlength="4096">{{value}}</textarea>

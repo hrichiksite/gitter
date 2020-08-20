@@ -1,0 +1,61 @@
+@import 'colors.less';
+
+/*
+TODO --> JP 18/2/16
+  We need to add some conventions here so it becomes easier to understand
+  for example:
+    variables should probably be
+    @{feature}-{device}-{element}-{property}
+    or something ...
+*/
+
+/* MEDIA QUERY DEFINITIONS*/
+
+@mid: ~'(max-width: 880px)';
+@mid-min: ~'(min-width: 681px)';
+@small: ~'(max-width: 680px)';
+@retina: ~'(min-device-pixel-ratio: 2)';
+// See `./archive-heatmap-utils.js->breakpointList` and `trp3Vars.less->@archive-mid`
+@archive-mid: ~'(max-width: 960px)';
+
+// Keep this in sync with the breakpoint check in public/js/utils/is-mobile-breakpoint.js
+@left-menu-mobile-breakpoint-width: 900px;
+
+/*
+ * Targets small screens that we consider as "mobile"
+ */
+@mobile-screen-breakpoint: ~'(max-width: @{left-menu-mobile-breakpoint-width})';
+/*
+ * Every screen that's not the mobile size
+ * Only way to achieve mutual exclusive media queries is using the `and` operator
+ * https://stackoverflow.com/a/13649011/796832
+ */
+@large-screen-breakpoint: ~'not all and (max-width: @{left-menu-mobile-breakpoint-width})';
+
+@mobile-header-height: 50px;
+@desktop-header-height: 65px;
+@chat-frame-desktop-header-height: 64px;
+@menu-footer-height: @desktop-header-height;
+@menu-item-height: 3.8rem;
+
+@menu-panel-mobile-width: 100vw;
+@menu-panel-desktop-width: 34rem;
+
+/* ROOM MENU */
+@mobile-menu-width: 15%;
+@desktop-menu-width: 7.5rem;
+@mobile-chat-app-width: 100% - @mobile-menu-width;
+
+@mobile-menu-left-padding: 0.5rem;
+@desktop-menu-left-padding: 2.6rem;
+@menu-left-padding: 1.5rem;
+
+@menu-unread-badge-size: 2.4rem;
+@menu-search-headers-padding-bottom: 1.8rem;
+
+@menu-avatar-dims: 2.2rem;
+@menu-search-avatar-dims: @menu-avatar-dims / 1.5;
+
+@room-card-list-spacing: 0.5em;
+
+@right-toolbar-collapsed-width: 70px;

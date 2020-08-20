@@ -1,0 +1,13 @@
+{
+  "name": "gitter-web-cache-wrapper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/cache-wrapper.js",
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true,
+  "dependencies": {
+    "gitter-web-env": "file:../env"
+  }
+}

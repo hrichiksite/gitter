@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`menu-bar-body matches snapshot when pinned 1`] = `
+<div
+  class="menu-bar-root"
+>
+  <div
+    class="menu-bar-top"
+  >
+    <menu-bar-item-stub
+      class="item-all"
+      label="Show all rooms panel"
+      type="all"
+    />
+     
+    <menu-bar-item-stub
+      class="item-search"
+      label="Show panel for searching rooms, people, and messages in the current room"
+      type="search"
+    />
+     
+    <menu-bar-item-stub
+      class="item-people"
+      label="Show one to one messages panel"
+      type="people"
+    />
+  </div>
+   
+  <div
+    class="menu-bar-bottom"
+  >
+    <menu-bar-item-stub
+      class="item-announcements"
+      label="View latest announcements from the Gitter team"
+      type="announcements"
+    />
+     
+    <menu-bar-item-create-stub
+      class="js-menu-bar-create-button"
+      label="Create communities and rooms"
+      type="create"
+    />
+     
+    <menu-bar-item-toggle-stub
+      class="item-toggle"
+      label="Unpin and collapse the left-menu"
+      type="toggle"
+    />
+  </div>
+</div>
+`;
+
+exports[`menu-bar-body matches snapshot when unpinned 1`] = `
+<div
+  class="menu-bar-root"
+>
+  <div
+    class="menu-bar-top"
+  >
+    <menu-bar-item-stub
+      class="item-all"
+      label="Show all rooms panel"
+      type="all"
+    />
+     
+    <menu-bar-item-stub
+      class="item-search"
+      label="Show panel for searching rooms, people, and messages in the current room"
+      type="search"
+    />
+     
+    <menu-bar-item-stub
+      class="item-people"
+      label="Show one to one messages panel"
+      type="people"
+    />
+  </div>
+   
+  <div
+    class="menu-bar-bottom"
+  >
+    <menu-bar-item-stub
+      class="item-announcements"
+      label="View latest announcements from the Gitter team"
+      type="announcements"
+    />
+     
+    <menu-bar-item-create-stub
+      class="js-menu-bar-create-button"
+      label="Create communities and rooms"
+      type="create"
+    />
+     
+    <menu-bar-item-toggle-stub
+      class="item-toggle"
+      label="Pin and expand left-menu"
+      type="toggle"
+    />
+  </div>
+</div>
+`;
+
+exports[`menu-bar-body unreads matches snapshot when mentions 1`] = `
+<div
+  class="menu-bar-root"
+>
+  <div
+    class="menu-bar-top"
+  >
+    <menu-bar-item-stub
+      class="item-all"
+      hasmentions="true"
+      label="Show all rooms panel (some rooms have mentions)"
+      type="all"
+    />
+     
+    <menu-bar-item-stub
+      class="item-search"
+      label="Show panel for searching rooms, people, and messages in the current room"
+      type="search"
+    />
+     
+    <menu-bar-item-stub
+      class="item-people"
+      label="Show one to one messages panel"
+      type="people"
+    />
+  </div>
+   
+  <div
+    class="menu-bar-bottom"
+  >
+    <menu-bar-item-stub
+      class="item-announcements"
+      label="View latest announcements from the Gitter team"
+      type="announcements"
+    />
+     
+    <menu-bar-item-create-stub
+      class="js-menu-bar-create-button"
+      label="Create communities and rooms"
+      type="create"
+    />
+     
+    <menu-bar-item-toggle-stub
+      class="item-toggle"
+      label="Unpin and collapse the left-menu"
+      type="toggle"
+    />
+  </div>
+</div>
+`;
+
+exports[`menu-bar-body unreads matches snapshot when one to one unreads 1`] = `
+<div
+  class="menu-bar-root"
+>
+  <div
+    class="menu-bar-top"
+  >
+    <menu-bar-item-stub
+      class="item-all"
+      hasunreads="true"
+      label="Show all rooms panel (some rooms have unread messages)"
+      type="all"
+    />
+     
+    <menu-bar-item-stub
+      class="item-search"
+      label="Show panel for searching rooms, people, and messages in the current room"
+      type="search"
+    />
+     
+    <menu-bar-item-stub
+      class="item-people"
+      hasunreads="true"
+      label="Show one to one messages panel (some rooms have unread messages)"
+      type="people"
+    />
+  </div>
+   
+  <div
+    class="menu-bar-bottom"
+  >
+    <menu-bar-item-stub
+      class="item-announcements"
+      label="View latest announcements from the Gitter team"
+      type="announcements"
+    />
+     
+    <menu-bar-item-create-stub
+      class="js-menu-bar-create-button"
+      label="Create communities and rooms"
+      type="create"
+    />
+     
+    <menu-bar-item-toggle-stub
+      class="item-toggle"
+      label="Unpin and collapse the left-menu"
+      type="toggle"
+    />
+  </div>
+</div>
+`;
+
+exports[`menu-bar-body unreads matches snapshot when unreads 1`] = `
+<div
+  class="menu-bar-root"
+>
+  <div
+    class="menu-bar-top"
+  >
+    <menu-bar-item-stub
+      class="item-all"
+      hasunreads="true"
+      label="Show all rooms panel (some rooms have unread messages)"
+      type="all"
+    />
+     
+    <menu-bar-item-stub
+      class="item-search"
+      label="Show panel for searching rooms, people, and messages in the current room"
+      type="search"
+    />
+     
+    <menu-bar-item-stub
+      class="item-people"
+      label="Show one to one messages panel"
+      type="people"
+    />
+  </div>
+   
+  <div
+    class="menu-bar-bottom"
+  >
+    <menu-bar-item-stub
+      class="item-announcements"
+      label="View latest announcements from the Gitter team"
+      type="announcements"
+    />
+     
+    <menu-bar-item-create-stub
+      class="js-menu-bar-create-button"
+      label="Create communities and rooms"
+      type="create"
+    />
+     
+    <menu-bar-item-toggle-stub
+      class="item-toggle"
+      label="Unpin and collapse the left-menu"
+      type="toggle"
+    />
+  </div>
+</div>
+`;

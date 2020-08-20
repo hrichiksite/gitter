@@ -1,0 +1,122 @@
+<!doctype html>
+<html class="no-js {{#if hasCachedFonts}}fonts-loaded{{/if}}" lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=IE9" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+  <meta charset="utf-8">
+  {{#if noindex}}
+  <meta name="robots" content="noindex, nofollow" />
+  {{/if}}
+
+  {{> fonts}}
+
+  <title>{{troupeName}} - Gitter</title>
+
+  <style>
+
+  @-webkit-keyframes pulsey {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+  }
+
+  html.loading .trpContentPanel { background: url("{{ cdn 'images/logo-mark-grey-64.png' }}") center no-repeat; height: 90%; -webkit-animation: pulsey 2s ease-out; -webkit-animation-iteration-count: infinite;  }
+  html.loading .trpContentPanel > * { visibility: hidden; }
+  </style>
+  <base target="_parent">
+  <link rel="stylesheet" href='{{cdn "sprites/services.css" }}'>
+  <link rel="stylesheet" href='{{cdn cssFileName }}'>
+  <link id="favicon" rel="shortcut icon" href="{{ cdn 'images/favicon.ico' }}">
+</head>
+<body class="logged-out">
+  <div class="chat-and-toolbar-wrapper archive">
+    <div class="right-toolbar-region">
+      <div class="right-toolbar" style="overflow: auto">
+        <div class="gtrArchiveToolbarWrapper">
+          {{#if isHomePage}}
+            <div class="gtrArchiveInfoContainer">
+                <div class="gtrArchiveLogo">
+                  <div class="logo-container"></div>
+                </div>
+                <div class="gtrArchiveInfo">
+                  <p>These are chat archives for <strong>{{troupeName}}</strong></p>
+                  {{#if chatTree}}
+                  <p>Select a day to view.</p>
+                  {{else}}
+                  <p>Click on a coloured date box to view message archives for a given day.</p>
+                  {{/if}}
+                </div>
+            </div>
+            {{#if user}}
+              <div class="archive-right-toolbar-button-wrapper">
+                <a class="archive-right-toolbar-button button-caribbean" href="/{{troupeName}}">Go to live room</a>
+              </div>
+
+              {{#if isAdmin}}
+                {{#if public}}
+                  <div class="archive-right-toolbar-option-container">
+                    <div>
+                      <p><small id='noindexStatus'></small></p>
+                      <input id='noindex' type='checkbox' name='noindex' {{#unless noindex}} checked {{/unless}}>
+                      <small>Room indexed by search engines.</small>
+                    </div>
+                  </div>
+                {{/if}}
+              {{/if}}
+
+            {{else}}
+              <div class="archive-right-toolbar-button-wrapper">
+                <a href="/login?action=login" class="archive-right-toolbar-button button-caribbean">Sign in to start talking</a>
+              </div>
+            {{/if}}
+          {{else}}
+            {{^user}}
+            <div class="gtrArchiveInfoContainer">
+                <div class="gtrArchiveLogo">
+                  <div class="logo-container"></div>
+                </div>
+                <div class="gtrArchiveInfo">
+                  <p>These are chat archives for <strong>{{troupeName}}</strong></p>
+                </div>
+            </div>
+            {{/user}}
+          {{/if}}
+
+          <div id="archive-navigation" class="gtrArchiveNavigationWrapper">
+            {{~#if archiveChats~}}
+              {{{ prerenderView "js/views/archive/tmpl/archive-navigation-view" }}}
+            {{~/if~}}
+          </div>
+          {{#unless isHomePage}}
+            {{#if user}}
+            <div class="archive-right-toolbar-button-wrapper">
+              <a class="archive-right-toolbar-button button-caribbean" href="/{{troupeName}}">Go to live room</a>
+            </div>
+            {{else}}
+            <div class="archive-right-toolbar-button-wrapper">
+              <a href="/login?action=login&amp;button=archive-login" class="archive-right-toolbar-button button-caribbean">Sign in to start talking</a>
+            </div>
+            {{/if}}
+          {{/unless}}
+        </div>
+      </div>
+    </div>
+    <div class="chat-app">
+      <div class="chat-header" id="header-wrapper">
+        <div id="header" class="chat-header-inner">
+          {{{ prerenderView "js/views/app/tmpl/headerViewTemplate" }}}
+        </div>
+      </div>
+      {{{body}}}
+    </div>
+  </div>
+
+  {{#if troupeContext}}
+    {{{ generateTroupeContext troupeContext }}}
+  {{/if}}
+
+  {{#if bootScriptName}}
+    {{{bootScript bootScriptName jsRoot=jsRoot}}}
+  {{/if}}
+</body>
+</html>

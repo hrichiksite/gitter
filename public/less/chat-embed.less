@@ -1,0 +1,71 @@
+@embedded_footer_height: 78px;
+
+.chat-and-toolbar-wrapper.embedded {
+  // The spacing here is to allow the thread message feed to be closed
+  // when the Sidecar UI(https://sidecar.gitter.im/) is on top
+  padding-top: 30px;
+}
+
+.chat-embed-footer {
+  flex-shrink: 0;
+  box-sizing: border-box;
+
+  /** Two worlds colliding: the new front-page + the app. Different fonts, colors, layouts etc.
+    * Therefore this stylesheet is a bit of a hack, I'm sorry. WC
+    */
+  font-family: proxima-nova-alt, 'Proxima Nova Alt', sans-serif !important;
+  text-shadow: none;
+
+  height: @embedded_footer_height;
+  line-height: @embedded_footer_height;
+
+  padding: 0 28px;
+
+  background: none repeat scroll 0% 0% #faf9f7;
+
+  color: #b0aba1;
+
+  p {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  &__info {
+    float: left;
+    margin-left: 20px;
+  }
+
+  &__details {
+    float: left;
+
+    .btn {
+      text-shadow: none;
+      position: relative;
+      display: inline-block;
+      padding: 16px 25px 14px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: medium none;
+      border-radius: 6px;
+      background: none repeat scroll 0% 0% #45cba1;
+      color: #fff !important;
+
+      &:hover {
+        box-shadow: inset 0 0 0 250px rgba(0, 0, 0, 0.05);
+      }
+
+      &.subdued {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: 2px;
+      }
+    }
+
+    p {
+      color: #918b80;
+      display: inline;
+      padding: 0px 10px;
+    }
+  }
+}

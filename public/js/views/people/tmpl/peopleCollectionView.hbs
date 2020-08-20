@@ -1,0 +1,12 @@
+<span class="frame-people">
+  <span id="roster-region">
+    <ul id="roster-view" class="roster">
+      {{#each users}}
+      <li class="js-model-id-{{id}}">
+        {{{ widget 'avatar' user=this showStatus=true }}}
+      </li>
+      {{/each}}
+    </ul>
+  </span>
+<div id="remaining-region" class="remaining-region"></div>
+</span>

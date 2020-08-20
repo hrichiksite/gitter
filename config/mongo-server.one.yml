@@ -1,0 +1,16 @@
+replication:
+  replSetName: troupeSet
+
+storage:
+  engine: wiredTiger
+  dbPath: /usr/local/var/mongodb/r0
+  journal:
+    enabled: true
+
+net:
+  bindIp: 127.0.0.1
+  port: 27017
+
+operationProfiling:
+  slowOpThresholdMs: 100
+  mode: slowOp

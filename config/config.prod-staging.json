@@ -1,0 +1,35 @@
+{
+  "web": {
+    "apiBasePath": "https://gitter.im/api_staging"
+  },
+  "ws": {
+    "hostname": "ws-staging.gitter.im",
+    "fayeUrl": "https://ws-staging.gitter.im/bayeux",
+    "fayePerMessageDeflate": true,
+    "useDeprecatedChannels": false
+  },
+  "staging": true,
+  "resque": {
+    "queuePrefix": "staging-"
+  },
+  "logging": {
+    "logToUDP": true
+  },
+  "avatar": {
+    "officialHost": "https://avatars-staging.gitter.im",
+    "dnsPreloadHosts": [
+      "avatars-staging-01.gitter.im",
+      "avatars-staging-02.gitter.im",
+      "avatars-staging-03.gitter.im",
+      "avatars-staging-04.gitter.im",
+      "avatars-staging-05.gitter.im"
+    ],
+    "hosts": [
+      "https://avatars-staging-01.gitter.im",
+      "https://avatars-staging-02.gitter.im",
+      "https://avatars-staging-03.gitter.im",
+      "https://avatars-staging-04.gitter.im",
+      "https://avatars-staging-05.gitter.im"
+    ]
+  }
+}

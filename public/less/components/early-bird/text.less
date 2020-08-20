@@ -1,0 +1,94 @@
+@import "../../mixins/optimise-text";
+
+.m-base-text {
+  .optimised-text();
+  font-weight: 300;
+}
+
+.m-custom-underline {
+  position: relative;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    width: 60px;
+    height: 2px;
+    background-color: currentColor;
+    opacity: .1;
+  }
+}
+
+.h1 {
+  .m-base-text();
+  .m-custom-underline();
+  color: white;
+  font-size: 6rem;
+}
+
+.h2 {
+  .m-base-text();
+  .m-custom-underline();
+  margin-bottom: 4rem;
+  color: #7d786a;
+  font-size: 4rem;
+}
+
+.h2--secondary {
+  .h2();
+  color: white;
+}
+
+.h2--payment {
+  .h2--secondary();
+  margin-bottom: .1rem;
+  &:before { display: none; }
+}
+
+.h3 {
+  .m-base-text();
+  margin: 1rem 0;
+  color: #7d786a;
+  font-size: 3.5rem;
+}
+
+.h6 {
+  .m-base-text();
+  margin: .2rem 0 1.2rem 0;
+  color: #777171;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.h6--payment-feature {
+  .h6();
+  color: rgba(255, 255, 255, .6);
+}
+
+.h6--payment-name {
+  .h6();
+  color: white;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.p {
+  .m-base-text();
+  color: #908a7d;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.p--secondary {
+  .p();
+  color: #a39e9e;
+}
+
+.p--plan {
+  .p();
+}
+
+.p--payment {
+  font-weight: 400;
+  color: #6c6567;
+}

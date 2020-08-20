@@ -1,0 +1,253 @@
+@import (reference) "../../../less/colors.less";
+@import (reference) "../../../less/trp3Vars.less";
+
+.chat-input {
+  position: relative;
+
+  box-sizing: border-box;
+
+  background-color: @main-application-bg-color;
+
+  min-height: 70px;
+  flex-shrink: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.progress {
+  position: absolute;
+  // top: -2px;
+  right: 0;
+  left: 0;
+  background-color: transparent;
+  width: 100%;
+  height: 2px;
+  overflow: hidden;
+}
+
+.progress__bar {
+  background-color: @trpGreen;
+  box-shadow: 0px 0px 1px 1px @trpGreen;
+  overflow: hidden;
+  width: 0%;
+  display: none;
+  transition: width 1s;
+  transition-timing-function: ease;
+}
+
+.chat-input__container {
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-left: 34px;
+  margin-bottom: 10px;
+}
+
+body.embedded .chat-input__container {
+  margin-left: 28px;
+}
+
+body.mobile .chat-input__container {
+  margin-left: 12px;
+}
+
+.chat-input__area {
+  position: relative;
+}
+
+.chat-input__buttons {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 50px;
+  user-select: none;
+}
+
+body.mobile .chat-input__buttons {
+  display: none;
+}
+
+.chat-input__button {
+  display: block;
+  height: 25px;
+  padding: 0 10px;
+  background-color: transparent;
+  border: none;
+
+  font-size: inherit;
+  line-height: 25px;
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(0, 0, 0, 0.05);
+    outline: none;
+  }
+
+  &[data-compose-mode="true"] {
+    & > .chat-input__button-icon--chat {
+      display: none;
+    }
+  }
+  &[data-compose-mode="false"] {
+    & > .chat-input__button-icon--compose {
+      display: none;
+    }
+  }
+}
+
+.chat-input__button-icon {
+  line-height: 1.2;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+
+  &.octicon-markdown {
+    // thick lines on the markdown icon need to be less intense,
+    // so opacity is lower
+    opacity: 0.4;
+  }
+
+  &:hover,
+  &:focus {
+    opacity: 0.9;
+  }
+
+  &:before {
+    margin: 0;
+    width: 21px;
+    font-size: 21px;
+  }
+}
+
+.chat-input__button-icon--chat:before {
+  // .icon-chat-alt is a wide-ass 21px by default, this
+  // makes all the other icons wide-ass too
+  font-size: inherit;
+}
+
+
+.chat-input__avatar {
+  float: left;
+}
+
+@avatarWidth: 30px;
+
+.chat-input__box {
+  margin-left: @avatarWidth + 22px;
+  margin-right: 52px;
+  margin-bottom: 0;
+  vertical-align: top;
+}
+
+body.embedded .chat-input__box {
+  margin-left: 0px;
+}
+
+body.embedded .chat-input-box__region {
+  margin-left: 50px;
+}
+
+body.mobile .chat-input__box {
+  margin-left: @avatarWidth + 12px;
+  margin-right: 12px;
+}
+
+.textcomplete-wrapper {
+  /* In IE, this element gets the following inline styles that we have to combat:
+   * `display: inline-block; position: relative;` */
+  width: 100%;
+}
+
+.chat-input__text-area {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin: 0px;
+  padding: 0px;
+
+  background-color: #ffffff;
+  box-shadow: none;
+  border: 0px;
+  outline: none;
+
+  color: black;
+  font-size: 1em;
+  line-height: 1.38em;
+
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.selected {
+  opacity: 1 !important;
+}
+
+// SPLIT TEST CSS START
+.chat-input-nli {
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: row-start;
+
+  padding: 0px 33px;
+}
+
+.chat-input__placeholder {
+  margin: 0px 10px;
+  color: #999;
+}
+
+.chat-input__disabledtext {
+  font-weight: 600;
+  color: #999;
+  margin: 23px 0;
+  margin-left: -52px;
+}
+.mobile .chat-input__disabledtext {
+  margin-left: 0;
+}
+
+.chat-input__btn {
+  font-family: @font-base;
+  font-size: 12px;
+  letter-spacing: 2px;
+
+  position: relative;
+  display: inline-block;
+
+  padding: 1.1em 3em;
+  margin-top: 4px;
+
+  text-transform: uppercase;
+  text-decoration: none;
+
+  border: none;
+  border-radius: 6px;
+
+  background: @homepage-orange;
+  color: #fff;
+
+  flex-shrink: 0;
+}
+
+.chat-input__btn  img {
+  height: 18px;
+  margin: -1px 12px 0 -3px;
+  vertical-align: middle;
+}
+
+.chat-input__btn:hover {
+  box-shadow: inset 0 0 0 250px rgba(0,0,0,.05);
+  text-decoration: none;
+}
+
+.chat-input__btn:active {
+  box-shadow: inset 0 0 0 250px rgba(0,0,0,.05), inset 0 2px 4px rgba(0,0,0,.15);
+  text-decoration: none;
+}
+
+// SPLIT TEST CSS END

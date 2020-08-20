@@ -1,0 +1,6 @@
+<div class="activity-item-inner github-pull-request">
+  <i class='octicon octicon-git-pull-request activity-item__icon'></i>
+  <div class="activity-time" id="time">{{ sentFormatted }}</div>
+
+  <div class="gtrActivityItemText"><span class='mention' data-link-type="mention" data-screen-name="{{payload.sender.login}}">{{payload.sender.login}}</span> {{payload.action}} <a class="issue {{payload.pull_request.state}}" href="{{sanitizeHref payload.pull_request.html_url}}" target="_blank" data-link-type="issue" data-issue="{{payload.pull_request.number}}" data-issue-repo="{{payload.repository.full_name}}">#{{payload.pull_request.number}}</a></div>
+</div>

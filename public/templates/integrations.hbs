@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="{{#if hasCachedFonts}}fonts-loaded{{/if}}">
+<head>
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=IE9" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+  {{> fonts}}
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href='{{cdn "styles/trpHooks.css" }}' type='text/css'>
+  <link rel="stylesheet" href='{{cdn "sprites/services.css" }}' type='text/css'>
+</head>
+
+<body style="margin-left: 8px">
+  {{#if hooks}}
+    {{#each hooks}}
+    <div class="trpHookItem">
+      <form method="post">
+        {{!-- start circa-1996 crappy http hack here --}}
+        <input type="hidden" name="_method" value="delete">
+        {{!-- end circa-1996 crappy http hack here --}}
+        <input type="hidden" name="accessToken" value="{{../accessToken}}">
+        <input type="hidden" name="id" value="{{id}}">
+
+        <div class="action">
+          <input type="submit" value="Delete" class="button-ruby--small">
+        </div>
+
+        <div class="details">
+            <p class="service">{{serviceDisplayName}}</p>
+            {{#if description}}
+              <p>{{description}}</p>
+            {{/if}}
+
+            {{#if lastEventAt}}
+              <p>{{eventCount}} events received, last event {{lastEventAt}}</p>
+            {{else}}
+              <p><i>There are no recent events.</i></p>
+            {{/if}}
+
+            <p>URL: {{endpoint}}</p>
+
+            {{#if token}}
+              <p>Token: {{token}}</p>
+            {{/if}}
+        </div>
+
+      </form>
+    </div>
+    {{/each}}
+  {{else}}
+  <p>Notify your room of events by integrating with third-party services.</p>
+  {{/if}}
+
+  <h3>Add an Integration:</h3>
+  {{#each supportedServices}}
+  <form class="add-integration" method="post">
+    <input type="hidden" name="service" value="{{id}}">
+    <input type="hidden" name="accessToken" value="{{../accessToken}}">
+    <button class="button-pampas--small" type="submit"><img src='{{../cdnRoot}}images/icon-{{id}}@2x.png' width="16" height="16">{{name}}</button>
+  </form>
+  {{/each}}
+  {{#each openServices}}
+  <form class="add-integration" method="post">
+    <input type="hidden" name="service" value="{{id}}">
+    <input type="hidden" name="accessToken" value="{{../accessToken}}">
+    <button class="button-pampas--small" type="submit"><div class="service-sprite {{id}}-logo"></div>{{name}}</button>
+  </form>
+  {{/each}}
+  <p class="fork-me">Can't find your service? <a href="https://gitlab.com/gitlab-org/gitter/services" target="_blank">Send a pull request!</a></p>
+
+</body>
+</html>

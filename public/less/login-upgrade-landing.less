@@ -1,0 +1,42 @@
+@import 'colors';
+@import 'trp3Vars';
+@import 'typography';
+@import 'base-web';
+
+@import 'logo';
+@import 'buttons';
+@import 'components/primary-branded-header';
+
+@page-bg-color: #ffffff;
+
+@page-wrapper-max-width: 140rem;
+@page-wrapper-horizontal-padding: 2rem;
+
+.generic-page-section {
+  max-width: @page-wrapper-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: @page-wrapper-horizontal-padding;
+  padding-right: @page-wrapper-horizontal-padding;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+body {
+  overflow: auto;
+  height: 100%;
+  margin: 0;
+  background-color: @page-bg-color;
+  max-width: 100vw;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: underline;
+}

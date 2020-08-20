@@ -1,0 +1,39 @@
+'use strict';
+
+var synonyms = cat('./tag-synonyms.txt');
+synonyms.split(/\n+/).forEach(function(line) {
+  line = line.trim();
+  if (line[0] === '#') return;
+
+  print('Handling ', line);
+  if (!line) return;
+
+  var parts = line.split(':');
+  var name, synonym;
+  if (parts.length === 1) {
+    name = parts[0];
+    synonym = parts[0];
+  } else {
+    synonym = parts[0];
+    name = parts[1];
+  }
+
+  db.tagsynonyms.update({
+    name: name
+  }, {
+    $setOnInsert: {
+      name: name
+    },
+    $addToSet: {
+      synonyms: synonym
+    }
+  }, {
+    upsert: true
+  });
+
+  printjson({ name: name, synonym: synonym });
+
+});
+
+db.tagsynonyms.ensureIndex({ name: 1 }, { unique: true });
+db.tagsynonyms.ensureIndex({ synonyms: 1 }, { unique: true });

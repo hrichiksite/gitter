@@ -1,0 +1,21 @@
+{
+  "name": "gitter-web-backend-muxer",
+  "version": "1.0.0",
+  "main": "lib/backend-muxer.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true,
+  "dependencies": {
+    "gitter-web-github-backend": "file:../github-backend",
+    "gitter-web-gitlab-backend": "file:../gitlab-backend",
+    "gitter-web-google-backend": "file:../google-backend",
+    "gitter-web-identity": "file:../identity",
+    "gitter-web-linkedin-backend": "file:../linkedin-backend",
+    "gitter-web-twitter-backend": "file:../twitter-backend"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "gitter-web-shared",
+  "version": "1.0.0",
+  "description": "Gitter Web Shared Components",
+  "main": " ",
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true,
+  "dependencies": {
+    "gitter-client-env": "file:../modules/client-env",
+    "gitter-web-avatars": "file:../modules/avatars"
+  }
+}

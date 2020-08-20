@@ -1,0 +1,168 @@
+
+.markdown-styles() {
+  @code-border-color: #c0c9c8;
+  @border-color: #d6d6d6;
+
+  p {
+    margin-bottom: 1.3em;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  h1, h2, h3, h4, h5 {
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 1.802em;
+    margin: 0.901em 0;
+  }
+
+  h2 {
+    font-size: 1.424em;
+  }
+
+  h2 + p {
+    margin-top: 0;
+  }
+
+  h3 {
+    font-size: 1.266em;
+  }
+
+  h4 {
+    font-size: 1.125em;
+  }
+
+  h5 {
+    font-size: 1em;
+    text-transform: uppercase;
+    margin-bottom: 0.2em;
+    font-weight: 400;
+  }
+
+
+  // Emphasis
+  strong {
+    font-weight: bold;
+  }
+  em {
+    font-style: italic;
+  }
+
+
+  // Lists
+  // --------------------------------
+  ul,
+  ol {
+    padding: 0;
+    margin: 0 0 .625em 25px;
+  }
+  ul ul,
+  ul ol,
+  ol ol,
+  ol ul {
+    margin-bottom: 0;
+  }
+  ul {
+    list-style: disc;
+  }
+  ol {
+    list-style: decimal;
+  }
+
+
+  // Description Lists
+  // --------------------------------
+  dl {
+    margin-bottom: 1.25em;
+  }
+  dt,
+  dd {
+    line-height: 1.25em;
+  }
+  dt {
+    font-weight: bold;
+  }
+  dd {
+    margin-left: .625em;
+  }
+
+  // Horizontal rules
+  // --------------------------------
+  hr {
+    margin: 1.25em 0;
+    border: 0;
+    border-top: 1px solid @border-color;
+    border-bottom: 1px solid #ffffff;
+  }
+
+
+  // Blockquotes
+  // --------------------------------
+  blockquote {
+    padding: 0 0 0 1em;
+    margin: 0 0 1.25em;
+    border-left: 5px solid @border-color;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    small {
+      display: block;
+      line-height: 1.25em;
+      color: @code-border-color;
+
+      &:before {
+        content: '\2014 \00A0';
+      }
+    }
+  }
+
+
+  // Code
+  // --------------------------------
+  code {
+    overflow-x: auto;
+    padding: 0 4px;
+
+    border: 1px solid fade(@code-border-color, 40%);
+    background-color: fade(@code-border-color, 20%);
+    border-radius: 2px;
+
+    font-size: .875em;
+    word-wrap: break-word;
+  }
+
+  pre code {
+    overflow-x: auto;
+    display: block;
+    padding: .5em;
+
+    background: #23241f;
+    border-radius: 6px;
+    border: none;
+
+    line-height: 1.4em;
+    word-wrap: normal;
+  }
+
+  pre .tag,
+  pre code {
+    color: #f8f8f2;
+  }
+
+
+  blockquote {
+    margin-bottom: 0;
+    font-weight: 300;
+    line-height: 27.5px;
+  }
+
+
+}

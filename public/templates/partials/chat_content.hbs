@@ -1,0 +1,28 @@
+<div class="trpContentPanel" id="content-wrapper">{{!-- Region--}}
+  <div>
+    <div class="trpChatPanel">
+
+      <div id="unread-banner" style="display:none"></div>
+      <div id="bottom-unread-banner" style="display:none"></div>
+
+      <div id="content-frame" class="trpChatContainer primary-scroll chat-container" role="log" aria-live="polite" aria-atomic="false" aria-relevant="additions text">
+        <div id="chat-container" role="list">
+          {{#if oneToOneInvited}}
+            {{> chat_invited}}
+          {{else}}
+            <div>
+              {{#each chats}}
+                {{{ chatItemPrerender this }}}
+              {{/each}}
+            </div>
+          {{/if}}
+        </div>
+        {{#if initialBottom}}
+          {{! This is a way of forcing the browser to open at the bottom of the screen }}
+          <div id='initial' style="height:1px;width:1px;overflow:hidden;opacity:0"><a name="initial"/>_</a></div>
+        {{/if}}
+      </div>
+    </div>
+    <div class="chat-connectivity-indicator-wrapper"></div>
+  </div>
+</div>

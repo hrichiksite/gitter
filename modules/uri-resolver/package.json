@@ -1,0 +1,20 @@
+{
+  "name": "gitter-web-uri-resolver",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "dependencies": {
+    "gitter-web-persistence": "file:../persistence",
+    "gitter-web-persistence-utils": "file:../persistence-utils"
+  },
+  "devDependencies": {
+    "gitter-web-test-utils": "file:../test-utils"
+  },
+  "private": true
+}

@@ -1,0 +1,82 @@
+.profile-menu {
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  padding-left: 19px;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4.3rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    transform: translateY(-50%);
+  }
+}
+
+.profile-menu__avatar {
+  width: 30px;
+  min-width: 30px;
+  height: auto;
+  margin-right: 9px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dropdown.profile-menu__list {
+  width: 210px;
+  left: auto;
+}
+
+.profile-menu__item {
+  border-radius: 4px;
+  padding: 0.5rem 1.3rem;
+
+  &:hover {
+    background-color: #1589c9;
+  }
+}
+
+.profile-menu__item__link {
+  font-weight: 400;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.chat-header__action-grouping .profile-menu {
+  padding-top: 17px;
+  margin-left: 6px;
+  margin-right: 12px;
+}
+
+.explore-header .profile-menu {
+  position: absolute;
+  top: 17px;
+  right: 20px;
+}
+
+.org-page__header-body .profile-menu {
+  margin-right: -31px;
+}
+
+//Specificity issue causes the
+//need for a compound class here
+.chat-header__action-grouping .dropdown.profile-menu__list {
+  top: 64px;
+  right: 5px;
+}
+
+.explore-header .dropdown.profile-menu__list {
+  top: 50px;
+  right: 0;
+}
+
+.org-page__header-body .dropdown.profile-menu__list {
+  top: 70px;
+  right: 8px;
+}

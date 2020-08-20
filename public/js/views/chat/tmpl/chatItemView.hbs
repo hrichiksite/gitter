@@ -1,0 +1,51 @@
+{{!-- NOTE: this is wrapped by <div class='chat-item'> --}}
+<div class='chat-item__container'>
+  {{#if burstStart}}
+  <div class='chat-item__aside'>
+    <div class="chat-item__avatar">
+    {{#if fromUser}}
+      {{ widget "avatar" user=fromUser }}
+    {{/if}}
+    </div>
+  </div>
+  {{/if}}
+  {{#if showItemActions }}
+    <div class="chat-item__actions js-chat-item-actions">
+      {{#if readByText}}
+      <i class="chat-item__icon icon-check chat-item__icon--read chat-item__icon--read-by-some js-chat-item-readby"></i>
+      {{else}}
+      <i class="chat-item__icon icon-check chat-item__icon--read js-chat-item-readby"></i>
+      {{/if}}
+      <i class="chat-item__icon icon-ellipsis"></i>
+    </div>
+  {{/if}}
+  <div class='chat-item__content'>
+    {{#if initial}}
+      {{! This is a way of forcing the browser to open at the bottom of the screen }}
+      <div id='initial' style="position:relative;top:-120px; left: 0; height:0;width:0;overflow:hidden"><a name="initial"/>_</a></div>
+    {{/if}}
+    {{#if burstStart}}
+    <div class='chat-item__details'>
+      <div class='chat-item__from js-chat-item-from'>{{displayName}}</div>
+      <div class='chat-item__username js-chat-item-from'>@{{username}}</div>
+      <a class='chat-item__time js-chat-time' {{#if permalinkUrl}} href='{{permalinkUrl}}'{{/if}} title="{{ sentTimeFormattedFull }}">{{ sentTimeFormatted }}</a>
+    </div>
+    {{/if}}
+    <div class='chat-item__text js-chat-item-text'>
+      {{{ html }}}
+    </div>
+    {{#if threadMessageCount}}
+    {{! js-parent-message-indicator class is used in chatContainerView for input box focus logic:
+    when you click this element, we won't focus the main chat input box }}
+      <div class='chat-item__thread-message-indicator parent-message-indicator js-parent-message-indicator'>
+        <img class="chat-item__pmi-icon" src="{{cdn 'images/svg/corner-down-right.svg'}}" /> {{threadMessageCount}} {{ pluralize threadMessageCount 'reply' 'replies' }}
+      </div>
+    {{/if}}
+    {{! inline-threads-for-mobile-embedded }}
+    {{#if parentId}}
+      <div class='chat-item__thread-message-indicator'>
+        <a href="{{permalinkUrl}}"><img class="chat-item__pmi-icon" src="{{cdn 'images/svg/corner-up-left.svg'}}" /> go to thread</a>
+      </div>
+    {{/if}}
+  </div>
+</div>

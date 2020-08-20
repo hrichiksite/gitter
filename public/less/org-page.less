@@ -1,0 +1,313 @@
+@import 'base-web.less';
+@import 'typography.less';
+@import 'components/tag-list-edit.less';
+@import 'components/tag-modal';
+@import 'components/tag-error';
+
+@import 'trpModals.less';
+@import 'trpButtons.less';
+@import 'trp3.less';
+
+@import 'base-left-menu';
+
+@import 'components/room-card';
+@import 'bootstrap/mixins';
+
+@import 'colors.less';
+@import 'bootstrap/pagination';
+@import '../js/views/profile-menu/profile-menu-view';
+
+@large-breakpoint: 1200px;
+@medium-breakpoint: 767px;
+@small-breakpoint: 600px;
+@xsmall-breakpoint: 400px;
+
+@tag-vertical-padding: 0.75rem;
+
+@subdued-border-color: @menu-border-color;
+@subdued-text-color: fade(@dark, 60%);
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+.org-page__header {
+  width: 100%;
+  display: flex;
+  padding: 0 4rem;
+  height: 65px;
+  background-image: linear-gradient(to left, @header-grad-bg-color, @header-base-bg-color);
+
+  @media (max-width: @medium-breakpoint) {
+    padding: 0.5em;
+  }
+}
+
+.org-page__header-inner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.org-page__header-logo {
+  box-sizing: border-box;
+  align-self: flex-start;
+  width: 36px;
+  height: auto;
+  margin-right: 1.7rem;
+  margin-top: 1.7rem;
+  padding: 0.3rem;
+  border-radius: 0.4rem;
+  background-color: white;
+}
+
+.org-page__header-body {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.org-page__header-heading {
+  margin-bottom: 1rem;
+  padding-top: 7px;
+  font-size: 2.4rem;
+  font-weight: 300;
+
+  a {
+    color: white;
+  }
+}
+
+.org-page__header-body-actions {
+  display: flex;
+  align-items: center;
+}
+
+.org-page__header-favourite-button {
+  padding-left: 1em;
+  padding-right: 1em;
+
+  background-color: transparent;
+  border: 0;
+  font-size: 3rem;
+}
+
+.org-page__header-favourite-button-icon {
+  color: white;
+
+  &.favourite {
+    color: @trpYellow;
+  }
+}
+
+.org-page__header-share-link {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.org-page-main {
+  overflow: scroll;
+  // https://github.com/html-next/ember-gestures/issues/104
+  touch-action: pan-y;
+
+  height: 100%;
+  padding: 65px 3.25em-@excess-card-margin 3.25em 3.25em-@excess-card-margin;
+  background-color: @main-application-bg-color;
+  @excess-card-margin: 0.5em;
+
+  @media (max-width: @medium-breakpoint) {
+    padding: 30px 1em-@excess-card-margin;
+  }
+}
+
+.org-page__room-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  color: @subdued-text-color;
+}
+
+.org-page__room-list-heading {
+  // styleguide h3
+  color: @org-section-heading-text-color;
+  font-weight: 300;
+}
+
+.org-page__room-list-heading-info-item {
+  margin-left: 1rem;
+  color: @org-section-heading-text-color;
+  font-weight: 300;
+
+  @media (max-width: @xsmall-breakpoint) {
+    display: none;
+  }
+}
+
+.org-page__room-list {
+  margin-left: 0;
+  list-style: none;
+}
+
+.org-page__list-item(@highlight-color) {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+
+  border-top: 1px solid @subdued-border-color;
+  border-left: 4px solid @highlight-color;
+  border-bottom: 1px solid @subdued-border-color;
+  border-right: 1px solid @subdued-border-color;
+}
+
+.org-page__room-item {
+  .org-page__list-item(@jaffa);
+}
+
+.org-page__room-item-heading-link {
+  overflow: hidden;
+  flex-shrink: 0;
+  width: 18%;
+
+  @media (max-width: @large-breakpoint) and (min-width: @medium-breakpoint) {
+    width: 25%;
+  }
+  @media (max-width: @medium-breakpoint) {
+    flex: 1;
+    width: auto;
+  }
+}
+
+.org-page__room-item-heading {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  font-size: 1.1em;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.org-page__room-item-heading-name-piece {
+  overflow: hidden;
+  flex-shrink: 1000;
+  max-width: calc(100% ~'-' 5ch);
+  text-overflow: ellipsis;
+
+  transition: flex-shrink 0.3s ease-in-out;
+
+  &:last-child,
+  &:only-child,
+  &:hover {
+    flex-shrink: 0.01;
+  }
+}
+
+.org-page__room-item-heading-name-piece,
+.org-page__room-item-heading-name-piece-separator {
+  &:hover ~ .org-page__room-item-heading-name-piece {
+    flex-shrink: 1000;
+  }
+}
+
+.org-page__room-item-heading-private-icon {
+  margin-left: 1rem;
+}
+
+.org-page__room-item-description {
+  overflow: hidden;
+  flex: 1;
+  margin-left: 2rem;
+
+  color: @subdued-text-color;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  @media (max-width: @medium-breakpoint) {
+    display: none;
+  }
+}
+
+.org-page__room-item__tag-list {
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  height: calc(1em ~'+' (2 * @tag-vertical-padding));
+
+  margin-left: 2rem;
+  list-style: none;
+
+  @media (max-width: @large-breakpoint) {
+    display: none;
+  }
+}
+
+.org-page__room-item__tag-item {
+  display: block;
+  margin-right: 1rem;
+  padding: @tag-vertical-padding 2rem;
+  background-color: @pampas;
+  border-radius: 0.4rem;
+
+  color: @thunder;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.org-page__room-item-people-list {
+  flex-shrink: 0;
+  display: flex;
+  margin-left: 2rem;
+  list-style: none;
+  line-height: 0;
+}
+
+.org-page__room-item-people-list-item {
+  margin-right: 0.4rem;
+
+  @media (max-width: @small-breakpoint) {
+    &:nth-child(-n + 2) {
+      display: none;
+    }
+  }
+}
+
+.org-page__room-item-details {
+  flex-shrink: 0;
+  margin-left: 2rem;
+  color: @subdued-text-color;
+  white-space: nowrap;
+
+  @media (max-width: @xsmall-breakpoint) {
+    display: none;
+  }
+}
+
+.org-page__pagination {
+  display: flex;
+  flex-grow: 1;
+  .pagination {
+    margin: 20px auto;
+  }
+}

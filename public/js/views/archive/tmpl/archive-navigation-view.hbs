@@ -1,0 +1,16 @@
+<div class="gtrArchiveNavigationInner">
+  <div class="gtrArchiveDate">
+    {{#if nextDateLink}}<a href="{{nextDateLink}}"><i class="gtrArchiveNext octicon octicon-chevron-right"></i></a>{{/if}}
+    {{#if previousDateLink}}<a href="{{previousDateLink}}"><i class="gtrArchivePrev octicon octicon-chevron-left"></i></a>{{/if}}
+    <div class="gtrArchiveToday">
+      <span class="gtrArchiveDay">{{dayName}}<sup>{{dayOrdinal}}</sup></span><br>
+      <span class="gtrArchiveMonth">{{monthYearFormatted}}</span>
+    </div>
+  </div>
+
+  <div class="archive-toggle-navigation-action-holder">
+    <button class="button-jaffa--small js-toggle-archive-navigation">Toggle Heatmap</button>
+  </div>
+  <div id="archive-navigation" class="gtrArchiveCalendar js-archive-navigation-wrapper">
+  </div>
+</div>

@@ -1,0 +1,50 @@
+#!/bin/bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+set -x
+module_name=$1
+
+mkdir -p "modules/${module_name}/lib"
+mkdir -p "modules/${module_name}/test"
+
+if [[ ! -f modules/${module_name}/package.json ]]; then
+cat <<EOD > "modules/${module_name}/package.json"
+{
+  "name": "gitter-web-${module_name}",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true
+}
+EOD
+fi
+
+if [[ ! -f modules/${module_name}/test/.eslintrc.json ]]; then
+cat <<EOD > "modules/${module_name}/test/.eslintrc.json"
+{
+  "env": {
+    "commonjs": true,
+    "node": true,
+    "mocha": true
+  },
+  "plugins": [
+    "mocha"
+  ],
+  "rules": {
+    "mocha/no-exclusive-tests": "error"
+  }
+}
+EOD
+fi
+
+npm i "gitter-web-${module_name}@file:./modules/${module_name}/" --save
+npm run shrinkwrap
+npm run link

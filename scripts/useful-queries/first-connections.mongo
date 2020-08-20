@@ -1,0 +1,61 @@
+var a = db.troupes.aggregate([{
+  $match: {
+    oneToOne: true
+  }
+}, {
+  $project: {
+    _id: 1,
+    userId1: { $arrayElemAt: ['$oneToOneUsers.userId', 0] },
+    userId2: { $arrayElemAt: ['$oneToOneUsers.userId', 1] },
+  }
+}, {
+  $project: {
+    _id: 1,
+    userId1: { $cond: { if: { $lt: ['$userId1', '$userId' ] }, then: '$userId1', else: '$userId2' } },
+    userId2: { $cond: { if: { $lt: ['$userId1', '$userId' ] }, then: '$userId2', else: '$userId1' } }
+  },
+}, {
+  $sort: {
+    userId2: 1,
+    _id: 1
+  }
+}, {
+  $group: {
+    _id: '$userId2',
+    userId1: { $first: '$userId1' }
+  }
+}, {
+  $project: {
+    _id: 0,
+    userId2: '$_id',
+    userId1: 1
+  }
+}, {
+  $lookup: {
+    from: "users",
+    localField: "userId1",
+    foreignField: "_id",
+    as: "user1"
+  }
+}, {
+  $unwind: "$user1"
+}, {
+  $lookup: {
+    from: "users",
+    localField: "userId2",
+    foreignField: "_id",
+    as: "user2"
+  }
+}, {
+  $unwind: "$user2"
+}, {
+  $project: {
+    user2: '$user2.username',
+    user1: '$user1.username'
+  }
+}]);
+
+print(['Source', 'Target'].join(','))
+a.forEach(function(x) {
+  print([x.user2, x.user1].join(','))
+})

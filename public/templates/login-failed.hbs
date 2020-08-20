@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Sign in failed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link id="favicon" rel="shortcut icon" href="{{ cdn 'images/favicon-normal.ico' }}">
+
+    <link href='{{cdn "styles/login.css" }}' rel="stylesheet">
+  </head>
+
+  <body>
+    <div class='background'>
+      <div class='login'>
+        <header>
+          <h1>Sign in failed</h1>
+                    <p>We're very sorry, but we're unable to log you in right now.
+            {{#if message}}
+            <br>({{message}})
+            {{/if}}</p>
+        </header>
+        <section>
+
+          <p><a class='btn' href="/login?action=login&source=login-failed">Try sign in again</a></p>
+          <p class='or'>Or</p>
+          <p><a class='btn transparent' href="http://support.gitter.im">Contact Support</a></p>
+        </section>
+      </div>
+    </div>
+    {{{ generateEnv }}}
+    {{{ bootScript "just-tracking" }}}
+    {{> live_reload }}
+  </body>
+</html>

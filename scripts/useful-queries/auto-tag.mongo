@@ -1,0 +1,52 @@
+'use strict';
+
+var AUTO_TAGS = {
+  'lua': /\blua\b/i,
+  'c#': /c#|csharp/i,
+  'c++': /(c\+\+|cplusplus|\bcpp\b)/i,
+  'swift': /\bswift\b/i,
+  'jquery': /\bjquery\b/i,
+  'objective-c': /obj(ective)?-?c/i,
+  'ios': /\bios\b/i,
+  'ruby': /\bruby\b/i,
+  'r': /\br\b/i,
+  'scala': /\b(scala|sbt|akka)\b/i,
+  'julia': /\b(julia|julialang)\b/i,
+  'go': /\b(golang|go)\b/i,
+  'rust': /\b(rust|crate|rustlang)\b/i,
+  'c': /\bc\b/i,
+  'shell': /\b(shell|bash|zsh)\b/i,
+  'perl': /\b(perl)\b/i,
+  'groovy': /\b(groovy|grails)\b/i,
+  'd': /\b(d)\b/i,
+  'dotnet': /\b(dotnet|.net|wpf|aspnet)\b/i,
+  'aws': /\b(aws|ec2|s3)\b/i,
+  'spark': /\b(spark)\b/i,
+  'elasticsearch': /\b(elasticsearch)\b/i,
+  'powershell': /\b(powershell)\b/i,
+  'typescript': /\b(typescript)\b/i,
+  'clojure': /\b(clojure)\b/i,
+  'haskell': /\b(haskell)\b/i,
+  'erlang': /\b(erlang)\b/i,
+  'akka': /\b(akka)\b/i,
+  'javascript': /\b(js|javascript)\b/i,
+  'dart': /\b(dart)\b/i,
+  'angularjs': /\b(angularjs|angular)\b/i,
+  'ethereum': /\b(ethereum)\b/i,
+  'mongodb': /\b(mongodb)\b/i,
+  'ansible': /\b(ansible)\b/i,
+}
+
+Object.keys(AUTO_TAGS).forEach(function(tag) {
+  var re = AUTO_TAGS[tag];
+  print(tag);
+  db.troupes.update({
+    topic: re
+  }, {
+    $addToSet: {
+      tags: tag
+    }
+  }, {
+    multi: true
+  });
+})

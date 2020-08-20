@@ -1,0 +1,19 @@
+# If you would like to crawl Gitter contact us at team@gitter.im.
+# We also provide an extensive API: https://developer.gitter.im
+
+{{#if allowCrawling}}
+Sitemap: {{sitemap}}
+
+User-agent: *
+Allow: *
+
+{{else}}
+User-agent: *
+Disallow: /*
+Disallow: /
+{{/if}}
+Disallow: */~chat
+Disallow: /api/*
+
+
+Allow: /humans.txt

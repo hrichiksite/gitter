@@ -1,0 +1,10 @@
+{
+	"%d unread chat": {
+		"one": "%d unread chat",
+		"other": "%d unread chats"
+	},
+	"%d unread message": {
+		"one": "%d unread message",
+		"other": "%d unread messages"
+	}
+}

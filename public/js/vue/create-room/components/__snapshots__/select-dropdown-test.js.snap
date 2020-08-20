@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectDropdown matches snapshot 1`] = `
+<b-dropdown-stub
+  boundary="scrollParent"
+  class="select-dropdown"
+  menuclass="select-dropdown-menu"
+  offset="0"
+  role="menu"
+  splitbuttontype="button"
+  text=""
+  toggleclass="select-dropdown-button"
+  toggletag="button"
+  toggletext="Toggle Dropdown"
+  variant="secondary"
+>
+   
+  <b-dropdown-form-stub>
+    <input
+      class="filter-input"
+      placeholder="Filter items..."
+    />
+  </b-dropdown-form-stub>
+   
+  <!---->
+   
+  <!---->
+   
+  <ul
+    class="select-dropdown-item-list"
+  >
+    <b-dropdown-item-button-stub
+      activeclass="active"
+      buttonclass="[object Object]"
+    />
+    <b-dropdown-item-button-stub
+      activeclass="active"
+      buttonclass="[object Object]"
+    />
+    <b-dropdown-item-button-stub
+      activeclass="active"
+      buttonclass="[object Object]"
+    />
+  </ul>
+</b-dropdown-stub>
+`;

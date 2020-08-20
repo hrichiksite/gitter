@@ -1,0 +1,29 @@
+<div class="trpContentPanel archive" id="content-wrapper">
+  <div class="trpChatPanel">
+    <div class="trpChatContainer  primary-scroll" id="content-frame" style="text-align: left">
+      <div class="gtrArchiveHomeWrapper">
+        <div class="archive-years">
+          {{#each chatTree as |year|}}
+            <h1>{{year.year}}</h1>
+            <div class="archive-months">
+            {{#each year.months as |month|}}
+              <h2>{{month.monthName}}</h2>
+              <div class="archive-days">
+              {{#each month.days as |day|}}
+                <a
+                  class="archive-day-item"
+                  href="/{{@root.troupeContext.troupe.uri}}/archives/{{year.year}}/{{month.month}}/{{day.day}}"
+                  title="{{day.count}} messages"
+                >
+                  {{day.day}}
+                </a>
+              {{/each}}
+              </div>
+            {{/each}}
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

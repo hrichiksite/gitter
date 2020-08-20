@@ -1,0 +1,42 @@
+{{#each troupesWithUnreadCounts}}
+
+  <table class="header">
+    <tr>
+      <td>
+        <h2>{{#if troupe.oneToOne}}{{troupe.name}}{{else}}{{troupe.uri}}{{/if}}</h2>
+        <h3><a href="{{../emailBasePath}}{{troupe.url}}?utm_source=notification&amp;utm_medium=email&amp;utm_campaign=unread-notifications"><span class="unreadcount">{{__n "%d unread message" "%d unread messages" unreadCount}}</span>{{#if truncated}} <span class="truncatedcount">({{chats.length}} most recent)</span>{{/if}}</a></h3>
+      </td>
+    </tr>
+  </table>
+
+  {{#each chats}}
+  <table class="recent">
+    <tr>
+      <td class="avatar" rowspan="2" width="45" style="width:45px">
+        <img src="{{fromUser.avatarUrlSmall}}" alt="avatar" height="30" width="30" align="right" />
+      </td>
+      <td class="username">
+        <strong>{{fromUser.username}}</strong>
+      </td>
+    </tr>
+    <tr>
+      <td class="chat">
+        {{text}}
+      </td>
+    </tr>
+  </table>
+  {{/each}}
+
+  <table class="chatmanage">
+    <tr>
+      <td class="chatcta">
+        <a href="{{../emailBasePath}}{{troupe.url}}?utm_source=notification&amp;utm_medium=email&amp;utm_campaign=unread-notifications" class="cta">Open Chat</a>
+      </td>
+      {{#unless troupe.oneToOne}}
+      <td class="chatsettings">
+        <a href="{{../../emailBasePath}}{{troupe.url}}#notifications&amp;utm_source=notification&amp;utm_medium=email&amp;utm_campaign=unread-notifications">Notification settings</a>
+      </td>
+      {{/unless}}
+    </tr>
+  </table>
+{{/each}}

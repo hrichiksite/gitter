@@ -1,0 +1,22 @@
+{
+  "name": "gitter-web-user-serialization",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "dependencies": {
+    "gitter-web-avatars": "file:../avatars",
+    "gitter-web-persistence": "file:../persistence",
+    "gitter-web-persistence-utils": "file:../persistence-utils",
+    "gitter-web-serialization": "file:../serialization"
+  },
+  "devDependencies": {
+    "gitter-web-test-utils": "file:../test-utils"
+  },
+  "private": true
+}

@@ -1,0 +1,11 @@
+<div class="activity-item-inner sprintly">
+  <div class="service-sprite sprintly-logo activity-item__icon"></div>
+  <div class="activity-time" id="time">{{ sentFormatted }}</div>
+
+  <div class="gtrActivityItemText">{{payload.attributes.created_by.first_name}} {{payload.attributes.created_by.last_name}} {{sprintly_action}}<br>
+    <div class="activity-detail"><a href="{{sanitizeHref payload.attributes.short_url}}" target="_blank">
+      {{#if payload.attributes.title}} {{payload.attributes.title}} {{/if}}
+      {{#if payload.attributes.item.title}} {{payload.attributes.item.title}} {{/if}}
+    </a></div>
+  </div>
+</div>

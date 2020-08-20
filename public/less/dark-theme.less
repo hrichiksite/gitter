@@ -1,0 +1,523 @@
+/*
+---------------------------------------------------------------------------------------------------------------------------------
+
+ ██████╗ ██╗████████╗████████╗███████╗██████╗     ██████╗  █████╗ ██████╗ ██╗  ██╗    ████████╗██╗  ██╗███████╗███╗   ███╗███████╗
+██╔════╝ ██║╚══██╔══╝╚══██╔══╝██╔════╝██╔══██╗    ██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝    ╚══██╔══╝██║  ██║██╔════╝████╗ ████║██╔════╝
+██║  ███╗██║   ██║      ██║   █████╗  ██████╔╝    ██║  ██║███████║██████╔╝█████╔╝        ██║   ███████║█████╗  ██╔████╔██║█████╗
+██║   ██║██║   ██║      ██║   ██╔══╝  ██╔══██╗    ██║  ██║██╔══██║██╔══██╗██╔═██╗        ██║   ██╔══██║██╔══╝  ██║╚██╔╝██║██╔══╝
+╚██████╔╝██║   ██║      ██║   ███████╗██║  ██║    ██████╔╝██║  ██║██║  ██║██║  ██╗       ██║   ██║  ██║███████╗██║ ╚═╝ ██║███████╗
+ ╚═════╝ ╚═╝   ╚═╝      ╚═╝   ╚══════╝╚═╝  ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝       ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝╚══════╝
+
+----------------------------------------------------------------------------------------------------------------------------------
+*/
+
+/* -------------------------------------------
+                Contents
+------------------------------------------- */
+
+/* -------------------------------------------
+- Variables
+
+  - Global
+    - Left Menu
+    - Chat
+    - Org Directory
+    - Explore Page
+
+
+- Components
+
+  - Left Menu
+    - Header
+    - Main
+    - Text
+
+  - Chat
+    - Header
+    - Main
+    - Right Toolbar
+
+  - Org Directory
+    - Main
+    - List Items
+    - Pagination
+
+  - Explore Page
+    - Main
+    - Details
+    - Room List
+
+
+
+/* -------------------------------------------
+                Variables
+------------------------------------------- */
+
+@import 'colors';
+
+// Brand
+// --------------------------------------------
+@ruby: #ed1965;
+@jaffa: #f68d42;
+@caribbean: #46bc99;
+@pampas: #f2f0ed;
+@thunder: #3a3133;
+@favourite-star-color: #f1c40f;
+
+// Global
+// --------------------------------------------
+@dark-theme-app-main-bg-color: #434141;
+@dark-theme-app-header-bg-color: #2d2c2c;
+@dark-theme-app-header-text-color: #bbb7b7;
+@dark-theme-app-header-icon-color: #aaaaaa;
+@dark-theme-app-layout-panel-bg-color: #383736;
+@dark-theme-app-layout-border-color: #2d2c2c;
+
+@app-single-line-code-color: #23241f;
+
+@hover-highlight-percentage: 1%;
+
+@darker-highlight-percentage: 5%;
+
+// LEFT MENU
+// --------------------------------------------
+@dark-theme-left-menu-bg-color: @dark-theme-app-layout-panel-bg-color;
+@dark-theme-left-menu-minibar-border-color: @dark-theme-app-layout-border-color;
+@dark-theme-left-menu-minibar-icon-color: #aeaeae;
+@dark-theme-left-menu-text-color: #bbb;
+@dark-theme-left-menu-active-item-bg-color: #2d2c2c;
+@dark-theme-left-menu-active-item-text-color: white;
+@dark-theme-left-menu-search-input-active-color: white;
+@dark-theme-left-menu-footer-button-color: white;
+
+// CHAT
+// --------------------------------------------
+@dark-theme-chat-main-text-color: #ccc;
+@chat-main-bg-color: @dark-theme-app-main-bg-color;
+@chat-main-text-color: @dark-theme-chat-main-text-color;
+@chat-details-text-color: @dark-theme-app-header-icon-color;
+@chat-mention-color: lighten(@jaffa, @hover-highlight-percentage);
+@chat-connectivity-indicator-bg: @dark-theme-app-layout-panel-bg-color;
+
+@chat-right-toolbar-bg-color: @dark-theme-app-layout-panel-bg-color;
+@chat-right-toolbar-left-border-color: @dark-theme-app-layout-border-color;
+@chat-right-toolbar-text-color: @chat-main-text-color;
+@chat-right-toolbar-activity-hover-color: white;
+@chat-right-toolbar-issue-open-color: @caribbean;
+@chat-right-toolbar-issue-closed-color: @ruby;
+@chat-right-toolbar-commit-color: #d0abff;
+@chat-right-toolbar-issue-background: #222;
+
+@dark-theme-thread-message-feed-bg-color: @dark-theme-app-layout-panel-bg-color;
+@dark-theme-thread-message-feed-left-border-color: @dark-theme-app-layout-border-color;
+
+@chat-loading-frame-bg-color: rgba(0, 0, 0, 0.5);
+
+// ORG DIRECTORY
+// --------------------------------------------
+@org-page-main-bg-color: @dark-theme-app-main-bg-color;
+@org-page-list-item-border-color: @dark-theme-app-layout-border-color;
+@org-page-list-item-heading-color: #dedddc;
+@org-page-list-item-description-color: @dark-theme-left-menu-text-color;
+@org-page-list-item-details-color: @org-page-list-item-description-color;
+@org-page-list-item-tag-background-color: #646362;
+@org-page-list-item-tag-text-color: @org-page-list-item-heading-color;
+
+// EXPLORE PAGE
+// --------------------------------------------
+@explore-main-bg-color: @dark-theme-app-main-bg-color;
+@explore-header-details-color: @org-page-list-item-details-color;
+@explore-header-details-icon-color: @dark-theme-app-header-icon-color;
+@explore-tags-bg-color: @org-page-list-item-tag-background-color;
+@explore-tags-text-color: @org-page-list-item-tag-text-color;
+@explore-room-card-bg-color: @explore-main-bg-color;
+@explore-room-card-border-color: @org-page-list-item-border-color;
+@explore-room-card-heading-color: @org-page-list-item-heading-color;
+@explore-room-card-details-color: @org-page-list-item-details-color;
+@explore-room-card-button-color: @dark-theme-app-header-icon-color;
+
+/* -------------------------------------------
+              Components
+------------------------------------------- */
+
+body {
+  background-color: @dark-theme-app-main-bg-color;
+}
+
+a {
+  color: darken(@chat-right-toolbar-text-color, 10%);
+}
+
+// Single line code blocks don't have a `pre` element
+.chat-item code {
+  border-color: @app-single-line-code-color;
+  background-color: @app-single-line-code-color;
+}
+
+// Chat
+// --------------------------------------------
+
+// --- Chat Header ---
+.chat-header {
+  background-image: none;
+  background-color: @dark-theme-app-header-bg-color;
+}
+
+.chat-header__title,
+.chat-header__topic {
+  color: @dark-theme-app-header-text-color;
+}
+.chat-header__action-icon {
+  color: @dark-theme-app-header-icon-color;
+}
+
+// --- Chat Main ---
+.chat-app,
+.trpContentPanel {
+  background-color: @chat-main-bg-color;
+}
+.chat-container {
+  background-color: @chat-main-bg-color;
+}
+
+.chat-item {
+  color: @chat-details-text-color;
+}
+.loading-frame {
+  background-color: @chat-loading-frame-bg-color;
+}
+
+.mention {
+  color: @chat-mention-color;
+}
+
+.chat-item.mentioned .chat-item__text .mention {
+  background-color: @chat-right-toolbar-issue-background;
+}
+
+.chat-connectivity-indicator {
+  background-color: @chat-connectivity-indicator-bg;
+}
+
+// This is complete and utter BS ...
+.chat-item:hover {
+  background-color: darken(@chat-main-bg-color, @hover-highlight-percentage) !important;
+}
+
+.chat-item__text {
+  color: @chat-main-text-color;
+  a {
+    color: @caribbean;
+  }
+}
+
+.issue-popover-body .chat-item__text {
+  color: #333;
+}
+
+.chat-item__text table tr:nth-child(2n) {
+  background-color: darken(@chat-main-bg-color, @darker-highlight-percentage);
+}
+
+.chat-item.unread .chat-item__container {
+  background-color: rgba(46, 204, 113, 0.2);
+}
+
+.chat-item.unread.mentioned .chat-item__container {
+  background-color: rgba(230, 126, 34, 0.2);
+}
+
+.chat-item__status .chat-item__text {
+  color: @chat-details-text-color;
+}
+
+.chat-item__status .mention {
+  color: @chat-details-text-color;
+}
+
+// --- Chat Input ---
+.chat-input {
+  background-color: @chat-main-bg-color;
+}
+.chat-input__text-area,
+.trpChatInput {
+  background-color: @chat-main-bg-color;
+  color: @chat-main-text-color;
+}
+.chat-input__button-icon {
+  color: @chat-main-text-color;
+}
+
+// --- Chat Right Toolbar ---
+.right-toolbar-region {
+  .right-toolbar {
+    background: @chat-right-toolbar-bg-color;
+    border-color: @chat-right-toolbar-left-border-color;
+    color: @chat-right-toolbar-text-color;
+  }
+
+  .remaining-view-button-secondary-text {
+    color: @chat-right-toolbar-text-color;
+  }
+}
+
+.trpToolbarHeaderItem:hover {
+  color: lighten(@menu-header-item-color, 15%);
+}
+
+//Avatars at the top of the right toolbar
+.trpStatus {
+  border-color: @chat-right-toolbar-bg-color;
+}
+.trpDisplayPicture.offline .trpStatus {
+  background-color: @chat-right-toolbar-bg-color;
+}
+
+//Items in the integration list
+.activity-item,
+.activity-tip {
+  color: @chat-right-toolbar-text-color;
+
+  & a {
+    color: darken(@chat-right-toolbar-text-color, 10%);
+  }
+
+  &:hover {
+    background-color: darken(@chat-right-toolbar-bg-color, @hover-highlight-percentage);
+  }
+}
+
+.activity-commit .commit {
+  background-color: @chat-right-toolbar-issue-background;
+  color: @chat-right-toolbar-commit-color;
+}
+
+.activity-item:hover {
+  .gtrActivityItemText {
+    color: @chat-right-toolbar-activity-hover-color;
+  }
+  .activity-item__icon {
+    color: @chat-right-toolbar-activity-hover-color;
+  }
+}
+
+.activity-item-inner > .activity-time {
+  color: rgba(200, 200, 200, 0.4);
+}
+
+//Github integration stuff
+.issue,
+.pr,
+.mr {
+  &.open {
+    color: @chat-right-toolbar-issue-open-color;
+  }
+  &.closed {
+    color: @chat-right-toolbar-issue-closed-color;
+  }
+
+  &.is-existent {
+    &.closed {
+      color: @chat-right-toolbar-issue-closed-color;
+      background-color: @chat-right-toolbar-issue-background;
+      border-color: @chat-right-toolbar-issue-background;
+    }
+
+    &.open {
+      color: @chat-right-toolbar-issue-open-color;
+      background-color: @chat-right-toolbar-issue-background;
+      border-color: @chat-right-toolbar-issue-background;
+    }
+  }
+}
+
+.gtrActivityItemText .mention {
+  background-color: @chat-right-toolbar-issue-background;
+  border-color: @chat-right-toolbar-issue-background;
+  &:hover {
+    border-color: @chat-right-toolbar-issue-background;
+  }
+}
+
+//Right toolbar footer
+.right-toolbar-region__footer {
+  background: linear-gradient(top, rgba(56, 55, 54, 0), @dark-theme-left-menu-bg-color 35%);
+}
+
+//The toggle icon
+//positioned bottom right of the toolbar
+.right-toolbar-region__footer .menu-toggle-icon {
+  opacity: 0.45;
+  will-change: opacity;
+  &:hover {
+    stroke: @dark-theme-left-menu-minibar-icon-color;
+    color: @dark-theme-left-menu-minibar-icon-color;
+    opacity: 1;
+  }
+}
+
+// Org Directory
+// --------------------------------------------
+
+// --- Main ---
+//main background class for the whole page
+.org-page-main {
+  background-color: @org-page-main-bg-color;
+}
+
+.org-page__header {
+  background-image: none;
+  background-color: @dark-theme-app-header-bg-color;
+}
+
+.org-page__header-heading {
+  a {
+    color: @dark-theme-app-header-text-color;
+  }
+}
+
+.org-page__header-share-link {
+  color: @dark-theme-app-header-text-color;
+  border-color: @dark-theme-app-header-text-color;
+}
+
+// --- List Items ---
+.org-page__room-item {
+  border-top-color: @org-page-list-item-border-color;
+  border-right-color: @org-page-list-item-border-color;
+  border-bottom-color: @org-page-list-item-border-color;
+}
+
+//The room name
+.org-page__room-item-heading {
+  color: @org-page-list-item-heading-color;
+}
+
+//The description of the room in the list
+.org-page__room-item-description {
+  color: @org-page-list-item-description-color;
+}
+
+//Details like the number of people in the room
+.org-page__room-item-details {
+  color: @org-page-list-item-description-color;
+}
+
+//Tags for each room
+.org-page__room-item__tag-item {
+  background-color: @org-page-list-item-tag-background-color;
+  color: @org-page-list-item-tag-text-color;
+}
+
+// --- Pagination ---
+//Pagination at the bottom of the org directory
+.org-page__pagination {
+  a {
+    color: @org-page-list-item-heading-color;
+    border-color: @org-page-list-item-border-color;
+
+    &:hover {
+      background-color: lighten(@org-page-main-bg-color, @hover-highlight-percentage);
+      color: @org-page-list-item-heading-color;
+    }
+  }
+
+  .active a {
+    background-color: lighten(@org-page-main-bg-color, @hover-highlight-percentage);
+    color: inherit;
+  }
+}
+
+// Explore Page
+// --------------------------------------------
+.explore-header {
+  background-image: none;
+  background-color: @dark-theme-app-header-bg-color;
+}
+
+.explore-header__heading {
+  color: @dark-theme-app-header-text-color;
+}
+
+// --- Main ---
+.explore-page-wrap {
+  background-color: @explore-main-bg-color;
+}
+
+// --- Details Section ---
+//Dubious fixes for icons in the header section
+.explore-header-info-bar__mobile-diagram {
+  background-color: @explore-main-bg-color;
+  i {
+    &:before {
+      background-color: @explore-main-bg-color;
+    }
+    &:after {
+      background-color: @explore-main-bg-color;
+    }
+  }
+}
+
+//UGH ...
+.secondary-header-info-bar__item-icon.icon-apple {
+  position: relative;
+  z-index: 1;
+}
+
+.secondary-header-info-bar {
+  border-color: @explore-header-details-icon-color;
+}
+
+.secondary-header-info-bar__item,
+.explore-header-info-bar__mobile-item {
+  color: @explore-header-details-color;
+}
+
+.secondary-header-info-bar__item-icon,
+.explore-header-info-bar__mobile-icon {
+  color: @explore-header-details-icon-color;
+}
+
+.tag-pill,
+.tag-pill-list-pagination-more-button {
+  background-color: @explore-tags-bg-color;
+  color: @explore-tags-text-color;
+  border-color: transparent;
+
+  &:hover {
+    background-color: lighten(@explore-tags-bg-color, @hover-highlight-percentage);
+  }
+}
+
+// --- Room List ---
+.explore-room-card-list-section {
+  background-color: @explore-main-bg-color;
+}
+
+.room-card {
+  opacity: 1;
+  background-color: @explore-room-card-bg-color;
+  border: 1px solid @explore-room-card-border-color;
+}
+
+.room-card__heading {
+  color: @explore-room-card-heading-color;
+}
+
+.room-card__topic {
+  color: @explore-room-card-details-color;
+}
+
+.room-card__tag {
+  background-color: @explore-tags-bg-color;
+  color: @explore-tags-text-color;
+}
+
+.room-card__footer-user-count {
+  color: @explore-room-card-button-color;
+  border-color: @explore-room-card-button-color;
+}
+
+.room-card__footer {
+  border-color: @explore-room-card-border-color;
+}

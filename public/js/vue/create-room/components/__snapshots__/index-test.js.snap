@@ -1,0 +1,335 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateRoom matches snapshot 1`] = `
+<div
+  class="root modal-backdrop js-create-room-view-root"
+>
+  <div
+    class="modal--default"
+  >
+    <header
+      class="modal--default__header"
+    >
+      <h1
+        class="modal--default__header__title js-modal-title-text"
+      >
+        Create a room
+      </h1>
+       
+      <span
+        class="modal--default__header__icon icon-cancel-circle"
+        data-action="close"
+      />
+    </header>
+     
+    <section
+      class="modal--default__content"
+    >
+      <p
+        class="create-room-intro-text"
+      >
+        <a
+          href="https://gitlab.com/gitlab-org/gitter/webapp/-/blob/develop/docs/rooms.md"
+          target="_blank"
+        >
+          Gitter rooms
+        </a>
+        
+        exist inside of
+        
+        <a
+          href="https://gitlab.com/gitlab-org/gitter/webapp/-/blob/develop/docs/communities.md"
+          target="_blank"
+        >
+          communities
+        </a>
+        . For example, if you want to end up with the URI:
+        
+        <strong>
+          https://gitter.im/badger/webapp
+        </strong>
+        , first create a
+        
+        <strong>
+          badger
+        </strong>
+         community, then create a 
+        <strong>
+          webapp
+        </strong>
+         room under that
+        community. You can create many rooms under your community.
+      
+      </p>
+       
+      <p
+        class="create-room-intro-text"
+      >
+        
+        If you need to create a community to put your rooms in first, jump to the
+        
+        <a
+          href="#createcommunity"
+        >
+          community create flow
+        </a>
+      </p>
+       
+      <hr />
+       
+      <group-and-room-input-section-stub />
+       
+      <repo-select-section-stub />
+       
+      <hr />
+       
+      <security-select-section-stub />
+       
+      <create-room-extra-options-stub />
+       
+      <!---->
+    </section>
+     
+    <footer
+      class="modal--default__footer-wrapper"
+    >
+      <div
+        class="modal--default__footer"
+      >
+        <button
+          class="modal--default__footer__btn pull-right"
+        >
+          <!---->
+           Create
+        
+        </button>
+      </div>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`CreateRoom room submit error matches snapshot 1`] = `
+<div
+  class="root modal-backdrop js-create-room-view-root"
+>
+  <div
+    class="modal--default"
+  >
+    <header
+      class="modal--default__header"
+    >
+      <h1
+        class="modal--default__header__title js-modal-title-text"
+      >
+        Create a room
+      </h1>
+       
+      <span
+        class="modal--default__header__icon icon-cancel-circle"
+        data-action="close"
+      />
+    </header>
+     
+    <section
+      class="modal--default__content"
+    >
+      <p
+        class="create-room-intro-text"
+      >
+        <a
+          href="https://gitlab.com/gitlab-org/gitter/webapp/-/blob/develop/docs/rooms.md"
+          target="_blank"
+        >
+          Gitter rooms
+        </a>
+        
+        exist inside of
+        
+        <a
+          href="https://gitlab.com/gitlab-org/gitter/webapp/-/blob/develop/docs/communities.md"
+          target="_blank"
+        >
+          communities
+        </a>
+        . For example, if you want to end up with the URI:
+        
+        <strong>
+          https://gitter.im/badger/webapp
+        </strong>
+        , first create a
+        
+        <strong>
+          badger
+        </strong>
+         community, then create a 
+        <strong>
+          webapp
+        </strong>
+         room under that
+        community. You can create many rooms under your community.
+      
+      </p>
+       
+      <p
+        class="create-room-intro-text"
+      >
+        
+        If you need to create a community to put your rooms in first, jump to the
+        
+        <a
+          href="#createcommunity"
+        >
+          community create flow
+        </a>
+      </p>
+       
+      <hr />
+       
+      <group-and-room-input-section-stub />
+       
+      <repo-select-section-stub />
+       
+      <hr />
+       
+      <security-select-section-stub />
+       
+      <create-room-extra-options-stub />
+       
+      <section
+        class="error-section"
+      >
+        
+        some-error
+      
+      </section>
+    </section>
+     
+    <footer
+      class="modal--default__footer-wrapper"
+    >
+      <div
+        class="modal--default__footer"
+      >
+        <button
+          class="modal--default__footer__btn pull-right"
+        >
+          <!---->
+           Create
+        
+        </button>
+      </div>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`CreateRoom room submit loading matches snapshot 1`] = `
+<div
+  class="root modal-backdrop js-create-room-view-root"
+>
+  <div
+    class="modal--default"
+  >
+    <header
+      class="modal--default__header"
+    >
+      <h1
+        class="modal--default__header__title js-modal-title-text"
+      >
+        Create a room
+      </h1>
+       
+      <span
+        class="modal--default__header__icon icon-cancel-circle"
+        data-action="close"
+      />
+    </header>
+     
+    <section
+      class="modal--default__content"
+    >
+      <p
+        class="create-room-intro-text"
+      >
+        <a
+          href="https://gitlab.com/gitlab-org/gitter/webapp/-/blob/develop/docs/rooms.md"
+          target="_blank"
+        >
+          Gitter rooms
+        </a>
+        
+        exist inside of
+        
+        <a
+          href="https://gitlab.com/gitlab-org/gitter/webapp/-/blob/develop/docs/communities.md"
+          target="_blank"
+        >
+          communities
+        </a>
+        . For example, if you want to end up with the URI:
+        
+        <strong>
+          https://gitter.im/badger/webapp
+        </strong>
+        , first create a
+        
+        <strong>
+          badger
+        </strong>
+         community, then create a 
+        <strong>
+          webapp
+        </strong>
+         room under that
+        community. You can create many rooms under your community.
+      
+      </p>
+       
+      <p
+        class="create-room-intro-text"
+      >
+        
+        If you need to create a community to put your rooms in first, jump to the
+        
+        <a
+          href="#createcommunity"
+        >
+          community create flow
+        </a>
+      </p>
+       
+      <hr />
+       
+      <group-and-room-input-section-stub />
+       
+      <repo-select-section-stub />
+       
+      <hr />
+       
+      <security-select-section-stub />
+       
+      <create-room-extra-options-stub />
+       
+      <!---->
+    </section>
+     
+    <footer
+      class="modal--default__footer-wrapper"
+    >
+      <div
+        class="modal--default__footer"
+      >
+        <button
+          class="modal--default__footer__btn pull-right"
+          disabled="disabled"
+        >
+          <loading-spinner-stub />
+           Create
+        
+        </button>
+      </div>
+    </footer>
+  </div>
+</div>
+`;

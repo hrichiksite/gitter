@@ -1,0 +1,80 @@
+
+// THIS IS A STOPGAP.. eventually we should
+// get rid of this and replace it with the
+// exact definitions that we need
+@import "trpMobileApp.less";
+@import "trp3Vars.less";
+
+html {
+  height: 100%;
+  font-size: 62.5%;
+}
+
+body, #mainPage, .contentBody {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  position: relative;
+  margin: 0;
+
+  font-size: 16px;
+  user-select: none;
+}
+
+//Fixes the chat input being pushed off the screen
+//caused by https://github.com/troupe/gitter-webapp/commit/765a6ea7c2240bac950d518843d78f1aa3c5eef1
+.chat-app {
+  display:        flex;
+  flex-direction: column;
+}
+
+//TODO JP 12/1/16
+//Figure out why this is needed
+html {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+body {
+  overflow: hidden;
+}
+
+p {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+#mainPage {
+  background-color: white;
+  width: 100%;
+}
+
+/*Mobile Overrides*/
+
+.contentBody {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+// People have big thumbs, so it is easier to make a large area selectable
+// and block out the detail text that we dont want than making only the
+// small message content selectable.
+.trpChatItemContainer {
+  user-select: text;
+  .trpChatDetails {
+    user-select: none;
+  }
+}

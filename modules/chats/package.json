@@ -1,0 +1,30 @@
+{
+  "name": "gitter-web-chats",
+  "version": "1.0.0",
+  "main": "lib/chat-service.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true,
+  "dependencies": {
+    "gitter-web-elasticsearch": "file:../elasticsearch",
+    "gitter-web-env": "file:../env",
+    "gitter-web-permissions": "file:../permissions",
+    "gitter-web-persistence": "file:../persistence",
+    "gitter-web-persistence-utils": "file:../persistence-utils",
+    "gitter-web-rooms": "file:../rooms",
+    "gitter-web-shared": "file:../../shared",
+    "gitter-web-spam-detection": "file:../spam-detection",
+    "gitter-web-text-processor": "file:../text-processor",
+    "gitter-web-unread-items": "file:../unread-items",
+    "gitter-web-users": "file:../users",
+    "gitter-web-utils": "file:../utils"
+  },
+  "devDependencies": {
+    "gitter-web-test-utils": "file:../test-utils"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "env": {
+    "commonjs": true,
+    "shared-node-browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "script"
+  },
+  "rules": {
+    "node/no-unpublished-require": "error"
+  }
+}

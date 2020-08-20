@@ -1,0 +1,49 @@
+#!/bin/bash
+
+if [[ -z ${INDEX_VERSION+x} ]]; then
+  INDEX_VERSION=01
+fi
+
+if [[ -z ${INDEX_NAME+x} ]]; then
+  INDEX_NAME=gitter${INDEX_VERSION}
+fi
+
+if [[ -z ${USER_RIVER+x} ]]; then
+USER_RIVER=gitterUserRiver${INDEX_VERSION}
+fi
+
+if [[ -z ${CHAT_RIVER+x} ]]; then
+CHAT_RIVER=gitterChatRiver${INDEX_VERSION}
+fi
+
+if [[ -z ${GROUP_RIVER+x} ]]; then
+GROUP_RIVER=gitterGroupRiver${INDEX_VERSION}
+fi
+
+if [[ -z ${ROOM_RIVER+x} ]]; then
+ROOM_RIVER=gitterRoomRiver${INDEX_VERSION}
+fi
+
+if [[ -z ${ES_URL+x} ]]; then
+ES_URL=http://127.0.0.1:9200
+fi
+
+if [[ -z ${ES_NUMBER_OF_REPLICAS+x} ]]; then
+ES_NUMBER_OF_REPLICAS=0
+fi
+
+if [[ -z ${MONGO_HOST_1+x} ]]; then
+  MONGO_HOST_1=127.0.0.1
+fi
+
+if [[ -z ${MONGO_HOST_2+x} ]]; then
+  MONGO_HOST_2=127.0.0.1
+fi
+
+if [[ -z ${MONGO_PORT_1+x} ]]; then
+  MONGO_PORT_1=27017
+fi
+
+if [[ -z ${MONGO_PORT_2+x} ]]; then
+  MONGO_PORT_2=27018
+fi

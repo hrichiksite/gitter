@@ -1,0 +1,7 @@
+<div class="activity-item-inner github-wiki">
+  <i class='octicon octicon-book activity-item__icon'></i>
+  <div class="activity-time" id="time">{{ sentFormatted }}</div>
+
+  <div class="gtrActivityItemText"><a href="https://github.com/{{payload.sender.login}}" target="_blank"><span class='mention' data-link-type="mention" data-screen-name="{{payload.sender.login}}">{{payload.sender.login}}</span></a> updated the wiki</div>
+  <div class="gtrActivityItemText activity-detail"><a href="{{sanitizeHref wiki_url}}" target="_blank">{{wiki_page}}</a></div>
+</div>

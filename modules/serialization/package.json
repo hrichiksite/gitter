@@ -1,0 +1,21 @@
+{
+  "name": "gitter-web-serialization",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "dependencies": {
+    "gitter-web-env": "file:../env",
+    "gitter-web-utils": "file:../utils"
+  },
+  "devDependencies": {
+    "gitter-web-persistence-utils": "file:../persistence-utils",
+    "gitter-web-test-utils": "file:../test-utils"
+  },
+  "private": true
+}

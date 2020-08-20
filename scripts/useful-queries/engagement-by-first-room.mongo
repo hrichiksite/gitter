@@ -1,0 +1,134 @@
+rs.slaveOk()
+
+function createIdForTimestampString(timestamp) {
+  var hexSeconds = Math.floor(timestamp/1000).toString(16);
+
+  while(hexSeconds.length < 8) {
+    hexSeconds = "0" + hexSeconds;
+  }
+  return hexSeconds + "0000000000000000";
+}
+
+function createIdForTimestamp(timestamp) {
+  return ObjectId(createIdForTimestampString(timestamp));
+}
+
+var endPPP = new Date('2016-10-01T00:00:00Z');
+var startPPP = new Date('2016-08-01T00:00:00Z');
+
+var firstRooms = firstRoom(startPPP, endPPP).toArray();
+var userIds = [];
+firstRooms.forEach(function(f) {
+  f.userIds.forEach(function(userId) {
+    userIds.push(ObjectId(userId));
+  });
+});
+
+var roomCountsHash = {};
+db.troupeusers.aggregate([{
+  $match: {
+    userId: { $in: userIds }
+  }
+}, {
+  $group: {
+    _id: '$userId',
+    count: { $sum: 1 }
+  }
+}]).forEach(function(g) {
+  var id = g._id.valueOf();
+  roomCountsHash[id] = g.count;
+});
+
+var chatCountHash = {};
+db.chatmessages.aggregate([{
+  $match: {
+    _id: {
+      $gt: createIdForTimestamp(startPPP)
+    },
+    fromUserId: { $in: userIds }
+  }
+}, {
+  $group: {
+    _id: '$fromUserId',
+    count: { $sum: 1 }
+  }
+}]).forEach(function(g) {
+  var id = g._id.valueOf();
+  chatCountHash[id] = g.count;
+});
+
+print('uri,usersjoined,avgrooms,avgchats');
+firstRooms.forEach(function(f) {
+  var avgRoomCount = 0;
+  var avgChatCount = 0;
+  var total = f.userIds.length;
+
+  f.userIds.forEach(function(userId) {
+    var rooms = roomCountsHash[userId] || 0;
+    var chats = chatCountHash[userId] || 0;
+
+    avgChatCount += chats/total;
+    avgRoomCount += rooms/total;
+  });
+
+  print('' + f._id + ',' + total + ',' + avgRoomCount + ',' + avgChatCount);
+});
+
+
+function firstRoom(start, end) {
+  var m = Mongo('cube-01');
+  m.setSlaveOk(true);
+  var cubeDb = m.getDB('cube');
+
+  return cubeDb.gitter_join_room_events.aggregate([{
+    $match: {
+      _id: {
+        $gt: createIdForTimestamp(start),
+        $lt: createIdForTimestamp(end),
+      },
+      'd.userId': {
+        $gt: createIdForTimestampString(start),
+        $lt: createIdForTimestampString(end),
+      }
+    }
+  }, {
+    $group: {
+      _id: '$d.userId',
+      first: { $min: '$_id' }
+    }
+  }, {
+    $lookup: {
+      from: "gitter_join_room_events",
+      localField: "first",
+      foreignField: "_id",
+      as: "firstEvent"
+    },
+  }, {
+    $unwind: '$firstEvent'
+  }, {
+    $project: {
+      _id: 0,
+      userId: '$_id',
+      roomUri: '$firstEvent.d.room_uri',
+    }
+  }, {
+    $group: {
+      _id: '$roomUri',
+      userIds: { $addToSet: '$userId' }
+    }
+  }, {
+    $project: {
+      _id: 1,
+      userIds: 1,
+      users: { $size: '$userIds' }
+    }
+  }, {
+    $match: {
+      users: { $gt: 5 }
+    }
+  }, {
+    $sort: {
+      users: -1
+    }
+  }]);
+}

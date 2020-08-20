@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SecuritySelectSection matches snapshot 1`] = `
+<section
+  class="security-select-section"
+>
+  <ul
+    class="security-list"
+  >
+    <li
+      class="security-list-item"
+    >
+      <input
+        class="security-list-item-radio"
+        id="public-security"
+        name="security"
+        type="radio"
+        value="PUBLIC"
+      />
+       
+      <label
+        class="security-list-item-label"
+        for="public-security"
+      >
+        <i
+          class="security-list-item-icon octicon octicon-globe"
+        />
+         
+        <span>
+          <span
+            class="security-list-item-name"
+          >
+            Public
+          </span>
+           
+          <br />
+           
+          <span>
+            
+            Anyone in the world can join.
+          
+          </span>
+        </span>
+      </label>
+    </li>
+     
+    <li
+      class="security-list-item"
+    >
+      <input
+        class="security-list-item-radio"
+        id="private-security"
+        name="security"
+        type="radio"
+        value="PRIVATE"
+      />
+       
+      <label
+        class="security-list-item-label"
+        for="private-security"
+      >
+        <i
+          class="security-list-item-icon octicon octicon-lock"
+        />
+         
+        <span>
+          <span
+            class="security-list-item-name"
+          >
+            Private
+          </span>
+           
+          <br />
+           
+          <span>
+            
+            Only people added to the room can join.
+          
+          </span>
+        </span>
+      </label>
+    </li>
+  </ul>
+</section>
+`;

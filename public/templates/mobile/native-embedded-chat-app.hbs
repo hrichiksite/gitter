@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"/>
+  <meta name="format-detection" content="telephone=no" />
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta charset="utf-8">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>Gitter</title>
+
+  {{!-- has to be relative so it can be served off a file:///x/y/z/Gitter.app url with no host --}}
+  <link rel="stylesheet" href="../styles/mobile-native-chat.css">
+
+  {{{ generateTroupeContext troupeContext page='chat' loggedIn=true }}}
+
+</head>
+<body class="mobile mobile-embedded">
+
+  <div id="mainPage" class="chat-app">
+    {{> chat_content}}
+    {{#if isAndroidBuild}}
+      {{> chat_input}}
+    {{/if}}
+  </div>
+
+  {{{ bootScript "mobile-native-embedded-chat" root="../" }}}
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "gitter-web-email-notifications",
+  "version": "1.0.0",
+  "main": "lib/email-notification-service.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true,
+  "dependencies": {
+    "gitter-web-env": "file:../env",
+    "gitter-web-mailer": "file:../mailer",
+    "gitter-web-user-settings": "file:../user-settings",
+    "gitter-web-email-addresses": "file:../email-addresses",
+    "gitter-web-shared": "file:../../shared",
+    "gitter-web-persistence-utils": "file:../persistence-utils",
+    "gitter-web-i18n": "file:../i18n",
+    "gitter-web-permissions": "file:../permissions"
+  },
+  "devDependencies": {
+    "gitter-web-test-utils": "file:../test-utils"
+  }
+}

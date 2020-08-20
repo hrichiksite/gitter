@@ -1,0 +1,39 @@
+@import "./colors";
+
+// See public/templates/partials/chat_content.hbs
+.chat-container {
+  transform: translate3d(0, 0, 0);
+  &-invited {
+
+    position: relative;
+    // top: 44%;
+    padding: 10px 10px 0;
+
+    &__icon {
+
+      img {
+        max-width: 60px;
+        border-radius: 8px;
+      }
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+
+.trpContentPanel {
+  position: relative;
+  background-color: @main-application-bg-color;
+  width: 100%;
+  flex-shrink: 1;
+  flex-grow: 1
+}
+
+.trpChatPanel {
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+}

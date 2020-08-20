@@ -1,0 +1,62 @@
+<div>
+  <section>
+    <h2>
+      Admins
+    </h2>
+
+    <p class="permissions-add-admin-description">
+      Admins can delete the room, edit permissions, ban people, and edit room info like the welcome message and topic.
+    </p>
+  </section>
+
+
+  <section>
+    <div class="permissions-admin-list-permission-options-wrapper js-permissions-options-wrapper">
+      <img class="permissions-admin-list-permission-options-avatar" {{{ avatarSrcSet groupAvatarUrl 44 }}}>
+
+      <div class="permissions-people-list-item-name">
+        <select class="permissions-admin-list-permission-options-select js-permissions-options-select">
+          {{#each permissionOptions}}
+            <option value="{{ this.value }}" {{#if this.selected}}selected{{/if}}>{{ this.label }}</option>
+          {{/each}}
+        </select>
+      </div>
+
+      <div class="permissions-admin-list-permission-options-status-wrapper">
+        <i class="permissions-admin-list-permission-options-spinner icon-spin hidden js-permissions-options-spinner"></i>
+        <i class="permissions-admin-list-permission-options-error-icon icon-attention-circled hidden js-permissions-options-error-icon"></i>
+        <i class="permissions-admin-list-permission-options-github-icon icon-github-circled hidden js-permissions-options-github-icon"></i>
+        <i class="permissions-admin-list-permission-options-github-icon icon-gitlab hidden js-permissions-options-gitlab-icon"></i>
+        <svg
+          class="permissions-admin-list-permission-options-gitter-icon hidden js-permissions-options-gitter-icon"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 14 20">
+          <rect x="12" y="4"width="2" height="8"/>
+          <rect x="8" y="4" width="2" height="16"/>
+          <rect x="4" y="4"width="2" height="16"/>
+          <rect width="2" height="12"/>
+        </svg>
+      </div>
+    </div>
+
+    <p class="permissions-extra-admins-note js-permissions-extra-admins-note">
+      Additionally, grant admin access to these specific users:
+    </p>
+
+    <section class="permissions-admin-list-wrapper scroller js-permissions-admin-list">
+      <div class="permissions-admin-list-root js-permissions-admin-list-root"></div>
+    </section>
+
+    <input
+      class="permissions-people-input js-permissions-people-input"
+      placeholder="Search for people to add as admins...">
+  </section>
+
+  <section class="permissions-error-section">
+    <div class="permission-error hidden js-permissions-sd-warning"></div>
+    <div class="permission-error hidden js-permissions-model-error"></div>
+    <div class="permission-error hidden js-permissions-submission-error"></div>
+  </section>
+</div>

@@ -1,0 +1,105 @@
+'use strict';
+
+rs.slaveOk();
+
+function createIdForTimestampString(timestamp) {
+  var hexSeconds = Math.floor(timestamp/1000).toString(16);
+
+  while(hexSeconds.length < 8) {
+    hexSeconds = "0" + hexSeconds;
+  }
+  return hexSeconds + "0000000000000000";
+}
+
+function createIdForTimestamp(timestamp) {
+  return ObjectId(createIdForTimestampString(timestamp));
+}
+
+var end = new Date('2016-10-01T00:00:00Z');
+var start = new Date('2016-09-01T00:00:00Z');
+
+var x = db.chatmessages.aggregate([{
+  $match: {
+    _id: {
+      $lt: createIdForTimestamp(end),
+      $gt: createIdForTimestamp(start)
+    },
+    pub: true
+  }
+}, {
+  $group: {
+    _id: '$toTroupeId',
+    users: {
+      $addToSet: '$fromUserId'
+    },
+    count: { $sum: 1 }
+  },
+}, {
+  $project: {
+    users: { $size: '$users' },
+    count: 1,
+  },
+}, {
+  $project: {
+    users: 1,
+    count: 1,
+  },
+}, {
+  $match: {
+    users: { $gt: 2 },
+    count: { $gt: 2 },
+  }
+}, {
+  $project: {
+    users: 1,
+    count: 1,
+    zombieRatio: { $divide: ['$count', '$users'] }
+  }
+}, {
+  $sort: {
+    zombieRatio: 1
+  },
+}, {
+  $limit: 1000
+}, {
+  $lookup: {
+    from: "troupes",
+    localField: "_id",
+    foreignField: "_id",
+    as: "room"
+  }
+}, {
+  $unwind: "$room"
+}, {
+  $match: {
+    'room.userCount': { $gt: 50 }
+  }
+}, {
+  $limit: 100
+}, {
+  $project: {
+    users: 1,
+    count: 1,
+    zombieRatio: 1,
+    uri: '$room.uri',
+    userCount: '$room.userCount'
+  }
+}]);
+
+function printCSV(array, columns) {
+  print(columns.join(','));
+  array.forEach(function(i) {
+    var row = columns.map(function(column) {
+      var field = i[column];
+      if (field === null || field === undefined) {
+        field = '';
+      }
+      return field;
+    });
+
+    print(row.join(','));
+  })
+}
+
+
+printCSV(x.toArray(), ['users', 'count', 'zombieRatio', 'userCount', 'uri']);

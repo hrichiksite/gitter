@@ -1,0 +1,72 @@
+rs.slaveOk();
+
+var start = new Date('2014-09-01T00:00:00Z');
+
+var a = db.chatmessages.aggregate([
+  { $match: { sent: { $gt: start } } },
+  { $group: {
+      _id: { m: { $month: "$sent" }, y: { $year: "$sent" }, t: "$toTroupeId" },
+      s: { $sum: 1 }
+    }
+  }
+]);
+
+var groupings = a.toArray();
+
+var troupeIds = groupings.map(function(f) { return f._id.t; } );
+
+var troupes = db.troupes.find({ _id: { $in: troupeIds } }, { uri: 1, githubType: 1, security: 1 }).toArray();
+
+var troupesIndexed = troupes.reduce(function(memo, f) {
+  memo[f._id] = f;
+  return memo;
+}, {});
+
+function addValue(mString, hash, key, value) {
+  if (!hash[mString]) hash[mString] = {};
+  var dateBucket = hash[mString];
+  if (!dateBucket[key]) {
+    dateBucket[key] = value;
+  } else {
+    dateBucket[key] += value;
+  }
+}
+
+var chatsPerRoomType = {};
+var githubTypes = {};
+var otoPP = {};
+var rooms = {};
+groupings.forEach(function(group) {
+  var troupeId = group._id.t;
+  var month = group._id.m;
+  var year = group._id.y;
+  var troupe = troupesIndexed[troupeId];
+  if(!troupe) return;
+
+  var mString = (month > 9 ? "" + month : "0" + month) + "-" + year;
+
+  addValue(mString, githubTypes, troupe.githubType, 1);
+  addValue(mString, chatsPerRoomType, troupe.githubType, group.s);
+
+  var otoPPCategory;
+  if(troupe.githubType === 'ONETOONE') {
+    otoPPCategory = 'ONETOONE';
+  } else {
+    otoPPCategory = troupe.security === 'PUBLIC' ? 'PUBLIC' : 'PRIVATE';
+  }
+
+  addValue(mString, rooms, otoPPCategory, 1);
+  addValue(mString, otoPP, otoPPCategory, group.s);
+});
+
+print("Chats per Room Type");
+printjson(chatsPerRoomType);
+
+print("Chats per github type");
+printjson(githubTypes);
+
+print("Unique rooms per month:");
+printjson(otoPP);
+
+print("Total per room:");
+printjson(rooms);

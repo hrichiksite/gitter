@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EntityList GitHub org list matches snapshot 1`] = `
+<ul
+  aria-live="polite"
+  class="entity-list"
+>
+  <!---->
+   
+  <li
+    class="entity-list-item"
+  >
+    <a
+      class="entity-list-item-link"
+      data-disable-routing="1"
+      href="https://github.com/gitlabhq"
+    >
+      <img
+        class="entity-list-item-avatar"
+        src="https://avatars2.githubusercontent.com/u/1086321?v=4"
+      />
+      
+      gitlabhq
+    
+    </a>
+  </li>
+  <li
+    class="entity-list-item"
+  >
+    <a
+      class="entity-list-item-link"
+      data-disable-routing="1"
+      href="https://github.com/gitterHQ"
+    >
+      <img
+        class="entity-list-item-avatar"
+        src="https://avatars2.githubusercontent.com/u/1086321?v=4"
+      />
+      
+      gitterHQ
+    
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`EntityList GitHub repo list matches snapshot 1`] = `
+<ul
+  aria-live="polite"
+  class="entity-list"
+>
+  <!---->
+   
+  <li
+    class="entity-list-item"
+  >
+    <a
+      class="entity-list-item-link"
+      data-disable-routing="1"
+      href="https://github.com/gitterHQ/gitter"
+    >
+      <img
+        class="entity-list-item-avatar"
+        src="https://avatars0.githubusercontent.com/u/5990364?v=4"
+      />
+      
+      gitterHQ/gitter
+    
+    </a>
+  </li>
+  <li
+    class="entity-list-item"
+  >
+    <a
+      class="entity-list-item-link"
+      data-disable-routing="1"
+      href="https://github.com/gitlabhq/gitlabhq"
+    >
+      <img
+        class="entity-list-item-avatar"
+        src="https://avatars0.githubusercontent.com/u/5990364?v=4"
+      />
+      
+      gitlabhq/gitlabhq
+    
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`EntityList GitLab group list matches snapshot 1`] = `
+<ul
+  aria-live="polite"
+  class="entity-list"
+>
+  <!---->
+   
+  <li
+    class="entity-list-item"
+  >
+    <a
+      class="entity-list-item-link"
+      data-disable-routing="1"
+      href="https://gitlab.com/groups/gitlab-org/gitter"
+    >
+      <img
+        class="entity-list-item-avatar"
+        src="https://assets.gitlab-static.net/uploads/-/system/group/avatar/1540914/icon_128x128.png"
+      />
+      
+      gitlab-org/gitter
+    
+    </a>
+  </li>
+  <li
+    class="entity-list-item"
+  >
+    <a
+      class="entity-list-item-link"
+      data-disable-routing="1"
+      href="https://gitlab.com/groups/gitlab-org"
+    >
+      <img
+        class="entity-list-item-avatar"
+        src="https://assets.gitlab-static.net/uploads/-/system/group/avatar/1540914/icon_128x128.png"
+      />
+      
+      gitlab-org
+    
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`EntityList empty list matches snapshot 1`] = `
+<ul
+  aria-live="polite"
+  class="entity-list"
+>
+  <li>
+    No orgs available
+  </li>
+   
+</ul>
+`;
+
+exports[`EntityList error matches snapshot 1`] = `
+<ul
+  aria-live="polite"
+  class="entity-list"
+>
+  <li>
+    <div
+      class="error-text error-box"
+    >
+      Error: orgs can't be fetched.
+    </div>
+  </li>
+   
+</ul>
+`;
+
+exports[`EntityList loading matches snapshot 1`] = `
+<ul
+  aria-live="polite"
+  class="entity-list"
+>
+  <li>
+    Loading orgs... 
+    <loading-spinner-stub />
+  </li>
+   
+</ul>
+`;

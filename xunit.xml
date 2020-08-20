@@ -1,0 +1,7 @@
+{
+    "consoleOutput" : {
+      "suite" : true,
+      "test" : true,
+      "fail" : true
+    }
+}

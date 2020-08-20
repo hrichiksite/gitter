@@ -1,0 +1,95 @@
+@import 'bootstrap/bootstrap';
+@import 'trpMobileFonts';
+@import 'colors';
+@import 'typography';
+@import 'trpButtons';
+@import 'trp3Vars';
+
+/* new stuff */
+// @import "menu";
+// @import "chat-item";
+// @import "chat-input";
+/* end of new stuff*/
+
+@header-height: 50px;
+
+body.with-sideMenu {
+  background-color: @trpDarkBlue;
+}
+
+.mobile-header {
+  flex-shrink: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: @trpDarkBlue;
+  line-height: @header-height;
+  text-align: center;
+  height: @header-height;
+
+  .trpTitle {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    color: white;
+    .trpH2;
+  }
+
+  .mobile & {
+    line-height: @mobile-header-height;
+  }
+
+  .desktop & {
+    line-height: @desktop-header-height;
+  }
+}
+
+#showTroupesButton {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 3px 5px;
+  z-index: 1;
+}
+
+#mainPage {
+  box-shadow: 0 0 15px black;
+  .animation(cubic-bezier(0.6, -0.28, 0.735, 0.045));
+}
+
+#mainPage.partiallyOffScreen {
+  left: 260px;
+  position: relative;
+  .animation(linear);
+}
+
+#showUserhomeButton {
+  position: absolute;
+  right: 0;
+  padding-right: 12px;
+  padding-top: 5px;
+}
+
+#userhome {
+  flex-shrink: 1;
+  position: relative;
+  height: 100%;
+}
+
+.animation(@transform) {
+  transform: translate3d(0, 0, 0);
+  transition: all 200ms @transform;
+}
+
+// overrides for userhome
+.typeahead {
+  max-width: 280px;
+  overflow: hidden;
+
+  li[data-value='undefined'] {
+    display: none;
+  }
+}
+
+.menu li {
+  line-height: 30px;
+}

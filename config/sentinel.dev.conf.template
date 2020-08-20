@@ -1,0 +1,5 @@
+sentinel monitor gitter-master-dev gitter-redis-dev 6379 1
+sentinel down-after-milliseconds gitter-master-dev 5000
+sentinel failover-timeout gitter-master-dev 30000
+sentinel config-epoch gitter-master-dev 3
+port 26379

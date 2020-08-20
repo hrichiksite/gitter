@@ -1,0 +1,263 @@
+@import (reference) 'trp3Vars';
+@import (reference) 'trp3';
+@import '../../../less/colors';
+
+// Base
+@import '../../../less/base-avatar.less';
+
+@import '../../../less/components/right-toolbar.less';
+
+// Required views
+@import '../people/peopleCollectionView';
+@import 'activity.less';
+
+.right-toolbar-region {
+  .right-toolbar-position();
+  box-sizing: border-box;
+  flex-shrink: 0;
+  color: @trpDarkGrey;
+  text-align: left;
+
+  & > .right-toolbar {
+    box-sizing: inherit;
+    position: relative;
+    color: @trpDarkGrey;
+    display: inline-block;
+    flex-shrink: 0;
+    order: 2;
+    width: @right-toolbar-full-width;
+    text-align: left;
+    vertical-align: top;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: @main-application-bg-color;
+    border-left: 1px solid @menu-border-color;
+
+    transition: width 200ms ease-in-out;
+
+    body.mobile & {
+      display: none;
+    }
+
+    &.collapsed {
+      .collapsed-breakpoint();
+    }
+
+    // Used to hide the toolbar when the thread message feed is open
+    &.hidden {
+      display: none;
+    }
+
+    .trpToolbarHeader {
+      margin-top: 8px;
+      margin-left: 14px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .trpToolbarList {
+      min-height: 40px;
+
+      ul {
+        list-style: none;
+        margin: 0px;
+      }
+    }
+
+    .oneToOne {
+      max-height: 300px;
+    }
+
+    .trpRepoInfoContainer {
+      padding-left: 5px;
+
+      & li {
+        width: 100%;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        list-style: none;
+      }
+
+      .vcard-stats {
+        border-top: 1px solid fade(@trpGrey, 20%);
+        border-bottom: 1px solid fade(@trpGrey, 20%);
+        padding: 4px 0;
+        margin: 8px 0;
+      }
+
+      h1 {
+        word-wrap: break-word;
+      }
+
+      p {
+        margin: 0px 0px 5px;
+      }
+
+      ul {
+        display: inline-block;
+        border: 1px 0 solid @trpGrey;
+      }
+    }
+  }
+
+  // this is bad, but until the margins/padding is done properly
+  // for all <h1>, <p> etc tags in the toolbar, we have to style
+  // the individual elements :(
+  #activity-header {
+    margin-top: 30px;
+  }
+
+  .right-toolbar {
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+  }
+
+  .right-toolbar__pinned-toggle-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: @chat-frame-desktop-header-height;
+    padding: 0 2rem;
+
+    background-color: transparent;
+    border: 0;
+
+    transition: background-color 0.2s ease;
+
+    &:hover,
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.05);
+      outline: none;
+    }
+  }
+
+  .right-toolbar__search-header {
+    height: 74px;
+    border-bottom: 1px solid rgb(240, 240, 240);
+    flex-shrink: 0;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .right-toolbar__body {
+    .scroller();
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex: 1;
+    padding-top: 10px;
+  }
+
+  .remaining-region {
+    margin-top: 1rem;
+  }
+
+  .remaining-view {
+  }
+
+  .remaining-view-button,
+  .remaining-view-secondary-button {
+  }
+  .remaining-view-secondary-button {
+    color: darken(@caribbean, 10%);
+  }
+
+  .remaining-view-button-secondary-text {
+    color: rgba(51, 51, 51, 0.5);
+  }
+
+  .right-toolbar-activity-area {
+  }
+
+  .right-toolbar-activity-area-inner {
+  }
+
+  .right-toolbar-activity-list {
+    min-width: 230px;
+    margin: 0;
+    list-style-type: none;
+  }
+
+  .right-toolbar__footer {
+    display: flex;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    width: 100%;
+  }
+}
+
+.collapsed-breakpoint() {
+  width: @right-toolbar-collapsed-width;
+  padding-right: 0px;
+
+  #activity-header {
+    opacity: 0;
+  }
+
+  #people-header,
+  #top-header,
+  #repo-info,
+  #activity-tip {
+    display: none;
+  }
+
+  #people-list .trpToolbarListContent {
+    margin-left: 6px;
+    padding-top: 16px;
+    padding-right: 20px;
+    padding-left: 14px;
+  }
+
+  .right-toolbar {
+    .trpToolbarList {
+      max-height: 40%;
+    }
+  }
+
+  .remaining-view {
+    display: none;
+  }
+
+  .right-toolbar-activity-area {
+    display: none;
+
+    &.visible {
+      width: 240px;
+      border-left: 4px solid rgba(211, 223, 211, 0.6);
+      background-clip: padding-box;
+    }
+  }
+}
+
+.right-toolbar-region__footer {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  padding-top: 21px;
+  padding-right: 21px;
+
+  background: linear-gradient(top, rgba(255, 255, 255, 0), @main-application-bg-color 35%);
+
+  text-align: right;
+
+  .menu-toggle-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+
+    fill: none;
+    stroke: #8d8d8d;
+    stroke-width: 2;
+    cursor: pointer;
+    transition: stroke 0.2s ease;
+
+    &:hover,
+    .menu-toggle-button:hover > & {
+      stroke: black;
+    }
+  }
+}

@@ -1,0 +1,6 @@
+<div class="activity-item-inner github-issue github-issue-{{payload.action}}">
+  <i class='octicon octicon-issue-opened activity-item__icon'></i>
+  <div class="activity-time" id="time">{{ sentFormatted }}</div>
+
+  <div class="gtrActivityItemText"><span class='mention' data-link-type="mention" data-screen-name="{{payload.sender.login}}">{{payload.sender.login}}</span> {{payload.action}} <span class="issue {{payload.issue.state}}" data-link-type="issue" data-issue="{{payload.issue.number}}" data-issue-repo="{{payload.repository.full_name}}">#{{payload.issue.number}}</span></div>
+</div>

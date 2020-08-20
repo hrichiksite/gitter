@@ -1,0 +1,59 @@
+@import (reference) 'colors';
+@import (reference) 'bootstrap/variables.less';
+@import (reference) 'bootstrap/mixins.less';
+@import (reference) 'bootstrap/forms.less';
+
+.input-styles() {
+  @border-color: @trpGrey;
+  @text-color: #000000;
+
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 3.2rem;
+
+  margin-bottom: 0;
+  padding: 0px 0.9rem;
+
+  background: none;
+  background-color: fade(@trpGrey, 50%);
+  border: 1px solid @border-color;
+  box-shadow: none;
+  border-radius: 4px;
+  color: @text-color;
+
+  // Reset forms.less :(
+  &:focus:invalid {
+    border-color: @border-color;
+    box-shadow: none;
+    color: @text-color;
+  }
+
+  &:not(:placeholder-shown) {
+    &:focus:invalid {
+      .forms-invalid-input-style();
+    }
+  }
+}
+
+.section-heading() {
+  margin-bottom: 2px;
+
+  &,
+  & label {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+.select-dropdown-displayed-item() {
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.select-dropdown-avatar() {
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-right: 0.5em;
+}

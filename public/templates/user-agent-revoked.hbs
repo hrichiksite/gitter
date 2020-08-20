@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Sign in failed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link id="favicon" rel="shortcut icon" href="{{ cdn 'images/favicon-normal.ico' }}">
+
+    <link href='{{cdn "styles/login.css" }}' rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="background">
+      <div class="login">
+        <header>
+          <h1>User-agent was revoked</h1>
+        </header>
+        <section>
+          <p>
+            We're very sorry, but the application you are using is no longer authorized to access Gitter
+          </p>
+          <p>
+            You can read more about why in the <a href="http://blog.gitter.im/2018/06/11/gitter-token-leak-security-issue-notification/" target="_blank">Gitter Token Leak Security Issue Notification blog post</a>
+          </p>
+          <p>
+            You probably need to <a href="{{ appsLink }}" target="_blank">update your client</a>
+          </p>
+        </section>
+      </div>
+    </div>
+    {{{ generateEnv }}}
+    {{{ bootScript "just-tracking" }}}
+    {{> live_reload }}
+  </body>
+</html>

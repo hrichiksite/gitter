@@ -1,0 +1,24 @@
+{
+  "name": "gitter-web-chat-reports",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true,
+  "dependencies": {
+    "gitter-web-chats": "file:../chats",
+    "gitter-web-env": "file:../env",
+    "gitter-web-env": "file:../env",
+    "gitter-web-permissions": "file:../permissions",
+    "gitter-web-persistence-utils": "file:../persistence-utils",
+    "gitter-web-rooms": "file:../rooms"
+  },
+  "devDependencies": {
+    "gitter-web-test-utils": "file:../test-utils"
+  }
+}

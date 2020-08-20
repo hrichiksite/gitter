@@ -1,0 +1,325 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`list-item active room matches snapshot 1`] = `
+<li
+  class="list-item"
+  data-id="5a8739841543b98772a686a9-my-community/room1"
+>
+  <a
+    class="list-item-link is-active"
+    href="/my-community/room1"
+  >
+    <img
+      class="list-item-avatar"
+      src="http://localhost:5000/api/private/avatars/group/i/5a8739841543b98772a686a8"
+    />
+     
+    <h2
+      class="list-item-name"
+    >
+      <span
+        class="name-piece"
+      >
+        room1
+      </span>
+    </h2>
+     
+    <!---->
+     
+    <!---->
+  </a>
+</li>
+`;
+
+exports[`list-item community room matches snapshot 1`] = `
+<li
+  class="list-item"
+  data-id="5a8739841543b98772a686a9-my-community/community"
+>
+  <a
+    class="list-item-link"
+    href="/my-community/community"
+  >
+    <img
+      class="list-item-avatar"
+      src="http://localhost:5000/api/private/avatars/group/i/5a8739841543b98772a686a8"
+    />
+     
+    <h2
+      class="list-item-name"
+    >
+      <span
+        class="name-piece"
+      >
+        my-community
+      </span>
+    </h2>
+     
+    <!---->
+     
+    <!---->
+  </a>
+</li>
+`;
+
+exports[`list-item favourite loading room matches snapshot 1`] = `
+<li
+  class="list-item is-favourited"
+  data-favourite="1"
+  data-id="5a8739841543b98772a686a9-my-community/community"
+>
+  <a
+    class="list-item-link"
+    href="/my-community/community"
+  >
+    <img
+      class="list-item-avatar"
+      src="http://localhost:5000/api/private/avatars/group/i/5a8739841543b98772a686a8"
+    />
+     
+    <h2
+      class="list-item-name"
+    >
+      <span
+        class="name-piece"
+      >
+        my-community
+      </span>
+    </h2>
+     
+    <loading-spinner-stub />
+     
+    <!---->
+  </a>
+</li>
+`;
+
+exports[`list-item favourite room matches snapshot 1`] = `
+<li
+  class="list-item is-favourited"
+  data-favourite="1"
+  data-id="5a8739841543b98772a686a9-my-community/community"
+>
+  <a
+    class="list-item-link"
+    href="/my-community/community"
+  >
+    <img
+      class="list-item-avatar"
+      src="http://localhost:5000/api/private/avatars/group/i/5a8739841543b98772a686a8"
+    />
+     
+    <h2
+      class="list-item-name"
+    >
+      <span
+        class="name-piece"
+      >
+        my-community
+      </span>
+    </h2>
+     
+    <!---->
+     
+    <!---->
+  </a>
+</li>
+`;
+
+exports[`list-item muted room with activity matches snapshot 1`] = `
+<li
+  class="list-item"
+  data-id="5a8739841543b98772a686a9-my-community/community"
+>
+  <a
+    class="list-item-link"
+    href="/my-community/community"
+  >
+    <img
+      class="list-item-avatar"
+      src="http://localhost:5000/api/private/avatars/group/i/5a8739841543b98772a686a8"
+    />
+     
+    <h2
+      class="list-item-name"
+    >
+      <span
+        class="name-piece"
+      >
+        my-community
+      </span>
+    </h2>
+     
+    <!---->
+     
+    <div
+      class="activity-indicator"
+    />
+  </a>
+</li>
+`;
+
+exports[`list-item one to one room matches snapshot 1`] = `
+<li
+  class="list-item"
+  data-id="5c17fc82b799f1de19e23f15-EricGitterTester"
+>
+  <a
+    class="list-item-link"
+    href="/EricGitterTester"
+  >
+    <img
+      class="list-item-avatar"
+      src="http://localhost:5000/api/private/avatars/gh/uv/4/EricGitterTester"
+    />
+     
+    <h2
+      class="list-item-name"
+    >
+      <span
+        class="name-piece"
+      >
+        EricGitterTester
+      </span>
+    </h2>
+     
+    <!---->
+     
+    <!---->
+  </a>
+</li>
+`;
+
+exports[`list-item room with long name matches snapshot 1`] = `
+<li
+  class="list-item"
+  data-id="5a8739841543b98772a686a9-abcdefghijklmnop/qrstuvwxyz"
+>
+  <a
+    class="list-item-link"
+    href="/abcdefghijklmnop/qrstuvwxyz"
+  >
+    <img
+      class="list-item-avatar"
+      src="http://localhost:5000/api/private/avatars/group/i/5a8739841543b98772a686a8"
+    />
+     
+    <h2
+      class="list-item-name"
+    >
+      <span
+        class="name-piece"
+      >
+        qrstuvwxyz
+      </span>
+    </h2>
+     
+    <!---->
+     
+    <!---->
+  </a>
+</li>
+`;
+
+exports[`list-item room with mentions matches snapshot 1`] = `
+<li
+  class="list-item"
+  data-id="5a8739841543b98772a686a9-my-community/community"
+>
+  <a
+    class="list-item-link"
+    href="/my-community/community"
+  >
+    <img
+      class="list-item-avatar"
+      src="http://localhost:5000/api/private/avatars/group/i/5a8739841543b98772a686a8"
+    />
+     
+    <h2
+      class="list-item-name"
+    >
+      <span
+        class="name-piece"
+      >
+        my-community
+      </span>
+    </h2>
+     
+    <!---->
+     
+    <div
+      class="mention-indicator"
+    >
+      @
+    </div>
+  </a>
+</li>
+`;
+
+exports[`list-item room with short name matches snapshot 1`] = `
+<li
+  class="list-item"
+  data-id="5a8739841543b98772a686a9-foo/bar"
+>
+  <a
+    class="list-item-link"
+    href="/foo/bar"
+  >
+    <img
+      class="list-item-avatar"
+      src="http://localhost:5000/api/private/avatars/group/i/5a8739841543b98772a686a8"
+    />
+     
+    <h2
+      class="list-item-name"
+    >
+      <span
+        class="name-piece"
+      >
+        foo/bar
+      </span>
+    </h2>
+     
+    <!---->
+     
+    <!---->
+  </a>
+</li>
+`;
+
+exports[`list-item room with unread matches snapshot 1`] = `
+<li
+  class="list-item"
+  data-id="5a8739841543b98772a686a9-my-community/community"
+>
+  <a
+    class="list-item-link"
+    href="/my-community/community"
+  >
+    <img
+      class="list-item-avatar"
+      src="http://localhost:5000/api/private/avatars/group/i/5a8739841543b98772a686a8"
+    />
+     
+    <h2
+      class="list-item-name"
+    >
+      <span
+        class="name-piece"
+      >
+        my-community
+      </span>
+    </h2>
+     
+    <!---->
+     
+    <div
+      class="unread-indicator"
+    >
+      
+      7
+    
+    </div>
+  </a>
+</li>
+`;

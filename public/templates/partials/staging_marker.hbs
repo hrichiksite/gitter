@@ -1,0 +1,9 @@
+{{#if stagingText}}
+  <div class="staging-indicator">
+    {{#if stagingLink}}
+      <a href="{{ stagingLink }}" target="_blank">{{ stagingText }}</a>
+    {{else}}
+      {{ stagingText }}
+    {{/if}}
+  </div>
+{{/if}}

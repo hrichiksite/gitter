@@ -1,0 +1,133 @@
+{{#if isLoggedIn}}
+  <header class="explore-header">
+    <div class="chat-header__main-grouping chat-header__left-menu-toggle-grouping">
+      {{> headerViewLeftMenuToggle}}
+    </div>
+
+    <h1 class="explore-header__heading">
+      Explore
+    </h1>
+    <div id="profile-menu" class="profile-menu"></div>
+  </header>
+{{else}}
+  <header class="primary-branded-header">
+    <div class="primary-branded-header-inner explore-primary-header-innner">
+      <div class="primary-branded-header-branded-group">
+        <a href="/" class="logo">
+          {{> logo_man}}
+          <img src="{{ cdn 'images/home/logo_nomargin@2x.png' }}" alt="Gitter" class="logo-image menu-animation">
+        </a>
+
+        <h3 class="primary-branded-header__sub-heading explore-primary-header__sub-header">
+          The Home of Community
+        </h3>
+      </div>
+
+      <div class="explore-primary-header__action-area">
+        <a class="button-caribbean--small js-sign-in" href="/login?action=login&source=explore">
+          Sign In
+        </a>
+        <a href="/" class="subdued-button-clouds--small explore-primary-header__learn-more-button">
+          Find out More
+        </a>
+      </div>
+    </div>
+  </header>
+{{/if}}
+
+<div class="explore-main">
+  <div class="explore-header-section">
+
+    <section class="secondary-header-info-bar explore-secondary-header-info-bar">
+      <div class="secondary-header-info-bar__group">
+        <div class="secondary-header-info-bar__item">
+          <i class="secondary-header-info-bar__item-icon icon-user"></i>
+          <span>{{ headlineGitterUsers }} People</span>
+        </div>
+        <div class="secondary-header-info-bar__item">
+          <i class="secondary-header-info-bar__item-icon icon-chat-empty"></i>
+          <span>{{ headlineGitterRooms }} Rooms</span>
+        </div>
+        <div class="secondary-header-info-bar__item">
+          <i class="secondary-header-info-bar__item-icon icon-users"></i>
+          <span>{{ headlineGitterGroups }} Communities</span>
+        </div>
+        <div class="secondary-header-info-bar__item">
+          <i class="secondary-header-info-bar__item-icon icon-globe"></i>
+          <span>{{ headlineGitterCountries }} Countries</span>
+        </div>
+      </div>
+
+
+      <div class="secondary-header-info-bar__group explore-header-info-bar__mobile-group">
+        <div class="explore-header-info-bar__mobile-diagram">
+          <i class="explore-header-info-bar__mobile-icon icon-mobile"></i>
+        </div>
+
+        <a href="http://appstore.com/gitter" target="_blank" class="explore-header-info-bar__mobile-item">
+          <i class="secondary-header-info-bar__item-icon icon-apple"></i>
+          <span>IOS</span>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=im.gitter.gitter" target="_blank" class="explore-header-info-bar__mobile-item">
+          <i class="secondary-header-info-bar__item-icon icon-android"></i>
+          <span>Android</span>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <section class="explore-pill-list-section">
+    <div class="explore-pill-list-section__header">
+      <div></div>
+
+      {{#if isLoggedIn}}
+        <div class="explore-pill-list-section__header-secondary-actions">
+          <div class="explore-pill-list-section__header-secondary-action-annotation">
+            Can't find what you're looking for?
+          </div>
+            <button class="subdued-button-caribbean--xsmall js-explore-create-button">
+              Create your own
+            </button>
+        </div>
+      {{/if}}
+    </div>
+
+    <ul class="tag-pill-list explore-tag-pill-list js-explore-tag-pills-list">
+      {{#each tagMap}}
+        <li class="tag-pill-list-item">
+          <a
+            href="{{when ../exploreBaseUrl ../exploreBaseUrl '/explore'}}/tags/{{#each this.tags}}{{this}}{{#unless @last}},{{/unless}}{{/each}}"
+            class="tag-pill {{when this.selected 'is-active' : ''}} js-explore-tag-pill" {{when this.selected 'aria-selected' : ''}}
+            data-id={{@key}}
+            data-tags="{{#each this.tags}}{{this}}{{#unless @last}},{{/unless}}{{/each}}"
+            {{when needsAuthentication 'data-needs-authentication="true"' : ''}}
+          >
+            {{this.name}}
+          </a>
+        </li>
+      {{/each}}
+
+      <li class="tag-pill-list-pagination-item">
+        <button class="tag-pill-list-pagination-more-button js-explore-show-more-tag-pills">
+          <span class="tag-pill-list-pagination-more-button__collapsed-text">More</span>
+          <span class="tag-pill-list-pagination-more-button__expanded-text">Less</span>
+        </button
+      </li>
+    </ul>
+  </section>
+
+  <section class="explore-room-card-list-section">
+    {{#if rooms}}
+      <div class="explore-room-card-list js-room-card-list">
+        {{#each rooms}}
+          {{> room_card
+            exploreBaseUrl=../exploreBaseUrl
+            isLoggedIn=../isLoggedIn
+            linkSource='explore'
+            extraClasses='js-explore-room-card'
+          }}
+        {{/each}}
+      </div>
+    {{/if}}
+  </section>
+</div>

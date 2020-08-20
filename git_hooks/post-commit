@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if $(which gtm); then
+  set -x
+  gtm commit -yes
+fi

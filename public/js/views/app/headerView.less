@@ -1,0 +1,457 @@
+@import (reference) 'base-zindex-levels';
+@import (reference) 'colors.less';
+@import (reference) 'trp3Vars.less';
+@import (reference) 'trpButtons.less';
+
+@import '../controls/dropdown';
+
+@chat-header-heading-font-size: 24px;
+@chat-header-heading-line-height: 40px;
+@chat-header-topic-font-size: 1em;
+@chat-header-topic-line-height: 25px;
+@chat-header-topic-color: white;
+
+// The space above the chat header
+@chat-header-space-to-heading: (
+    @chat-frame-desktop-header-height - @chat-header-heading-line-height
+  ) / 2;
+// The difference between line-height and font-size bounds
+@chat-header-font-vertical-padding: (
+    @chat-header-heading-line-height - @chat-header-heading-font-size
+  ) / 2;
+// The extra amount needed to align the topic to the baseline of the heading
+@vert-diff-baseline-offset-between-header-and-topic: @chat-header-font-vertical-padding ~'+' @chat-header-heading-font-size
+  ~'-' @chat-header-topic-line-height;
+// Actual margin value to align the topic to the baseline of the heading
+// Extra `.125` is for account for desenders to match baseline
+// This needs to be split out of the calc so we can re-use it in a calc
+@topic-margin-calc-value: @chat-header-space-to-heading ~'+' @vert-diff-baseline-offset-between-header-and-topic
+  ~'+' 0.125em;
+@topic-margin-top: calc(@topic-margin-calc-value);
+@topic-margin-bottom: calc(~'(' @topic-margin-calc-value ~')' ~'/' 2);
+
+.chat-header {
+  box-sizing: border-box;
+  position: absolute;
+  display: flex;
+  width: 100%;
+  background-image: linear-gradient(to left, @header-grad-bg-color, @header-base-bg-color);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: @zIndexChatHeader;
+
+  @media @large-screen-breakpoint {
+    padding-left: @desktop-menu-left-padding;
+  }
+}
+
+.chat-header-inner {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
+}
+
+.chat-header__main-grouping {
+  display: flex;
+  align-items: center;
+  // header can expand to fit long room topics/descriptions when hovered over
+  height: @chat-frame-desktop-header-height;
+}
+
+.chat-header__info-grouping {
+  .chat-header__main-grouping();
+  overflow: hidden;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  height: auto;
+  max-height: @chat-frame-desktop-header-height;
+
+  transition: max-height 0.3s ease;
+
+  &:hover,
+  &:focus {
+    // plenty of room to auto expand into
+    max-height: 100vh;
+  }
+}
+
+.chat-header__heading-sub-group {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.chat-header__heading {
+  box-sizing: border-box;
+  max-width: 100%;
+  margin-top: (@chat-frame-desktop-header-height - @chat-header-heading-line-height) / 2;
+  margin-bottom: 0;
+  padding-right: 2rem;
+
+  white-space: nowrap;
+}
+
+.chat-header__title {
+  overflow: hidden;
+  display: inline-block;
+  max-width: 100%;
+
+  color: white;
+  font-size: @chat-header-heading-font-size;
+  line-height: @chat-header-heading-line-height;
+  font-weight: 300;
+  text-overflow: ellipsis;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.chat-header__topic-sub-group {
+  overflow: hidden;
+  position: relative;
+  flex-basis: 30rem;
+  flex-grow: 1;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.chat-header__topic-wrapper {
+  box-sizing: border-box;
+  display: flex;
+  max-width: 100%;
+
+  padding-right: 2em;
+  color: fade(@chat-header-topic-color, 0);
+  white-space: nowrap;
+
+  transition: color 0.2s ease;
+
+  &.is-editing {
+    width: 100%;
+  }
+
+  /* Handle the edit icon */
+  &.is-admin {
+    cursor: pointer;
+
+    &:after {
+      /* Pencil icon */
+      content: '\e81a';
+      margin-top: @topic-margin-top;
+      margin-left: 1em;
+      color: inherit;
+      opacity: 0.6;
+      font-family: 'fontello';
+    }
+
+    &.is-new-room,
+    .chat-header__info-grouping:hover &,
+    .chat-header__info-grouping:focus & {
+      color: @chat-header-topic-color;
+    }
+  }
+}
+
+.chat-header__topic {
+  box-sizing: border-box;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: baseline;
+  // max height to allow height animations
+  max-height: @chat-header-topic-line-height;
+  margin: 0;
+  // For the italic overflow
+  padding-right: 0.25rem;
+
+  color: white;
+  opacity: 0.8;
+  font-size: @chat-header-topic-font-size;
+  line-height: @chat-header-topic-line-height;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  transition: max-height 0.3s ease-in-out;
+
+  &:not(:empty) {
+    margin-top: @topic-margin-top;
+    margin-bottom: @topic-margin-bottom;
+  }
+
+  /* Handle the placeholder description */
+  &.is-admin {
+    cursor: pointer;
+
+    &:empty {
+      margin-top: @topic-margin-top;
+      margin-bottom: @topic-margin-bottom;
+      color: inherit;
+
+      &:before {
+        content: 'Double-click here to enter a description for your room.';
+        font-style: italic;
+      }
+    }
+  }
+
+  &.is-editing {
+    width: 100%;
+  }
+
+  .chat-header__info-grouping:hover &,
+  .chat-header__info-grouping:focus & {
+    // plenty of room to auto expand into
+    max-height: 100vh;
+
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  & .topic-input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 20px;
+    margin-bottom: 0px;
+    padding: 1px 2px;
+    resize: none;
+  }
+}
+
+.chat-header__topic a {
+  color: white;
+}
+
+.chat-header__content h1 .octicon-lock:before {
+  font-size: 16px;
+  position: relative;
+  top: -3px;
+  left: 5px;
+  color: #666;
+}
+
+.chat-header__content .icon-lock {
+  font-size: 16px;
+}
+
+.chat-header__permission-icon,
+.chat-header__title {
+  vertical-align: middle;
+}
+
+.chat-header__permission-icon {
+  color: white;
+  opacity: 0.6;
+}
+
+.chat-header__action-grouping {
+  align-items: stretch;
+}
+
+.chat-header__org-page,
+.chat-header__favourite,
+.chat-header__settings,
+.chat-header__left-menu-toggle {
+  body.embedded & {
+    visibility: hidden;
+  }
+
+  box-sizing: content-box;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2px;
+  padding: 0;
+
+  background-color: transparent;
+  border: none;
+
+  font-size: 26px;
+  line-height: 1;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+
+  transition: background-color 0.2s ease-in-out, color 0.1s ease;
+
+  &:hover,
+  &:focus {
+    color: rgba(255, 255, 255, 0.6);
+    outline: none;
+
+    & > .chat-header__action-icon {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.chat-header__action-icon {
+  color: currentColor;
+  stroke: currentColor;
+  &:before {
+    color: currentColor;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.chat-header__action-icon {
+  color: inherit;
+
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+
+  // Spacing that doesn't affect width
+  border-width: 4px 6px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 3px;
+}
+
+.chat-header__action-icon-svg--settings {
+  width: 2.7rem;
+}
+
+.chat-header__org-page {
+  @media (max-width: 650px) {
+    display: none;
+  }
+
+  .chat-header__action-icon {
+    /* To make the icon equal with the other font-icons */
+    margin-left: 0.18em;
+    margin-right: 0.18em;
+  }
+}
+
+.chat-header__favourite {
+  @media (max-width: 650px) {
+    display: none;
+  }
+
+  &.favourite {
+    color: @trpYellow;
+  }
+}
+
+.chat-header__left-menu-toggle-grouping {
+  @media @large-screen-breakpoint {
+    display: none;
+  }
+}
+
+.chat-header__left-menu-toggle {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  background: 0;
+  border: 0;
+
+  line-height: 0;
+
+  & > svg {
+    width: 26px;
+    stroke-width: 2px;
+    vector-effect: non-scaling-stroke;
+  }
+}
+
+.chat-header__avatar-grouping {
+  flex-shrink: 0;
+  padding-right: 18px;
+}
+
+.chat-header__avatar {
+  @side: 38px;
+
+  position: relative;
+  box-sizing: border-box;
+  height: @side;
+  user-select: none;
+
+  img {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 4px;
+  }
+}
+
+.chat-header__group-avatar-upload-input {
+  display: none;
+}
+
+.chat-header__group-avatar-upload-label {
+  display: block;
+  margin-bottom: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 38px;
+  height: 38px;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 4px;
+  padding: 0.3rem;
+}
+
+.chat-header__group-avatar-upload-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 4px;
+  background-color: fade(@caribbean, 75%);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+  transition: width 0.3s ease, background-color 0.2s ease;
+
+  animation-name: avatar-upload-progress-pulse;
+  animation-duration: 0.4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+}
+
+@keyframes avatar-upload-progress-pulse {
+  to {
+    background-color: fade(@caribbean, 40%);
+  }
+}
+
+.chat-header-wrapper {
+  height: 100%;
+}
+
+.chat-and-toolbar-wrapper {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+  height: 100%;
+  padding-top: @chat-frame-desktop-header-height;
+}
+
+.chat-app {
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* Sometimes `.chat-and-toolbar-wrapper` isn't a parent */
+  height: 100%;
+}
+
+.org-page-link {
+  &:hover {
+    text-decoration: none;
+  }
+}

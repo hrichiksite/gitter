@@ -1,0 +1,217 @@
+@import 'colors.less';
+
+.button {
+  outline: none;
+}
+
+.trpButton {
+  color: @trpDarkGrey;
+  padding: 5px 10px 5px 10px;
+  display: inline-block;
+  border-radius: 0px;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.trpButton:hover {
+  text-decoration: none;
+}
+
+.trpButtonMedium {
+  border-radius: 2px;
+  padding: 11px 12px;
+  text-align: center;
+  min-width: 76px;
+  text-decoration: none;
+  border: none;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.trpButtonMedium:hover {
+  text-decoration: none;
+}
+
+.trpButtonSmall {
+  border-radius: 2px;
+  padding: 5px 9px;
+  text-align: center;
+  min-width: 65px;
+  text-decoration: none;
+  border: none;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.trpButtonBig {
+  border-radius: 2px;
+  padding: 20px 12px;
+  text-align: center;
+  min-width: 120px;
+  text-decoration: none;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.trpButtonHuge {
+  // .trpButtonBig;
+  padding: 30px 60px 20px 60px;
+  border-radius: 4px;
+}
+
+.trpButtonBig:hover {
+  /*  background-color: black;*/
+  opacity: 0.9;
+}
+
+.trpBtnWhite {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border-bottom: 2px solid #ccc;
+}
+
+.trpBtnRed {
+  background-color: @trpRed;
+  color: white;
+  border-bottom: 2px solid #ad4054;
+  opacity: 0.95;
+}
+
+.trpBtnRed:hover {
+  opacity: 1;
+  border-bottom: 2px solid @trpRed;
+}
+
+.trpBtnWhite:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.trpBtnOrange {
+  background-color: @trpOrange;
+  opacity: 0.95;
+  color: white;
+  border-bottom: 2px solid darken(@trpOrange, 10%);
+}
+
+.trpBtnOrange:hover {
+  opacity: 1;
+  border-bottom: 2px solid @trpOrange;
+}
+
+.trpBtnBlue {
+  background-color: #395168;
+  opacity: 0.95;
+  color: white;
+  border-bottom: 2px solid darken(#395168, 10%);
+}
+
+.trpBtnBlue:hover {
+  opacity: 1;
+  border-bottom: 2px solid @trpDarkBlue;
+}
+
+.trpBtnRight {
+  float: right;
+}
+
+.trpBtnLightBlue {
+  background-color: fade(@trpLightBlue, 20%);
+  opacity: 0.95;
+  color: black;
+  border-bottom: 2px solid fade(@trpLightBlue, 30%);
+}
+
+.trpBtnBlue:hover {
+  opacity: 1;
+  border-bottom: 2px solid fade(@trpLightBlue, 20%);
+}
+
+.trpBtnGreen {
+  background-color: @trpGreen;
+  /*  background: rgba(29,206,155, 0.95);*/
+  opacity: 0.95;
+  color: white;
+  border-bottom: 2px solid darken(@trpGreen, 10%);
+}
+
+.trpBtnGreen:hover,
+.trpBtnGreen:focus {
+  /*  background: rgba(29,206,155, 1);*/
+  border-bottom: 2px solid @trpGreen;
+  opacity: 1;
+}
+
+.trpBtnGrey {
+  background-color: @trpDarkGrey;
+  color: white;
+  border-bottom: 2px solid darken(@trpDarkGrey, 10%);
+}
+
+.trpBtnGrey:hover {
+  border-bottom: 2px solid @trpDarkGrey;
+}
+
+.trpBtnLightGrey {
+  background-color: @trpLightGrey;
+  color: black;
+  opacity: 0.95;
+  border-bottom: 2px solid darken(@trpLightGrey, 10%);
+}
+
+.trpBtnLightGrey:hover {
+  opacity: 1;
+  border-bottom: 2px solid @trpLightGrey;
+}
+
+.trpButtonMedium.disabled,
+.trpButtonMedium[disabled] {
+  cursor: default;
+  background-image: none;
+  opacity: 0.5;
+}
+
+.trpCopyButton {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 4px;
+  padding: 3px 10px 4px 10px;
+}
+
+.trpCircleButton {
+  display: inline-block;
+  background-color: @trpDarkCream;
+  text-align: center;
+  color: white;
+  position: relative;
+  min-height: 32px;
+  min-width: 32px;
+  border-radius: 50em;
+  border: 2px solid white;
+  /*  float: left;*/
+  margin-left: -2px;
+}
+
+.trpSmallButton {
+  background-color: @trpDarkCream;
+}
+
+.trpAddButton {
+  vertical-align: top;
+}
+
+.trpCircleButtonText {
+  padding-top: 26px;
+}

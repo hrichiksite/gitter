@@ -1,0 +1,75 @@
+
+<div
+  class="room-card {{extraClasses}}"
+  data-id="{{id}}"
+  data-tags="{{#each tags}}{{this}}{{#unless @last}},{{/unless}}{{/each}}"
+>
+  <header class="room-card__header">
+    <a href="/{{ uri }}?source={{linkSource}}" target="_parent" tabindex="-1" class="room-card__header-link">
+      <img class="room-card__header-avatar" {{{ avatarSrcSet avatarUrl 30 }}}>
+      <h3 class="room-card__heading">
+        {{#if isPrivate}}
+          <i class="room-card__heading-private-icon octicon octicon-lock"></i>
+        {{/if}}
+        {{#each roomNameParts}}
+          {{#unless @first}}
+          <span lass="room-card__heading-name-piece-separator">/</span>
+          {{/unless}}
+          <span class="room-card__heading-name-piece">{{ this }}</span>
+        {{/each}}
+      </h3>
+    </a>
+  </header>
+
+  <section class="room-card__body">
+    <p class="room-card__topic">
+      {{ topic }}
+    </p>
+    {{#if displayTags.length}}
+      <section class="room-card__tag-list">
+        {{#each displayTags}}
+          <a
+            href="{{when ../exploreBaseUrl ../exploreBaseUrl '/explore'}}/tags/{{this}}"
+            class="room-card__tag"
+          >
+            {{this}}
+          </a>
+        {{/each}}
+      </section>
+    {{/if}}
+  </section>
+
+  <footer class="room-card__footer">
+    <div class="room-card__footer-info-section">
+      <div class="room-card__footer-user-count subdued-button-pampas--xsmall">
+        <i class="icon-user"></i>
+        {{ userCount }}
+      </div>
+      {{#if messageCountSiPrefixed}}
+        <div class="room-card__footer-message-count">
+          <i class="icon-chat-empty"></i>
+          {{ messageCountSiPrefixed }}
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="room-card__footer-action-section">
+      {{#if canEditTags}}
+        <a class="secondary-button-jaffa--xsmall" href="#tags/{{ id }}" target="_parent">
+          Edit tags
+        </a>
+      {{/if}}
+
+      <a class="button-jaffa--xsmall" href="/{{ uri }}?source={{linkSource}}" target="_parent">
+        View
+      </a>
+      {{#if false}}
+      {{#if isLoggedIn}}
+        <a class="button-jaffa--xsmall" href="/{{ uri }}?source={{linkSource}}" target="_parent">
+          Join
+        </a>
+      {{/if}}
+      {{/if}}
+    </div>
+  </footer>
+</div>

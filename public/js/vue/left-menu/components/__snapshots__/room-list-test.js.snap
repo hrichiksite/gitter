@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`room-list adding a favourite room (dragging from normal to favourite list) calls store action "updateRoomFavourite" with new room favourite 1`] = `
+Array [
+  Object {
+    "favourite": 1,
+    "id": "5a8739841543b98772a686a9-community/favourite-room1",
+  },
+  Object {
+    "favourite": 2,
+    "id": "5a8739841543b98772a686a9-community/favourite-room2",
+  },
+  Object {
+    "favourite": 4,
+    "id": "5a8739841543b98772a686a9-community/favourite-room3",
+  },
+  Object {
+    "favourite": 3,
+    "id": "5a8739841543b98772a686a9-community/room1",
+  },
+]
+`;
+
+exports[`room-list matches snapshot 1`] = `
+<div>
+  <draggable-stub
+    class="favourite-room-list"
+    clone="function(t){return t}"
+    element="div"
+    group="rooms"
+    tag="ul"
+  />
+   
+  <draggable-stub
+    class="room-list"
+    clone="function(t){return t}"
+    element="div"
+    group="rooms"
+    tag="ul"
+  />
+</div>
+`;
+
+exports[`room-list matches snapshot when mobile 1`] = `
+<div>
+  <draggable-stub
+    class="favourite-room-list"
+    clone="function(t){return t}"
+    disabled="true"
+    element="div"
+    group="rooms"
+    tag="ul"
+  />
+   
+  <draggable-stub
+    class="room-list"
+    clone="function(t){return t}"
+    disabled="true"
+    element="div"
+    group="rooms"
+    tag="ul"
+  />
+</div>
+`;
+
+exports[`room-list matches snapshot with some favourite rooms 1`] = `
+<div>
+  <draggable-stub
+    class="favourite-room-list"
+    clone="function(t){return t}"
+    element="div"
+    group="rooms"
+    tag="ul"
+  >
+    <list-item-stub
+      item="[object Object]"
+      type="all"
+    />
+    <list-item-stub
+      item="[object Object]"
+      type="all"
+    />
+  </draggable-stub>
+   
+  <draggable-stub
+    class="room-list"
+    clone="function(t){return t}"
+    element="div"
+    group="rooms"
+    tag="ul"
+  >
+    <list-item-stub
+      item="[object Object]"
+      type="all"
+    />
+    <list-item-stub
+      item="[object Object]"
+      type="all"
+    />
+    <list-item-stub
+      item="[object Object]"
+      type="all"
+    />
+  </draggable-stub>
+</div>
+`;
+
+exports[`room-list matches snapshot with some rooms 1`] = `
+<div>
+  <draggable-stub
+    class="favourite-room-list"
+    clone="function(t){return t}"
+    element="div"
+    group="rooms"
+    tag="ul"
+  />
+   
+  <draggable-stub
+    class="room-list"
+    clone="function(t){return t}"
+    element="div"
+    group="rooms"
+    tag="ul"
+  >
+    <list-item-stub
+      item="[object Object]"
+      type="all"
+    />
+    <list-item-stub
+      active="true"
+      item="[object Object]"
+      type="all"
+    />
+    <list-item-stub
+      item="[object Object]"
+      type="all"
+    />
+  </draggable-stub>
+</div>
+`;
+
+exports[`room-list moving a favourite room calls store action "updateRoomFavourite" with (maxfavourite + 1) when favourite room moved from first to last 1`] = `
+Array [
+  Object {
+    "favourite": 5,
+    "id": "5a8739841543b98772a686a9-community/favourite-room1",
+  },
+  Object {
+    "favourite": 2,
+    "id": "5a8739841543b98772a686a9-community/favourite-room2",
+  },
+  Object {
+    "favourite": 3,
+    "id": "5a8739841543b98772a686a9-community/favourite-room3",
+  },
+  Object {
+    "favourite": 4,
+    "id": "5a8739841543b98772a686a9-community/favourite-room4",
+  },
+]
+`;
+
+exports[`room-list moving a favourite room calls store action "updateRoomFavourite" with favourite of sibling it bumps accountnig for itself when favourite room moved downwards (in the middle) 1`] = `
+Array [
+  Object {
+    "favourite": 4,
+    "id": "5a8739841543b98772a686a9-community/favourite-room1",
+  },
+  Object {
+    "favourite": 2,
+    "id": "5a8739841543b98772a686a9-community/favourite-room2",
+  },
+  Object {
+    "favourite": 3,
+    "id": "5a8739841543b98772a686a9-community/favourite-room3",
+  },
+  Object {
+    "favourite": 5,
+    "id": "5a8739841543b98772a686a9-community/favourite-room4",
+  },
+]
+`;
+
+exports[`room-list moving a favourite room calls store action "updateRoomFavourite" with favourite of the sibling it bumps when favourite room moved from last to first 1`] = `
+Array [
+  Object {
+    "favourite": 2,
+    "id": "5a8739841543b98772a686a9-community/favourite-room1",
+  },
+  Object {
+    "favourite": 3,
+    "id": "5a8739841543b98772a686a9-community/favourite-room2",
+  },
+  Object {
+    "favourite": 4,
+    "id": "5a8739841543b98772a686a9-community/favourite-room3",
+  },
+  Object {
+    "favourite": 1,
+    "id": "5a8739841543b98772a686a9-community/favourite-room4",
+  },
+]
+`;
+
+exports[`room-list moving a favourite room calls store action "updateRoomFavourite" with favourite of the sibling it bumps when favourite room moved upwards (in the middle) 1`] = `
+Array [
+  Object {
+    "favourite": 1,
+    "id": "5a8739841543b98772a686a9-community/favourite-room1",
+  },
+  Object {
+    "favourite": 3,
+    "id": "5a8739841543b98772a686a9-community/favourite-room2",
+  },
+  Object {
+    "favourite": 4,
+    "id": "5a8739841543b98772a686a9-community/favourite-room3",
+  },
+  Object {
+    "favourite": 2,
+    "id": "5a8739841543b98772a686a9-community/favourite-room4",
+  },
+]
+`;
+
+exports[`room-list removing a favourite room (dragging from favourite list to normal list) calls store action "updateRoomFavourite" with removed room favourite 1`] = `
+Array [
+  Object {
+    "favourite": false,
+    "id": "5a8739841543b98772a686a9-community/favourite-room1",
+  },
+  Object {
+    "favourite": undefined,
+    "id": "5a8739841543b98772a686a9-community/room1",
+  },
+  Object {
+    "favourite": undefined,
+    "id": "5a8739841543b98772a686a9-community/room2",
+  },
+  Object {
+    "favourite": undefined,
+    "id": "5a8739841543b98772a686a9-community/room3",
+  },
+]
+`;

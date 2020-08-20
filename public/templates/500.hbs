@@ -1,0 +1,14 @@
+{{!< error-layout}}
+<a href="{{homeUrl}}"><img class="image" src="{{cdn 'images/icon-logo-red-64@2x.png' }}" width="64" title="The sad face"></a>
+<div class="error">
+  Gitter<br>
+  <input id="error-text" class="error-input" size="55"><br>
+  <pre>{{status}} - {{ message }}</pre>
+  {{#if errorIdentifer}}
+    <pre style="font-size:small">Error identifier: {{ errorIdentifer }}</pre>
+  {{/if}}
+  {{#if stack}}
+    <pre style="font-size:small">{{{ stack }}}</pre>
+  {{/if}}
+</div>
+{{{ typewriter "#error-text" "Something went wrong. We\'re sorry.------ :(" }}}

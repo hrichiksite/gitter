@@ -1,0 +1,27 @@
+{{#if error}}
+Please check that:
+<ul>
+  <li><a href="https://github.com/{{repo}}/commit/{{sha}}" target="_blank" class="link">{{repo}}@{{sha}}</a> is a real commit</li>
+  <li>Gitter has <a href="/login/upgrade?scopes=repo" target="_blank" class="link">permission to view it. Allow private repo access<a></li>
+</ul>
+{{else}}
+{{#if author}}
+<div class="trpDisplayPicture--left avatar-s" style="background-image: url({{author.avatar_url}});"></div>
+<div class='chat-item__content'>
+  <div class="chat-item__details">
+    <div class="chat-item__from">{{author.login}}</div>
+  </div>
+  <div class="chat-item__text">
+    <p>{{files.length}} file{{#unless isFileLengthSingular}}s{{/unless}} changed. {{stats.additions}} addition{{#unless isAdditionsSingular}}s{{/unless}}, {{stats.deletions}} deletion{{#unless isDeletionsSingular}}s{{/unless}}.</p>
+    <ul class="file-list">
+      {{#each files}}
+      <li><a href="{{blob_url}}" target="_blank" class="{{status}}" title="{{fullFilename}}">{{filename}}</a></li>
+      {{/each}}
+    </ul>
+    {{#if firstPatchHtml}}
+      {{{firstPatchHtml}}}
+    {{/if}}
+  </div>
+</div>
+{{/if}}
+{{/if}}

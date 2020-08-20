@@ -1,0 +1,17 @@
+<div class="trpContentPanel archive" id="content-wrapper">
+  <div class="trpChatPanel">
+    <div class="trpChatContainer  primary-scroll  chat-container" id="content-frame">
+
+      <div id="chat-container" role="list">
+        <div>
+          {{#each chats}}
+            {{{ chatItemPrerender this type="archive"}}}
+          {{/each}}
+        </div>
+      </div>
+
+      {{! This is a way of forcing the browser to open at the bottom of the screen }}
+      <div id='initial' style="height:0;width:0;overflow:hidden"><a name="initial"/>_</a></div>
+    </div>
+  </div>
+</div>

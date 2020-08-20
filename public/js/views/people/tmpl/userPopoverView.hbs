@@ -1,0 +1,64 @@
+{{#if inactive}}
+  <div class='inactive'>
+    <p><small>{{username}} is not active on Gitter.</small></p>
+  </div>
+{{/if}}
+<div style="float: left"><img {{{ avatarSrcSet avatarUrl 128 }}} class="avatar-l"/></div>
+<div class="trpPopoverDetails">
+  <h2>{{displayName}}</h2>
+
+  {{#if profile}}
+    <h3><a href="{{profile}}" target="_blank" rel="nofollow noopener noreferrer">{{username}}</a></h3>
+  {{else}}
+    <h3>{{username}}</h3>
+  {{/if}}
+
+  {{#if github}}
+    <div class="vcard-stats">
+        <strong class="vcard-stat-count">{{github.followers}}</strong>
+        followers &nbsp;
+        <strong class="vcard-stat-count">{{github.public_repos}}</strong>
+        repos &nbsp;
+        <strong class="vcard-stat-count">{{github.following}}</strong>
+        following &nbsp;
+    </div>
+  {{/if}}
+
+  <ul class="trpUserDetails">
+    {{#if company}}
+      <li>
+        <div class='trpUserDetails__icon'>
+          <i class='octicon octicon-organization'></i>
+        </div>
+        <div class="trpUserDetails__text">{{ company }}</div>
+      </li>
+    {{/if}}
+
+    {{#if location}}
+      <li>
+        <div class='trpUserDetails__icon'>
+          <i class='octicon octicon-location'></i>
+        </div>
+        <div class="trpUserDetails__text">{{ location }}</div>
+      </li>
+    {{/if}}
+
+    {{#if email}}
+      <li>
+        <div class='trpUserDetails__icon'>
+          <i class='octicon octicon-mail'></i>
+        </div>
+        <div class="trpUserDetails__text"><a class="email" href="mailto:{{email}}">{{ email }}</a></div>
+      </li>
+    {{/if}}
+
+    {{#if website}}
+      <li>
+        <div class='trpUserDetails__icon'>
+          <i class='octicon octicon-link'></i>
+        </div>
+        <div class="trpUserDetails__text"><a target="_blank" href="{{website}}" class="url" rel="nofollow noreferrer noopener me">{{ website }}</a></div>
+      </li>
+    {{/if}}
+  </ul>
+</div>

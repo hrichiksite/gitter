@@ -1,0 +1,62 @@
+'use strict';
+load('./csv.js');
+rs.slaveOk();
+
+var horizonTimestamp = Date.now() - 86400000 * 1;
+
+var x = db.chatmessages.aggregate({
+  $match: {
+    _id: { $gt: createIdForTimestampString(horizonTimestamp) },
+    sent: { $type: 'date' }
+  }
+}, {
+  $group: {
+    _id: '$toTroupeId',
+    users: { $addToSet: '$fromUserId' },
+    chats: { $addToSet: '$_id' }
+  }
+}, {
+  $lookup: {
+    from: "troupes",
+    localField: "_id",
+    foreignField: "_id",
+    as: "troupe"
+  }
+}, {
+  $unwind: '$troupe'
+// }, {
+//   $project: {
+//     _id: 1,
+//     chats: 1,
+//     users: 1,
+//     tags: '$troupe.tags'
+//   }
+}, {
+  $unwind: '$troupe.tags'
+// }, {
+//   $project: {
+//     _id: 1,
+//     chats: 1,
+//     users: 1,
+//     tags: '$troupe.tags'
+//   }
+}, {
+  $lookup: {
+    from: "tagsynonyms",
+    localField: "troupe.tags",
+    foreignField: "synonyms",
+    as: "tagsynonyms"
+  }
+}, {
+  $unwind: '$tagsynonyms'
+}, {
+  $group: {
+    _id: '$tagsynonyms.name',
+    rooms: { $addToSet: '$_id' },
+    chats: { $push: '$chats' },
+    users: { $push: '$users' }
+    // x: { $first: '$$CURRENT' }
+  }
+});
+printjson(x.toArray());
+// printCSV(x, ['_id', 'chats', 'rooms', 'users']);

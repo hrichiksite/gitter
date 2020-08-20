@@ -1,0 +1,51 @@
+
+/*@import "animate.less";*/
+@import "trp3Vars.less";
+
+@keyframes pulsate {
+    0% { transform: scale(1, 1); }
+    35% { transform: scale(1, 1); }
+    50% { transform: scale(0.75, 0.75); }
+    65% { transform: scale(1, 1);}
+    100% { transform: scale(1, 1); }
+}
+
+@keyframes pulsate-retina {
+    0% { transform: scale(1, 1); }
+    35% { transform: scale(1, 1); }
+    50% { transform: scale(0.75, 0.75); }
+    65% { transform: scale(1, 1);}
+    100% { transform: scale(1, 1);}
+}
+
+.trpStatus {
+  position: absolute;
+  top: 5px;
+  left: -6px;
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 7px;
+  height: 7px;
+
+  border: 2px solid white;
+  border-radius: 5em;
+}
+
+
+.trpInput {
+  border: 1px solid @trpGrey;
+  padding: 8px;
+  color: @trpDarkGrey;
+  border-radius: 0px;
+  margin-bottom: 4px;
+}
+
+.tooltip-inner {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

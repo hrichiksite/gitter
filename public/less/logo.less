@@ -1,0 +1,102 @@
+
+/* Defining & Setting Keyframes */
+.dropdown__keyframes() {
+  0% { top: -100px; }
+  40% { top: 0; }
+  50% { top: 4px; }
+  60% { top: 0; }
+  100% { top: 0; }
+}
+
+.tuck-arms__keyframes() {
+  0% { top: 0; height: 15px; }
+  40% { top: 0; height: 15px; }
+  50% { top: 4px; height: 11px; }
+  60% { top: 4px; height: 11px; }
+  90% { top: 4px; height: 11px; }
+  100% { }
+}
+
+
+.tuck-legs__keyframes() {
+  0% { height: 20px; }
+  40% { height: 20px; }
+  50% { height: 16px; }
+  60% { height: 20px; }
+  100% { height: 20px; }
+}
+
+.appear__keyframes() {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+@keyframes appear { .appear__keyframes; }
+@keyframes dropdown { .dropdown__keyframes; }
+@keyframes tuck-legs { .tuck-legs__keyframes; }
+@keyframes tuck-arms { .tuck-arms__keyframes; }
+
+.logo {
+  display: flex;
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo-holder {
+  position: relative;
+  width: 20px;
+  height: 24px;
+}
+
+
+.logo-animation {
+  animation: dropdown 1s linear 1s 1 normal forwards;
+  transform: translate3d(0,0,0);
+}
+
+.logo-left-arm {
+  animation-name: tuck-arms;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: white;
+  width: 2px;
+  height: 15px;
+}
+
+.logo-body-left {
+  animation-name: tuck-legs;
+  position: absolute;
+  background-color: white;
+  left: 5px;
+  width: 2px;
+  top: 4px;
+  height: 20px;
+}
+
+.logo-body-right {
+  animation-name: tuck-legs;
+  position: absolute;
+  background-color: white;
+  left: 10px;
+  width: 2px;
+  top: 4px;
+  height: 20px;
+}
+
+.logo-right-arm {
+  animation-name: tuck-arms;
+  position: absolute;
+  left: 15px;
+  top: 4px;
+  background-color: white;
+  width: 2px;
+  height: 11px;
+}
+
+.logo-image {
+  width: 72px;
+  margin-left: 20px;
+  animation-name: appear;
+}

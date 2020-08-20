@@ -1,0 +1,50 @@
+@import "base-web.less";
+@import "typography.less";
+
+// This will go (soon I hope)
+@import "trp3Chat.less";
+@import "trpButtons.less";
+
+// Dependencies of the template
+@import "chat-app.less";
+@import "chat-content.less";
+
+@import "layouts/archive";
+@import "../js/views/app/chatIntegratedView";
+@import "../js/views/app/headerView";
+
+
+@import (less) "../../node_modules/@gitterhq/cal-heatmap/cal-heatmap.css";
+@import "../js/views/widgets/preload";
+
+.graph-rect.empty.future {
+  visibility: hidden;
+}
+.graph-rect.empty {
+  //fill: #f8f8f8;
+}
+.cal-heatmap-container {
+  margin-top: 20px;
+}
+.cal-heatmap-container .graph-subdomain-group rect.empty:hover {
+  stroke-width: 0;
+}
+
+.cal-heatmap-container .graph {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+button {
+  border: none;
+  &:focus {
+    outline: none;
+  }
+  &.disabled {
+  }
+}
+
+.switch-domain {
+ margin-top: 20px;
+}

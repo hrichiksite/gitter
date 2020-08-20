@@ -1,0 +1,19 @@
+{{#if removable}}
+  <button class="trpBtnRed trpButtonSmall" id="button-remove">
+    Remove
+  </button>
+{{/if}}
+{{#if mentionable}}
+  <button class="trpBtnLightGrey trpButtonSmall" id="button-mention">
+    Mention
+  </button>
+  {{#if profile}}
+  <a href="{{profile}}" target="_blank" class="trpBtnLightGrey trpButtonSmall open-profile">Open Profile</a>
+  {{/if}}
+{{/if}}
+{{#if chatPrivately}}
+  <button class="trpBtnGreen trpButtonSmall" id="button-onetoone">
+    Chat Privately
+  </button>
+{{/if}}
+

@@ -1,0 +1,11 @@
+<a href="{{html_url}}" target="_blank">
+{{#if error}}
+  Error - Commit Not Found
+{{else}}
+  {{#if commit}}
+    {{commit.message}}
+  {{else}}
+    {{repo}}@{{shortSha}}
+  {{/if}}
+{{/if}}
+</a>

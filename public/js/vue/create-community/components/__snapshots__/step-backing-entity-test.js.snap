@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StepBackingEntity orgs tab matches snapshot 1`] = `
+<div>
+  <h2
+    class="secondary-community-heading"
+  >
+    
+    Use any of your orgs or repos to create a community
+  
+  </h2>
+   
+  <ul
+    class="tabbed-navigation-list scroller"
+  >
+    <li
+      class="tabbed-navigation-list-item"
+    >
+      <button
+        class="tabbed-navigation-button active"
+      >
+        
+        orgs
+      
+      </button>
+    </li>
+     
+    <li
+      class="tabbed-navigation-list-item"
+    >
+      <button
+        class="tabbed-navigation-button"
+      >
+        
+        repos
+      
+      </button>
+    </li>
+  </ul>
+   
+  <entity-list-stub
+    displayname="orgs"
+    list=""
+  />
+   
+  <!---->
+    
+  <button
+    class="back-button secondary-button-clouds"
+  >
+    
+    Back
+  
+  </button>
+</div>
+`;
+
+exports[`StepBackingEntity repos tab matches snapshot 1`] = `
+<div>
+  <h2
+    class="secondary-community-heading"
+  >
+    
+    Use any of your orgs or repos to create a community
+  
+  </h2>
+   
+  <ul
+    class="tabbed-navigation-list scroller"
+  >
+    <li
+      class="tabbed-navigation-list-item"
+    >
+      <button
+        class="tabbed-navigation-button"
+      >
+        
+        orgs
+      
+      </button>
+    </li>
+     
+    <li
+      class="tabbed-navigation-list-item"
+    >
+      <button
+        class="tabbed-navigation-button active"
+      >
+        
+        repos
+      
+      </button>
+    </li>
+  </ul>
+   
+  <!---->
+   
+  <entity-list-stub
+    displayname="repos"
+    list=""
+  />
+    
+  <button
+    class="back-button secondary-button-clouds"
+  >
+    
+    Back
+  
+  </button>
+</div>
+`;

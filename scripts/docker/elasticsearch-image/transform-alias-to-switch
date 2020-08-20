@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+/*jshint node:true */
+'use strict';
+
+var indexName = process.argv[2];
+if(!indexName) {
+  console.error('usage: ' + process.argv[0] + ' index_name');
+  process.exit(1);
+}
+
+var data = '';
+process.stdin.setEncoding('utf8');
+process.stdin.on('data', function (d) {
+  data = data + d;
+});
+
+process.stdin.on('end', function () {
+  var doc = {
+    actions: [{
+      add: {
+        index: indexName,
+        alias: 'gitter-primary'
+      }
+    }]
+  };
+
+  if(data) {
+    var response = JSON.parse(data);
+    Object.keys(response).forEach(function(index) {
+      doc.actions.push({
+        remove: {
+          index: index,
+          alias: 'gitter-primary'
+        }
+      });
+    });
+  }
+  console.log(JSON.stringify(doc, null, '  '));
+});
+
+process.stdin.resume();
+

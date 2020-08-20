@@ -1,0 +1,15 @@
+{
+  "name": "gitter-web-client-context",
+  "version": "0.1.0",
+  "description": "",
+  "private": true,
+  "main": "context-server.js",
+  "browser": "context-browser.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "gitter-client-env": "file:../client-env",
+    "gitter-web-qs": "file:../qs"
+  }
+}

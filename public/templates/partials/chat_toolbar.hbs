@@ -1,0 +1,43 @@
+<div class="right-toolbar-region" id="right-toolbar-layout">
+  <div class="right-toolbar right-toolbar--collapsible {{when isRightToolbarPinned '' 'collapsed'}}">
+
+    <div id="toolbar-top-content" class="right-toolbar__body">
+      <div id="people-list">
+        <div class="trpToolbarHeader" id="top-header">
+          <h5 class="trpToolbarHeaderItem selected" id="people-header">
+            People
+          </h5>
+          <h5 class="trpToolbarHeaderItem {{#unless isRepo}}hidden{{/unless}}" id="info-header">
+              Repo info
+          </h5>
+        </div>
+        <div class="trpToolbarList">
+          <div class="trpToolbarListContent" id="people-roster">
+            <div>
+              {{{ prerenderView 'js/views/people/tmpl/peopleCollectionView' }}}
+            </div>
+          </div>
+          <div class="trpToolbarListContent" id="repo-info" style="display: none"></div>
+        </div>
+      </div>
+
+      <div id="activity-region" class="right-toolbar-activity-area">
+        {{{ activityItemPrerender activityEvents wrap="div" className="right-toolbar-activity-area-inner" }}}
+      </div>
+    </div>
+
+    <div id="right-toolbar-footer-region" class="right-toolbar-region__footer">
+      <svg
+           class="menu-toggle-icon js-menu-toggle-icon"
+           width="30px"
+           height="34px"
+           viewBox="0 0 30 34"
+       >
+        <path d="M0,6 l15,0 l15,0" />
+        <path d="M0,17 l15,0 l15,0" />
+        <path d="M0,28 l15,0 l15,0" />
+      </svg>
+    </div>
+
+  </div>
+</div>

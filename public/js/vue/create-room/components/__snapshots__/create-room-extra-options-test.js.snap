@@ -1,0 +1,282 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateRoomExtraOptions allowBadger not visible no repo association 1`] = `
+<section
+  class="create-room-detail-section"
+>
+  <ul
+    class="option-list"
+  >
+    <!---->
+     
+    <!---->
+     
+    <!---->
+  </ul>
+</section>
+`;
+
+exports[`CreateRoomExtraOptions allowBadger not visible when repo is private 1`] = `
+<section
+  class="create-room-detail-section"
+>
+  <ul
+    class="option-list"
+  >
+    <li
+      class="option-item"
+    >
+      <input
+        class="option-item-input"
+        id="create-room-only-github-users"
+        type="checkbox"
+      />
+       
+      <label
+        class="option-item-label"
+        for="create-room-only-github-users"
+      >
+        
+        Only GitHub users can join this room
+      
+      </label>
+    </li>
+     
+    <!---->
+     
+    <!---->
+  </ul>
+</section>
+`;
+
+exports[`CreateRoomExtraOptions allowBadger visible when associated with public GitHub repo 1`] = `
+<section
+  class="create-room-detail-section"
+>
+  <ul
+    class="option-list"
+  >
+    <li
+      class="option-item"
+    >
+      <input
+        class="option-item-input"
+        id="create-room-only-github-users"
+        type="checkbox"
+      />
+       
+      <label
+        class="option-item-label"
+        for="create-room-only-github-users"
+      >
+        
+        Only GitHub users can join this room
+      
+      </label>
+    </li>
+     
+    <!---->
+     
+    <li
+      class="option-item"
+    >
+      <input
+        class="option-item-input"
+        id="create-room-allow-badger"
+        type="checkbox"
+      />
+       
+      <label
+        class="option-item-label"
+        for="create-room-allow-badger"
+      >
+        
+        Send PR to add the Gitter badge to your README
+      
+      </label>
+    </li>
+  </ul>
+</section>
+`;
+
+exports[`CreateRoomExtraOptions allowGroupAdmins not visible when associated with GitHub repo 1`] = `
+<section
+  class="create-room-detail-section"
+>
+  <ul
+    class="option-list"
+  >
+    <li
+      class="option-item"
+    >
+      <input
+        class="option-item-input"
+        id="create-room-only-github-users"
+        type="checkbox"
+      />
+       
+      <label
+        class="option-item-label"
+        for="create-room-only-github-users"
+      >
+        
+        Only GitHub users can join this room
+      
+      </label>
+    </li>
+     
+    <!---->
+     
+    <li
+      class="option-item"
+    >
+      <input
+        class="option-item-input"
+        id="create-room-allow-badger"
+        type="checkbox"
+      />
+       
+      <label
+        class="option-item-label"
+        for="create-room-allow-badger"
+      >
+        
+        Send PR to add the Gitter badge to your README
+      
+      </label>
+    </li>
+  </ul>
+</section>
+`;
+
+exports[`CreateRoomExtraOptions allowGroupAdmins not visible when public room 1`] = `
+<section
+  class="create-room-detail-section"
+>
+  <ul
+    class="option-list"
+  >
+    <!---->
+     
+    <!---->
+     
+    <!---->
+  </ul>
+</section>
+`;
+
+exports[`CreateRoomExtraOptions allowGroupAdmins visible when private room with no repo association 1`] = `
+<section
+  class="create-room-detail-section"
+>
+  <ul
+    class="option-list"
+  >
+    <!---->
+     
+    <li
+      class="option-item"
+    >
+      <input
+        class="option-item-input"
+        id="create-room-allow-group-admins"
+        type="checkbox"
+      />
+       
+      <label
+        class="option-item-label"
+        for="create-room-allow-group-admins"
+      >
+        
+        Inherit permissions from the community and allow other
+        community admins to join this room
+      
+      </label>
+    </li>
+     
+    <!---->
+  </ul>
+</section>
+`;
+
+exports[`CreateRoomExtraOptions matches snapshot 1`] = `
+<section
+  class="create-room-detail-section"
+>
+  <ul
+    class="option-list"
+  >
+    <!---->
+     
+    <!---->
+     
+    <!---->
+  </ul>
+</section>
+`;
+
+exports[`CreateRoomExtraOptions onlyGithubUsers not visible when no repo association 1`] = `
+<section
+  class="create-room-detail-section"
+>
+  <ul
+    class="option-list"
+  >
+    <!---->
+     
+    <!---->
+     
+    <!---->
+  </ul>
+</section>
+`;
+
+exports[`CreateRoomExtraOptions onlyGithubUsers visible when associated with public GitHub repo 1`] = `
+<section
+  class="create-room-detail-section"
+>
+  <ul
+    class="option-list"
+  >
+    <li
+      class="option-item"
+    >
+      <input
+        class="option-item-input"
+        id="create-room-only-github-users"
+        type="checkbox"
+      />
+       
+      <label
+        class="option-item-label"
+        for="create-room-only-github-users"
+      >
+        
+        Only GitHub users can join this room
+      
+      </label>
+    </li>
+     
+    <!---->
+     
+    <li
+      class="option-item"
+    >
+      <input
+        class="option-item-input"
+        id="create-room-allow-badger"
+        type="checkbox"
+      />
+       
+      <label
+        class="option-item-label"
+        for="create-room-allow-badger"
+      >
+        
+        Send PR to add the Gitter badge to your README
+      
+      </label>
+    </li>
+  </ul>
+</section>
+`;

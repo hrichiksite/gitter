@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Gitter OAuth Failed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="{{ cdn 'styles/error-page.css' }}" rel="stylesheet">
+    <link id="favicon" rel="shortcut icon" href="{{ cdn 'images/favicon-normal.ico' }}">
+  </head>
+
+  <body>
+    <div class="center-panel">
+      <h1>Your OAuth request is incorrect</h1>
+      {{#if errorMessage}}
+      <p>{{errorMessage}}</p>
+      {{/if}}
+      {{#if missingParams}}
+      <p>Your request didn&apos;t include some of the required OAuth parameters:</p>
+      <ul>
+        {{#each missingParams}}
+        <li><code>{{this}}</code></li>
+        {{/each}}
+      </ul>
+      {{/if}}
+      {{#if incorrectResponseType}}
+      <p>Your request had the incorrect <code>response_type</code> parameter.</p>
+      {{/if}}
+      <p>If you can't resolve this issue, please <a href="http://support.gitter.im" target="_blank">contact support</a>.</p>
+    </div>
+
+    <script type="text/javascript" src="//use.typekit.net/ohh4mcl.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  </body>
+</html>

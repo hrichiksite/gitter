@@ -1,0 +1,5 @@
+<div class="activity-item-inner github-watch">
+  <i class='octicon octicon-star activity-item__icon'></i>
+  <div class="activity-time" id="time">{{ sentFormatted }}</div>
+  <div class="gtrActivityItemText"><span class='mention' data-link-type="mention" data-screen-name="{{payload.sender.login}}">{{payload.sender.login}}</span> starred <a href="{{sanitizeHref payload.repository.html_url}}" target="_blank">{{payload.repository.full_name}}</a></div>
+</div>

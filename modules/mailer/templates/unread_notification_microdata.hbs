@@ -1,0 +1,14 @@
+<div itemscope itemtype="http://schema.org/EmailMessage">
+  <meta itemprop="description" content="Open chat"/>
+  {{#with troupesWithUnreadCounts.[0]}}
+    <div itemprop="potentialAction" itemscope="" itemtype="http://schema.org/ViewAction">
+      <link itemprop="target" href="{{../emailBasePath}}{{troupe.url}}#utm_source=action&amp;utm_medium=email&amp;utm_campaign=unread-notifications" />
+      <meta itemprop="name" content="View {{#if oneToOne}}{{name}}{{else}}{{uri}}{{/if}}" />
+    </div>
+  {{/with}}
+  <div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Gitter"/>
+    <link itemprop="url" href="https://gitter.im"/>
+    <link itemprop="url/googlePlus" href="https://plus.google.com/+GitterImChat"/>
+  </div>
+</div>

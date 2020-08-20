@@ -1,0 +1,26 @@
+{
+  "name": "gitter-web-groups",
+  "version": "1.0.0",
+  "main": "lib/group-service.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "private": true,
+  "dependencies": {
+    "gitter-web-avatars": "file:../avatars",
+    "gitter-web-env": "file:../env",
+    "gitter-web-github": "file:../github",
+    "gitter-web-live-collection-events": "file:../live-collection-events",
+    "gitter-web-permissions": "file:../permissions",
+    "gitter-web-persistence": "file:../persistence",
+    "gitter-web-persistence-utils": "file:../persistence-utils",
+    "gitter-web-validators": "file:../validators"
+  },
+  "devDependencies": {
+    "gitter-web-test-utils": "file:../test-utils"
+  }
+}

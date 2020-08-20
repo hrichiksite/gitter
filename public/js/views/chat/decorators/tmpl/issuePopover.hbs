@@ -1,0 +1,33 @@
+{{#if error}}
+<div class="'chat-item__content'">
+  Issue not found. It may not exist or you may not have access to it.
+</div>
+{{else}}
+<div class="trpDisplayPicture--left avatar-s" style="background-image: url({{author.avatarUrl}});"></div>
+<div class='chat-item__content'>
+  <div class="chat-item__details">
+    <div class="chat-item__from">{{author.displayName}}</div>
+    <div class="chat-chat-item__username">{{author.username}}</div>
+  </div>
+  {{#if bodyHtml}}
+    <div class="chat-item__text">{{{bodyHtml}}}</div>
+  {{else}}
+    <div class="chat-item__text missing">No description given.</div>
+  {{/if}}
+</div>
+{{#if assignee}}
+  <div style="float: right;
+  margin-top: 5px;
+  ">
+  <div class="trpDisplayPicture--left avatar-xxs" style="background-image: url({{assignee.avatarUrl}});
+                                                         vertical-align: middle;
+                                                         margin-top: 0.25em;
+                                                         margin-right: 0.25em;"></div>
+    <span style="
+    font-size: smaller;
+    vertical-align: middle;
+    color: #AAA;
+    ">{{assignee.username}} is assigned</span>
+  </div>
+  {{/if}}
+{{/if}}

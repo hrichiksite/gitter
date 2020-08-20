@@ -1,0 +1,13 @@
+{
+  "name": "gitter-web-api-client",
+  "version": "0.1.0",
+  "description": "",
+  "private": true,
+  "main": "lib/api-client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "gitter-client-env": "file:../client-env"
+  }
+}
